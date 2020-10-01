@@ -41,6 +41,7 @@ jobs:
         uses: actions/setup-node@v1.4.3
         with:
           node-version: 12.x
+          registry-url: "https://registry.npmjs.org"
 
       # Build the package
       - name: Build the package
