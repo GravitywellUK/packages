@@ -8,6 +8,11 @@ on:
     # Do not run if the push is tagged
     tags-ignore:
       - '**'
+    paths-ignore:
+      - '.vscode/**'
+      - '.gitignore'
+      - 'LICENSE'
+      - '**.md'
     branches:
       - 'master'
 
