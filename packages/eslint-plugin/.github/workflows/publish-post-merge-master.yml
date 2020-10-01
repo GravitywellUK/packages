@@ -1,0 +1,77 @@
+# Publishes the package post-push into `master`
+name: Publish post-push master
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  push:
+    # Do not run if the push is tagged
+    tags-ignore:
+      - '**'
+
+    branches-ignore:
+      - '!master'
+
+jobs:
+  build-and-publish:
+    name: Build and publish
+    if: "!contains(toJSON(github.event.head_commit.message), 'Bumped version to')"
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.AUTH_TOKEN }}
+
+      # Verify head of master hasn't changed
+      - name: Verify head of master hasn't changed
+        run: |
+          # We ensure that the latest commit on master is still the one we expected when
+          # we started the release job, otherwise we exit
+          if [ "$GITHUB_SHA" != "$(git rev-parse --verify HEAD)" ]; then
+              echo "ERROR: The commit SHA at the HEAD of master has changed"
+              echo "Expected: $GITHUB_SHA"
+              echo "Actual: $(git rev-parse --verify HEAD)"
+              exit 1;
+          fi
+
+      # Setup Node.js environment
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v1.4.3
+        with:
+          node-version: 12.x
+          registry-url: "https://npm.pkg.github.com"
+
+      # Build the package
+      - name: Build the package
+        run: yarn tsc:build-clean
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
+
+      # Check that the Git branch is master
+      - name: Check that the Git branch is master
+        run: yarn git-branch-is master
+
+      # Configure GitHub config - required for github release to work
+      - name: Configure GitHub config
+        run: |
+          git config user.name '${{ secrets.USERNAME }}'
+          git config user.email '${{ secrets.EMAIL }}'
+
+      # Bump the package version
+      - name: Bump the package version
+        run: npm version patch -m "Bumped version to %s"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
+
+      # Push the bumped version back to GitHub
+      - name: Push the bumped version back to GitHub
+        run: git push --follow-tags
+
+      # Publish the package
+      - name: Publish the package
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
+

@@ -1,0 +1,63 @@
+{
+  "name": "@gravitywelluk/eslint-plugin",
+  "version": "1.0.0",
+  "description": "Gravitywell defined ESLint rule sets as a ESLint plugin",
+  "main": "dist/index.js",
+  "repository": "git@github.com:GravitywellUK/eslint-plugin.git",
+  "bugs": {
+    "url": "https://github.com/GravitywellUK/eslint-plugin/issues"
+  },
+  "author": "GravitywellUK",
+  "license": "MIT",
+  "private": false,
+  "engines": {
+    "node": "^10.12.0 || >=12.0.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "git-branch-is": "./node_modules/git-branch-is/bin/git-branch-is.js",
+    "tsc": "./node_modules/.bin/tsc",
+    "tsc:build": "yarn && yarn tsc -b",
+    "tsc:build-clean": "rm -Rf dist/ && yarn tsc:build",
+    "tsc:watch": "yarn tsc -w",
+    "eslint": "./node_modules/eslint/bin/eslint.js",
+    "eslint:fix": "yarn eslint ./ --fix --ext .js,.ts",
+    "eslint:debug": "yarn eslint ./ --debug",
+    "pub": "yarn tsc:build-clean && yarn git-branch-is master && npm version patch && npm publish --access public && git push --follow-tags",
+    "post-checkout": "yarn",
+    "pre-commit": "yarn eslint",
+    "pre-push": "yarn tsc:build-clean"
+  },
+  "husky": {
+    "hooks": {
+      "post-checkout": "yarn post-checkout",
+      "pre-commit": "yarn pre-commit",
+      "pre-push": "yarn pre-push"
+    }
+  },
+  "dependencies": {
+    "@react-native-community/eslint-config": "^2.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.2.0",
+    "@typescript-eslint/parser": "^4.3.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-react": "^7.21.2",
+    "eslint-plugin-react-hooks": "^4.1.2",
+    "eslint-plugin-react-native": "^3.10.0"
+  },
+  "devDependencies": {
+    "@gravitywelluk/eslint-plugin": "*",
+    "@types/node": "^14.11.2",
+    "eslint": "^7.10.0",
+    "git-branch-is": "^4.0.0",
+    "husky": "^4.3.0",
+    "typescript": "^4.0.3"
+  }
+}
