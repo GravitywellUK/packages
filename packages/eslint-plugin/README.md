@@ -45,13 +45,13 @@ There are 4 configurations to choose from:
 
 ```
 plugins: [ "@gravitywelluk/eslint-plugin" ]
-extends: [ "@gravitywelluk/react-recommended" ],
+extends: [ "plugin:@gravitywelluk/react-recommended" ],
 ```
 
 ### `@gravitywelluk/eslint-recommended`
 
 ```
-extends: [ "@gravitywelluk/eslint-recommended" ],
+extends: [ "plugin:@gravitywelluk/eslint-recommended" ],
 ```
 
 This includes the following plugins and rules including Gravitywell's own override rules:
@@ -65,7 +65,7 @@ This includes the following plugins and rules including Gravitywell's own overri
 ### `@gravitywelluk/typescript-recommended`
 
 ```
-extends: [ "@gravitywelluk/typescript-recommended" ],
+extends: [ "plugin:@gravitywelluk/typescript-recommended" ],
 ```
 
 This includes `@gravitywelluk/eslint-recommended` and the following plugins and rules :
@@ -80,7 +80,7 @@ This includes `@gravitywelluk/eslint-recommended` and the following plugins and 
 ### `@gravitywelluk/react-recommended`
 
 ```
-extends: [ "@gravitywelluk/react-recommended" ],
+extends: [ "plugin:@gravitywelluk/react-recommended" ],
 ```
 
 This includes `@gravitywelluk/typescript-recommended` and the following plugins and rules:
@@ -94,7 +94,7 @@ This includes `@gravitywelluk/typescript-recommended` and the following plugins 
 ### `@gravitywelluk/react-native-recommended`
 
 ```
-extends: [ "@gravitywelluk/react-native-recommended" ],
+extends: [ "plugin:@gravitywelluk/react-native-recommended" ],
 ```
 
 This includes `@gravitywelluk/react-recommended` and the following plugins and rules :

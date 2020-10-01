@@ -8,9 +8,8 @@ on:
     # Do not run if the push is tagged
     tags-ignore:
       - '**'
-
-    branches-ignore:
-      - '!master'
+    branches:
+      - 'master'
 
 jobs:
   build-and-publish:
