@@ -64,7 +64,7 @@ jobs:
 
       # Push the bumped version back to GitHub
       - name: Push the bumped version back to GitHub
-        run: git push --follow-tags --force
+        run: git push --follow-tags
 
       # Publish the package
       - name: Publish the package
