@@ -17,16 +17,6 @@
 
 ## Getting started / Installation
 
-As this package is not yet on NPM, you will need to tell your NPM package manager where to find it.
-
-In your `~/.npmrc` file as the following line,
-
-```
-@gravitywelluk:registry=https://npm.pkg.github.com/
-```
-
-Now you can install the package,
-
 ```
 # Yarn
 yarn add -D @gravitywelluk/eslint-plugin
@@ -93,7 +83,7 @@ This includes `@gravitywelluk/eslint-recommended` and the following plugins and 
 extends: [ "@gravitywelluk/react-recommended" ],
 ```
 
-This includes `@gravitywelluk/typescript-recommended` and the following plugins and rules :
+This includes `@gravitywelluk/typescript-recommended` and the following plugins and rules:
 
 - @gravitywelluk/typescript-recommended
 - react
@@ -114,14 +104,14 @@ This includes `@gravitywelluk/react-recommended` and the following plugins and r
 
 ## Contributing
 
-To contribute to this package you will need to first setup access to GitHub packages.
+To contribute to this package you will need to first setup access to NPM packages.
 
-1. You will firstly need to create a GitHub **Personal Access Token** (PAT). Use the following link on [Creating a personal access token](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token).
+1. You will firstly need to create an NPM **Access Token**. Use the following link on [Creating and viewing authentication tokens](https://docs.npmjs.com/creating-and-viewing-authentication-tokens).
 
 2. You will then need to add the following to your `~/.npmrc` file.
    ```
-   //npm.pkg.github.com/:_authToken=GITHUB_PAT
+   //registry.npmjs.org/:_authToken=ACCESS_TOKEN
    ```
 3. Contribute using the **Git Truck** flow (`pull-request` > `master`).
 
-**TODO** - Continuous integration to bump the version and publish the package once a merge has been made into master.
+**Note:** Publishing is automated via a CI workflow.

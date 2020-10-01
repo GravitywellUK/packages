@@ -31,7 +31,6 @@
     "eslint": "./node_modules/eslint/bin/eslint.js",
     "eslint:fix": "yarn eslint ./ --fix --ext .js,.ts",
     "eslint:debug": "yarn eslint ./ --debug",
-    "pub": "yarn tsc:build-clean && yarn git-branch-is master && npm version patch && npm publish --access public && git push --follow-tags",
     "post-checkout": "yarn",
     "pre-commit": "yarn eslint:fix",
     "pre-push": "yarn tsc:build-clean"
