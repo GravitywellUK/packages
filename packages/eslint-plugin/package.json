@@ -1,6 +1,6 @@
 {
   "name": "@gravitywelluk/eslint-plugin",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Gravitywell defined ESLint rule sets as a ESLint plugin",
   "main": "dist/index.js",
   "repository": "git@github.com:GravitywellUK/eslint-plugin.git",
