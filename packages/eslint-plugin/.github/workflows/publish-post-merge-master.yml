@@ -46,8 +46,6 @@ jobs:
       # Build the package
       - name: Build the package
         run: yarn tsc:build-clean
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
 
       # Check that the Git branch is master
       - name: Check that the Git branch is master
