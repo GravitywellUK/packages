@@ -47,9 +47,24 @@ jobs:
           node-version: 12.x
           registry-url: "https://registry.npmjs.org"
 
+      # Install package dependencies
+      - name: Install package dependencies
+        # --ignore-engines  - ignore engines check
+        # --frozen-lockfile - don't generate a lockfile and fail if an update is needed
+        # --ignore-scripts  - don't run lifecycle scripts
+        run: yarn --ignore-engines --frozen-lockfile --ignore-scripts
+
+      # Check linting succeeds
+      - name: Check linting succeeds
+        run: yarn eslint:fix
+
       # Build the package
       - name: Build the package
         run: yarn tsc:build-clean
+
+      # Double check that no code has changed
+      - name: Double check that no code has changed
+        run: yarn check:clean-diff-after-install
 
       # Check that the Git branch is master
       - name: Check that the Git branch is master

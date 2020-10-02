@@ -1,21 +1,24 @@
 {
   "name": "@gravitywelluk/eslint-plugin",
-  "version": "1.0.12",
   "description": "Gravitywell defined ESLint rule sets as a ESLint plugin",
+  "version": "1.0.12",
   "keywords": [
     "gravitywell",
     "gravitywelluk",
-    "eslint",
     "typescript-eslint",
+    "eslint",
     "react-eslint",
     "react-native-eslint"
   ],
-  "main": "dist/index.js",
   "repository": "git@github.com:GravitywellUK/eslint-plugin.git",
   "bugs": {
     "url": "https://github.com/GravitywellUK/eslint-plugin/issues"
   },
   "author": "GravitywellUK",
+  "contributors": [
+    "Luke Baker <luke.baker@live.com>"
+  ],
+  "main": "dist/index.js",
   "license": "MIT",
   "private": false,
   "engines": {
@@ -31,14 +34,15 @@
     "LICENSE"
   ],
   "scripts": {
+    "check:clean-diff-after-install": "git diff --quiet --exit-code",
     "git-branch-is": "./node_modules/git-branch-is/bin/git-branch-is.js",
     "tsc": "./node_modules/.bin/tsc",
     "tsc:build": "yarn && yarn tsc -b",
     "tsc:build-clean": "rm -Rf dist/ && yarn tsc:build",
     "tsc:watch": "yarn tsc -w",
-    "eslint": "./node_modules/eslint/bin/eslint.js",
-    "eslint:fix": "yarn eslint ./ --fix --ext .js,.ts",
-    "eslint:debug": "yarn eslint ./ --debug",
+    "eslint": "eslint ./ --ext .js,.ts",
+    "eslint:fix": "yarn eslint --fix",
+    "eslint:debug": "yarn eslint --debug",
     "post-checkout": "yarn",
     "pre-commit": "yarn eslint:fix",
     "pre-push": "yarn tsc:build-clean"
