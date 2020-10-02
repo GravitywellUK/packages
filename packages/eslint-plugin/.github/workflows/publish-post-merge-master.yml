@@ -1,4 +1,4 @@
-# Publishes the package post-push into `master`
+# Publishes the package post-push into 'master'
 name: Publish post-push master
 
 # Controls when the action will run. Workflow runs when manually triggered using the UI
