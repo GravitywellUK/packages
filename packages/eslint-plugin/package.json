@@ -44,12 +44,14 @@
     "eslint:fix": "yarn eslint --fix",
     "eslint:debug": "yarn eslint --debug",
     "post-checkout": "yarn",
+    "post-merge": "yarn tsc:build",
     "pre-commit": "yarn eslint:fix",
     "pre-push": "yarn tsc:build-clean"
   },
   "husky": {
     "hooks": {
       "post-checkout": "yarn post-checkout",
+      "post-merge": "yarn post-merge",
       "pre-commit": "yarn pre-commit",
       "pre-push": "yarn pre-push"
     }

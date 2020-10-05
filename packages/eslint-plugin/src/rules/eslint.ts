@@ -177,6 +177,13 @@ export = {
       asyncArrow: "always"
     }
   ],
+  "arrow-spacing": [
+    "error",
+    {
+      before: true,
+      after: true
+    }
+  ],
   "block-spacing": [ "error", "always" ],
   "no-multi-spaces": [ "error" ],
   "template-curly-spacing": [ "error", "never" ],
