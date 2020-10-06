@@ -159,6 +159,13 @@ export = {
       }
     }
   ],
+  "key-spacing": [
+    "error",
+    {
+      beforeColon: false,
+      afterColon: true
+    }
+  ],
   // "newline-per-chained-call": [ "error", { ignoreChainWithDepth: 2 } ],
   "dot-location": [ "error", "property" ],
   "comma-style": [ "error", "last" ],
