@@ -1,7 +1,7 @@
 {
   "name": "@gravitywelluk/eslint-plugin",
   "description": "Gravitywell defined ESLint rule sets as a ESLint plugin",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "keywords": [
     "gravitywell",
     "gravitywelluk",
