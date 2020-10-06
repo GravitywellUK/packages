@@ -19,5 +19,12 @@ export = {
         }
       }
     }
+  ],
+  "@typescript-eslint/array-type": [
+    "error",
+    {
+      default: "array-simple",
+      readonly: "array-simple"
+    }
   ]
 };
