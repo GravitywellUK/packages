@@ -23,7 +23,8 @@
   },
   "types": "dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "scripts": {
     "start": "start-storybook -p 6006",
@@ -65,6 +66,9 @@
   "directories": {
     "lib": "dist",
     "test": "__tests__"
+  },
+  "typesVersions": {
+    "*": { "./dist/*": ["./src/*"] }
   },
   "publishConfig": {
     "access": "public"
