@@ -8,10 +8,10 @@
   },
   "references": [
     {
-      "path": "packages/eslint-plugin"
+      "path": "packages/debug"
     },
     {
-      "path": "packages/debug"
+      "path": "packages/react-components"
     }
   ],
   "files": []
