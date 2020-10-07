@@ -8,7 +8,7 @@ import keys from "lodash/keys";
 import themeDecorator, { Colors, theme } from "../utils/ThemeDecorator";
 
 import {
-  Text, TextProps, TextSizes 
+  Text, TextProps, TextSize
 } from "./Text";
 
 export default {
@@ -27,7 +27,7 @@ export default {
     size: {
       control: {
         type: "select",
-        options: TextSizes
+        options: TextSize
       }
     },
     family: {
@@ -49,8 +49,8 @@ const Template: Story<TextProps> = args => (
 
 export const H1 = Template.bind({});
 
-H1.args = { size: TextSizes.h1 };
+H1.args = { size: TextSize.h1 };
 
 export const Paragraph = Template.bind({});
 
-Paragraph.args = { size: TextSizes.p };
+Paragraph.args = { size: TextSize.p };

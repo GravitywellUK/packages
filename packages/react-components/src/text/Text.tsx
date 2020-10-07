@@ -1,6 +1,6 @@
 import styled, { css, DefaultTheme } from "styled-components";
 
-export enum TextSizes {
+export enum TextSize {
   h1 = "h1",
   h2 = "h2",
   h3 = "h3",
@@ -17,7 +17,7 @@ export interface TextProps {
   light?: boolean;
   color?: keyof DefaultTheme["colors"];
   uppercase?: boolean;
-  size?: TextSizes;
+  size?: TextSize;
   family?: keyof DefaultTheme["font"]["family"]
 }
 
