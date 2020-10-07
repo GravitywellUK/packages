@@ -1,9 +1,12 @@
-
 import React from "react";
-import {ThemeProvider, DefaultTheme} from "styled-components";
+import { ThemeProvider, DefaultTheme } from "styled-components";
 
-const themeDecorator = (story: () => React.ReactElement) => {
-  return <ThemeProvider theme={theme}>{story()}</ThemeProvider>;
+const themeDecorator: (story: () => React.ReactElement) => React.ReactElement = story => {
+  return (
+    <ThemeProvider theme={theme}>
+      {story()}
+    </ThemeProvider>
+  );
 };
 
 export default themeDecorator;
@@ -21,7 +24,6 @@ export enum BorderRadius {
   medium = "1rem",
   large = "1.5rem"
 }
-
 
 export enum Colors {
   primary = "#273163",

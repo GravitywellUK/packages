@@ -1,6 +1,7 @@
 import * as React from "react";
 import styled, { css, DefaultTheme } from "styled-components";
-import Text from '../text/Text';
+
+import Text from "../text/Text";
 
 export enum ButtonIconAlignment {
   left = "left",
@@ -11,7 +12,6 @@ export enum ButtonDisplay {
   display = "display",
   flex = "flex"
 }
-
 
 export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement>{
   className?: string;
@@ -83,17 +83,18 @@ const StyledButton = styled.button<Omit<ButtonProps, "label" | "iconAlignment" |
     `};
 `;
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({label, iconAlignment, display, ...props}, ref) => {
-  const {
-    className
-  } = props;
-
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
+  label, iconAlignment, display, ...props 
+}, ref) => {
+  const { className } = props;
   const iconAlign: boolean = iconAlignment === "right" || false;
 
   return (
     <Wrapper display={display}>
       <StyledButton ref={ref} {...props} className={`${className} ${props.isSelected ? " selected" : ""}`} disabled={props.loading || props.disabled} reverse={iconAlign}>
-        <Text>{label}</Text>
+        <Text>
+          {label}
+        </Text>
       </StyledButton>
     </Wrapper>
   );

@@ -1,15 +1,14 @@
-import styled, { css } from "styled-components";
-import { DefaultTheme } from "styled-components";
+import styled, { css, DefaultTheme } from "styled-components";
 
 export enum TextSizes {
   h1 = "h1",
   h2 = "h2",
-  h3 = "h3" ,
-  h4 = "h4" ,
-  h5 = "h5" ,
-  h6 = "h6" ,
-  p = "p" ,
-  a = "a" ,
+  h3 = "h3",
+  h4 = "h4",
+  h5 = "h5",
+  h6 = "h6",
+  p = "p",
+  a = "a",
   small = "small"
 }
 
@@ -23,14 +22,14 @@ export interface TextProps {
 }
 
 // use as keywrod to decide which styleset to use
-const Text = styled.span.attrs<TextProps>(({size}) => ({ as: size }))<TextProps>`
+const Text = styled.span.attrs<TextProps>(({ size }) => ({ as: size }))<TextProps>`
   font-family: ${({ theme }) => theme.font.family.secondary}, sans-serif;
   font-weight: ${({ theme }) => theme.font.weights.regular};
   font-style: normal;
   text-transform: ${props => (props.uppercase ? "uppercase" : "none")};
   letter-spacing: ${props => (props.uppercase ? "0.2rem" : "inherit")};
   color: ${props =>
-    props.color ? props.theme.colors[props.color] : "inherit"};
+    props.color ? props.theme.colors[ props.color ] : "inherit"};
 
 
   ${props => {
@@ -112,7 +111,7 @@ const Text = styled.span.attrs<TextProps>(({size}) => ({ as: size }))<TextProps>
   }}
   font-weight: ${props => (props.light && props.theme.font.weights.light)};
   font-weight: ${props => (props.bold && props.theme.font.weights.bold)};
-  font-family: ${props => props.family && props.theme.font.family[props.family]};
+  font-family: ${props => props.family && props.theme.font.family[ props.family ]};
 `;
 
 export default Text;
