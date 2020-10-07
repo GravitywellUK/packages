@@ -1,1 +1,22 @@
+# Node generated files
+node_modules
+npm-debug.log
+assets
+package-lock.json
+
+# aot files
+aot
+
+# OS generated files
+Thumbs.db
+.DS_Store
+
+# Ignored files
+*.ts
 !*.d.ts
+tsconfig.json
+tsconfig-aot.json
+tslint.json
+*.tgz
+config
+src
