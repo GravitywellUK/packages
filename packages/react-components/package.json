@@ -22,6 +22,9 @@
     "./button": "./dist/button/Button.js"
   },
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "start": "start-storybook -p 6006",
     "build": "build-storybook"
@@ -60,12 +63,9 @@
   "homepage": "https://github.com/GravitywellUK/library#readme",
   "license": "ISC",
   "directories": {
-    "lib": "lib",
+    "lib": "dist",
     "test": "__tests__"
   },
-  "files": [
-    "lib"
-  ],
   "publishConfig": {
     "access": "public"
   },
