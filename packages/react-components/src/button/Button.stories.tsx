@@ -6,7 +6,7 @@ import { $enum } from "ts-enum-util";
 import themeDecorator, { Colors } from "../utils/ThemeDecorator";
 
 import {
-  Button, ButtonDisplay, ButtonProps, ButtonIconAlignment 
+  Button, ButtonDisplay, ButtonProps, ButtonIconAlignment
 } from "./Button";
 
 export default {
