@@ -166,7 +166,6 @@ export = {
       afterColon: true
     }
   ],
-  // "newline-per-chained-call": [ "error", { ignoreChainWithDepth: 2 } ],
   "dot-location": [ "error", "property" ],
   "comma-style": [ "error", "last" ],
   "comma-spacing": [
@@ -197,12 +196,13 @@ export = {
   "computed-property-spacing": [ "error", "always" ],
   "one-var-declaration-per-line": [ "error", "always" ],
   "function-call-argument-newline": [ "error", "consistent" ],
-  // "function-paren-newline": [ "error", { minItems: 2 } ],
   "no-async-promise-executor": [ "warn" ],
   "arrow-parens": [ "error", "as-needed" ],
   "space-infix-ops": [ "error" ],
   "no-restricted-imports": [ 2, { patterns: [ "../*" ] } ],
   "no-restricted-modules": [ 2, { patterns: [ "../*" ] } ],
+  "no-console": [ "warn", { allow: [ "warn", "error" ] } ],
+  "no-alert": [ "error" ],
   "import/no-unresolved": [ "off" ],
   "import/namespace": [ "off" ],
   "import/no-named-as-default": [ "off" ],
