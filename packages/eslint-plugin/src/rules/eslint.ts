@@ -202,7 +202,7 @@ export = {
   "no-restricted-imports": [ 2, { patterns: [ "../*" ] } ],
   "no-restricted-modules": [ 2, { patterns: [ "../*" ] } ],
   "no-console": [ "warn", { allow: [ "warn", "error" ] } ],
-  "no-alert": [ "error" ],
+  "no-alert": [ "warn" ],
   "import/no-unresolved": [ "off" ],
   "import/namespace": [ "off" ],
   "import/no-named-as-default": [ "off" ],
