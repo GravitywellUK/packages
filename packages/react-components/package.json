@@ -13,7 +13,6 @@
     "lodash": "^4.17.20",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "styled-components": "^5.2.0",
     "typescript": "~3.7.2"
   },
   "main": "dist/index.js",
@@ -53,6 +52,9 @@
     "react-is": "^16.13.1",
     "react-scripts": "^3.4.3",
     "ts-enum-util": "^4.0.2"
+  },
+  "peerDependencies": {
+    "styled-components": ">=5.2.0"
   },
   "description": "> TODO: description",
   "author": "George Evans <georgeevans1995@gmail.com>",
