@@ -1,6 +1,6 @@
 {
   "name": "@gravitywelluk/debug",
-  "version": "1.0.1-alpha.47+f855b11",
+  "version": "1.0.1-alpha.51+c616479",
   "description": "Library for better debug logs",
   "keywords": [
     "logger",
@@ -40,5 +40,5 @@
     "@types/debug": "^4.1.5",
     "jest": "^26.5.2"
   },
-  "gitHead": "f855b11f9dfc5d948e34d93495e4e031db52a3a8"
+  "gitHead": "c616479ff7595ea96624e87448a634352a49e45a"
 }

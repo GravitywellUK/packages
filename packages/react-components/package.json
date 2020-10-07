@@ -1,6 +1,6 @@
 {
   "name": "@gravitywelluk/react-components",
-  "version": "1.0.1-alpha.47+f855b11",
+  "version": "1.0.1-alpha.51+c616479",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -68,7 +68,11 @@
     "test": "__tests__"
   },
   "typesVersions": {
-    "*": { "./dist/*": ["./src/*"] }
+    "*": {
+      "./dist/*": [
+        "./src/*"
+      ]
+    }
   },
   "publishConfig": {
     "access": "public"
@@ -80,5 +84,5 @@
   "bugs": {
     "url": "https://github.com/GravitywellUK/library/issues"
   },
-  "gitHead": "f855b11f9dfc5d948e34d93495e4e031db52a3a8"
+  "gitHead": "c616479ff7595ea96624e87448a634352a49e45a"
 }
