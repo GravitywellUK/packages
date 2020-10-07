@@ -22,7 +22,7 @@ export interface TextProps {
 }
 
 // use as keywrod to decide which styleset to use
-const Text = styled.span.attrs<TextProps>(({ size }) => ({ as: size }))<TextProps>`
+export const Text = styled.span.attrs<TextProps>(({ size }) => ({ as: size }))<TextProps>`
   font-family: ${({ theme }) => theme.font.family.secondary}, sans-serif;
   font-weight: ${({ theme }) => theme.font.weights.regular};
   font-style: normal;
@@ -113,5 +113,3 @@ const Text = styled.span.attrs<TextProps>(({ size }) => ({ as: size }))<TextProp
   font-weight: ${props => (props.bold && props.theme.font.weights.bold)};
   font-family: ${props => props.family && props.theme.font.family[ props.family ]};
 `;
-
-export default Text;

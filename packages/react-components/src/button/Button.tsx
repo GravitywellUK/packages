@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled, { css, DefaultTheme } from "styled-components";
 
-import Text from "../text/Text";
+import Text from "../text";
 
 export enum ButtonIconAlignment {
   left = "left",
@@ -83,8 +83,8 @@ const StyledButton = styled.button<Omit<ButtonProps, "label" | "iconAlignment" |
     `};
 `;
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
-  label, iconAlignment, display, ...props 
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
+  label, iconAlignment, display, ...props
 }, ref) => {
   const { className } = props;
   const iconAlign: boolean = iconAlignment === "right" || false;
@@ -99,5 +99,3 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
     </Wrapper>
   );
 });
-
-export default Button;

@@ -17,14 +17,9 @@
     "typescript": "~3.7.2"
   },
   "main": "dist/index.js",
-  "exports": {
-    ".": "./dist/index.js",
-    "./button": "./dist/button/Button.js"
-  },
   "types": "dist/index.d.ts",
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "scripts": {
     "start": "start-storybook -p 6006",
@@ -66,13 +61,6 @@
   "directories": {
     "lib": "dist",
     "test": "__tests__"
-  },
-  "typesVersions": {
-    "*": {
-      "*": [
-        "./src/*"
-      ]
-    }
   },
   "publishConfig": {
     "access": "public"

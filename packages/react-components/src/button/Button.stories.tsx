@@ -5,8 +5,8 @@ import { $enum } from "ts-enum-util";
 
 import themeDecorator, { Colors } from "../utils/ThemeDecorator";
 
-import Button, {
-  ButtonDisplay, ButtonProps, ButtonIconAlignment 
+import {
+  Button, ButtonDisplay, ButtonProps, ButtonIconAlignment 
 } from "./Button";
 
 export default {
@@ -22,27 +22,27 @@ export default {
       type: "enum",
       control: {
         type: "select",
-        options: ButtonDisplay 
+        options: ButtonDisplay
       }
     },
     iconAlignment: {
       type: "enum",
       control: {
         type: "select",
-        options: ButtonIconAlignment 
+        options: ButtonIconAlignment
       }
     },
     textColor: {
       control: {
         type: "select",
-        options: $enum(Colors).getKeys() 
+        options: $enum(Colors).getKeys()
       }
     },
     backgroundColor: {
       type: "enum",
       control: {
         type: "select",
-        options: $enum(Colors).getKeys() 
+        options: $enum(Colors).getKeys()
       }
     }
   },
@@ -59,5 +59,5 @@ export const Disabled = Template.bind({});
 
 Disabled.args = {
   label: "Button",
-  disabled: true 
+  disabled: true
 };

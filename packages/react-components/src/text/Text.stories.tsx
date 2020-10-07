@@ -7,7 +7,9 @@ import keys from "lodash/keys";
 
 import themeDecorator, { Colors, theme } from "../utils/ThemeDecorator";
 
-import Text, { TextProps, TextSizes } from "./Text";
+import {
+  Text, TextProps, TextSizes 
+} from "./Text";
 
 export default {
   title: "Components/Text",
@@ -19,19 +21,19 @@ export default {
     Color: {
       control: {
         type: "select",
-        options: $enum(Colors).getKeys() 
+        options: $enum(Colors).getKeys()
       }
     },
     size: {
       control: {
         type: "select",
-        options: TextSizes 
+        options: TextSizes
       }
     },
     family: {
       control: {
         type: "select",
-        options: keys(theme.font.family) 
+        options: keys(theme.font.family)
       }
     }
 
