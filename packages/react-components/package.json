@@ -21,6 +21,7 @@
     ".": "./dist/index.js",
     "./button": "./dist/button/Button.js"
   },
+  "types": "dist/index.d.ts",
   "scripts": {
     "start": "start-storybook -p 6006",
     "build": "build-storybook"
