@@ -12,9 +12,9 @@ describe("debug package tests", function () {
   test("Non callable logging functions throw error", async function () {
     expect(() => {
       // @ts-expect-error - not allowed
-      debug.hpinvent("Testing function: debug.log");
+      debug.blah("Testing function: debug.log");
       // @ts-expect-error - not allowed
-      debug.infoo("Testing function: debug.info");
+      debug.foo("Testing function: debug.info");
       // @ts-expect-error - not allowed
       debug.loggy("Testing function: debug.error");
     }).toThrow();
