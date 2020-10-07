@@ -1,1 +1,0 @@
-export = { plugins: [ "react-native" ] };
