@@ -8,11 +8,11 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "directories": {
-    "lib": "lib",
+    "lib": "./dist",
     "test": "__tests__"
   },
   "files": [
-    "lib"
+    "dist"
   ],
   "dependencies": {
     "@hapi/joi": "^17.1.1",
@@ -27,7 +27,7 @@
     "@types/uuid": "^8.0.0"
   },
   "publishConfig": {
-    "registry": "https://registry.yarnpkg.com"
+    "access": "public"
   },
   "repository": {
     "type": "git",
@@ -40,5 +40,6 @@
   },
   "bugs": {
     "url": "https://github.com/GravitywellUK/library/issues"
-  }
+  },
+  "gitHead": "2864fda8689f94e3b8dd23ef494dc7c26b5e6a3d"
 }

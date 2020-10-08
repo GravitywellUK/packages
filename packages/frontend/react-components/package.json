@@ -1,6 +1,6 @@
 {
   "name": "@gravitywelluk/react-components",
-  "version": "1.0.1-alpha.51+c616479",
+  "version": "1.0.1-alpha.66+2864fda",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -74,5 +74,5 @@
   "bugs": {
     "url": "https://github.com/GravitywellUK/library/issues"
   },
-  "gitHead": "c616479ff7595ea96624e87448a634352a49e45a"
+  "gitHead": "2864fda8689f94e3b8dd23ef494dc7c26b5e6a3d"
 }
