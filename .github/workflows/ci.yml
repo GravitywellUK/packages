@@ -84,9 +84,8 @@ jobs:
         run: |
           yarn build
 
-      - name: Run unit tests for debug
+      - name: Run unit tests
         run: yarn test
-        working-directory: packages/debug
         env:
           CI: true
 
