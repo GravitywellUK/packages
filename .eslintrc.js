@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const reactLibVersion = require("./packages/react-components/package.json").dependencies.react;
+const reactLibVersion = require("./packages/frontend/react-components/package.json").dependencies.react;
 
 module.exports = {
   plugins: [ "@gravitywelluk/eslint-plugin" ],

@@ -14,7 +14,7 @@
     "lint": "eslint . --ext .js,.ts,.tsx",
     "postinstall": "yarn lerna:init && yarn build",
     "pre-commit": "yarn lint-staged",
-    "test": "lerna run test --concurrency 1",
+    "test": "lerna run test --concurrency 1 --stream",
     "post-checkout": "yarn",
     "post-merge": "yarn tsc:build",
     "pre-push": "yarn tsc:build-clean && yarn lint"

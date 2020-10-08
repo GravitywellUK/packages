@@ -27,7 +27,7 @@
   },
   "scripts": {
     "build": "tsc -b",
-    "test": "jest -c ../../jest.config.js --verbose --no-cache -i",
+    "test": "jest -c ../../../jest.config.js --verbose --no-cache -i",
     "test:ci": "yarn test"
   },
   "bugs": {

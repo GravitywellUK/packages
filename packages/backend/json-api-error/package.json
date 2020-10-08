@@ -1,0 +1,44 @@
+{
+  "name": "@gravitywelluk/json-api-error",
+  "version": "1.0.0",
+  "description": "> TODO: description",
+  "author": "George Evans <georgeevans1995@gmail.com>",
+  "homepage": "https://github.com/GravitywellUK/library#readme",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "@sentry/node": "^5.22.0",
+    "axios": "^0.19.2",
+    "ramda": "^0.27.0",
+    "uuid": "^8.1.0"
+  },
+  "devDependencies": {
+    "@types/hapi__joi": "^17.1.6",
+    "@types/ramda": "^0.27.21",
+    "@types/uuid": "^8.0.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.yarnpkg.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GravitywellUK/library.git"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "test": "jest -c ../../../jest.config.js --verbose --no-cache -i",
+    "test:ci": "yarn test"
+  },
+  "bugs": {
+    "url": "https://github.com/GravitywellUK/library/issues"
+  }
+}

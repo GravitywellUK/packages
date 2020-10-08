@@ -1,10 +1,14 @@
 {
-  "extends": "../../tsconfig-settings.json",
+  "extends": "../../../tsconfig-settings.json",
   "compilerOptions": {
     "outDir": "dist",
     "rootDir": "src"
   },
-  "references": [],
+  "references": [
+    {
+      "path": "../json-api-error"
+    }
+  ],
   "include": ["./src"],
   "exclude": ["__tests__", "dist", "node_modules"]
 }

@@ -5,10 +5,16 @@
   },
   "references": [
     {
-      "path": "packages/debug"
+      "path": "packages/shared/debug"
     },
     {
-      "path": "packages/react-components"
+      "path": "packages/backend/json-api-error"
+    },
+    {
+      "path": "packages/backend/lambda-utils"
+    },
+    {
+      "path": "packages/frontend/react-components"
     }
   ],
   "files": []

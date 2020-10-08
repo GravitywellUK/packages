@@ -1,6 +1,5 @@
 import React from "react";
-import { ThemeProvider as SCThemeProvider } from 'styled-components';
-
+import { ThemeProvider as SCThemeProvider } from "styled-components";
 
 export interface ThemeType {
   colors: {
@@ -57,6 +56,7 @@ interface ThemeProps {
 }
 
 export const ThemeProvider: React.FC<ThemeProps> = ({ theme, children }) => (
-    <SCThemeProvider theme={theme}>{children}</SCThemeProvider>
+  <SCThemeProvider theme={theme}>
+    {children}
+  </SCThemeProvider>
 );
-

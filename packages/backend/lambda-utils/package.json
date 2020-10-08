@@ -1,0 +1,48 @@
+{
+  "name": "@gravitywelluk/lambda-utils",
+  "version": "1.0.0",
+  "description": "Lambda utilities",
+  "author": "George Evans <georgeevans1995@gmail.com>",
+  "homepage": "https://github.com/GravitywellUK/library#readme",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "private": true,
+  "directories": {
+    "lib": "dist",
+    "test": "__tests__"
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@gravitywelluk/debug": "^1.0.1-alpha.50",
+    "@gravitywelluk/json-api-error": "^1.0.0",
+    "@hapi/joi": "^17.1.1",
+    "@sentry/node": "^5.25.0",
+    "aws-lambda": "^1.0.6",
+    "ramda": "^0.27.0"
+  },
+  "devDependencies": {
+    "@serverless/event-mocks": "^1.1.1",
+    "@types/aws-lambda": "^8.10.17",
+    "@types/hapi__joi": "^17.1.0",
+    "@types/ramda": "^0.27.21",
+    "@types/uuid": "^8.3.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.yarnpkg.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GravitywellUK/library.git"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "test": "jest -c ../../../jest.config.js --verbose --no-cache -i",
+    "test:ci": "yarn test"
+  },
+  "bugs": {
+    "url": "https://github.com/GravitywellUK/library/issues"
+  }
+}

@@ -1,74 +1,16 @@
 0 silly argv {
-0 silly argv   _: [ 'publish' ],
-0 silly argv   loglevel: 'verbose',
-0 silly argv   canary: true,
-0 silly argv   c: true,
-0 silly argv   exact: true,
-0 silly argv   'force-publish': true,
-0 silly argv   forcePublish: true,
-0 silly argv   yes: true,
-0 silly argv   y: true,
-0 silly argv   contents: 'dist',
-0 silly argv   composed: 'publish',
+0 silly argv   _: [ 'add' ],
+0 silly argv   globs: [ 'packages/backend/lambda-utils' ],
 0 silly argv   lernaVersion: '3.22.1',
-0 silly argv   '$0': 'node_modules/.bin/lerna'
+0 silly argv   '$0': 'lerna',
+0 silly argv   pkg: '@gravitywelluk/json-api-error'
 0 silly argv }
 1 notice cli v3.22.1
 2 verbose rootPath /Users/george/Projects/Gravitywell/gravitywell-packages
 3 info versioning independent
-4 info canary enabled
-5 verbose session f9ea6591557c489a
-6 verbose user-agent lerna/3.22.1/node@v14.3.0+x64 (darwin)
-7 verbose git-describe undefined => "f855b11"
-8 silly git-describe parsed => {"refCount":"48","sha":"f855b11","isDirty":false}
-9 silly hasTags
-10 verbose hasTags false
-11 warn force-publish all packages
-12 info Assuming all packages changed
-13 verbose updated @gravitywelluk/debug
-14 verbose updated @gravitywelluk/react-components
-15 verbose git-describe "@gravitywelluk/debug@*" => "f855b11"
-16 silly git-describe parsed => {"refCount":"48","sha":"f855b11","isDirty":false}
-17 verbose git-describe "@gravitywelluk/react-components@*" => "f855b11"
-18 silly git-describe parsed => {"refCount":"48","sha":"f855b11","isDirty":false}
-19 info auto-confirmed
-20 info publish Publishing packages to npm...
-21 info Verifying npm credentials
-22 verbose Retrieving npm user profile
-23 http fetch GET 200 https://registry.npmjs.org/-/npm/v1/user 414ms
-24 silly npm profile get received {"tfa":false,"name":"gravitywell.uk","email":"technical@gravitywell.co.uk","email_verified":true,"created":"2018-07-09T15:58:07.015Z","updated":"2020-10-02T09:37:17.985Z","cidr_whitelist":null,"fullname":"GravitywellUK","twitter":"","github":"GravitywellUK"}
-25 silly get npm username received {"username":"gravitywell.uk","tfa":false,"name":"gravitywell.uk","email":"technical@gravitywell.co.uk","email_verified":true,"created":"2018-07-09T15:58:07.015Z","updated":"2020-10-02T09:37:17.985Z","cidr_whitelist":null,"fullname":"GravitywellUK","twitter":"","github":"GravitywellUK"}
-26 silly verifyNpmPackageAccess
-27 http fetch GET 200 https://registry.npmjs.org/-/org/gravitywell.uk/package?format=cli 269ms
-28 info Checking two-factor auth mode
-29 verbose Retrieving npm user profile
-30 http fetch GET 200 https://registry.npmjs.org/-/npm/v1/user 276ms
-31 silly npm profile get received {"tfa":false,"name":"gravitywell.uk","email":"technical@gravitywell.co.uk","email_verified":true,"created":"2018-07-09T15:58:07.015Z","updated":"2020-10-02T09:37:17.985Z","cidr_whitelist":null,"fullname":"GravitywellUK","twitter":"","github":"GravitywellUK"}
-32 silly 2FA false
-33 warn ENOLICENSE Packages @gravitywelluk/debug and @gravitywelluk/react-components are missing a license.
-33 warn ENOLICENSE One way to fix this is to add a LICENSE.md file to the root of this repository.
-33 warn ENOLICENSE See https://choosealicense.com for additional guidance.
-34 silly getCurrentSHA
-35 verbose getCurrentSHA f855b11f9dfc5d948e34d93495e4e031db52a3a8
-36 silly lifecycle No script for "prepublish" in "root", continuing
-37 silly lifecycle No script for "prepare" in "root", continuing
-38 silly lifecycle No script for "prepublishOnly" in "root", continuing
-39 silly lifecycle No script for "prepack" in "root", continuing
-40 verbose pack-directory packages/debug/dist
-41 verbose pack-directory packages/react-components/dist
-42 silly lifecycle No script for "prepublish" in "@gravitywelluk/debug", continuing
-43 silly lifecycle No script for "prepublish" in "@gravitywelluk/react-components", continuing
-44 silly lifecycle No script for "prepare" in "@gravitywelluk/debug", continuing
-45 silly lifecycle No script for "prepare" in "@gravitywelluk/react-components", continuing
-46 silly lifecycle No script for "prepublishOnly" in "@gravitywelluk/debug", continuing
-47 silly lifecycle No script for "prepublishOnly" in "@gravitywelluk/react-components", continuing
-48 silly lifecycle No script for "prepack" in "@gravitywelluk/debug", continuing
-49 silly lifecycle No script for "prepack" in "@gravitywelluk/react-components", continuing
-50 silly lifecycle No script for "postpack" in "@gravitywelluk/debug", continuing
-51 verbose packed packages/debug/dist
-52 silly lifecycle No script for "postpack" in "@gravitywelluk/react-components", continuing
-53 verbose packed packages/react-components/dist
-54 silly lifecycle No script for "postpack" in "root", continuing
-55 verbose publish @gravitywelluk/debug
-56 verbose publish @gravitywelluk/react-components
-57 error
+4 error Error: 404 Not Found - GET https://registry.npmjs.org/@gravitywelluk%2fjson-api-error - Not found
+4 error     at /Users/george/Projects/Gravitywell/gravitywell-packages/node_modules/@evocateur/npm-registry-fetch/check-response.js:104:15
+4 error     at processTicksAndRejections (internal/process/task_queues.js:97:5)
+4 error From previous event:
+4 error     at processImmediate (internal/timers.js:456:21)
+4 error From previous event:
