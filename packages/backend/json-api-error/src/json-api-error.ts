@@ -79,7 +79,7 @@ export class JSONApiErrorStatic extends Error {
       if (!this.id) {
         this.id = uuid.v1();
 
-        // assign it to this error and retur
+        // assign it to this error and return
         for (const item in error) {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           //@ts-ignore

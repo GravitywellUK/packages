@@ -29,12 +29,12 @@ export interface LambdaOptions {
 export const gatewayProxyHandler = <TResult extends Record<string, unknown>>(handler: APIGatewayProxyHandlerAsync<TResult>, options?: LambdaOptions): HandlerAsync => {
   return async (event: CustomAPIGatewayProxyEvent, context: Context) => {
     if (options?.warmup) {
-      debug.info("Warming up funtion");
+      debug.info("Warming up function");
 
       return await options.warmup();
     }
 
-    // Transform queryStringParameters to content multiarrays.
+    // Transform queryStringParameters to content multiple arrays.
     if (event.multiValueQueryStringParameters) {
       // Parse event params as json
       for (const key in event.multiValueQueryStringParameters) {

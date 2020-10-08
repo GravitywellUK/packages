@@ -15,10 +15,10 @@ import {
  * @see http://jsonapi.org/
  */
 export const jsonApiAxiosError = (err: AxiosError): JSONApiErrorStatic => {
-  const reponse: JSONApiErrorJSON = {
+  const response: JSONApiErrorJSON = {
     status: 500,
     title: "Unknown Error",
-    details: "An unknown error occured",
+    details: "An unknown error occurred",
     code: ERROR_CODE_ENUM.UNKNOWN_ERROR
   };
 
@@ -50,5 +50,5 @@ export const jsonApiAxiosError = (err: AxiosError): JSONApiErrorStatic => {
   }
 
   // Assume that the 'err' is already of type JSONApiResponse.
-  return jsonApiError(reponse);
+  return jsonApiError(response);
 };

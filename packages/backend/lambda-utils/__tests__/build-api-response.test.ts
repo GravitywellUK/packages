@@ -4,7 +4,7 @@ import { APIGatewayProxyEvent } from "aws-lambda";
 
 import { buildApiResponse, createContext } from "../src";
 
-describe("build-api-respone", () => {
+describe("build-api-response", () => {
   const mockContext = createContext();
 
   test("Build a valid 200 response", () => {
@@ -44,7 +44,7 @@ describe("build-api-respone", () => {
     expect(data.statusCode).toBe(404);
   });
 
-  test("Handle no error to unknwon error", () => {
+  test("Handle no error to unknown error", () => {
     const errorResponse = { status: 404 };
     const gatewayEvent = createEvent("aws:apiGateway", {} as APIGatewayProxyEvent);
 
