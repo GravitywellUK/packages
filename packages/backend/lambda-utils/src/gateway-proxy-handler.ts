@@ -51,7 +51,6 @@ export const gatewayProxyHandler = <TResult extends Record<string, unknown>>(han
     const response = curry(buildApiResponse)(event, context);
 
     try {
-      console.log("TRY handler");
       const result = await handler(event, context);
 
       // flush to send events to sentry
