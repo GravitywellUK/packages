@@ -86,12 +86,12 @@ const prepareErrorResponse = (jsonApiObj: JSONApiResponseObject,
   };
 };
 
-export interface JSONApiResponseObject<T extends Record<string, unknown> = Record<string, unknown>> extends Partial<JSONApiErrorJSON> {
+export interface JSONApiResponseObject<T = unknown> extends Partial<JSONApiErrorJSON> {
   status: number;
   data?: T;
 }
 
-export interface JSONApiResponse<T extends Record<string, unknown> = Record<string, unknown>> {
+export interface JSONApiResponse<T = unknown> {
   status: number;
   meta?: JSONApiMeta;
   data?: T;

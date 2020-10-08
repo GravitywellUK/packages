@@ -26,7 +26,7 @@ export interface LambdaOptions {
  *
  * @param handler
  */
-export const gatewayProxyHandler = <TResult extends Record<string, unknown>>(handler: APIGatewayProxyHandlerAsync<TResult>, options?: LambdaOptions): HandlerAsync => {
+export const gatewayProxyHandler = <TResult = unknown>(handler: APIGatewayProxyHandlerAsync<TResult>, options?: LambdaOptions): HandlerAsync => {
   return async (event: CustomAPIGatewayProxyEvent, context: Context) => {
     if (options?.warmup) {
       debug.info("Warming up function");
@@ -85,7 +85,7 @@ export const gatewayProxyHandler = <TResult extends Record<string, unknown>>(han
 };
 // custom types to remove callback
 type HandlerAsync = (event: CustomAPIGatewayProxyEvent, context: Context) => Promise<APIGatewayProxyResult | void>;
-export type APIGatewayProxyHandlerAsync<TResult extends Record<string, unknown>> = (event: CustomAPIGatewayProxyEvent, context: Context) => Promise<JSONApiResponseObject<TResult>>;
+export type APIGatewayProxyHandlerAsync<TResult = unknown> = (event: CustomAPIGatewayProxyEvent, context: Context) => Promise<JSONApiResponseObject<TResult>>;
 
 export interface CustomAPIGatewayProxyEvent extends Omit<APIGatewayProxyEvent, "pathParameters" | "queryStringParameters"> {
   pathParameters?: Record<string, unknown>;
