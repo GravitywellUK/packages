@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Lambda utilities",
   "author": "George Evans <georgeevans1995@gmail.com>",
-  "homepage": "https://github.com/GravitywellUK/library#readme",
+  "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/backend/lambda-utils",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -12,7 +12,10 @@
     "test": "__tests__"
   },
   "files": [
-    "dist"
+    "dist",
+    "package.json",
+    "README.md",
+    "LICENSE"
   ],
   "dependencies": {
     "@gravitywelluk/debug": "^1.0.1-alpha.50",
