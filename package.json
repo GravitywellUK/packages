@@ -3,30 +3,28 @@
   "private": true,
   "scripts": {
     "build": "./node_modules/.bin/tsc -b",
-    "start": "./node_modules/.bin/tsc -b -w",
+    "start": "yarn build -w",
+    "clean": "yarn build --clean && lerna clean && lerna run clean",
     "check:clean-workspace-after-install": "git diff --quiet --exit-code",
-    "check:spelling": "cspell --config=.cspell.json \"**/*.{md,ts,js}\"",
     "check:configs": "lerna run check:configs",
-    "clean": "yarn tsc -b --clean && lerna clean && lerna run clean",
     "cz": "git-cz",
     "lerna:init": "lerna bootstrap --ignore-scripts && lerna link --force-local",
     "lint:fix": "eslint . --ext .js,.ts,.tsx --fix",
     "lint": "eslint . --ext .js,.ts,.tsx",
     "postinstall": "yarn lerna:init && yarn build",
-    "pre-commit": "yarn lint-staged",
     "test": "lerna run test --concurrency 1",
     "post-checkout": "yarn",
-    "post-merge": "yarn tsc:build",
-    "pre-push": "yarn tsc:build-clean && yarn lint"
+    "post-merge": "yarn && yarn build",
+    "pre-commit": "yarn lint:fix",
+    "pre-push": "yarn clean && yarn lint"
   },
   "engines": {
     "node": ">=12.0.0"
   },
   "devDependencies": {
-    "@gravitywelluk/eslint-plugin": "^1.0.17",
+    "@gravitywelluk/eslint-plugin": "^1.0.18",
     "@types/jest": "^26.0.14",
     "@types/node": "^14.11.2",
-    "cspell": "^4.1.0",
     "cz-lerna-changelog": "^2.0.3",
     "eslint": "^7.10.0",
     "jest": "^26.5.2",
