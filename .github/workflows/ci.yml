@@ -153,9 +153,6 @@ jobs:
       - name: Lint code
         run: yarn lint
 
-      - name: Check spelling
-        run: yarn check:spelling
-
 
   publish_canary_version:
     name: Publish the latest code as a canary version
