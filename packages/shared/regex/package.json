@@ -1,7 +1,7 @@
 {
-  "name": "@gravitywelluk/utils",
+  "name": "@gravitywelluk/regex",
   "version": "1.0.0",
-  "description": "Library for common utilises",
+  "description": "Library of RegEx",
   "keywords": [
     "gravitywell",
     "gravitywelluk",
@@ -38,5 +38,5 @@
     "url": "https://github.com/GravitywellUK/library/issues"
   },
   "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {}
 }
