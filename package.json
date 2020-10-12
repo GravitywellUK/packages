@@ -2,9 +2,10 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "initialise": "yarn && lerna:init && yarn build",
-    "reinitialise": "yarn clean && yarn && lerna:init && yarn build",
+    "initialise": "yarn && yarn lerna:init && yarn build",
+    "reinitialise": "yarn clean && yarn && yarn lerna:init && yarn build",
     "build": "./node_modules/.bin/tsc -b",
+    "build:clean": "yarn build --clean && yarn build",
     "start": "yarn build -w",
     "clean": "yarn build --clean && lerna clean --yes",
     "check:clean-workspace-after-install": "git diff --quiet --exit-code",
@@ -18,7 +19,7 @@
     "post-checkout": "yarn && lerna:init",
     "post-merge": "yarn && lerna:init && yarn build",
     "pre-commit": "yarn lint:fix",
-    "pre-push": "yarn reinitialise && yarn lint && yarn test"
+    "pre-push": "yarn build:clean && yarn lint && yarn test"
   },
   "engines": {
     "node": ">=12.0.0"
