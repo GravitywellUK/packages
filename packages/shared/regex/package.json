@@ -8,7 +8,7 @@
     "regex"
   ],
   "author": "Luke Baker <luke.baker@live.com>",
-  "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/shared/utils",
+  "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/shared/regex",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
