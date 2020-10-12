@@ -4,7 +4,7 @@
   "scripts": {
     "build": "./node_modules/.bin/tsc -b",
     "start": "yarn build -w",
-    "clean": "yarn build:clean && lerna clean --yes",
+    "clean": "yarn build --clean && lerna clean --yes",
     "check:clean-workspace-after-install": "git diff --quiet --exit-code",
     "check:configs": "lerna run check:configs",
     "cz": "git-cz",
@@ -16,7 +16,7 @@
     "post-checkout": "yarn && lerna:init",
     "post-merge": "yarn && lerna:init && yarn build",
     "pre-commit": "yarn lint:fix",
-    "pre-push": "yarn clean && yarn && lerna:init && yarn lint && yarn test"
+    "pre-push": "yarn clean && yarn && lerna:init && yarn build && yarn lint && yarn test"
   },
   "engines": {
     "node": ">=12.0.0"
