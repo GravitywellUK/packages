@@ -1,11 +1,11 @@
 {
   "name": "@gravitywelluk/regex",
   "version": "1.0.0",
-  "description": "Library of RegEx",
+  "description": "Library of commonly used Regular Expressions",
   "keywords": [
     "gravitywell",
     "gravitywelluk",
-    "utils"
+    "regex"
   ],
   "author": "Luke Baker <luke.baker@live.com>",
   "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/shared/utils",

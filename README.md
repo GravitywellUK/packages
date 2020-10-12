@@ -1,7 +1,8 @@
 <h1 align="center">Gravitywell Packages</h1>
 <p align="center">Gravitywell's own Library of public open-source packages.</p>
 <p align="center">
-  <img src="https://github.com/GravitywellUK/packages/workflows/CI/badge.svg" alt="CI" />
+  <img src="https://img.shields.io/github/workflow/status/GravitywellUK/packages/CI/master" alt="CI" />
+  <img src="https://img.shields.io/github/license/gravitywelluk/packages" alt="License" />
 </p>
 <br />
 
