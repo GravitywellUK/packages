@@ -16,8 +16,8 @@
     "lint": "eslint . --ext .js,.ts,.tsx",
     "postinstall": "yarn lerna:init && yarn build",
     "test": "lerna run test --concurrency 1",
-    "post-checkout": "yarn && lerna:init",
-    "post-merge": "yarn && lerna:init && yarn build",
+    "post-checkout": "yarn && yarn lerna:init && yarn build",
+    "post-merge": "yarn && yarn lerna:init && yarn build",
     "pre-commit": "yarn lint:fix",
     "pre-push": "yarn build:clean && yarn lint && yarn test"
   },
