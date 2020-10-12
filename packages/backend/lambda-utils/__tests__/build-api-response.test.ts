@@ -4,7 +4,7 @@ import { APIGatewayProxyEvent } from "aws-lambda";
 
 import { buildApiResponse, createContext } from "../src";
 
-describe("build-api-response", () => {
+describe("@gravitywelluk/lambda-utils build-api-response", () => {
   const mockContext = createContext();
 
   test("Build a valid 200 response", () => {

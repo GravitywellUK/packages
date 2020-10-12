@@ -18,7 +18,10 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "package.json",
+    "README.md",
+    "LICENSE"
   ],
   "scripts": {
     "start": "start-storybook -p 6006",
@@ -58,8 +61,8 @@
   },
   "description": "> TODO: description",
   "author": "George Evans <georgeevans1995@gmail.com>",
-  "homepage": "https://github.com/GravitywellUK/library#readme",
-  "license": "ISC",
+  "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/frontend/react-components",
+  "license": "MIT",
   "directories": {
     "lib": "dist",
     "test": "__tests__"

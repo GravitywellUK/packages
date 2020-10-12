@@ -2,7 +2,7 @@ import { createDebug } from "../src";
 
 const debug = createDebug("TEST:DEBUG");
 
-describe("debug package tests", function () {
+describe("@gravitywelluk/debug package tests", function () {
   test("Logging functions are callable", async function () {
     debug.log("Testing function: debug.log");
     debug.info("Testing function: debug.info");

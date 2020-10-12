@@ -1,8 +1,8 @@
 {
   "hooks": {
     "post-checkout": "yarn post-checkout",
+    "post-merge": "yarn post-merge",
     "pre-commit": "yarn pre-commit",
-    "pre-push": "yarn pre-push",
-    "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    "pre-push": "yarn pre-push"
   }
 }

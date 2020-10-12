@@ -3,7 +3,7 @@ const { resolve } = require("path");
 const { defaults } = require("jest-config");
 
 module.exports = {
-  name: "gravitywell-library",
+  name: "gravitywell-packages",
   verbose: true,
   preset: "ts-jest",
   globals: {

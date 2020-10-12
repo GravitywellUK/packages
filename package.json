@@ -2,9 +2,12 @@
   "name": "root",
   "private": true,
   "scripts": {
+    "initialise": "yarn && yarn lerna:init && yarn build",
+    "reinitialise": "yarn clean && yarn && yarn lerna:init && yarn build",
     "build": "./node_modules/.bin/tsc -b",
+    "build:clean": "yarn build --clean && yarn build",
     "start": "yarn build -w",
-    "clean": "yarn build --clean && lerna clean && lerna run clean",
+    "clean": "yarn build --clean && lerna clean --yes",
     "check:clean-workspace-after-install": "git diff --quiet --exit-code",
     "check:configs": "lerna run check:configs",
     "cz": "git-cz",
@@ -13,10 +16,10 @@
     "lint": "eslint . --ext .js,.ts,.tsx",
     "postinstall": "yarn lerna:init && yarn build",
     "test": "lerna run test --concurrency 1",
-    "post-checkout": "yarn",
-    "post-merge": "yarn && yarn build",
+    "post-checkout": "yarn && yarn lerna:init",
+    "post-merge": "yarn && yarn lerna:init",
     "pre-commit": "yarn lint:fix",
-    "pre-push": "yarn clean && yarn lint"
+    "pre-push": "yarn build:clean && yarn lint"
   },
   "engines": {
     "node": ">=12.0.0"
@@ -27,6 +30,7 @@
     "@types/node": "^14.11.2",
     "cz-lerna-changelog": "^2.0.3",
     "eslint": "^7.10.0",
+    "husky": "^4.3.0",
     "jest": "^26.5.2",
     "lerna": "^3.22.1",
     "ts-jest": "^26.4.1",

@@ -3,7 +3,7 @@ import Joi from "@hapi/joi";
 
 import { checkEventParams } from "../src/check-event-params";
 
-describe("check-event-body", () => {
+describe("@gravitywelluk/lambda-utils check-event-body", () => {
   const schema = {
     userId: Joi.number(),
     uuid: Joi.string()

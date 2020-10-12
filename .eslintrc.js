@@ -3,10 +3,10 @@ const reactLibVersion = require("./packages/frontend/react-components/package.js
 
 module.exports = {
   plugins: [ "@gravitywelluk/eslint-plugin" ],
-  extends: [ "plugin:@gravitywelluk/typescript-recommended", "plugin:@gravitywelluk/react-recommended" ],
+  extends: [ "plugin:@gravitywelluk/react-recommended" ],
+  settings: { react: { version: reactLibVersion } },
   rules: {
     "no-restricted-imports": "off",
     "import/no-relative-parent-imports": "off"
-  },
-  settings: { react: { version: reactLibVersion } }
+  }
 };
