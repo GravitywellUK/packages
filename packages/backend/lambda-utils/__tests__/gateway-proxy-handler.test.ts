@@ -5,7 +5,7 @@ import {
   gatewayProxyHandler, createContext, APIGatewayProxyHandlerAsync
 } from "../src";
 
-describe("gateway-proxy-handler", () => {
+describe("@gravitywelluk/lambda-utils gateway-proxy-handler", () => {
   const mockContext = createContext();
 
   test("Basic handler works correctly", async () => {
