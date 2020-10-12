@@ -19,7 +19,7 @@
     "post-checkout": "yarn && yarn lerna:init",
     "post-merge": "yarn && yarn lerna:init",
     "pre-commit": "yarn lint:fix",
-    "pre-push": "yarn build:clean && yarn lint && yarn test"
+    "pre-push": "yarn build:clean && yarn lint"
   },
   "engines": {
     "node": ">=12.0.0"
