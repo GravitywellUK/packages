@@ -2,6 +2,8 @@
   "name": "root",
   "private": true,
   "scripts": {
+    "initialise": "yarn && lerna:init && yarn build",
+    "reinitialise": "yarn clean && yarn && lerna:init && yarn build",
     "build": "./node_modules/.bin/tsc -b",
     "start": "yarn build -w",
     "clean": "yarn build --clean && lerna clean --yes",
@@ -16,7 +18,7 @@
     "post-checkout": "yarn && lerna:init",
     "post-merge": "yarn && lerna:init && yarn build",
     "pre-commit": "yarn lint:fix",
-    "pre-push": "yarn clean && yarn && lerna:init && yarn build && yarn lint && yarn test"
+    "pre-push": "yarn reinitialise && yarn lint && yarn test"
   },
   "engines": {
     "node": ">=12.0.0"
