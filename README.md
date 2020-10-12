@@ -12,4 +12,4 @@
 
 ## Contributing
 
-TODO
+Run `yarn && yarn lerna:init`
