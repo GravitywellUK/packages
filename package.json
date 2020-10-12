@@ -3,9 +3,8 @@
   "private": true,
   "scripts": {
     "build": "./node_modules/.bin/tsc -b",
-    "build:clean": "yarn build --clean",
     "start": "yarn build -w",
-    "clean": "yarn build:clean && lerna clean",
+    "clean": "yarn build:clean && lerna clean --yes",
     "check:clean-workspace-after-install": "git diff --quiet --exit-code",
     "check:configs": "lerna run check:configs",
     "cz": "git-cz",
@@ -14,10 +13,10 @@
     "lint": "eslint . --ext .js,.ts,.tsx",
     "postinstall": "yarn lerna:init && yarn build",
     "test": "lerna run test --concurrency 1",
-    "post-checkout": "yarn",
-    "post-merge": "yarn && yarn build",
+    "post-checkout": "yarn && lerna:init",
+    "post-merge": "yarn && lerna:init && yarn build",
     "pre-commit": "yarn lint:fix",
-    "pre-push": "yarn build:clean && yarn lint && yarn test"
+    "pre-push": "yarn clean && yarn && lerna:init && yarn lint && yarn test"
   },
   "engines": {
     "node": ">=12.0.0"
