@@ -1,0 +1,46 @@
+{
+  "name": "@gravitywelluk/react-hooks",
+  "version": "1.0.0",
+  "description": "Library of commonly used React hooks",
+  "keywords": [
+    "gravitywell",
+    "gravitywelluk",
+    "react-hooks",
+    "react",
+    "hooks"
+  ],
+  "author": "Luke Baker <luke.baker@live.com>",
+  "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/frontend/react-hooks",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "directories": {
+    "lib": "dist",
+    "test": "__tests__"
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GravitywellUK/library.git"
+  },
+  "scripts": {
+    "build": "tsc -b"
+  },
+  "bugs": {
+    "url": "https://github.com/GravitywellUK/library/issues"
+  },
+  "dependencies": {
+    "react": "^16.14.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.53"
+  }
+}
