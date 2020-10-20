@@ -124,7 +124,12 @@ jobs:
       - name: Build
         run: yarn build
 
+      - name: Configure GitHub config
+        run: |
+          git config user.name '${{ secrets.GH_USERNAME }}'
+          git config user.email '${{ secrets.GH_EMAIL }}'
+
       - name: Publish all packages to npm
-        run: npx lerna publish --loglevel=verbose --canary --exact --force-publish --yes
+        run: npx lerna publish patch --loglevel=verbose --exact --force-publish --yes --no-progress --message "Chore: published release :rocket:"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
