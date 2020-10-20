@@ -23,8 +23,7 @@ env:
 jobs:
   build-and-test:
     name: Build and test
-    if: |
-      ${{ !contains(toJSON(github.event.head_commit.message), 'Chore: published release') }}
+    if: ${{ !startsWith(toJSON(github.event.head_commit.message), 'Chore') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -76,24 +75,12 @@ jobs:
     name: Publish release
     runs-on: ubuntu-latest
     needs: [build-and-test]
-    if: |
-      ${{ github.ref == 'refs/heads/master' && !contains(toJSON(github.event.head_commit.message), 'Chore: published release') }}
+    if: ${{ github.ref == 'refs/heads/master' && !startsWith(toJSON(github.event.head_commit.message), 'Chore') }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
           token: ${{ secrets.GH_AUTH_TOKEN }}
-
-      - name: Verify head of master hasn't changed
-        run: |
-          # We ensure that the latest commit on master is still the one we expected when
-          # we started the release job, otherwise we exit
-          if [ "$GITHUB_SHA" != "$(git rev-parse --verify HEAD)" ]; then
-              echo "ERROR: The commit SHA at the HEAD of master has changed"
-              echo "Expected: $GITHUB_SHA"
-              echo "Actual: $(git rev-parse --verify HEAD)"
-              exit 1;
-          fi
 
       # Fetch all history for all tags and branches in this job because lerna needs it
       - name: Fetch full Git history
@@ -132,6 +119,17 @@ jobs:
         run: |
           git config user.name '${{ secrets.GH_USERNAME }}'
           git config user.email '${{ secrets.GH_EMAIL }}'
+
+      - name: Verify head of master hasn't changed
+        run: |
+          # We ensure that the latest commit on master is still the one we expected when
+          # we started the release job, otherwise we exit
+          if [ "$GITHUB_SHA" != "$(git rev-parse --verify HEAD)" ]; then
+              echo "ERROR: The commit SHA at the HEAD of master has changed"
+              echo "Expected: $GITHUB_SHA"
+              echo "Actual: $(git rev-parse --verify HEAD)"
+              exit 1;
+          fi
 
       - name: Publish all packages to npm
         run: |
