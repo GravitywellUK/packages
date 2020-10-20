@@ -1,6 +1,6 @@
 {
   "name": "@gravitywelluk/debug",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Library for better debug logs",
   "keywords": [
     "gravitywell",
