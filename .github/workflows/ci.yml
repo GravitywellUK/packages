@@ -130,6 +130,7 @@ jobs:
           git config user.email '${{ secrets.GH_EMAIL }}'
 
       - name: Publish all packages to npm
-        run: npx lerna publish patch --loglevel=verbose --exact --force-publish --yes --no-progress --message "Chore: published release :rocket:"
+        run: |
+          npx lerna publish patch --loglevel=verbose --exact --force-publish --yes --no-progress --message "Chore: published release :rocket:"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
