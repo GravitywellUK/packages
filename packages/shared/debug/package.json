@@ -1,6 +1,6 @@
 {
   "name": "@gravitywelluk/debug",
-  "version": "1.0.1-alpha.66+2864fda",
+  "version": "1.0.1-alpha.67",
   "description": "Library for better debug logs",
   "keywords": [
     "gravitywell",
