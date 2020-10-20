@@ -1,6 +1,6 @@
 {
   "name": "@gravitywelluk/regex",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Library of commonly used Regular Expressions",
   "keywords": [
     "gravitywell",
@@ -36,5 +36,6 @@
   },
   "bugs": {
     "url": "https://github.com/GravitywellUK/library/issues"
-  }
+  },
+  "gitHead": "abd799e3ce58001f104e50e6c521cc6218e07731"
 }

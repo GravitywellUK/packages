@@ -1,6 +1,6 @@
 {
   "name": "@gravitywelluk/json-api-error",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "> TODO: description",
   "author": "George Evans <georgeevans1995@gmail.com>",
   "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/backend/json-api-error",
@@ -44,5 +44,5 @@
   "bugs": {
     "url": "https://github.com/GravitywellUK/library/issues"
   },
-  "gitHead": "2864fda8689f94e3b8dd23ef494dc7c26b5e6a3d"
+  "gitHead": "abd799e3ce58001f104e50e6c521cc6218e07731"
 }

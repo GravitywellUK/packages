@@ -1,6 +1,6 @@
 {
   "name": "@gravitywelluk/react-hooks",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Library of commonly used React hooks",
   "keywords": [
     "gravitywell",
@@ -42,5 +42,6 @@
   },
   "devDependencies": {
     "@types/react": "^16.9.53"
-  }
+  },
+  "gitHead": "abd799e3ce58001f104e50e6c521cc6218e07731"
 }
