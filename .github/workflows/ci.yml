@@ -24,7 +24,7 @@ jobs:
   build-and-test:
     name: Build and test
     runs-on: ubuntu-latest
-    if: ${{ !startsWith(toJSON(github.event.head_commit.message), 'Chore') }}
+    if: ${{ !contains(toJSON(github.event.head_commit.message), 'published release :rocket:') }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -35,10 +35,10 @@ jobs:
         run: echo ${{ github.ref }}
 
       - name: echo toJSON(github.event.head_commit.message)
-        run: printf ${{ toJSON(github.event.head_commit.message) }}
+        run: echo ${{ toJSON(github.event.head_commit.message) }}
 
-      - name: echo startsWith
-        run: echo ${{ startsWith(toJSON(github.event.head_commit.message), 'Chore') }}
+      - name: echo contains
+        run: echo ${{ contains(toJSON(github.event.head_commit.message), 'published release :rocket:') }}
 
       - name: Use Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v1
@@ -81,7 +81,7 @@ jobs:
     name: Publish release
     runs-on: ubuntu-latest
     needs: [build-and-test]
-    if: ${{ github.ref == 'refs/heads/master' && !startsWith(toJSON(github.event.head_commit.message), 'Chore') }}
+    if: ${{ github.ref == 'refs/heads/master' && !contains(toJSON(github.event.head_commit.message), 'published release :rocket:') }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
