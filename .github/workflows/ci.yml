@@ -23,6 +23,8 @@ env:
 jobs:
   build-and-test:
     name: Build and test
+    if: |
+      ${{ !contains(toJSON(github.event.head_commit.message), 'Chore: published release') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -71,10 +73,11 @@ jobs:
         run: yarn check:clean-workspace-after-install
 
   publish-canary-version:
-    name: Publish canary version
+    name: Publish release
     runs-on: ubuntu-latest
     needs: [build-and-test]
-    if: github.ref == 'refs/heads/master'
+    if: |
+      ${{ github.ref == 'refs/heads/master' && !contains(toJSON(github.event.head_commit.message), 'Chore: published release') }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -107,7 +110,8 @@ jobs:
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
 
-      - uses: actions/cache@v1
+      - name: Retrieve cached dependencies
+        uses: actions/cache@v2
         id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
