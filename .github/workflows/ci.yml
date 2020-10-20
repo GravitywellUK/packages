@@ -23,8 +23,8 @@ env:
 jobs:
   build-and-test:
     name: Build and test
-    if: ${{ !startsWith(toJSON(github.event.head_commit.message), 'Chore') }}
     runs-on: ubuntu-latest
+    if: ${{ !startsWith(toJSON(github.event.head_commit.message), 'Chore') }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -33,6 +33,12 @@ jobs:
 
       - name: echo github.ref
         run: echo ${{ github.ref }}
+
+      - name: echo toJSON(github.event.head_commit.message)
+        run: echo ${{ toJSON(github.event.head_commit.message) }}
+
+      - name: echo github.event.head_commit.message
+        run: echo ${{ github.event.head_commit.message }}
 
       - name: Use Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v1
