@@ -34,12 +34,6 @@ jobs:
       - name: echo github.ref
         run: echo ${{ github.ref }}
 
-      - name: echo toJSON(github.event.head_commit.message)
-        run: echo ${{ toJSON(github.event.head_commit.message) }}
-
-      - name: echo contains
-        run: echo ${{ contains(toJSON(github.event.head_commit.message), 'published release :rocket:') }}
-
       - name: Use Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v1
         with:

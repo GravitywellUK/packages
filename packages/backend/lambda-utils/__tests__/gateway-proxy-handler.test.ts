@@ -49,6 +49,7 @@ describe("@gravitywelluk/lambda-utils gateway-proxy-handler", () => {
     const mockHandler = jest.fn(handler);
 
     const mockWarmup = jest.fn(async () => {
+      // eslint-disable-next-line no-console
       console.log("Warm up ran");
     });
 
@@ -75,6 +76,7 @@ describe("@gravitywelluk/lambda-utils gateway-proxy-handler", () => {
     const mockHandler = jest.fn(handler);
 
     const mockCleanup = jest.fn(async () => {
+      // eslint-disable-next-line no-console
       console.log("Warm up ran");
     });
 
