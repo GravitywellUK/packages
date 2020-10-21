@@ -77,8 +77,6 @@ export const gatewayProxyHandler = <TResult = unknown>(handler: APIGatewayProxyH
         await options.cleanup();
       }
 
-      console.log("ERROR", responseError);
-
       return responseError;
     }
   };
