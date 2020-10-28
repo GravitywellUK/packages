@@ -1,6 +1,7 @@
-import { awsConfigure } from "../utils/aws-configure";
 import AWSXRay from "aws-xray-sdk-core";
 import * as AWSModule from "aws-sdk";
+
+import { awsConfigure } from "../utils/aws-configure";
 
 const AWS = AWSXRay.captureAWS(AWSModule);
 
