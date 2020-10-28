@@ -29,13 +29,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GravitywellUK/library.git"
+    "url": "git+https://github.com/GravitywellUK/packages.git"
   },
   "scripts": {
     "build": "tsc -b"
   },
   "bugs": {
-    "url": "https://github.com/GravitywellUK/library/issues"
+    "url": "https://github.com/GravitywellUK/packages/issues"
   },
   "dependencies": {
     "react": "^16.14.0"
