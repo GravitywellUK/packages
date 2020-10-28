@@ -37,6 +37,7 @@
     "url": "https://github.com/GravitywellUK/library/issues"
   },
   "dependencies": {
+    "@gravitywelluk/debug": "^1.0.12",
     "expo-asset": "^8.2.0",
     "react": "^17.0.1"
   },
