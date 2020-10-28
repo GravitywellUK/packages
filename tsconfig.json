@@ -5,12 +5,6 @@
   },
   "references": [
     {
-      "path": "packages/shared/debug"
-    },
-    {
-      "path": "packages/shared/regex"
-    },
-    {
       "path": "packages/backend/json-api-error"
     },
     {
@@ -21,6 +15,15 @@
     },
     {
       "path": "packages/frontend/react-hooks"
+    },
+    {
+      "path": "packages/frontend/react-native-hooks"
+    },
+    {
+      "path": "packages/shared/debug"
+    },
+    {
+      "path": "packages/shared/regex"
     }
   ],
   "files": []
