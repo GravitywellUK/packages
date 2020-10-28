@@ -3,13 +3,17 @@
   "compilerOptions": {
     "outDir": "dist",
     "rootDir": "src",
-    "lib": ["DOM"],
+    "lib": [ "DOM" ]
   },
   "references": [
     {
       "path": "../../shared/debug"
     }
   ],
-  "include": ["./src"],
-  "exclude": ["__tests__", "dist", "node_modules"]
+  "include": [ "./src" ],
+  "exclude": [
+    "__tests__",
+    "dist",
+    "node_modules"
+  ]
 }
