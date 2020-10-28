@@ -1,7 +1,9 @@
 {
   "extends": "./tsconfig-settings.json",
   "compilerOptions": {
-    "typeRoots": ["./types", "./node_modules/@types"],
+    "typeRoots": [
+      "./types", "./node_modules/@types"
+    ]
   },
   "references": [
     {

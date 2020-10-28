@@ -14,5 +14,9 @@
     "jsx": "react"
   },
   "references": [],
-  "exclude": ["__tests__", "dist", "node_modules"]
+  "exclude": [
+    "__tests__",
+    "dist",
+    "node_modules"
+  ]
 }

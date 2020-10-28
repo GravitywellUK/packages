@@ -8,7 +8,7 @@
 
     /* Strict Type-Checking Options */
     "allowSyntheticDefaultImports": true,
-    "lib": ["ES2017"],
+    "lib": [ "ES2017" ],
     "moduleResolution": "node",
     "skipLibCheck": true,
     "resolveJsonModule": true,
@@ -21,7 +21,7 @@
     "noUnusedParameters": false,
     "esModuleInterop": true,
     "strictNullChecks": true,
-    "baseUrl": ".",
+    "baseUrl": "."
   },
-  "exclude": ["dist"]
+  "exclude": [ "dist" ]
 }
