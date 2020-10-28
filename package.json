@@ -2,8 +2,8 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "initialise": "yarn && yarn lerna:init && yarn build",
-    "reinitialise": "yarn clean && yarn && yarn lerna:init && yarn build",
+    "initialise": "yarn",
+    "reinitialise": "yarn clean && yarn",
     "build": "./node_modules/.bin/tsc -b",
     "build:clean": "yarn build --clean && yarn build",
     "start": "yarn build -w",
