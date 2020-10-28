@@ -17,23 +17,23 @@ import { <LIB_NAME_HERE> } from "@gravitywelluk/react-native-hooks";
 ## Table of Contents
 - [Usage](#usage)
 - [Table of Contents](#table-of-contents)
-- [`useWindowDimensions`](#usewindowdimensions)
+- [`useAssetLoader`](#useassetloader)
 
-## `useWindowDimensions`
+## `useAssetLoader`
 
-A hook that returns an object containing the `width` and `height` of the device's window dimensions.
+A hook that loads each asset into cache.
 
 ```typescript
-import { useWindowDimensions } from "@gravitywelluk/react-native-hooks";
+import { useAssetLoader } from "@gravitywelluk/react-native-hooks";
 
-const windowDimension = useWindowDimensions();
+const [ assetsLoaded ] = useAssetLoader([
+  require("./path/to/file/example.png"),
+  require("./path/to/file/example.jpg")
+]);
 
 /* Output:
 
-{
-  width: 320,
-  height: 568
-}
+[ true, null ]
 
 */
 ```
