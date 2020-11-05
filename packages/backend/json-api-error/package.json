@@ -18,9 +18,9 @@
     "LICENSE"
   ],
   "dependencies": {
-    "@hapi/joi": "^17.1.1",
     "@sentry/node": "^5.22.0",
     "axios": "^0.19.2",
+    "joi": "^17.3.0",
     "ramda": "^0.27.0",
     "uuid": "^8.1.0"
   },
