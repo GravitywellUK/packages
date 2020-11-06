@@ -9,7 +9,7 @@ import * as R from "ramda";
  * @param  validation - Joi validation schema
  * @returns response object
  */
-export const checkEventBody = <T extends Record<string, unknown>, S extends {[K: string]: Joi.AnySchema }>(body: string | null, validation: S): {[F in keyof S]: F extends keyof T ? T[F] extends null | undefined ? never : T[F] : never } => {
+export const checkEventBody = <T extends Record<string, any>, S extends {[K: string]: Joi.AnySchema }>(body: string | null, validation: S): {[F in keyof S]: F extends keyof T ? T[F] extends null | undefined ? never : T[F] : never } => {
   let result;
 
   if (!body) {
