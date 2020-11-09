@@ -86,6 +86,6 @@ type HandlerAsync = (event: CustomAPIGatewayProxyEvent, context: Context) => Pro
 export type APIGatewayProxyHandlerAsync<TResult = unknown> = (event: CustomAPIGatewayProxyEvent, context: Context) => Promise<JSONApiResponseObject<TResult>>;
 
 export interface CustomAPIGatewayProxyEvent extends Omit<APIGatewayProxyEvent, "pathParameters" | "queryStringParameters"> {
-  pathParameters?: Record<string, unknown>;
-  queryStringParameters?: Record<string, unknown>;
+  pathParameters?: Record<string, any>;
+  queryStringParameters?: Record<string, any>;
 }

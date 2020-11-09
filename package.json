@@ -8,7 +8,7 @@
     "build:clean": "yarn build --clean && yarn build",
     "start": "yarn build -w",
     "clean": "yarn build --clean && lerna clean --yes",
-    "check:clean-workspace-after-install": "git diff --quiet --exit-code",
+    "check:clean-workspace-after-install": "git diff --exit-code",
     "check:configs": "lerna run check:configs",
     "cz": "git-cz",
     "lerna:init": "lerna bootstrap --ignore-scripts && lerna link --force-local",
