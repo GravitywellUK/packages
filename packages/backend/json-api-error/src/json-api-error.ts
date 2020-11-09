@@ -1,5 +1,5 @@
 import * as uuid from "uuid";
-import * as Joi from "@hapi/joi";
+import * as Joi from "joi";
 import * as R from "ramda";
 import * as Sentry from "@sentry/node";
 
