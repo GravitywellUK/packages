@@ -1,23 +1,27 @@
 {
-  "name": "@gravitywelluk/debug",
-  "version": "1.0.14",
-  "description": "Library for better debug logs",
+  "name": "@gravitywelluk/aws",
+  "version": "1.0.1",
+  "description": "Library of commonly used AWS wrapper functions to communicate with the AWS SDK",
   "keywords": [
     "gravitywell",
     "gravitywelluk",
-    "logger",
-    "debug"
+    "aws"
   ],
   "author": "George Evans <georgeevans1995@gmail.com>",
-  "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/shared/debug",
-  "license": "ISC",
+  "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/backend/aws",
+  "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "directories": {
     "lib": "dist",
     "test": "__tests__"
   },
-  "files": [ "dist" ],
+  "files": [
+    "dist",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
   "publishConfig": {
     "access": "public"
   },
@@ -34,11 +38,18 @@
     "url": "https://github.com/GravitywellUK/packages/issues"
   },
   "dependencies": {
-    "debug": "^4.2.0"
+    "@gravitywelluk/json-api-error": "1.0.15",
+    "@hapi/joi": "^17.1.1",
+    "aws-xray-sdk-core": "^3.2.0",
+    "ramda": "^0.27.0",
+    "ts-enum-util": "^4.0.2"
   },
   "devDependencies": {
-    "@types/debug": "^4.1.5",
-    "jest": "^26.5.2"
+    "@types/hapi__joi": "^17.1.6",
+    "@types/ramda": "^0.27.30",
+    "aws-sdk": "^2.694.0"
   },
-  "gitHead": "45ec8453b9d099267de3ce0fe0f4e04eaad666f5"
+  "peerDependencies": {
+    "aws-sdk": "^2.694.0"
+  }
 }
