@@ -2,6 +2,12 @@ import Joi from "@hapi/joi";
 import { jsonApiError, ERROR_CODE_ENUM } from "@gravitywelluk/json-api-error";
 import * as R from "ramda";
 
+type CheckEventParams = <
+  T extends Record<string, any>,
+  S extends Record<string, Joi.AnySchema> = {[K in keyof T]: Joi.AnySchema},
+  R = {[F in keyof S]: F extends keyof T ? T[F] extends null | undefined ? never : T[F] : never }
+>(params: T | undefined, validation: S) => R;
+
 /**
  * Takes an aws gateway proxy event and returns the valid path or query string parameters
  *
@@ -9,12 +15,6 @@ import * as R from "ramda";
  * @param  validation - Joi validation schema
  * @returns response object
  */
-type CheckEventParams = <
-T extends Record<string, unknown>,
-S extends Record<string, Joi.AnySchema> = {[K in keyof T]: Joi.AnySchema},
-R = {[F in keyof S]: F extends keyof T ? T[F] extends null | undefined ? never : T[F] : never },
->(params: R | null, validation: S) => R;
-
 export const checkEventParams: CheckEventParams = (params, validation) => {
   const parsed: {[name: string]: string | number | symbol } = {};
 
