@@ -14,7 +14,7 @@
     "lerna:init": "lerna exec -- yarn install && yarn tsc && lerna link --force-local",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx,json",
     "lint:fix": "yarn lint --fix",
-    "postinstall": "lerna:init && yarn build",
+    "postinstall": "yarn lerna:init && yarn build",
     "test": "lerna run test --concurrency 1",
     "post-checkout": "yarn",
     "post-merge": "yarn",

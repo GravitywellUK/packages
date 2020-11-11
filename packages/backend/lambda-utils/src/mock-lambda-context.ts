@@ -1,4 +1,4 @@
-import uuid from "uuid";
+import * as uuid from "uuid";
 import { Context } from "aws-lambda";
 
 interface ContextOptions {

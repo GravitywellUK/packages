@@ -23,7 +23,8 @@
     "@sentry/node": "^5.25.0",
     "aws-lambda": "^1.0.6",
     "joi": "^17.3.0",
-    "ramda": "^0.27.0"
+    "ramda": "^0.27.0",
+    "uuid": "^8.1.0"
   },
   "devDependencies": {
     "@serverless/event-mocks": "^1.1.1",
