@@ -25,7 +25,6 @@
     "uuid": "^8.1.0"
   },
   "devDependencies": {
-    "@types/hapi__joi": "^17.1.6",
     "@types/ramda": "^0.27.21",
     "@types/uuid": "^8.0.0"
   },
