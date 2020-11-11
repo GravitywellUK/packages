@@ -1,4 +1,4 @@
-import * as Joi from "@hapi/joi";
+import * as Joi from "joi";
 import { jsonApiError } from "@gravitywelluk/json-api-error";
 import * as AWS from "aws-sdk";
 

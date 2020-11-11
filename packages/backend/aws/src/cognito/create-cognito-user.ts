@@ -1,4 +1,4 @@
-import * as Joi from "@hapi/joi";
+import * as Joi from "joi";
 import * as R from "ramda";
 import { jsonApiError } from "@gravitywelluk/json-api-error";
 

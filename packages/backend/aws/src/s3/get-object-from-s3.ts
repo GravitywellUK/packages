@@ -1,6 +1,6 @@
 import * as stream from "stream";
 
-import * as Joi from "@hapi/joi";
+import * as Joi from "joi";
 import { jsonApiError } from "@gravitywelluk/json-api-error";
 import * as AWS from "aws-sdk";
 import { PromiseResult } from "aws-sdk/lib/request";

@@ -4,7 +4,7 @@ import {
 
 export const awsError = (error: AWS.AWSError, meta?: JSONApiErrorJSON["meta"]): ReturnType<typeof jsonApiError> => {
   return jsonApiError({
-    status: error.statusCode,
+    status: error.statusCode as number,
     code: ERROR_CODE_ENUM.THIRD_PARTY_ERROR,
     title: `AWS error (${error.statusCode} - ${error.code})`,
     details: error.message,
