@@ -2,14 +2,14 @@
 # yarn lockfile v1
 
 
-"@gravitywelluk/json-api-error@1.0.16":
-  version "1.0.16"
-  resolved "https://registry.yarnpkg.com/@gravitywelluk/json-api-error/-/json-api-error-1.0.16.tgz#3b048c3a72c81df69824f7dffc22306487b5db78"
-  integrity sha512-mOFERAvgOWMvk4j1IbYvNt24ws51w/fBaqwtbGR3YL48A0PjhkF06QYm2zaZWCs9tJ1mFvwDcFz5s54NCzcDFg==
+"@gravitywelluk/json-api-error@1.0.17":
+  version "1.0.17"
+  resolved "https://registry.yarnpkg.com/@gravitywelluk/json-api-error/-/json-api-error-1.0.17.tgz#f543cedd19056cb996eff1f79a31983fb5dcabf1"
+  integrity sha512-Ljq9PEgjQaNagDZyNshM6d5KNw0WJobGX2RnO77dZaKztKHVL3hW3lhbip/1J7onXMJLj8aDE+WUDF+ku29N0Q==
   dependencies:
-    "@hapi/joi" "^17.1.1"
     "@sentry/node" "^5.22.0"
     axios "^0.19.2"
+    joi "^17.3.0"
     ramda "^0.27.0"
     uuid "^8.1.0"
 
