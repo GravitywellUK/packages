@@ -19,5 +19,16 @@ export type CloudFrontRequestHandlerAsync = HandlerAsync<CloudFrontRequestEvent,
  * @param handler
  */
 export const cloudFrontRequestHandler = (handler: CloudFrontRequestHandlerAsync): CloudFrontRequestHandlerAsync => {
-  return async (event: CloudFrontRequestEvent, context: Context) => await handler(event, context);
+  return async (event: CloudFrontRequestEvent, context: Context) => {
+    try {
+      return await handler(event, context);
+    } catch (error) {
+      if (process.env.SENTRY_DSN) {
+        // flush to send events to sentry
+        await Sentry.flush(2000);
+      }
+
+      throw error;
+    }
+  };
 };
