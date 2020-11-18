@@ -17,9 +17,7 @@
     "lib": "dist",
     "test": "__tests__"
   },
-  "files": [
-    "dist"
-  ],
+  "files": [ "dist" ],
   "publishConfig": {
     "access": "public"
   },
