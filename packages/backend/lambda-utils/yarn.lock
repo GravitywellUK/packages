@@ -2,17 +2,17 @@
 # yarn lockfile v1
 
 
-"@gravitywelluk/debug@1.0.17":
-  version "1.0.17"
-  resolved "https://registry.yarnpkg.com/@gravitywelluk/debug/-/debug-1.0.17.tgz#b52e845ee75e66598bde3c83b420ec25776f1bcc"
-  integrity sha512-K52SNS3bYGOqW/3rRKSJF8KerRHifHfxM9fBAHtxrH9+yO+yTNcRuMKRHeKVJItJw963kBDD8MG7SbdVBxbyPg==
+"@gravitywelluk/debug@1.0.18":
+  version "1.0.18"
+  resolved "https://registry.yarnpkg.com/@gravitywelluk/debug/-/debug-1.0.18.tgz#030fa3b215bf13b4d3985688fbd343259d828ec9"
+  integrity sha512-Z4fHpVdRHtHE2oC5fW9uhx8cTLngY8EJvjuBBYf2o9iFX1jqt6fFtcgCskfLVOmKpT75Bo2k+yafsN/CrRB9tw==
   dependencies:
     debug "^4.2.0"
 
-"@gravitywelluk/json-api-error@1.0.18":
-  version "1.0.18"
-  resolved "https://registry.yarnpkg.com/@gravitywelluk/json-api-error/-/json-api-error-1.0.18.tgz#25f5e0a068eed7a4bded495a71cb5ca568075a3e"
-  integrity sha512-uISZDGdZxhNWjHfNXJilNUJTwL7kClNrELg+cuZYDre4IzaPXnyVUlm0E5uPw+uLLvML0j5ZdWEcvRGI9w6OKA==
+"@gravitywelluk/json-api-error@1.0.19":
+  version "1.0.19"
+  resolved "https://registry.yarnpkg.com/@gravitywelluk/json-api-error/-/json-api-error-1.0.19.tgz#923e8de9d783ebd7d0a66a7d550d97d8f7d993ef"
+  integrity sha512-17xpo8Y7vdM+9VDSwAAkdHQahC/Bf9d83pekJ4lZcQaACqR2lPXiXB2g5VBcOwUvMQDKCcBm1lnTL1N7HMG6CA==
   dependencies:
     "@sentry/node" "^5.22.0"
     axios "^0.19.2"

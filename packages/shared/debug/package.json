@@ -18,7 +18,10 @@
     "test": "__tests__"
   },
   "files": [
-    "dist"
+    "dist",
+    "package.json",
+    "README.md",
+    "LICENSE"
   ],
   "publishConfig": {
     "access": "public"

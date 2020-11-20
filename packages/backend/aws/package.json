@@ -39,7 +39,6 @@
   },
   "dependencies": {
     "@gravitywelluk/json-api-error": "1.0.19",
-    "@hapi/joi": "^17.1.1",
     "aws-xray-sdk-core": "^3.2.0",
     "joi": "^17.3.0",
     "ramda": "^0.27.0",
