@@ -13,7 +13,7 @@ export interface QueueErrorAttributes<D extends {[K: string]: string} = any> {
 }
 
 export enum QueueErrorStatus {
-  IGNORE = "ignore",
+  IGNORED = "ignored",
   RESOLVED = "resolved",
   ERROR = "error",
 }
