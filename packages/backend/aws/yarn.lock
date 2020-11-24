@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@gravitywelluk/json-api-error@1.0.19":
-  version "1.0.19"
-  resolved "https://registry.yarnpkg.com/@gravitywelluk/json-api-error/-/json-api-error-1.0.19.tgz#923e8de9d783ebd7d0a66a7d550d97d8f7d993ef"
-  integrity sha512-17xpo8Y7vdM+9VDSwAAkdHQahC/Bf9d83pekJ4lZcQaACqR2lPXiXB2g5VBcOwUvMQDKCcBm1lnTL1N7HMG6CA==
+"@gravitywelluk/json-api-error@1.0.20":
+  version "1.0.20"
+  resolved "https://registry.yarnpkg.com/@gravitywelluk/json-api-error/-/json-api-error-1.0.20.tgz#a3c893a61358a784915428e36f5d8e140e36631f"
+  integrity sha512-l9BmVbvvEddSMShllwP9akP4a7rcy0HKBPcv0wAZa2v51UknXSGYPDMHjG20Y8zpLvCkdT7tiWp2GiI4eORSbg==
   dependencies:
     "@sentry/node" "^5.22.0"
     axios "^0.19.2"

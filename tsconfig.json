@@ -19,6 +19,9 @@
       "path": "packages/backend/lambda-utils"
     },
     {
+      "path": "packages/backend/sequelize-utils"
+    },
+    {
       "path": "packages/backend/aws"
     },
     {
@@ -26,6 +29,9 @@
     },
     {
       "path": "packages/frontend/react-hooks"
+    },
+    {
+      "path": "packages/backend/sequelize-utils"
     }
   ],
   "files": []
