@@ -1,5 +1,5 @@
-<h1 align="center">Gravitywell Lambda Utils</h1>
-<p align="center">Library of Lambda utilities</p>
+<h1 align="center">Gravitywell Sequelize Utilities</h1>
+<p align="center">Library of sequelize helpers</p>
 <p align="center">
   <img src="https://img.shields.io/github/workflow/status/GravitywellUK/packages/CI/master" alt="CI" />
   <img src="https://img.shields.io/github/license/gravitywelluk/packages" alt="License" />
@@ -11,7 +11,6 @@
 ## Usage
 
 ```typescript
-const lambdaUtils = require('lambda-utils');
+import { BaseModel } from "sequelize-utils"
 
-// TODO: DEMONSTRATE API
 ```

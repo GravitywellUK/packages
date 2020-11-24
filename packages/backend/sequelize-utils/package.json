@@ -40,7 +40,7 @@
   },
   "scripts": {
     "build": "tsc -b",
-    "test": "jest -c ../../../jest.config.js --verbose --no-cache -i",
+    "test": "echo no tests yet",
     "test:ci": "yarn test"
   },
   "bugs": {

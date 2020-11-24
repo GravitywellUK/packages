@@ -29,9 +29,6 @@
     },
     {
       "path": "packages/frontend/react-hooks"
-    },
-    {
-      "path": "packages/backend/sequelize-utils"
     }
   ],
   "files": []
