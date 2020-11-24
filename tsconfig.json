@@ -19,6 +19,9 @@
       "path": "packages/backend/lambda-utils"
     },
     {
+      "path": "packages/backend/sequelize-utils"
+    },
+    {
       "path": "packages/backend/aws"
     },
     {

@@ -1,0 +1,50 @@
+{
+  "name": "@gravitywelluk/sequelize-utils",
+  "version": "1.0.0",
+  "description": "Sequelize utilities",
+  "author": "George Evans <georgeevans1995@gmail.com>",
+  "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/backend/lambda-utils",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "directories": {
+    "lib": "dist",
+    "test": "__tests__"
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "dependencies": {
+    "@gravitywelluk/debug": "1.0.19",
+    "@gravitywelluk/json-api-error": "1.0.20",
+    "ramda": "^0.27.1"
+  },
+  "devDependencies": {
+    "@types/ramda": "^0.27.32",
+    "sequelize": "^6.3.5",
+    "pg-hstore": "^2.3.3"
+  },
+  "peerDependencies": {
+    "sequelize": ">=6.3.5",
+    "pg-hstore": ">=2.3.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GravitywellUK/packages.git"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "test": "echo no tests yet",
+    "test:ci": "yarn test"
+  },
+  "bugs": {
+    "url": "https://github.com/GravitywellUK/packages/issues"
+  },
+  "gitHead": "45ec8453b9d099267de3ce0fe0f4e04eaad666f5"
+}
