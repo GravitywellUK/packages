@@ -22,6 +22,9 @@
       "path": "packages/backend/sequelize-utils"
     },
     {
+      "path": "packages/backend/serverless-queue"
+    },
+    {
       "path": "packages/backend/aws"
     },
     {
