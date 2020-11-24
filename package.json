@@ -11,7 +11,7 @@
     "check:clean-workspace-after-install": "git diff --exit-code",
     "check:configs": "lerna run check:configs",
     "cz": "git-cz",
-    "lerna:init": "lerna exec -- yarn install --frozen-lockfile --ignore-scripts && yarn tsc && lerna link --force-local",
+    "lerna:init": "lerna exec -- yarn install && yarn tsc && lerna link --force-local",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx,json",
     "lint:fix": "yarn lint --fix",
     "postinstall": "yarn lerna:init && yarn build",
