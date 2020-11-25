@@ -14,12 +14,8 @@
     "lerna:init": "lerna exec -- yarn install && yarn tsc && lerna link --force-local",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx,json",
     "lint:fix": "yarn lint --fix",
-    "postinstall": "yarn lerna:init && yarn build",
-    "test": "lerna run test --concurrency 1",
-    "post-checkout": "yarn",
-    "post-merge": "yarn",
-    "pre-commit": "yarn lint-staged",
-    "pre-push": "yarn build:clean && yarn lint"
+    "postinstall": "yarn husky install && yarn lerna:init && yarn build",
+    "test": "lerna run test --concurrency 1"
   },
   "hooks": {
     "post-checkout": "yarn post-checkout",
@@ -39,7 +35,7 @@
     "@types/node": "^14.11.2",
     "cz-lerna-changelog": "^2.0.3",
     "eslint": "^7.10.0",
-    "husky": "^4.3.0",
+    "husky": "^5.0.4",
     "jest": "^26.5.2",
     "lerna": "^3.22.1",
     "lint-staged": "^10.5.0",
