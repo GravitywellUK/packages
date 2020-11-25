@@ -133,6 +133,6 @@ jobs:
 
       - name: Publish all packages to npm
         run: |
-          npx lerna publish patch --loglevel=verbose --exact --yes --no-progress
+          npx lerna publish patch --loglevel=verbose --yes --no-progress
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
