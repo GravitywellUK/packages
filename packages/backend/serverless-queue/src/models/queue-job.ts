@@ -51,7 +51,7 @@ export class QueueJobModel extends BaseModel implements QueueJobAttributes {
   public createdAt!: Date;
   public updatedAt!: Date;
 
-  public static associate(models: Omit<QueueModels, "currentUser" | "sequelize">): void {
+  public static associate<M extends QueueModels = QueueModels>(models: M): void {
     if (models[ "QueueError" ]) {
       this.hasMany(models[ "QueueError" ]);
     }
