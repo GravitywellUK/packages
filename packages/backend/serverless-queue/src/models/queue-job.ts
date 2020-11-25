@@ -46,6 +46,7 @@ export class QueueJobModel extends BaseModel implements QueueJobAttributes {
   public startedAt?: Date | null;
   public finishedAt?: Date | null;
   public status!: QueueJobStatus;
+  public statusMessage?: string | null;
   public triggeredByUserId!: number;
   public jobData?: unknown;
   public externalId?: string | null;
@@ -90,7 +91,7 @@ export function QueueJobFactory(sequelize: Sequelize): QueueJobStatic {
     },
     statusMessage: {
       type: DataTypes.STRING("medium"),
-      allowNull: false
+      allowNull: true
     },
     jobData: {
       type: DataTypes.JSON,

@@ -36,6 +36,10 @@ export async function up(params: { context: QueryInterface }): Promise<void> {
       type: DataTypes.ENUM(...$enum(QueueJobStatus).getValues()),
       allowNull: false
     },
+    statusMessage: {
+      type: DataTypes.STRING("medium"),
+      allowNull: true
+    },
     jobData: {
       type: DataTypes.JSON,
       allowNull: true
@@ -69,9 +73,9 @@ export async function up(params: { context: QueryInterface }): Promise<void> {
       type: DataTypes.ENUM(...$enum(QueueErrorStatus).getValues()),
       allowNull: false
     },
-    statusMessage: {
+    message: {
       type: DataTypes.STRING("medium"),
-      allowNull: false
+      allowNull: true
     },
     data: {
       type: DataTypes.JSON,
