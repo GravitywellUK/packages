@@ -4,7 +4,7 @@ import {
 import { BaseModel } from "@gravitywelluk/sequelize-utils";
 import { $enum } from "ts-enum-util";
 
-export interface QueueErrorAttributes<D extends {[K: string]: string} | null = null> {
+export interface QueueErrorAttributes<D extends unknown | null = null> {
   id: number;
   line: number;
   data: D;
@@ -48,6 +48,10 @@ export function QueueErrorFactory(sequelize: Sequelize): QueueErrorStatic {
     status: {
       type: DataTypes.ENUM(...$enum(QueueErrorStatus).getValues()),
       allowNull: false
+    },
+    message: {
+      type: DataTypes.STRING("medium"),
+      allowNull: true
     },
     data: {
       type: DataTypes.JSON,

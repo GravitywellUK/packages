@@ -4,6 +4,22 @@
     "packages/frontend/*",
     "packages/shared/*"
   ],
+  "command": {
+    "publish": {
+      "ignoreChanges": [
+        "CHANGELOG.md",
+        "LICENSE",
+        "ignored-file",
+        "*.md",
+        "node_modules/**",
+        "dist/**",
+        "tsconfig.*",
+        "yarn-error.log"
+      ],
+      "message": "Chore: published release :rocket:",
+      "registry": "https://npm.pkg.github.com"
+    }
+  },
   "version": "independent",
   "npmClient": "yarn"
 }
