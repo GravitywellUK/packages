@@ -17,12 +17,6 @@
     "postinstall": "yarn husky install && yarn lerna:init && yarn build",
     "test": "lerna run test --concurrency 1"
   },
-  "hooks": {
-    "post-checkout": "yarn post-checkout",
-    "post-merge": "yarn post-merge",
-    "pre-commit": "yarn pre-commit",
-    "pre-push": "yarn pre-push"
-  },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json}": [ "eslint --fix" ]
   },
