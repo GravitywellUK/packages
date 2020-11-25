@@ -3,10 +3,10 @@ name: CI
 on:
   push:
     paths-ignore:
-      - '.vscode/**'
-      - '.gitignore'
-      - '.huskyrc'
-      - '**.md'
+      - ".vscode/**"
+      - ".gitignore"
+      - ".huskyrc"
+      - "**.md"
     branches:
       - master
 
@@ -15,7 +15,7 @@ on:
       - opened
       - synchronize
     branches:
-      - '**'
+      - "**"
 
 env:
   NODE_VERSION: 12
@@ -133,6 +133,6 @@ jobs:
 
       - name: Publish all packages to npm
         run: |
-          npx lerna publish patch --loglevel=verbose --exact --force-publish --yes --no-progress --message "Chore: published release :rocket:"
+          npx lerna publish patch --loglevel=verbose --exact --yes --no-progress
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
