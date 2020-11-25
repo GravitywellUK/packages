@@ -1,5 +1,5 @@
 import createEvent from "@serverless/event-mocks";
-import Joi from "@hapi/joi";
+import Joi from "joi";
 
 import { checkEventBody } from "../src/check-event-body";
 

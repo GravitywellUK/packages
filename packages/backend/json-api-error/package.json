@@ -1,6 +1,6 @@
 {
   "name": "@gravitywelluk/json-api-error",
-  "version": "1.0.14",
+  "version": "1.0.24",
   "description": "> TODO: description",
   "author": "George Evans <georgeevans1995@gmail.com>",
   "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/backend/json-api-error",
@@ -18,14 +18,13 @@
     "LICENSE"
   ],
   "dependencies": {
-    "@hapi/joi": "^17.1.1",
     "@sentry/node": "^5.22.0",
     "axios": "^0.19.2",
+    "joi": "^17.3.0",
     "ramda": "^0.27.0",
     "uuid": "^8.1.0"
   },
   "devDependencies": {
-    "@types/hapi__joi": "^17.1.6",
     "@types/ramda": "^0.27.21",
     "@types/uuid": "^8.0.0"
   },
@@ -34,7 +33,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GravitywellUK/library.git"
+    "url": "git+https://github.com/GravitywellUK/packages.git"
   },
   "scripts": {
     "build": "tsc -b",
@@ -42,7 +41,7 @@
     "test:ci": "yarn test"
   },
   "bugs": {
-    "url": "https://github.com/GravitywellUK/library/issues"
+    "url": "https://github.com/GravitywellUK/packages/issues"
   },
   "gitHead": "45ec8453b9d099267de3ce0fe0f4e04eaad666f5"
 }

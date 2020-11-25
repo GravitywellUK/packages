@@ -1,0 +1,57 @@
+{
+  "name": "@gravitywelluk/serverless-queue",
+  "version": "1.0.3",
+  "description": "",
+  "author": "George Evans <georgeevans1995@gmail.com>",
+  "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/backend/lambda-utils",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "directories": {
+    "lib": "dist",
+    "test": "__tests__"
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "dependencies": {
+    "@gravitywelluk/aws": "1.0.6",
+    "@gravitywelluk/debug": "1.0.22",
+    "@gravitywelluk/json-api-error": "1.0.23",
+    "@gravitywelluk/sequelize-utils": "1.0.3",
+    "@sentry/node": "^5.22.0",
+    "aws-lambda": "^1.0.6",
+    "joi": "^17.3.0",
+    "ramda": "^0.27.1",
+    "ts-enum-util": "^4.0.2"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.64",
+    "@types/ramda": "^0.27.32",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.3.5"
+  },
+  "peerDependencies": {
+    "pg-hstore": ">=2.3.3",
+    "sequelize": ">=6.3.5"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GravitywellUK/packages.git"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "test": "echo 'no tests yet'",
+    "test:ci": "yarn test"
+  },
+  "bugs": {
+    "url": "https://github.com/GravitywellUK/packages/issues"
+  },
+  "gitHead": "45ec8453b9d099267de3ce0fe0f4e04eaad666f5"
+}

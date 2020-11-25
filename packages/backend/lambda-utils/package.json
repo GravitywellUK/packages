@@ -1,6 +1,6 @@
 {
   "name": "@gravitywelluk/lambda-utils",
-  "version": "1.0.14",
+  "version": "1.0.24",
   "description": "Lambda utilities",
   "author": "George Evans <georgeevans1995@gmail.com>",
   "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/backend/lambda-utils",
@@ -18,12 +18,13 @@
     "LICENSE"
   ],
   "dependencies": {
-    "@gravitywelluk/debug": "1.0.13",
-    "@gravitywelluk/json-api-error": "1.0.14",
-    "@hapi/joi": "^17.1.1",
+    "@gravitywelluk/debug": "1.0.22",
+    "@gravitywelluk/json-api-error": "1.0.23",
     "@sentry/node": "^5.25.0",
     "aws-lambda": "^1.0.6",
-    "ramda": "^0.27.0"
+    "joi": "^17.3.0",
+    "ramda": "^0.27.0",
+    "uuid": "^8.1.0"
   },
   "devDependencies": {
     "@serverless/event-mocks": "^1.1.1",
@@ -37,7 +38,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GravitywellUK/library.git"
+    "url": "git+https://github.com/GravitywellUK/packages.git"
   },
   "scripts": {
     "build": "tsc -b",
@@ -45,7 +46,7 @@
     "test:ci": "yarn test"
   },
   "bugs": {
-    "url": "https://github.com/GravitywellUK/library/issues"
+    "url": "https://github.com/GravitywellUK/packages/issues"
   },
   "gitHead": "45ec8453b9d099267de3ce0fe0f4e04eaad666f5"
 }
