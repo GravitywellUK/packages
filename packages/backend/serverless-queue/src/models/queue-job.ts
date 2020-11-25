@@ -4,7 +4,7 @@ import {
 import { Models, BaseModel } from "@gravitywelluk/sequelize-utils";
 import { $enum } from "ts-enum-util";
 
-import { QueueErrorStatic } from "./queue-error";
+import { QueueErrorStatic, QueueErrorAttributes } from "./queue-error";
 
 export interface QueueJobAttributes<D = unknown> {
   id: number;
@@ -18,12 +18,13 @@ export interface QueueJobAttributes<D = unknown> {
   externalId?: string | null;
   createdAt: Date;
   updatedAt: Date;
-  // errors:
+  errors?: QueueErrorAttributes[]
 }
 
 export enum QueueJobStatus {
   SUCCESS = "success",
   ERROR = "error",
+  PART_ERROR = "part_error",
   QUEUED = "queued",
   IN_PROGRESS = "in_progress"
 }
@@ -53,7 +54,7 @@ export class QueueJobModel extends BaseModel implements QueueJobAttributes {
 
   public static associate<M extends QueueModels = QueueModels>(models: M): void {
     if (models[ "QueueError" ]) {
-      this.hasMany(models[ "QueueError" ]);
+      this.hasMany(models[ "QueueError" ], { as: "errors" });
     }
   }
 
@@ -85,6 +86,10 @@ export function QueueJobFactory(sequelize: Sequelize): QueueJobStatic {
     },
     status: {
       type: DataTypes.ENUM(...$enum(QueueJobStatus).getValues()),
+      allowNull: false
+    },
+    statusMessage: {
+      type: DataTypes.STRING("medium"),
       allowNull: false
     },
     jobData: {

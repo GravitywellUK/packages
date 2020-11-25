@@ -4,7 +4,7 @@ import {
 import { BaseModel } from "@gravitywelluk/sequelize-utils";
 import { $enum } from "ts-enum-util";
 
-export interface QueueErrorAttributes<D extends {[K: string]: string} = any> {
+export interface QueueErrorAttributes<D extends {[K: string]: string} | null = null> {
   id: number;
   line: number;
   data: D;
@@ -31,9 +31,6 @@ export class QueueErrorModel extends BaseModel implements QueueErrorAttributes {
   public data!: any;
   public jobId!: number;
 
-  // public static associate(models: Omit<QueueModels, "currentUser" | "sequelize">): void {
-  // models.QueueError.belongsTo(models.QueueJob, { foreignKey: "jobId" });
-  // }
 }
 
 export function QueueErrorFactory(sequelize: Sequelize): QueueErrorStatic {
