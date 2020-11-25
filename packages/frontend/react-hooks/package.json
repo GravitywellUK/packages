@@ -38,6 +38,7 @@
     "url": "https://github.com/GravitywellUK/packages/issues"
   },
   "dependencies": {
+    "@gravitywelluk/debug": "^1.0.26",
     "react": "^16.14.0"
   },
   "devDependencies": {
