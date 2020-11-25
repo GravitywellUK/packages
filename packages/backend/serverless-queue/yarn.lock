@@ -13,13 +13,6 @@
     ramda "^0.27.0"
     ts-enum-util "^4.0.2"
 
-"@gravitywelluk/debug@1.0.19":
-  version "1.0.19"
-  resolved "https://registry.yarnpkg.com/@gravitywelluk/debug/-/debug-1.0.19.tgz#9bed7254506f8dde7faf00dba10171cf99241573"
-  integrity sha512-Xj22Rm2/b/Ott4yQOxpI4DED08VIVps58gIkRpJawipfrZdtQewzmD41CDpzPAirIuTl3RcXfuBTbyVUP9uGDQ==
-  dependencies:
-    debug "^4.2.0"
-
 "@gravitywelluk/debug@1.0.22":
   version "1.0.22"
   resolved "https://registry.yarnpkg.com/@gravitywelluk/debug/-/debug-1.0.22.tgz#090877afc12474aa35e8f5940b927df80fa03820"
