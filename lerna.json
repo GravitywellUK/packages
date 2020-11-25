@@ -14,8 +14,7 @@
         "node_modules/**",
         "dist/**",
         "tsconfig.*",
-        "yarn-error.log",
-        "package.json"
+        "yarn-error.log"
       ],
       "message": "Chore: published release :rocket:",
       "registry": "https://npm.pkg.github.com"
