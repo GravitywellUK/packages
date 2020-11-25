@@ -2,7 +2,9 @@ import { SQSHandler } from "aws-lambda";
 import { jsonApiError } from "@gravitywelluk/json-api-error";
 import * as R from "ramda";
 
-import { QueueJobStatus, QueueModels } from "../models/queue-job";
+import {
+  QueueJobAttributes, QueueJobStatus, QueueModels
+} from "../models/queue-job";
 
 import { JobResult, processJob } from "./process-queue-job";
 
@@ -19,7 +21,7 @@ export interface QueueJobPayloadProcessing {
   processJobId: number;
 }
 
-export type JobSelection = Record<string, () => Promise<JobResult>>;
+export type JobSelection = Record<string, (jobData: QueueJobAttributes) => Promise<JobResult>>;
 
 export const queueHandler: <M extends QueueModels = QueueModels>(models: M, jobs: JobSelection) => SQSHandler = (models, jobs) => async event => {
   const records: Array<JobData<QueueProcessTypes>> = [];
@@ -54,7 +56,7 @@ export const queueHandler: <M extends QueueModels = QueueModels>(models: M, jobs
           };
         }
 
-        const result = await jobs[ job ]();
+        const result = await jobs[ job ](processJobObject);
 
         return result;
       });
