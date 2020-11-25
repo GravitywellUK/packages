@@ -2,19 +2,20 @@ import * as Sentry from "@sentry/node";
 import { jsonApiError } from "@gravitywelluk/json-api-error";
 import { createDebug } from "@gravitywelluk/debug";
 
+import { QueueErrorAttributesCreate } from "../models/queue-error";
 import {
   QueueJobAttributes, QueueJobStatus, QueueModels
 } from "../models/queue-job";
 
-const debug = createDebug("PROCESS-JOBS:PROCESS-JOB");
+const debug = createDebug("SERVERLESS-QUEUE:PROCESS-JOB");
 
-export type AvailableQueueJobStatus = QueueJobStatus.SUCCESS | QueueJobStatus.ERROR;
+export type AvailableQueueJobStatus = QueueJobStatus.SUCCESS | QueueJobStatus.ERROR | QueueJobStatus.PART_ERROR;
 
 export interface JobResult<ResultData = any> {
   status: AvailableQueueJobStatus;
   statusMessage?: string;
   jobResultData?: AvailableQueueJobStatus extends QueueJobStatus.SUCCESS ? ResultData : null;
-  // errorData?: AvailableQueueJobStatus extends QueueJobStatus.ERROR ? ErrorData : null;
+  errors?: QueueErrorAttributesCreate[];
 }
 
 /**
@@ -102,25 +103,30 @@ const finishedQueueJob = async <FinishedStatusType extends AvailableQueueJobStat
   jobResult: JobResult<FinishedStatusType>,
   models: M
 ): Promise<QueueJobAttributes> => {
+  let transaction;
+
   try {
-    const { QueueJob } = models;
+    const { QueueJob, QueueError } = models;
     const queueJob = await QueueJob.findById(queuejobId);
 
+    transaction = await queueJob.sequelize.transaction();
     queueJob.set("finishedAt", new Date());
     queueJob.set("status", jobResult.status);
 
     if (jobResult.jobResultData) {
       queueJob.set("jobData", jobResult.jobResultData);
     }
-    // else if (jobResult.errorData) {
-    //   // queueJob.set("errorData", jobResult.errorData);
-    // }
 
     if (jobResult.statusMessage) {
       queueJob.set("statusMessage", jobResult.statusMessage);
     }
 
-    await queueJob.save();
+    await queueJob.save({ transaction });
+
+    if (jobResult.errors) {
+      await QueueError.bulkCreate(jobResult.errors, { transaction });
+    }
+
     debug.info(`Finished queue job job with internal id: ${queuejobId}. Status: ${jobResult.status}`);
 
     const jobAttributes = queueJob.get({ plain: true });
@@ -137,8 +143,13 @@ const finishedQueueJob = async <FinishedStatusType extends AvailableQueueJobStat
       });
     }
 
+    await transaction.commit();
+
     return jobAttributes;
   } catch (error) {
+    if (transaction) {
+      await transaction.rollback();
+    }
     throw jsonApiError(error);
   }
 };

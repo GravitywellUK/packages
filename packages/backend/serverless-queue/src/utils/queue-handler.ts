@@ -21,7 +21,7 @@ export interface QueueJobPayloadProcessing {
   processJobId: number;
 }
 
-export type JobSelection = Record<string, (jobData: QueueJobAttributes) => Promise<JobResult>>;
+export type JobSelection = Record<string, (jobData: QueueJobAttributes<any>) => Promise<JobResult>>;
 
 export const queueHandler: <M extends QueueModels = QueueModels>(models: M, jobs: JobSelection) => SQSHandler = (models, jobs) => async event => {
   const records: Array<JobData<QueueProcessTypes>> = [];
