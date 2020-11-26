@@ -16,8 +16,7 @@
         "tsconfig.*",
         "yarn-error.log"
       ],
-      "message": "Chore: published release :rocket:",
-      "registry": "https://npm.pkg.github.com"
+      "message": "Chore: published release :rocket:"
     }
   },
   "version": "independent",
