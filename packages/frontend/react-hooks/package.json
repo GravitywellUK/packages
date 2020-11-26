@@ -1,6 +1,6 @@
 {
   "name": "@gravitywelluk/react-hooks",
-  "version": "1.0.29",
+  "version": "1.0.30",
   "description": "Library of commonly used React hooks",
   "keywords": [
     "gravitywell",
@@ -38,6 +38,7 @@
     "url": "https://github.com/GravitywellUK/packages/issues"
   },
   "dependencies": {
+    "@gravitywelluk/debug": "^1.0.26",
     "react": "^16.14.0"
   },
   "devDependencies": {
