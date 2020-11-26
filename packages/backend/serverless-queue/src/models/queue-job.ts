@@ -90,7 +90,7 @@ export function QueueJobFactory(sequelize: Sequelize): QueueJobStatic {
       allowNull: false
     },
     statusMessage: {
-      type: DataTypes.STRING("medium"),
+      type: DataTypes.TEXT({ length: "medium" }),
       allowNull: true
     },
     jobData: {

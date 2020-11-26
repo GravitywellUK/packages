@@ -37,7 +37,7 @@ export async function up(params: { context: QueryInterface }): Promise<void> {
       allowNull: false
     },
     statusMessage: {
-      type: DataTypes.STRING("medium"),
+      type: DataTypes.TEXT({ length: "medium" }),
       allowNull: true
     },
     jobData: {
@@ -74,7 +74,7 @@ export async function up(params: { context: QueryInterface }): Promise<void> {
       allowNull: false
     },
     message: {
-      type: DataTypes.STRING("medium"),
+      type: DataTypes.TEXT({ length: "medium" }),
       allowNull: true
     },
     data: {

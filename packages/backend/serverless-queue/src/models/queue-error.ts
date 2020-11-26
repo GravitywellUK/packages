@@ -10,6 +10,7 @@ export interface QueueErrorAttributes<D extends unknown | null = null> {
   data: D;
   status: QueueErrorStatus;
   jobId: number;
+  message: string;
 }
 
 export enum QueueErrorStatus {
@@ -30,7 +31,7 @@ export class QueueErrorModel extends BaseModel implements QueueErrorAttributes {
   public status!: QueueErrorStatus;
   public data!: any;
   public jobId!: number;
-
+  public message!: string;
 }
 
 export function QueueErrorFactory(sequelize: Sequelize): QueueErrorStatic {
@@ -50,7 +51,7 @@ export function QueueErrorFactory(sequelize: Sequelize): QueueErrorStatic {
       allowNull: false
     },
     message: {
-      type: DataTypes.STRING("medium"),
+      type: DataTypes.TEXT({ length: "medium" }),
       allowNull: true
     },
     data: {
