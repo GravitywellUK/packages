@@ -18,6 +18,7 @@ import { <LIB_NAME_HERE> } from "@gravitywelluk/react-hooks";
 - [Usage](#usage)
 - [Table of Contents](#table-of-contents)
 - [`useDebounce`](#usedebounce)
+- [`useLocalStorage`](#uselocalstorage)
 - [`useWindowDimensions`](#usewindowdimensions)
 
 ## `useDebounce`
@@ -27,9 +28,24 @@ A hook that returns a value once the `inputValue` has stopped mutating after a s
 ```typescript
 import { useDebounce } from "@gravitywelluk/react-hooks";
 
-const debouncedInputValue = useDebounce<string>(inputValue, 800);
+const [ value, seinputValuetValue ] = React.useState("");
+const debouncedInputValue = useDebounce<string>(value, 800);
+
+// On debouncedInputValue change
+React.useEffect(() => {
+  // Do something with the `debouncedInputValue` result
+}, [ debouncedUserSearchValue ]);
 ```
 
+## `useLocalStorage`
+
+A hook that allows you to set and store data in local storage with the given `key`.
+
+```typescript
+import { useLocalStorage } from "@gravitywelluk/react-hooks";
+
+const [localStorageValue, setLocalStorageValue] = useLocalStorage<string[]>('test', []);
+```
 
 ## `useWindowDimensions`
 
