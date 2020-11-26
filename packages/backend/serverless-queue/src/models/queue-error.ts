@@ -18,7 +18,7 @@ export enum QueueErrorStatus {
   ERROR = "error",
 }
 
-export type QueueErrorAttributesCreate = Omit<QueueErrorAttributes, "id">;
+export type QueueErrorAttributesCreate<D extends unknown | null = null> = Omit<QueueErrorAttributes<D>, "id">;
 
 export type QueueErrorStatic = typeof QueueErrorModel & {
   new (values?: QueueErrorAttributes, options?: BuildOptions): QueueErrorModel;

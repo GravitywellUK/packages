@@ -6,7 +6,7 @@ import { $enum } from "ts-enum-util";
 
 import { QueueErrorStatic, QueueErrorAttributes } from "./queue-error";
 
-export interface QueueJobAttributes<D = unknown> {
+export interface QueueJobAttributes<D = unknown, E extends unknown | null = null> {
   id: number;
   name: string;
   startedAt?: Date | null;
@@ -18,7 +18,7 @@ export interface QueueJobAttributes<D = unknown> {
   externalId?: string | null;
   createdAt: Date;
   updatedAt: Date;
-  errors?: QueueErrorAttributes[]
+  errors?: Array<QueueErrorAttributes<E>>
 }
 
 export enum QueueJobStatus {

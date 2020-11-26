@@ -11,11 +11,11 @@ const debug = createDebug("SERVERLESS-QUEUE:PROCESS-JOB");
 
 export type AvailableQueueJobStatus = QueueJobStatus.SUCCESS | QueueJobStatus.ERROR | QueueJobStatus.PART_ERROR;
 
-export interface JobResult<ResultData = any> {
+export interface JobResult<ResultData = any, ErrorData extends unknown | null = null> {
   status: AvailableQueueJobStatus;
   statusMessage?: string;
   jobResultData?: AvailableQueueJobStatus extends QueueJobStatus.SUCCESS ? ResultData : null;
-  errors?: QueueErrorAttributesCreate[];
+  errors?: Array<QueueErrorAttributesCreate<ErrorData>>;
 }
 
 /**
