@@ -8,7 +8,7 @@
     "logger",
     "debug"
   ],
-  "author": "George Evans <georgeevans1995@gmail.com>",
+  "author": "GravitywellUK <technical@gravitywell.co.uk>",
   "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/shared/debug",
   "license": "ISC",
   "main": "dist/index.js",

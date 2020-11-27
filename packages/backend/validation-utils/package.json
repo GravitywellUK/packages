@@ -1,7 +1,7 @@
 {
-  "name": "@gravitywelluk/serverless-queue",
-  "version": "1.0.10",
-  "description": "",
+  "name": "@gravitywelluk/validation-utils",
+  "version": "1.0.0",
+  "description": "Validation utilities",
   "author": "GravitywellUK <technical@gravitywell.co.uk>",
   "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/backend/lambda-utils",
   "license": "MIT",
@@ -18,25 +18,7 @@
     "LICENSE"
   ],
   "dependencies": {
-    "@gravitywelluk/aws": "1.0.6",
-    "@gravitywelluk/debug": "1.0.22",
-    "@gravitywelluk/json-api-error": "1.0.23",
-    "@gravitywelluk/sequelize-utils": "1.0.3",
-    "@sentry/node": "^5.22.0",
-    "aws-lambda": "^1.0.6",
-    "joi": "^17.3.0",
-    "ramda": "^0.27.1",
-    "ts-enum-util": "^4.0.2"
-  },
-  "devDependencies": {
-    "@types/aws-lambda": "^8.10.64",
-    "@types/ramda": "^0.27.32",
-    "pg-hstore": "^2.3.3",
-    "sequelize": "^6.3.5"
-  },
-  "peerDependencies": {
-    "pg-hstore": ">=2.3.3",
-    "sequelize": ">=6.3.5"
+    "joi": "^17.3.0"
   },
   "publishConfig": {
     "access": "public"
@@ -47,7 +29,7 @@
   },
   "scripts": {
     "build": "tsc -b",
-    "test": "echo 'no tests yet'",
+    "test": "echo no tests yet",
     "test:ci": "yarn test"
   },
   "bugs": {
