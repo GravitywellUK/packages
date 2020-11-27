@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@gravitywelluk/debug@^1.0.26":
-  version "1.0.26"
-  resolved "https://registry.yarnpkg.com/@gravitywelluk/debug/-/debug-1.0.26.tgz#e3378726866865c1eb16c3038e90fc506f61d980"
-  integrity sha512-h+9mINm4FA7h3e7XPmh+wZx1T/qD8sblVFWmPo/qXuS2E/RahS8KnvL6T3skz6mnd/Z7WUgkDxHT6B0FKUk+1A==
+"@gravitywelluk/debug@^1.0.27":
+  version "1.0.27"
+  resolved "https://registry.yarnpkg.com/@gravitywelluk/debug/-/debug-1.0.27.tgz#a1e2fc349f032d012a802c5e584113befb5324e0"
+  integrity sha512-9slbnqsT7BqfFxIhZ3JsCCNKcul7VQhMNw5wP/uA3plL0ltxR8opJ/95BikEhUPMHz3mwOM8MsAIh3SIMS6KAQ==
   dependencies:
     debug "^4.2.0"
 
