@@ -2,7 +2,7 @@
   "name": "@gravitywelluk/serverless-queue",
   "version": "1.0.9",
   "description": "",
-  "author": "George Evans <georgeevans1995@gmail.com>",
+  "author": "GravitywellUK <technical@gravitywell.co.uk>",
   "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/backend/lambda-utils",
   "license": "MIT",
   "main": "dist/index.js",

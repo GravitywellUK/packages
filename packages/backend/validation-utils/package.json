@@ -1,14 +1,14 @@
 {
-  "name": "@gravitywelluk/json-api-error",
-  "version": "1.0.27",
-  "description": "> TODO: description",
+  "name": "@gravitywelluk/validation-utils",
+  "version": "1.0.0",
+  "description": "Validation utilities",
   "author": "GravitywellUK <technical@gravitywell.co.uk>",
-  "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/backend/json-api-error",
+  "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/backend/lambda-utils",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "directories": {
-    "lib": "./dist",
+    "lib": "dist",
     "test": "__tests__"
   },
   "files": [
@@ -18,15 +18,7 @@
     "LICENSE"
   ],
   "dependencies": {
-    "@sentry/node": "^5.22.0",
-    "axios": "^0.19.2",
-    "joi": "^17.3.0",
-    "ramda": "^0.27.0",
-    "uuid": "^8.1.0"
-  },
-  "devDependencies": {
-    "@types/ramda": "^0.27.21",
-    "@types/uuid": "^8.0.0"
+    "joi": "^17.3.0"
   },
   "publishConfig": {
     "access": "public"
@@ -37,7 +29,7 @@
   },
   "scripts": {
     "build": "tsc -b",
-    "test": "jest -c ../../../jest.config.js --verbose --no-cache -i",
+    "test": "echo no tests yet",
     "test:ci": "yarn test"
   },
   "bugs": {

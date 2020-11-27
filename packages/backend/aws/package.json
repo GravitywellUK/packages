@@ -7,7 +7,7 @@
     "gravitywelluk",
     "aws"
   ],
-  "author": "George Evans <georgeevans1995@gmail.com>",
+  "author": "GravitywellUK <technical@gravitywell.co.uk>",
   "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/backend/aws",
   "license": "MIT",
   "main": "dist/index.js",
