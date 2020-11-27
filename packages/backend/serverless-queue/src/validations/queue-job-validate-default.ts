@@ -39,7 +39,7 @@ export const queueJobSchemaFilters = {
  * QueueJob validation default schema
  */
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export const userValidationDefaultSchema = <P extends keyof QueueJobDefaultSchemaAttributes>(keys: P[]) => {
+export const queueJobValidationDefaultSchema = <P extends keyof QueueJobDefaultSchemaAttributes>(keys: P[]) => {
   return R.pick(keys, {
     ...queueJobSchemaDefault,
     ...queueJobSchemaFilters,
