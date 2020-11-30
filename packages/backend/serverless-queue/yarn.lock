@@ -51,6 +51,13 @@
     "@gravitywelluk/json-api-error" "1.0.23"
     ramda "^0.27.1"
 
+"@gravitywelluk/validation-utils@1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@gravitywelluk/validation-utils/-/validation-utils-1.0.1.tgz#75b791d900a8d9873d4099e98904daf0f1722b5b"
+  integrity sha512-pzfI3Gg3CZpDLRJ1120ZAX6juSdMaLaIjjG6a9WWr8a8xuKUeINKDya+h7WxyoJ5hqInmH933tQXCqC2/AvTPg==
+  dependencies:
+    joi "^17.3.0"
+
 "@hapi/hoek@^9.0.0":
   version "9.1.0"
   resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-9.1.0.tgz#6c9eafc78c1529248f8f4d92b0799a712b6052c6"

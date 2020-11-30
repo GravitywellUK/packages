@@ -9,6 +9,9 @@
       "path": "../sequelize-utils"
     },
     {
+      "path": "../validation-utils"
+    },
+    {
       "path": "../aws"
     },
     {
