@@ -4,3 +4,4 @@ export * from "./utils/create-process-job";
 export * from "./utils/process-queue-job";
 export * from "./utils/queue-handler";
 export * from "./validations/queue-job-validate-default";
+export * from "./validations/queue-error-validate-default";
