@@ -55,7 +55,10 @@ export class QueueJobModel extends BaseModel implements QueueJobAttributes {
 
   public static associate<M extends QueueModels = QueueModels>(models: M): void {
     if (models[ "QueueError" ]) {
-      this.hasMany(models[ "QueueError" ], { as: "errors" });
+      this.hasMany(models[ "QueueError" ], {
+        as: "errors",
+        foreignKey: "jobId"
+      });
     }
   }
 
