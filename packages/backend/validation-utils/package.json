@@ -1,6 +1,6 @@
 {
   "name": "@gravitywelluk/validation-utils",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Validation utilities",
   "author": "GravitywellUK <technical@gravitywell.co.uk>",
   "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/backend/validation-utils",
