@@ -1,6 +1,6 @@
 {
   "name": "@gravitywelluk/serverless-queue",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "",
   "author": "GravitywellUK <technical@gravitywell.co.uk>",
   "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/backend/lambda-utils",
