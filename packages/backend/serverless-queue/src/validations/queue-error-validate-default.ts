@@ -15,7 +15,8 @@ export const queueErrorSchemaDefault = {
   line: Joi.number().optional(),
   message: Joi.string().required(),
   status: Joi.string().allow(...$enum(QueueErrorStatus).getValues()),
-  data: Joi.object().optional().unknown(true)
+  data: Joi.object().optional().unknown(true),
+  jobId: Joi.number().required()
 };
 
 export type QueueErrorFilters = { filters?: Pick<QueueErrorAttributes, "id" | "status" | "line" | "message"> };
@@ -24,7 +25,7 @@ export type QueueErrorFilters = { filters?: Pick<QueueErrorAttributes, "id" | "s
 export const queueErrorSchemaFilters = {
   filters: Joi.object({
     ...R.mapObjIndexed(joiElement => joiElement.optional(), queueErrorSchemaDefault),
-    id: Joi.number().optional(),
+    jobId: Joi.number().required(),
     status: Joi.string().allow(...$enum(QueueErrorStatus).getValues()),
     line: Joi.number().optional(),
     message: Joi.string().optional()
