@@ -23,7 +23,8 @@ export const getQueueUrl = (queueName: string, configOverrides = {}): Promise<st
           }));
         }
 
-        return resolve(data.QueueUrl);
+        // TODO: fix this type error
+        return resolve(data.QueueUrl as string);
       });
     } catch (error) {
       return reject(jsonApiError(error));
