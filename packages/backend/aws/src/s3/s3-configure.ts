@@ -13,10 +13,7 @@ export enum S3Level {
   global = "global" // writable by admins, readable by all
 }
 export const s3Configure = (s3Config: AWS.S3.ClientConfiguration = {}) => {
-  const awsConfig = awsConfigure();
+  const awsConfig = awsConfigure(s3Config);
 
-  return new AWS.S3({
-    ...awsConfig,
-    ...s3Config
-  });
+  return new AWS.S3({ ...awsConfig });
 };
