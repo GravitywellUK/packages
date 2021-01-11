@@ -1,6 +1,6 @@
 {
   "name": "@gravitywelluk/react-components",
-  "version": "1.0.27",
+  "version": "1.0.28",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -55,9 +55,9 @@
     "typescript": "~3.7.2"
   },
   "peerDependencies": {
-    "styled-components": ">=5.2.0",
     "react": ">=16.13.1",
-    "react-dom": ">=16.13.1"
+    "react-dom": ">=16.13.1",
+    "styled-components": ">=5.2.0"
   },
   "description": "> TODO: description",
   "author": "GravitywellUK <technical@gravitywell.co.uk>",
