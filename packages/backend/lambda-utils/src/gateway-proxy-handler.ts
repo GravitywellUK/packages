@@ -27,11 +27,13 @@ export interface LambdaOptions {
  * @param handler
  */
 export const gatewayProxyHandler = <TResult = unknown>(handler: APIGatewayProxyHandlerAsync<TResult>, options?: LambdaOptions): HandlerAsync => {
-  return async (event: CustomAPIGatewayProxyEvent, context: Context) => {
+  return async (event: CustomAPIGatewayProxyEvent & {source?: string}, context: Context) => {
     if (options?.warmup) {
-      debug.info("Warming up function");
+      if (event.source === "serverless-plugin-warmup") {
+        debug.info("Warming up function");
 
-      return await options.warmup();
+        return await options.warmup();
+      }
     }
 
     // Transform queryStringParameters to content multiple arrays.
