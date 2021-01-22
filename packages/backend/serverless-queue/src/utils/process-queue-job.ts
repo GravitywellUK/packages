@@ -131,7 +131,7 @@ const finishedQueueJob = async <FinishedStatusType extends AvailableQueueJobStat
       do {
         await QueueError.bulkCreate(jobResult.errors.slice(offset, offset + batch), { transaction });
         offset += batch;
-      } while (offset <= jobResult.errors.length);
+      } while (offset < jobResult.errors.length);
     }
 
     debug.info(`Finished queue job job with internal id: ${queuejobId}. Status: ${jobResult.status}`);
