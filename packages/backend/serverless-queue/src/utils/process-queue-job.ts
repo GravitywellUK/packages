@@ -124,7 +124,14 @@ const finishedQueueJob = async <FinishedStatusType extends AvailableQueueJobStat
     await queueJob.save({ transaction });
 
     if (jobResult.errors) {
-      await QueueError.bulkCreate(jobResult.errors, { transaction });
+      // Batch the errors to avoid exceeding the max write DB limit.
+      let offset = 0;
+      const batch = 50;
+
+      do {
+        await QueueError.bulkCreate(jobResult.errors.slice(offset, offset + batch), { transaction });
+        offset += batch;
+      } while (offset <= jobResult.errors.length);
     }
 
     debug.info(`Finished queue job job with internal id: ${queuejobId}. Status: ${jobResult.status}`);
