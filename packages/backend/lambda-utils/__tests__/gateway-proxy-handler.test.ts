@@ -36,7 +36,8 @@ describe("@gravitywelluk/lambda-utils gateway-proxy-handler", () => {
   test("Warmup handler works correctly and stops function", async () => {
     const mockValidEvent = createEvent("aws:apiGateway", {
       pathParameters: { id: 1 },
-      requestContext: { authorizer: { sub: process.env.ADMIN_COGNITO_USER } }
+      requestContext: { authorizer: { sub: process.env.ADMIN_COGNITO_USER } },
+      source: "serverless-plugin-warmup"
     } as never);
 
     const handler: APIGatewayProxyHandlerAsync<{success: string}> = async () => {

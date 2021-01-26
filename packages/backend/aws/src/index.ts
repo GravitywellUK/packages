@@ -5,6 +5,7 @@ export * from "./cognito/delete-cognito-user";
 export * from "./sqs/add-job-to-queue";
 export * from "./sqs/get-queue-url";
 export * from "./s3/put-object-to-s3";
+export * from "./s3/upload-object-to-s3";
 export * from "./s3/delete-object-from-s3";
 export * from "./s3/get-object-from-s3";
 export * from "./s3/get-signed-s3-url";
