@@ -32,7 +32,7 @@ export const deleteObjectFromS3 = async (deleteObjectParams: DeleteS3ObjectParam
   } catch (error) {
     throw awsError(error, {
       environment: process.env.ENVIRONMENT,
-      functionName: "putObjectToS3"
+      functionName: "deleteObjectFromS3"
     });
   }
 };
