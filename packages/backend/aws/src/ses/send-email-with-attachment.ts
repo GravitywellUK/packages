@@ -18,7 +18,7 @@ import { sesConfigure } from "./ses-configure";
    */
 export const sendEmailWithAttachment = (
   mailOptions: SendMailOptions,
-  configOverrides: AWS.SESV2.ClientConfiguration = {}
+  configOverrides: AWS.SES.ClientConfiguration = {}
 ): Promise<SentMessageInfo> => {
   return new Promise((resolve, reject) => {
     let ses;
