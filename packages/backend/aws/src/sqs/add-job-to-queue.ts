@@ -8,7 +8,7 @@ import { getQueueUrl } from "./get-queue-url";
 export const addJobToQueue = (
   processJobId: number,
   jobData: Record<string, any>,
-  userId: number,
+  userId: number | string | null,
   queueName: string,
   configOverrides = {}
 ): Promise<AWS.SQS.SendMessageResult> => {
