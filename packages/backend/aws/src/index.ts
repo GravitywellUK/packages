@@ -15,3 +15,4 @@ export * from "./ses/get-email-template-by-name";
 export * from "./ses/send-email";
 export * from "./ses/update-email-template";
 export * from "./ses/send-email-with-attachment";
+export * from "./lambda/invoke-lambda";
