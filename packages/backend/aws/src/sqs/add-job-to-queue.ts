@@ -24,12 +24,12 @@ export const addJobToQueue = (
               processJobId,
               data: jobData
             }),
-            MessageAttributes: {
+            MessageAttributes: userId ? {
               userId: {
-                StringValue: userId ? userId.toString() : "",
+                StringValue: userId.toString(),
                 DataType: "String"
               }
-            }
+            } : undefined
           },
           (error, data) => {
             if (error) {
