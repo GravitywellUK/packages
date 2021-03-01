@@ -1,6 +1,6 @@
 {
   "name": "@gravitywelluk/aws",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "Library of commonly used AWS wrapper functions to communicate with the AWS SDK",
   "keywords": [
     "gravitywell",
