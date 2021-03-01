@@ -25,6 +25,10 @@ export const sqsEventHandler = (handler: SQSHandler, options?: Pick<LambdaOption
         event, context, callback
       );
 
+      if (options?.cleanup) {
+        await options.cleanup();
+      }
+
       return callback(null);
     } catch (error) {
       // flush to send events to sentry

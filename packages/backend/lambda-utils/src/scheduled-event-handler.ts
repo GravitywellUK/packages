@@ -22,6 +22,10 @@ export const scheduledEventHandler = <TDetail extends unknown>(handler: Schedule
         event, context, callback
       );
 
+      if (options?.cleanup) {
+        await options.cleanup();
+      }
+
       return callback(null);
     } catch (error) {
       // flush to send events to sentry
