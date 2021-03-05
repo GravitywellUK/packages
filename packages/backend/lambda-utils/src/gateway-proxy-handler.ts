@@ -11,8 +11,11 @@ const debug = createDebug("GATEWAY-PROXY");
 
 // init sentry
 if (process.env.SENTRY_DSN) {
-  // init sentry
-  Sentry.init({ dsn: process.env.SENTRY_DSN });
+  const client = Sentry.getCurrentHub().getClient();
+
+  if (!client) {
+    Sentry.init({ dsn: process.env.SENTRY_DSN });
+  }
 }
 
 export interface LambdaOptions {
