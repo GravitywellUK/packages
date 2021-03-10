@@ -6,8 +6,11 @@ import * as Sentry from "@sentry/node";
 
 // init sentry
 if (process.env.SENTRY_DSN) {
-  // init sentry
-  Sentry.init({ dsn: process.env.SENTRY_DSN });
+  const client = Sentry.getCurrentHub().getClient();
+
+  if (!client) {
+    Sentry.init({ dsn: process.env.SENTRY_DSN });
+  }
 }
 
 export type HandlerAsync<TEvent = unknown, TResult = unknown> = (event: TEvent, context: Context) => Promise<TResult>;
