@@ -16,7 +16,7 @@ const initialScrollPosition: UseScrollPositionResponse = {
  */
 export const useScrollPosition = (element?: React.RefObject<HTMLElement>): UseScrollPositionResponse => {
   const isClient = typeof window === "object";
-  const target = React.useMemo(() => element && element.current ? element.current : document.body, [ element ]);
+  const target = React.useMemo(() => isClient ? element && element.current ? element.current : document.body : null, [ element, isClient ]);
   const [ initialised, setInitialised ] = React.useState(false);
   const [ scrollPosition, setScrollPostion ] = React.useState<UseScrollPositionResponse>(initialScrollPosition);
 
@@ -24,14 +24,18 @@ export const useScrollPosition = (element?: React.RefObject<HTMLElement>): UseSc
    * Updates the scroll position when called
    */
   const updateScrollPosition = React.useCallback(() => {
-    const position = target.getBoundingClientRect();
-    const x = position.left < 0 ? Math.abs(position.left) : -Math.abs(position.left);
-    const y = position.top < 0 ? Math.abs(position.top) : -Math.abs(position.top);
+    const position = target?.getBoundingClientRect();
 
-    setScrollPostion({
-      x,
-      y
-    });
+    // If position exists
+    if (position) {
+      const x = position.left < 0 ? Math.abs(position.left) : -Math.abs(position.left);
+      const y = position.top < 0 ? Math.abs(position.top) : -Math.abs(position.top);
+
+      setScrollPostion({
+        x,
+        y
+      });
+    }
   }, [ target ]);
 
   //
