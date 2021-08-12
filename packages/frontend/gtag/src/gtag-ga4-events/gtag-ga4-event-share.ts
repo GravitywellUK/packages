@@ -1,9 +1,14 @@
 import { gtagEvent } from "../gtag-event";
 
 export enum GtagGa4EventShareMethod {
-  TWITTER = "Twitter",
   FACEBOOK = "Facebook",
-  INSTAGRAM = "Instagram"
+  INSTAGRAM = "Instagram",
+  LINKEDIN = "LinkedIn",
+  PINTEREST = "Pinterest",
+  REDDIT = "Reddit",
+  TIKTOK = "TikTok",
+  TWITTER = "Twitter",
+  YOUTUBE = "YouTube"
 }
 
 /**
