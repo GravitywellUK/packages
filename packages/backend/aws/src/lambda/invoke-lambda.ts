@@ -1,7 +1,6 @@
 import * as AWS from "aws-sdk";
 
 import { awsError } from "../utils/aws-error";
-
 import { lambdaConfigure } from "./lambda-configure";
 
 /**

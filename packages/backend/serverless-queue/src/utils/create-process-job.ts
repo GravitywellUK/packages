@@ -1,6 +1,9 @@
 import * as Sentry from "@sentry/node";
 import { Transaction } from "sequelize";
-import { jsonApiError, ERROR_CODE_ENUM } from "@gravitywelluk/json-api-error";
+import {
+  jsonApiError,
+  ERROR_CODE_ENUM
+} from "@gravitywelluk/json-api-error";
 import { addJobToQueue } from "@gravitywelluk/aws";
 import { createDebug } from "@gravitywelluk/debug";
 import Joi from "joi";

@@ -1,5 +1,4 @@
 import { gtagEvent } from "../gtag-event";
-
 import { GtagGa4EventEcommerceAttributes } from "./types";
 
 export interface GtagGa4EventSelectItemParamAttributes extends Pick<GtagGa4EventEcommerceAttributes, "items"> {

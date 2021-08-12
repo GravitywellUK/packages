@@ -1,5 +1,8 @@
 import Joi from "joi";
-import { jsonApiError, ERROR_CODE_ENUM } from "@gravitywelluk/json-api-error";
+import {
+  jsonApiError,
+  ERROR_CODE_ENUM
+} from "@gravitywelluk/json-api-error";
 import * as R from "ramda";
 
 type CheckEventParams = <

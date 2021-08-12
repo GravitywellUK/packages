@@ -1,5 +1,7 @@
 import {
-  DataTypes, Sequelize, BuildOptions
+  DataTypes,
+  Sequelize,
+  BuildOptions
 } from "sequelize";
 import { BaseModel } from "@gravitywelluk/sequelize-utils";
 import { $enum } from "ts-enum-util";

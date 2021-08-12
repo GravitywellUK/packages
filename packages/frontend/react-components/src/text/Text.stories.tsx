@@ -1,14 +1,24 @@
 import React from "react";
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from "@storybook/react/types-6-0";
-import { withKnobs, text } from "@storybook/addon-knobs";
+import {
+  Story,
+  Meta
+} from "@storybook/react/types-6-0";
+import {
+  withKnobs,
+  text
+} from "@storybook/addon-knobs";
 import { $enum } from "ts-enum-util";
 import keys from "lodash/keys";
 
-import themeDecorator, { Colors, theme } from "../utils/ThemeDecorator";
-
+import themeDecorator, {
+  Colors,
+  theme
+} from "../utils/ThemeDecorator";
 import {
-  Text, TextProps, TextSize
+  Text,
+  TextProps,
+  TextSize
 } from "./Text";
 
 export default {

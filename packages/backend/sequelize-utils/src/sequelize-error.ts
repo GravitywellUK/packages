@@ -1,6 +1,9 @@
 import * as Sequelize from "sequelize/types";
 import {
-  JSONApiErrorStatic, jsonApiError, ERROR_CODE_ENUM, JSONApiErrorJSON
+  JSONApiErrorStatic,
+  jsonApiError,
+  ERROR_CODE_ENUM,
+  JSONApiErrorJSON
 } from "@gravitywelluk/json-api-error";
 
 interface SequelizeBaseError extends Sequelize.BaseError { details?: string }

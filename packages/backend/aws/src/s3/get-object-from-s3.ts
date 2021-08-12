@@ -6,7 +6,6 @@ import * as AWS from "aws-sdk";
 import { PromiseResult } from "aws-sdk/lib/request";
 
 import { awsError } from "../utils/aws-error";
-
 import { s3Configure } from "./s3-configure";
 
 export interface GetS3ObjectParams {

@@ -2,7 +2,6 @@ import * as Joi from "joi";
 import { jsonApiError } from "@gravitywelluk/json-api-error";
 
 import { awsError } from "../utils/aws-error";
-
 import { cognitoConfigure } from "./cognito-configure";
 // import { jsonApiError, ERROR_CODE_ENUM } from "@gravitywelluk/json-api-error";
 // import { CognitoIdentityServiceProvider } from "aws-sdk";

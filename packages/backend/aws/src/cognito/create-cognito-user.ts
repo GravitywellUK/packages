@@ -3,7 +3,6 @@ import * as R from "ramda";
 import { jsonApiError } from "@gravitywelluk/json-api-error";
 
 import { awsError } from "../utils/aws-error";
-
 import { cognitoConfigure } from "./cognito-configure";
 
 export interface CreateCognitoUserParams {

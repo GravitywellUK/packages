@@ -1,11 +1,16 @@
 import { curry } from "ramda";
 import {
-  APIGatewayProxyEvent, Context, APIGatewayProxyResult
+  APIGatewayProxyEvent,
+  Context,
+  APIGatewayProxyResult
 } from "aws-lambda";
 import * as Sentry from "@sentry/node";
 import { createDebug } from "@gravitywelluk/debug";
 
-import { JSONApiResponseObject, buildApiResponse } from "./build-api-response";
+import {
+  JSONApiResponseObject,
+  buildApiResponse
+} from "./build-api-response";
 
 const debug = createDebug("GATEWAY-PROXY");
 

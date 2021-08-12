@@ -1,11 +1,15 @@
 import * as AWS from "aws-sdk";
 import {
-  createTransport, SendMailOptions, SentMessageInfo
+  createTransport,
+  SendMailOptions,
+  SentMessageInfo
 } from "nodemailer";
-import { jsonApiError, ERROR_CODE_ENUM } from "@gravitywelluk/json-api-error";
+import {
+  jsonApiError,
+  ERROR_CODE_ENUM
+} from "@gravitywelluk/json-api-error";
 
 import { awsError } from "../utils/aws-error";
-
 import { sesConfigure } from "./ses-configure";
 
 /**

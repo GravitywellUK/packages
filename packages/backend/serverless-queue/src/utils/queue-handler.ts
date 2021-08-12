@@ -3,10 +3,14 @@ import { jsonApiError } from "@gravitywelluk/json-api-error";
 import * as R from "ramda";
 
 import {
-  QueueJobAttributes, QueueJobStatus, QueueModels
+  QueueJobAttributes,
+  QueueJobStatus,
+  QueueModels
 } from "../models/queue-job";
-
-import { JobResult, processJob } from "./process-queue-job";
+import {
+  JobResult,
+  processJob
+} from "./process-queue-job";
 
 export interface JobData<T extends keyof QueueJobPayloads> extends QueueJobPayloadProcessing {
   data: QueueJobPayloads[T];
