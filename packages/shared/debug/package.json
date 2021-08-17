@@ -42,8 +42,7 @@
     "debug": "^4.2.0"
   },
   "devDependencies": {
-    "@types/debug": "^4.1.5",
-    "jest": "^26.5.2"
+    "@types/debug": "^4.1.5"
   },
   "gitHead": "45ec8453b9d099267de3ce0fe0f4e04eaad666f5"
 }

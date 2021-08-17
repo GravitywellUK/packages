@@ -1,4 +1,7 @@
-import styled, { css, DefaultTheme } from "styled-components";
+import styled, {
+  css,
+  DefaultTheme
+} from "styled-components";
 
 export enum TextSize {
   h1 = "h1",

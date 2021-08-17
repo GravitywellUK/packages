@@ -2,7 +2,9 @@ import { CognitoIdentityServiceProvider } from "aws-sdk";
 
 import { matchCognitoGroups } from "../../src/cognito/match-cognito-groups";
 import {
-  adminAddUserToGroupPromise, adminRemoveUserFromGroupPromise, getAdminListGroupsForUserPromise
+  adminAddUserToGroupPromise,
+  adminRemoveUserFromGroupPromise,
+  getAdminListGroupsForUserPromise
 } from "../../__mocks__/cognito.mock";
 
 jest.mock("aws-sdk");

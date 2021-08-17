@@ -4,8 +4,10 @@ import * as AWS from "aws-sdk";
 import { $enum } from "ts-enum-util";
 
 import { awsError } from "../utils/aws-error";
-
-import { s3Configure, S3Level } from "./s3-configure";
+import {
+  s3Configure,
+  S3Level
+} from "./s3-configure";
 
 export interface GetSignedS3UrlParams {
   path: string;

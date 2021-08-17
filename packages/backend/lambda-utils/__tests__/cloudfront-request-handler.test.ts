@@ -1,9 +1,13 @@
 import {
-  CloudFrontRequest, CloudFrontRequestEvent, CloudFrontResultResponse
+  CloudFrontRequest,
+  CloudFrontRequestEvent,
+  CloudFrontResultResponse
 } from "aws-lambda";
 
 import {
-  cloudFrontRequestHandler, CloudFrontRequestHandlerAsync, createContext
+  cloudFrontRequestHandler,
+  CloudFrontRequestHandlerAsync,
+  createContext
 } from "../src";
 
 describe("@gravitywelluk/lambda-utils cloudfront-request-handler", () => {

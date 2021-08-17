@@ -1,5 +1,8 @@
 import * as React from "react";
-import styled, { css, DefaultTheme } from "styled-components";
+import styled, {
+  css,
+  DefaultTheme
+} from "styled-components";
 
 import Text from "../text";
 

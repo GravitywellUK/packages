@@ -1,10 +1,18 @@
 import {
-  DataTypes, Sequelize, BuildOptions
+  DataTypes,
+  Sequelize,
+  BuildOptions
 } from "sequelize";
-import { Models, BaseModel } from "@gravitywelluk/sequelize-utils";
+import {
+  Models,
+  BaseModel
+} from "@gravitywelluk/sequelize-utils";
 import { $enum } from "ts-enum-util";
 
-import { QueueErrorStatic, QueueErrorAttributes } from "./queue-error";
+import {
+  QueueErrorStatic,
+  QueueErrorAttributes
+} from "./queue-error";
 
 export interface QueueJobAttributes<D = unknown, E extends unknown | null = null> {
   id: number;

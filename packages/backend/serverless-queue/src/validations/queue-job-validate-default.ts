@@ -1,9 +1,15 @@
 import Joi from "joi";
 import * as R from "ramda";
-import { PaginationParameterAttributes, getPaginationParameterSchema } from "@gravitywelluk/validation-utils";
+import {
+  PaginationParameterAttributes,
+  getPaginationParameterSchema
+} from "@gravitywelluk/validation-utils";
 import { $enum } from "ts-enum-util";
 
-import { QueueJobAttributes, QueueJobStatus } from "../models/queue-job";
+import {
+  QueueJobAttributes,
+  QueueJobStatus
+} from "../models/queue-job";
 
 export type QueueJobDefaultSchemaAttributes =
   QueueJobAttributes &

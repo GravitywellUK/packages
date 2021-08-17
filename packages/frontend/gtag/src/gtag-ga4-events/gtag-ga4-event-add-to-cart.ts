@@ -1,5 +1,4 @@
 import { gtagEvent } from "../gtag-event";
-
 import { GtagGa4EventEcommerceAttributes } from "./types";
 
 export type GtagGa4EventAddToCartParamAttributes = Omit<GtagGa4EventEcommerceAttributes, "coupon">;

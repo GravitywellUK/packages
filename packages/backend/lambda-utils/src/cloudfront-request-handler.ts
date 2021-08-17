@@ -1,6 +1,7 @@
 import {
   CloudFrontRequest,
-  CloudFrontRequestEvent, Context
+  CloudFrontRequestEvent,
+  Context
 } from "aws-lambda";
 import * as Sentry from "@sentry/node";
 

@@ -1,4 +1,7 @@
-import { jsonApiError, ERROR_CODE_ENUM } from "../src/json-api-error";
+import {
+  jsonApiError,
+  ERROR_CODE_ENUM
+} from "../src/json-api-error";
 
 describe("@gravitywelluk/json-api-error package tests", () => {
   test("Correctly accepts and returns an error object", () => {

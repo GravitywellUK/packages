@@ -1,7 +1,6 @@
 import { jsonApiError } from "@gravitywelluk/json-api-error";
 
 import { awsError } from "../utils/aws-error";
-
 import { sqsConfigure } from "./sqs-configure";
 import { getQueueUrl } from "./get-queue-url";
 

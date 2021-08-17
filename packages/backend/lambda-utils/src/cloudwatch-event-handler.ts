@@ -1,5 +1,8 @@
 import {
-  Context, Handler, S3Event, Callback
+  Context,
+  Handler,
+  S3Event,
+  Callback
 } from "aws-lambda";
 import * as Sentry from "@sentry/node";
 

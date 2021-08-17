@@ -1,4 +1,7 @@
-import { AdminCreateUserResponse, AdminListGroupsForUserResponse } from "aws-sdk/clients/cognitoidentityserviceprovider";
+import {
+  AdminCreateUserResponse,
+  AdminListGroupsForUserResponse
+} from "aws-sdk/clients/cognitoidentityserviceprovider";
 import * as R from "ramda";
 
 export const adminCreateUserPromise: jest.Mock<AdminCreateUserResponse> = jest.fn().mockReturnValue({ promise: jest.fn().mockResolvedValue({ User: { Username: "test" } }) });
