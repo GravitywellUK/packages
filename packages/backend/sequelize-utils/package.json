@@ -18,7 +18,7 @@
     "LICENSE"
   ],
   "dependencies": {
-    "@gravitywelluk/debug": "1.0.22",
+    "@gravitywelluk/debug": "^1.0.28",
     "@gravitywelluk/json-api-error": "^1.0.29",
     "ramda": "^0.27.1"
   },
