@@ -19,7 +19,7 @@
   ],
   "dependencies": {
     "@gravitywelluk/debug": "1.0.22",
-    "@gravitywelluk/json-api-error": "1.0.23",
+    "@gravitywelluk/json-api-error": "^1.0.29",
     "@sentry/node": "^5.25.0",
     "aws-lambda": "^1.0.6",
     "joi": "^17.3.0",
