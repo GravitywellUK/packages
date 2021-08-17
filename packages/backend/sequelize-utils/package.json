@@ -1,6 +1,6 @@
 {
   "name": "@gravitywelluk/sequelize-utils",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Sequelize utilities",
   "author": "GravitywellUK <technical@gravitywell.co.uk>",
   "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/backend/lambda-utils",
