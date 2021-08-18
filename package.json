@@ -42,5 +42,10 @@
     "commitizen": {
       "path": "./node_modules/cz-lerna-changelog"
     }
-  }
+  },
+  "workspaces": [
+    "./packages/backend/*",
+    "./packages/frontend/*",
+    "./packages/shared/*"
+  ]
 }
