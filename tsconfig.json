@@ -41,6 +41,9 @@
     },
     {
       "path": "packages/frontend/react-hooks"
+    },
+    {
+      "path": "packages/frontend/react-native-hooks"
     }
   ],
   "files": []
