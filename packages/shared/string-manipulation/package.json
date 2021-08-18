@@ -1,6 +1,6 @@
 {
   "name": "@gravitywelluk/string-manipulation",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Library of commonly used string manipulations",
   "keywords": [
     "gravitywell",
@@ -39,6 +39,5 @@
   "bugs": {
     "url": "https://github.com/GravitywellUK/packages/issues"
   },
-  "devDependencies": {},
   "gitHead": "45ec8453b9d099267de3ce0fe0f4e04eaad666f5"
 }
