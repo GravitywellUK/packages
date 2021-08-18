@@ -13,7 +13,8 @@
     "cz": "git-cz",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx,json",
     "lint:fix": "yarn lint --fix",
-    "test": "lerna run test --concurrency 1"
+    "test": "lerna run test --concurrency 1",
+    "postinstall": "yarn husky install && yarn build"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json}": [
