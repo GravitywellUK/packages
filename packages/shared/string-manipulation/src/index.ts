@@ -1,0 +1,1 @@
+export { default as sentenceCase } from "./sentence-case";
