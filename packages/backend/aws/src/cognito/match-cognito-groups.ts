@@ -18,11 +18,11 @@ export interface MatchCognitoGroupsParams {
  * @param createUserParams
  * @param configOverrides
  */
-export const matchCognitoGroups = async (createUserParams: MatchCognitoGroupsParams, configOverrides = {}) => {
+export const matchCognitoGroups = async (createUserParams: MatchCognitoGroupsParams, configOverrides = {}, availableGroups: string[] = ["Customer", "Admin"]) => {
   const { error } = Joi.object({
     userPoolId: Joi.string().required(),
     cognitoId: Joi.string().required(),
-    groups: Joi.array().items(Joi.string().valid("Customer", "Admin")).min(1).required()
+    groups: Joi.array().items(Joi.string().valid(...availableGroups)).min(1).required()
   }).validate(createUserParams);
 
   if (error) {
