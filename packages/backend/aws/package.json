@@ -39,17 +39,17 @@
   },
   "dependencies": {
     "@gravitywelluk/json-api-error": "^1.0.29",
-    "aws-xray-sdk-core": "^3.2.0",
-    "joi": "^17.3.0",
-    "nodemailer": "^6.4.17",
-    "ramda": "^0.27.0",
+    "aws-xray-sdk-core": "^3.3.3",
+    "joi": "^17.4.2",
+    "nodemailer": "^6.6.3",
+    "ramda": "^0.27.1",
     "ts-enum-util": "^4.0.2"
   },
   "devDependencies": {
-    "@types/hapi__joi": "^17.1.6",
-    "@types/nodemailer": "^6.4.0",
-    "@types/ramda": "^0.27.30",
-    "aws-sdk": "^2.694.0"
+    "@types/hapi__joi": "^17.1.7",
+    "@types/nodemailer": "^6.4.4",
+    "@types/ramda": "^0.27.44",
+    "aws-sdk": "^2.970.0"
   },
   "peerDependencies": {
     "aws-sdk": "^2.694.0"

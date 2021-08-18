@@ -23,7 +23,7 @@
     "ramda": "^0.27.1"
   },
   "devDependencies": {
-    "@types/ramda": "^0.27.32",
+    "@types/ramda": "^0.27.44",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.6.5"
   },

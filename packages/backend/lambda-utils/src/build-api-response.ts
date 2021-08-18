@@ -45,7 +45,7 @@ export const buildApiResponse = (
     statusCode: resp.status,
     headers: {
       "Content-Type": "application/vnd.api+json",
-      "Access-Control-Allow-Origin": event.headers ? event.headers.origin : "*",
+      "Access-Control-Allow-Origin": event.headers && event.headers.origin ? event.headers.origin : "*",
       "Access-Control-Allow-Credentials": true
     },
     body: JSON.stringify(resp)
