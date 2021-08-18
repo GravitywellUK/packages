@@ -13,6 +13,9 @@
       "path": "packages/shared/regex"
     },
     {
+      "path": "packages/shared/string-manipulation"
+    },
+    {
       "path": "packages/backend/json-api-error"
     },
     {
