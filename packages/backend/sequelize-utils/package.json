@@ -19,7 +19,7 @@
   ],
   "dependencies": {
     "@gravitywelluk/debug": "1.0.22",
-    "@gravitywelluk/json-api-error": "1.0.23",
+    "@gravitywelluk/json-api-error": "^1.0.29",
     "ramda": "^0.27.1"
   },
   "devDependencies": {
