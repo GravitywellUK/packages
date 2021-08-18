@@ -1,14 +1,16 @@
 {
-  "name": "@gravitywelluk/regex",
-  "version": "1.0.28",
-  "description": "Library of commonly used Regular Expressions",
+  "name": "@gravitywelluk/string-manipulation",
+  "version": "1.0.1",
+  "description": "Library of commonly used string manipulations",
   "keywords": [
     "gravitywell",
     "gravitywelluk",
-    "regex"
+    "string",
+    "manipulation",
+    "string manipulation"
   ],
-  "author": "Luke Baker <luke.baker@live.com>",
-  "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/shared/regex",
+  "author": "GravitywellUK",
+  "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/shared/string-manipulation",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
