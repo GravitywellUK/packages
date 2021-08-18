@@ -37,8 +37,6 @@
   "bugs": {
     "url": "https://github.com/GravitywellUK/packages/issues"
   },
-  "devDependencies": {
-    "jest": "^26.5.2"
-  },
+  "devDependencies": {},
   "gitHead": "45ec8453b9d099267de3ce0fe0f4e04eaad666f5"
 }
