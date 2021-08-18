@@ -18,7 +18,7 @@
     "LICENSE"
   ],
   "dependencies": {
-    "@gravitywelluk/aws": "^1.0.19",
+    "@gravitywelluk/aws": "^1.0.21",
     "@gravitywelluk/debug": "^1.0.28",
     "@gravitywelluk/json-api-error": "^1.0.29",
     "@gravitywelluk/sequelize-utils": "^1.0.11",

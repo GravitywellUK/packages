@@ -2,24 +2,17 @@
 # yarn lockfile v1
 
 
-"@gravitywelluk/aws@^1.0.19":
-  version "1.0.19"
-  resolved "https://registry.yarnpkg.com/@gravitywelluk/aws/-/aws-1.0.19.tgz#12ca1127ecb1e0bcc90c958a6c4f29d1fb48edbf"
-  integrity sha512-7YnT8az9OpTH+7GxXCb082RPjb6Dss9xU6oFsNni+mUd+wsGilHZUFMaaZdvrwKopS2Po82W7CL6q1sKeFe/PA==
+"@gravitywelluk/aws@^1.0.21":
+  version "1.0.21"
+  resolved "https://registry.yarnpkg.com/@gravitywelluk/aws/-/aws-1.0.21.tgz#b5697aad8a56ac9f5151b2cea0d98c93c89d11e2"
+  integrity sha512-djDQzcijpet7SiGVNED+BMTi/qy270sZdjo07q1dmf852w9a2UxJ+J3icSrCMgkqp+EIYGP3ZF4y1fNeXSgOvQ==
   dependencies:
-    "@gravitywelluk/json-api-error" "1.0.23"
+    "@gravitywelluk/json-api-error" "^1.0.29"
     aws-xray-sdk-core "^3.2.0"
     joi "^17.3.0"
     nodemailer "^6.4.17"
     ramda "^0.27.0"
     ts-enum-util "^4.0.2"
-
-"@gravitywelluk/debug@1.0.22":
-  version "1.0.22"
-  resolved "https://registry.yarnpkg.com/@gravitywelluk/debug/-/debug-1.0.22.tgz#090877afc12474aa35e8f5940b927df80fa03820"
-  integrity sha512-GiWQR30HQKIyH7MS12QEkAs5EkAK3jEPZFNMzi1lVQ8vqmdnCESJoupzOSx6zAXJXc4SWyfx0OWzPOjCnG5kOw==
-  dependencies:
-    debug "^4.2.0"
 
 "@gravitywelluk/debug@^1.0.28":
   version "1.0.28"
@@ -27,17 +20,6 @@
   integrity sha512-6EkYzfagvDxzTdO1GWl8YfQHSH38rUeSmxsb+oxh7w4xo08+GFXgS9W3iEqpIZVyluWtO4+cpE+DuQTf2qHnCg==
   dependencies:
     debug "^4.2.0"
-
-"@gravitywelluk/json-api-error@1.0.23":
-  version "1.0.23"
-  resolved "https://registry.yarnpkg.com/@gravitywelluk/json-api-error/-/json-api-error-1.0.23.tgz#467c2dac6ce9d619b711827095f7e8d891cbefec"
-  integrity sha512-TUlp7WzrtncRZxt4eN1iIUR1PFRObOUttooH2NRDwqUnscFaLW9VgizBqJlVD3Pnl6VcjHDr9sK608enfeDBJA==
-  dependencies:
-    "@sentry/node" "^5.22.0"
-    axios "^0.19.2"
-    joi "^17.3.0"
-    ramda "^0.27.0"
-    uuid "^8.1.0"
 
 "@gravitywelluk/json-api-error@^1.0.29":
   version "1.0.29"
@@ -50,13 +32,13 @@
     ramda "^0.27.0"
     uuid "^8.1.0"
 
-"@gravitywelluk/sequelize-utils@^1.0.9":
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/@gravitywelluk/sequelize-utils/-/sequelize-utils-1.0.9.tgz#a703d645bf9e39be270bcdd7733d57dbc2100259"
-  integrity sha512-2OYt35B8lpg2IhGq6TY/lV/BBFfJBkRSlIVEQAEXzLjyRM6Zia364XoRjCwiKzQctuAIGAbJ5Q9TEFv7Hsijzw==
+"@gravitywelluk/sequelize-utils@^1.0.11":
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/@gravitywelluk/sequelize-utils/-/sequelize-utils-1.0.11.tgz#3bf399dea1072895dea8cd5d9804f03f6df2881f"
+  integrity sha512-v1wAkkMy/9e01QA1JwsgVjw6LwxY5/ENCeCTOUYX5x/1NcVKOHk0qEVQvunx+7cVa3vTjEOu5KY+nNH+Mf/vTQ==
   dependencies:
-    "@gravitywelluk/debug" "1.0.22"
-    "@gravitywelluk/json-api-error" "1.0.23"
+    "@gravitywelluk/debug" "^1.0.28"
+    "@gravitywelluk/json-api-error" "^1.0.29"
     ramda "^0.27.1"
 
 "@gravitywelluk/validation-utils@^1.0.2":
@@ -254,13 +236,6 @@ aws-xray-sdk-core@^3.2.0:
     pkginfo "^0.4.0"
     semver "^5.3.0"
 
-axios@^0.19.2:
-  version "0.19.2"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-0.19.2.tgz#3ea36c5d8818d0d5f8a8a97a6d36b86cdc00cb27"
-  integrity sha512-fjgm5MvRHLhx+osE2xoekY70AhARk3a6hkN+3Io1jc00jtquGvxYlKlsFUhmUET0V5te6CcZI7lcv2Ym61mjHA==
-  dependencies:
-    follow-redirects "1.5.10"
-
 axios@^0.21.1:
   version "0.21.1"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.1.tgz#22563481962f4d6bde9a76d516ef0e5d3c09b2b8"
@@ -308,13 +283,6 @@ debug@4, debug@^4.1.1, debug@^4.2.0:
   dependencies:
     ms "2.1.2"
 
-debug@=3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/debug/-/debug-3.1.0.tgz#5bb5a0672628b64149566ba16819e61518c67261"
-  integrity sha512-OX8XqP7/1a9cqkxYw2yXss15f26NKWBpDXQd0/uK/KPqdQhxbPa994hnzjcE2VqQpDslf55723cKPUOGSmMY3g==
-  dependencies:
-    ms "2.0.0"
-
 dottie@^2.0.0:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/dottie/-/dottie-2.0.2.tgz#cc91c0726ce3a054ebf11c55fbc92a7f266dd154"
@@ -336,13 +304,6 @@ events@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/events/-/events-1.1.1.tgz#9ebdb7635ad099c70dcc4c2a1f5004288e8bd924"
   integrity sha1-nr23Y1rQmccNzEwqH1AEKI6L2SQ=
-
-follow-redirects@1.5.10:
-  version "1.5.10"
-  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.5.10.tgz#7b7a9f9aea2fdff36786a94ff643ed07f4ff5e2a"
-  integrity sha512-0V5l4Cizzvqt5D44aTXbFZz+FtyXV1vrDN6qrelxtfYQKW0KO0W2T/hkE8xvGa/540LkZlkaUjO4ailYTFtHVQ==
-  dependencies:
-    debug "=3.1.0"
 
 follow-redirects@^1.10.0:
   version "1.14.1"
@@ -432,11 +393,6 @@ moment-timezone@^0.5.31:
   version "2.29.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.1.tgz#b2be769fa31940be9eeea6469c075e35006fa3d3"
   integrity sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==
-
-ms@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
-  integrity sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g=
 
 ms@2.1.2:
   version "2.1.2"
