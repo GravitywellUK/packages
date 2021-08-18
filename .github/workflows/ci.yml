@@ -41,7 +41,7 @@ jobs:
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
 
       - name: Retrieve cached dependencies
         uses: actions/cache@v2
@@ -53,9 +53,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install dependencies
-        run: |
-          yarn --ignore-engines --frozen-lockfile --ignore-scripts
-          yarn lerna:init
+        run: yarn install --immutable
 
       - name: Build
         run: yarn build
@@ -95,7 +93,7 @@ jobs:
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
 
       - name: Retrieve cached dependencies
         uses: actions/cache@v2
@@ -107,13 +105,13 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install dependencies
-        run: |
-          yarn --ignore-engines --frozen-lockfile --ignore-scripts
-          yarn lerna:init
-          yarn check:clean-workspace-after-install
+        run: yarn install --immutable
 
       - name: Build
         run: yarn build
+
+      - name: Check for code changes
+        run: yarn check:clean-workspace-after-install
 
       - name: Configure GitHub config
         run: |
