@@ -18,10 +18,10 @@
     "LICENSE"
   ],
   "dependencies": {
-    "@gravitywelluk/aws": "1.0.6",
-    "@gravitywelluk/debug": "1.0.22",
-    "@gravitywelluk/json-api-error": "1.0.23",
-    "@gravitywelluk/sequelize-utils": "1.0.3",
+    "@gravitywelluk/aws": "^1.0.19",
+    "@gravitywelluk/debug": "^1.0.28",
+    "@gravitywelluk/json-api-error": "^1.0.29",
+    "@gravitywelluk/sequelize-utils": "^1.0.9",
     "@gravitywelluk/validation-utils": "^1.0.2",
     "@sentry/node": "^5.22.0",
     "aws-lambda": "^1.0.6",
@@ -32,12 +32,12 @@
   "devDependencies": {
     "@types/aws-lambda": "^8.10.64",
     "@types/ramda": "^0.27.32",
-    "pg-hstore": "^2.3.3",
-    "sequelize": "^6.3.5"
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.6.5"
   },
   "peerDependencies": {
-    "pg-hstore": ">=2.3.3",
-    "sequelize": ">=6.3.5"
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.6.5"
   },
   "publishConfig": {
     "access": "public"

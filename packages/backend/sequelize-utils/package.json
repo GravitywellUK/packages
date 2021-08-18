@@ -18,18 +18,18 @@
     "LICENSE"
   ],
   "dependencies": {
-    "@gravitywelluk/debug": "1.0.22",
+    "@gravitywelluk/debug": "^1.0.28",
     "@gravitywelluk/json-api-error": "^1.0.29",
     "ramda": "^0.27.1"
   },
   "devDependencies": {
     "@types/ramda": "^0.27.32",
-    "pg-hstore": "^2.3.3",
-    "sequelize": "^6.3.5"
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.6.5"
   },
   "peerDependencies": {
-    "pg-hstore": ">=2.3.3",
-    "sequelize": ">=6.3.5"
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.6.5"
   },
   "publishConfig": {
     "access": "public"
