@@ -1,5 +1,7 @@
 import {
-  Model, FindOptions, Sequelize
+  Model,
+  FindOptions,
+  Sequelize
 } from "sequelize";
 
 import { sequelizeError } from "./sequelize-error";

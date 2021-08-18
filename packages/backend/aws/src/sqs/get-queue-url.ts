@@ -1,7 +1,6 @@
 import { jsonApiError } from "@gravitywelluk/json-api-error";
 
 import { awsError } from "../utils/aws-error";
-
 import { sqsConfigure } from "./sqs-configure";
 
 /**
@@ -23,7 +22,7 @@ export const getQueueUrl = (queueName: string, configOverrides = {}): Promise<st
           }));
         }
 
-        return resolve(data.QueueUrl);
+        return resolve(data.QueueUrl || "");
       });
     } catch (error) {
       return reject(jsonApiError(error));

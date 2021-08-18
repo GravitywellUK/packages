@@ -1,0 +1,44 @@
+{
+  "name": "@gravitywelluk/gtag",
+  "version": "1.0.2",
+  "description": "Typed Google gtag.js helper functions that ensure your app won't crash if gtag.js is not instantiated.",
+  "keywords": [
+    "gravitywell",
+    "gravitywelluk",
+    "gtag"
+  ],
+  "author": "Luke Baker <luke.baker@live.com>",
+  "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/frontend/gtag",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "directories": {
+    "lib": "dist",
+    "test": "__tests__"
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GravitywellUK/packages.git"
+  },
+  "scripts": {
+    "build": "tsc -b"
+  },
+  "bugs": {
+    "url": "https://github.com/GravitywellUK/packages/issues"
+  },
+  "devDependencies": {
+    "@types/gtag.js": "^0.0.7"
+  },
+  "peerDependencies": {
+    "@types/gtag.js": "^0.0.7"
+  }
+}

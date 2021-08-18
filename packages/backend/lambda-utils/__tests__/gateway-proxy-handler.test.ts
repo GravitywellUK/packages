@@ -2,7 +2,9 @@ import createEvent from "@serverless/event-mocks";
 import { APIGatewayProxyResult } from "aws-lambda";
 
 import {
-  gatewayProxyHandler, createContext, APIGatewayProxyHandlerAsync
+  gatewayProxyHandler,
+  createContext,
+  APIGatewayProxyHandlerAsync
 } from "../src";
 
 describe("@gravitywelluk/lambda-utils gateway-proxy-handler", () => {

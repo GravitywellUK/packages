@@ -1,4 +1,7 @@
-import { DataTypes, QueryInterface } from "sequelize";
+import {
+  DataTypes,
+  QueryInterface
+} from "sequelize";
 import { $enum } from "ts-enum-util";
 
 import { QueueErrorStatus } from "../models/queue-error";

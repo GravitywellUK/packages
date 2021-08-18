@@ -4,7 +4,9 @@ import { createDebug } from "@gravitywelluk/debug";
 
 import { QueueErrorAttributesCreate } from "../models/queue-error";
 import {
-  QueueJobAttributes, QueueJobStatus, QueueModels
+  QueueJobAttributes,
+  QueueJobStatus,
+  QueueModels
 } from "../models/queue-job";
 
 const debug = createDebug("SERVERLESS-QUEUE:PROCESS-JOB");

@@ -2,7 +2,10 @@ import createEvent from "@serverless/event-mocks";
 import { ERROR_CODE_ENUM } from "@gravitywelluk/json-api-error";
 import { APIGatewayProxyEvent } from "aws-lambda";
 
-import { buildApiResponse, createContext } from "../src";
+import {
+  buildApiResponse,
+  createContext
+} from "../src";
 
 describe("@gravitywelluk/lambda-utils build-api-response", () => {
   const mockContext = createContext();

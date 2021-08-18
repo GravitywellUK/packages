@@ -1,5 +1,8 @@
 import {
-  Context, ScheduledHandler, EventBridgeEvent, Callback
+  Context,
+  ScheduledHandler,
+  EventBridgeEvent,
+  Callback
 } from "aws-lambda";
 import * as Sentry from "@sentry/node";
 

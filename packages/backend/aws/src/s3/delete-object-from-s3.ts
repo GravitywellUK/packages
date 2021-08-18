@@ -3,7 +3,6 @@ import { jsonApiError } from "@gravitywelluk/json-api-error";
 import * as AWS from "aws-sdk";
 
 import { awsError } from "../utils/aws-error";
-
 import { s3Configure } from "./s3-configure";
 
 export interface DeleteS3ObjectParams {
