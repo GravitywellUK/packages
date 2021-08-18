@@ -37,12 +37,12 @@
     "url": "https://github.com/GravitywellUK/library/issues"
   },
   "dependencies": {
-    "@gravitywelluk/debug": "^1.0.12",
-    "expo-asset": "^8.2.0",
-    "react": "^17.0.1"
+    "@gravitywelluk/debug": "^1.0.28",
+    "expo-asset": "^8.3.3",
+    "react": "^17.0.2"
   },
   "devDependencies": {
-    "@types/react": "^16.9.53"
+    "@types/react": "^17.0.18"
   },
   "peerDependencies": {
     "react-native": ">=0.60.0"
