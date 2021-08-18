@@ -1,5 +1,8 @@
 import React from "react";
-import { ThemeProvider, DefaultTheme } from "styled-components";
+import {
+  ThemeProvider,
+  DefaultTheme
+} from "styled-components";
 
 const themeDecorator: (story: () => React.ReactElement) => React.ReactElement = story => {
   return (

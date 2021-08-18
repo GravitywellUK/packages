@@ -1,0 +1,30 @@
+{
+  "extends": "../../../tsconfig-settings.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "src"
+  },
+  "references": [
+    {
+      "path": "../sequelize-utils"
+    },
+    {
+      "path": "../validation-utils"
+    },
+    {
+      "path": "../aws"
+    },
+    {
+      "path": "../../shared/debug"
+    },
+    {
+      "path": "../json-api-error"
+    }
+  ],
+  "include": [ "./src" ],
+  "exclude": [
+    "__tests__",
+    "dist",
+    "node_modules"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "name": "@gravitywelluk/string-manipulation",
+  "version": "1.0.1",
+  "description": "Library of commonly used string manipulations",
+  "keywords": [
+    "gravitywell",
+    "gravitywelluk",
+    "string",
+    "manipulation",
+    "string manipulation"
+  ],
+  "author": "GravitywellUK",
+  "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/shared/string-manipulation",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "directories": {
+    "lib": "dist",
+    "test": "__tests__"
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GravitywellUK/packages.git"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "test": "jest -c ../../../jest.config.js --verbose --no-cache -i",
+    "test:ci": "yarn test"
+  },
+  "bugs": {
+    "url": "https://github.com/GravitywellUK/packages/issues"
+  },
+  "gitHead": "45ec8453b9d099267de3ce0fe0f4e04eaad666f5"
+}

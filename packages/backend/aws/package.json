@@ -1,0 +1,57 @@
+{
+  "name": "@gravitywelluk/aws",
+  "version": "1.0.21",
+  "description": "Library of commonly used AWS wrapper functions to communicate with the AWS SDK",
+  "keywords": [
+    "gravitywell",
+    "gravitywelluk",
+    "aws"
+  ],
+  "author": "GravitywellUK <technical@gravitywell.co.uk>",
+  "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/backend/aws",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "directories": {
+    "lib": "dist",
+    "test": "__tests__"
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GravitywellUK/packages.git"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "test": "jest -c ../../../jest.config.js --verbose --no-cache -i",
+    "test:ci": "yarn test"
+  },
+  "bugs": {
+    "url": "https://github.com/GravitywellUK/packages/issues"
+  },
+  "dependencies": {
+    "@gravitywelluk/json-api-error": "^1.0.29",
+    "aws-xray-sdk-core": "^3.2.0",
+    "joi": "^17.3.0",
+    "nodemailer": "^6.4.17",
+    "ramda": "^0.27.0",
+    "ts-enum-util": "^4.0.2"
+  },
+  "devDependencies": {
+    "@types/hapi__joi": "^17.1.6",
+    "@types/nodemailer": "^6.4.0",
+    "@types/ramda": "^0.27.30",
+    "aws-sdk": "^2.694.0"
+  },
+  "peerDependencies": {
+    "aws-sdk": "^2.694.0"
+  }
+}

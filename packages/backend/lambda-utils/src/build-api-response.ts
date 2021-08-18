@@ -1,6 +1,9 @@
 import {
 
-  JSONApiMeta, JSONApiErrorJSON, jsonApiError, ERROR_CODE_ENUM
+  JSONApiMeta,
+  JSONApiErrorJSON,
+  jsonApiError,
+  ERROR_CODE_ENUM
 } from "@gravitywelluk/json-api-error";
 import {
   APIGatewayProxyResult,

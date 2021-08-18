@@ -1,18 +1,26 @@
 import { curry } from "ramda";
 import {
-  APIGatewayProxyEvent, Context, APIGatewayProxyResult
+  APIGatewayProxyEvent,
+  Context,
+  APIGatewayProxyResult
 } from "aws-lambda";
 import * as Sentry from "@sentry/node";
 import { createDebug } from "@gravitywelluk/debug";
 
-import { JSONApiResponseObject, buildApiResponse } from "./build-api-response";
+import {
+  JSONApiResponseObject,
+  buildApiResponse
+} from "./build-api-response";
 
 const debug = createDebug("GATEWAY-PROXY");
 
 // init sentry
 if (process.env.SENTRY_DSN) {
-  // init sentry
-  Sentry.init({ dsn: process.env.SENTRY_DSN });
+  const client = Sentry.getCurrentHub().getClient();
+
+  if (!client) {
+    Sentry.init({ dsn: process.env.SENTRY_DSN });
+  }
 }
 
 export interface LambdaOptions {
@@ -27,11 +35,13 @@ export interface LambdaOptions {
  * @param handler
  */
 export const gatewayProxyHandler = <TResult = unknown>(handler: APIGatewayProxyHandlerAsync<TResult>, options?: LambdaOptions): HandlerAsync => {
-  return async (event: CustomAPIGatewayProxyEvent, context: Context) => {
+  return async (event: CustomAPIGatewayProxyEvent & {source?: string}, context: Context) => {
     if (options?.warmup) {
-      debug.info("Warming up function");
+      if (event.source === "serverless-plugin-warmup") {
+        debug.info("Warming up function");
 
-      return await options.warmup();
+        return await options.warmup();
+      }
     }
 
     // Transform queryStringParameters to content multiple arrays.
@@ -86,6 +96,6 @@ type HandlerAsync = (event: CustomAPIGatewayProxyEvent, context: Context) => Pro
 export type APIGatewayProxyHandlerAsync<TResult = unknown> = (event: CustomAPIGatewayProxyEvent, context: Context) => Promise<JSONApiResponseObject<TResult>>;
 
 export interface CustomAPIGatewayProxyEvent extends Omit<APIGatewayProxyEvent, "pathParameters" | "queryStringParameters"> {
-  pathParameters?: Record<string, unknown>;
-  queryStringParameters?: Record<string, unknown>;
+  pathParameters?: Record<string, any>;
+  queryStringParameters?: Record<string, any>;
 }
