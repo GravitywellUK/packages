@@ -1,10 +1,10 @@
-<h1 align="center">Gravitywell Gtag</h1>
-<p align="center">Typed Google gtag.js helper functions that ensures your app won't crash if gtag.js is not instantiated.</p>
+<h1 align="center">Gravitywell GTM</h1>
+<p align="center">Typed Google Tag Manager helper functions that ensures your app won't crash if GTM is not instantiated.</p>
 <p align="center">
   <img src="https://img.shields.io/github/workflow/status/GravitywellUK/packages/CI/master" alt="CI" />
   <img src="https://img.shields.io/github/license/gravitywelluk/packages" alt="License" />
-  <img src="https://img.shields.io/npm/dm/@gravitywelluk/gtag" alt="Downloads" />
-  <img src="https://img.shields.io/npm/v/@gravitywelluk/gtag" alt="Version" />
+  <img src="https://img.shields.io/npm/dm/@gravitywelluk/gtm" alt="Downloads" />
+  <img src="https://img.shields.io/npm/v/@gravitywelluk/gtm" alt="Version" />
 </p>
 <br />
 
@@ -25,17 +25,17 @@
 
 ## Google GA4 Events
 
-Helper functions to track Google Gtag GA4 events.
+Helper functions to track Google GTM GA4 events.
 
 ### Usage
 
 ```typescript
-import { gtagGa4EventAddToCart } from "@gravitywelluk/gtag";
+import { gtmGa4EventAddToCart } from "@gravitywelluk/gtm";
 
 ...
 
 // Track an add_to_cart event
-gtagGa4EventAddToCart({
+gtmGa4EventAddToCart({
   currency: "GBP",
   value: 215.14,
   items: items: [
@@ -73,7 +73,7 @@ gtagGa4EventAddToCart({
 Tracks an `add_payment_info` event.
 
 ```typescript
-import { gtagGa4EventAddPaymentInfo } from "@gravitywelluk/gtag";
+import { gtmGa4EventAddPaymentInfo } from "@gravitywelluk/gtm";
 ```
 
 #### `add_shipping_info`
@@ -81,7 +81,7 @@ import { gtagGa4EventAddPaymentInfo } from "@gravitywelluk/gtag";
 Tracks an `add_shipping_info` event.
 
 ```typescript
-import { gtagGa4EventAddShippingInfo } from "@gravitywelluk/gtag";
+import { gtmGa4EventAddShippingInfo } from "@gravitywelluk/gtm";
 ```
 
 #### `add_to_cart`
@@ -89,7 +89,7 @@ import { gtagGa4EventAddShippingInfo } from "@gravitywelluk/gtag";
 Tracks an `add_to_cart` event.
 
 ```typescript
-import { gtagGa4EventAddToCart } from "@gravitywelluk/gtag";
+import { gtmGa4EventAddToCart } from "@gravitywelluk/gtm";
 ```
 
 #### `login`
@@ -97,7 +97,7 @@ import { gtagGa4EventAddToCart } from "@gravitywelluk/gtag";
 Tracks a `login` event.
 
 ```typescript
-import { gtagGa4EventAuth } from "@gravitywelluk/gtag";
+import { gtmGa4EventAuth } from "@gravitywelluk/gtm";
 ```
 
 #### `sign_up`
@@ -105,7 +105,7 @@ import { gtagGa4EventAuth } from "@gravitywelluk/gtag";
 Tracks a `sign_up` event.
 
 ```typescript
-import { gtagGa4EventAuth } from "@gravitywelluk/gtag";
+import { gtmGa4EventAuth } from "@gravitywelluk/gtm";
 ```
 
 #### `begin_checkout`
@@ -113,7 +113,7 @@ import { gtagGa4EventAuth } from "@gravitywelluk/gtag";
 Tracks a `begin_checkout` event.
 
 ```typescript
-import { gtagGa4EventBeginCheckout } from "@gravitywelluk/gtag";
+import { gtmGa4EventBeginCheckout } from "@gravitywelluk/gtm";
 ```
 
 #### `purchase`
@@ -121,7 +121,7 @@ import { gtagGa4EventBeginCheckout } from "@gravitywelluk/gtag";
 Tracks a `purchase` event.
 
 ```typescript
-import { gtagGa4EventPurchase } from "@gravitywelluk/gtag";
+import { gtmGa4EventPurchase } from "@gravitywelluk/gtm";
 ```
 
 #### `select_item`
@@ -129,7 +129,7 @@ import { gtagGa4EventPurchase } from "@gravitywelluk/gtag";
 Tracks a `select_item` event.
 
 ```typescript
-import { gtagGa4EventSelectItem } from "@gravitywelluk/gtag";
+import { gtmGa4EventSelectItem } from "@gravitywelluk/gtm";
 ```
 
 #### `share`
@@ -137,5 +137,5 @@ import { gtagGa4EventSelectItem } from "@gravitywelluk/gtag";
 Tracks a `share` event.
 
 ```typescript
-import { gtagGa4EventShare } from "@gravitywelluk/gtag";
+import { gtmGa4EventShare } from "@gravitywelluk/gtm";
 ```

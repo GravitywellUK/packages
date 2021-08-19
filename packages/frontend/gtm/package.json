@@ -1,14 +1,14 @@
 {
-  "name": "@gravitywelluk/gtag",
-  "version": "1.0.3",
-  "description": "Typed Google gtag.js helper functions that ensures your app won't crash if gtag.js is not instantiated.",
+  "name": "@gravitywelluk/gtm",
+  "version": "1.0.0",
+  "description": "Typed Google Tag Manager helper functions that ensures your app won't crash if GTM is not instantiated.",
   "keywords": [
     "gravitywell",
     "gravitywelluk",
-    "gtag"
+    "gtm"
   ],
   "author": "Luke Baker <luke.baker@live.com>",
-  "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/frontend/gtag",
+  "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/frontend/gtm",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
