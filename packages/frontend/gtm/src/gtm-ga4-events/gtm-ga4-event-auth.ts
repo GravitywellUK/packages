@@ -16,6 +16,6 @@ export enum GtmGa4EventAuthMethod {
  * @see https://developers.google.com/gtagjs/reference/ga4-events#sign_up
  * @param method - The authentication method used.
  */
-export const gtagGa4EventAuth = (eventType: GtmGa4EventAuthType, method: GtmGa4EventAuthMethod): void => {
+export const gtmGa4EventAuth = (eventType: GtmGa4EventAuthType, method: GtmGa4EventAuthMethod): void => {
   gtmEvent(eventType, { method });
 };
