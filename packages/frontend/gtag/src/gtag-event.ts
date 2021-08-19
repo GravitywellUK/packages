@@ -9,6 +9,11 @@ import { gtagReady } from "./gtag-ready";
 export const gtagEvent = (eventName: Gtag.EventNames | string, eventParams?: Gtag.ControlParams | Gtag.EventParams | Gtag.CustomParams): void => {
   // Track an event if Gtag exists and is ready
   if (gtagReady()) {
+    // Log if not in production
+    if (process.env.NODE_ENV !== "production") {
+      console.log(`Gtag :: gtagEvent("event", ${eventName}) eventParams`, eventParams);
+    }
+
     gtag("event", eventName, eventParams);
   }
 };
