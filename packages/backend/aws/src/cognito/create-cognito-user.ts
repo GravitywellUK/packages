@@ -9,7 +9,7 @@ export interface CreateCognitoUserParams {
   userPoolId: string;
   email: string;
   groups?: string[];
-
+  emailVerified?: boolean;
 }
 /**
  * Create a user in cognito and trigger the invite email
@@ -23,6 +23,7 @@ export const createCognitoUser = async (createUserParams: CreateCognitoUserParam
   const { error } = Joi.object({
     userPoolId: Joi.string().required(),
     email: Joi.string().email(),
+    emailVerified: Joi.boolean().optional(),
     groups: Joi.array().items(Joi.string().valid(...availableGroups)).min(1).required()
   }).validate(createUserParams);
 
@@ -52,6 +53,10 @@ export const createCognitoUser = async (createUserParams: CreateCognitoUserParam
         {
           Name: "email",
           Value: createUserParams.email
+        },
+        {
+          Name: "email_verified",
+          Value: createUserParams.emailVerified ? "True" : "False"
         }
       ]
     }).promise();
