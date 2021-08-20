@@ -2,7 +2,7 @@
  * Checks that Gtag is ready
  */
 export const gtagReady = (): boolean => {
-  const isGtagReady = "gtag" in window;
+  const isGtagReady = "gtag" in Window;
 
   // Log if not in production
   if (process.env.NODE_ENV !== "production") {
