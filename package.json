@@ -13,7 +13,7 @@
     "cz": "git-cz",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx,json",
     "lint:fix": "yarn lint --fix",
-    "test": "lerna run test --concurrency 1",
+    "test": "yarn workspaces foreach run test",
     "postinstall": "yarn husky install && yarn build"
   },
   "lint-staged": {
@@ -25,7 +25,7 @@
     "node": ">=12.0.0"
   },
   "devDependencies": {
-    "@gravitywelluk/eslint-plugin": "^1.0.36",
+    "@gravitywelluk/eslint-plugin": "^1.0.37",
     "@types/jest": "^27.0.1",
     "@types/node": "^16.6.1",
     "@typescript-eslint/eslint-plugin": "^4.29.2",
