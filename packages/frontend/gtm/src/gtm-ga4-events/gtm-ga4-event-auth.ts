@@ -28,5 +28,3 @@ export enum GtmGa4EventAuthMethod {
   TWITTER = "Twitter",
   WINDOWS_LIVE = "Windows Live"
 }
-
-gtmGa4EventAuth("login", GtmGa4EventAuthMethod.GITHUB);
