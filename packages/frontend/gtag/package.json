@@ -1,6 +1,6 @@
 {
   "name": "@gravitywelluk/gtag",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Typed Google gtag.js helper functions that ensures your app won't crash if gtag.js is not instantiated.",
   "keywords": [
     "gravitywell",
