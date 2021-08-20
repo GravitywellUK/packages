@@ -18,15 +18,15 @@
     "LICENSE"
   ],
   "dependencies": {
-    "@sentry/node": "^5.22.0",
+    "@sentry/node": "^6.11.0",
     "axios": "^0.21.1",
-    "joi": "^17.3.0",
-    "ramda": "^0.27.0",
-    "uuid": "^8.1.0"
+    "joi": "^17.4.2",
+    "ramda": "^0.27.1",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "@types/ramda": "^0.27.21",
-    "@types/uuid": "^8.0.0"
+    "@types/ramda": "^0.27.44",
+    "@types/uuid": "^8.3.1"
   },
   "publishConfig": {
     "access": "public"

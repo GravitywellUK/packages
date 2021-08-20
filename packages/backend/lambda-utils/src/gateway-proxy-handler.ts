@@ -48,11 +48,11 @@ export const gatewayProxyHandler = <TResult = unknown>(handler: APIGatewayProxyH
     if (event.multiValueQueryStringParameters) {
       // Parse event params as json
       for (const key in event.multiValueQueryStringParameters) {
-        if (key.endsWith("[]") && event.multiValueQueryStringParameters[ key ]) {
-          if (event.queryStringParameters) {
-            delete event.queryStringParameters[ key ];
-            event.queryStringParameters[ key.replace("[]", "") ] = JSON.stringify(event.multiValueQueryStringParameters[ key ].map(el => JSON.parse(el)));
-          }
+        const queryStringParameter = event.multiValueQueryStringParameters[ key ];
+
+        if (key.endsWith("[]") && queryStringParameter && event.queryStringParameters) {
+          delete event.queryStringParameters[ key ];
+          event.queryStringParameters[ key.replace("[]", "") ] = JSON.stringify(queryStringParameter.map(el => JSON.parse(el)));
         }
       }
     }

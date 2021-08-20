@@ -11,11 +11,10 @@
     "check:clean-workspace-after-install": "git diff --exit-code",
     "check:configs": "lerna run check:configs",
     "cz": "git-cz",
-    "lerna:init": "lerna exec --concurrency 1 -- yarn install && yarn tsc && lerna link --force-local",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx,json",
     "lint:fix": "yarn lint --fix",
-    "postinstall": "yarn husky install && yarn lerna:init && yarn build",
-    "test": "lerna run test --concurrency 1"
+    "test": "yarn workspaces foreach run test",
+    "postinstall": "yarn husky install && yarn build"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json}": [
@@ -26,21 +25,34 @@
     "node": ">=12.0.0"
   },
   "devDependencies": {
-    "@gravitywelluk/eslint-plugin": "^1.0.36",
-    "@types/jest": "^27.0.0",
-    "@types/node": "^16.6.0",
+    "@gravitywelluk/eslint-plugin": "^1.0.37",
+    "@types/jest": "^27.0.1",
+    "@types/node": "^16.6.1",
+    "@typescript-eslint/eslint-plugin": "^4.29.2",
+    "@typescript-eslint/parser": "^4.29.2",
     "cz-lerna-changelog": "^2.0.3",
     "eslint": "^7.32.0",
+    "eslint-plugin-import": "^2.24.0",
+    "eslint-plugin-json": "^3.1.0",
+    "eslint-plugin-modules-newline": "^0.0.6",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^7.0.1",
     "jest": "^27.0.6",
+    "jest-config": "^27.0.6",
     "lerna": "^4.0.0",
     "lint-staged": "^11.1.2",
-    "ts-jest": "^27.0.4",
+    "ts-jest": "^27.0.5",
     "typescript": "^4.3.5"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-lerna-changelog"
     }
-  }
+  },
+  "workspaces": [
+    "./packages/backend/*",
+    "./packages/frontend/*",
+    "./packages/shared/*"
+  ]
 }

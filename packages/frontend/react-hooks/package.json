@@ -38,10 +38,10 @@
     "url": "https://github.com/GravitywellUK/packages/issues"
   },
   "dependencies": {
-    "@gravitywelluk/debug": "^1.0.28"
+    "@gravitywelluk/debug": "workspace:packages/shared/debug"
   },
   "devDependencies": {
-    "@types/react": "^16.9.53"
+    "@types/react": "^17.0.18"
   },
   "peerDependencies": {
     "react": ">=16.13.1",

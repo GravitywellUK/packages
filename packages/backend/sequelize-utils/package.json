@@ -18,12 +18,12 @@
     "LICENSE"
   ],
   "dependencies": {
-    "@gravitywelluk/debug": "^1.0.28",
-    "@gravitywelluk/json-api-error": "^1.0.29",
+    "@gravitywelluk/debug": "workspace:packages/shared/debug",
+    "@gravitywelluk/json-api-error": "workspace:packages/backend/json-api-error",
     "ramda": "^0.27.1"
   },
   "devDependencies": {
-    "@types/ramda": "^0.27.32",
+    "@types/ramda": "^0.27.44",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.6.5"
   },
