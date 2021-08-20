@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@gravitywelluk/aws@^1.0.21":
-  version "1.0.21"
-  resolved "https://registry.yarnpkg.com/@gravitywelluk/aws/-/aws-1.0.21.tgz#b5697aad8a56ac9f5151b2cea0d98c93c89d11e2"
-  integrity sha512-djDQzcijpet7SiGVNED+BMTi/qy270sZdjo07q1dmf852w9a2UxJ+J3icSrCMgkqp+EIYGP3ZF4y1fNeXSgOvQ==
+"@gravitywelluk/aws@^1.0.22":
+  version "1.0.22"
+  resolved "https://registry.yarnpkg.com/@gravitywelluk/aws/-/aws-1.0.22.tgz#6867f7141e2e5e35b0ed040c79c3d2919fc5d565"
+  integrity sha512-5JiQ7u5IGofngyyurQQ4keB0VCXAYfS2f37VyJr/NjqD6Gcq0rwdWQEQKQ8vWuE440nrL7vRpRwZgUG46cS0+g==
   dependencies:
     "@gravitywelluk/json-api-error" "^1.0.29"
     aws-xray-sdk-core "^3.2.0"
