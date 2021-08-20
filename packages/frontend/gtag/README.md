@@ -1,5 +1,5 @@
 <h1 align="center">Gravitywell Gtag</h1>
-<p align="center">Typed Google gtag.js helper functions that ensure your app won't crash if gtag.js is not instantiated.</p>
+<p align="center">Typed Google gtag.js helper functions that ensures your app won't crash if gtag.js is not instantiated.</p>
 <p align="center">
   <img src="https://img.shields.io/github/workflow/status/GravitywellUK/packages/CI/master" alt="CI" />
   <img src="https://img.shields.io/github/license/gravitywelluk/packages" alt="License" />

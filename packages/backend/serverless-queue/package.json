@@ -1,6 +1,6 @@
 {
   "name": "@gravitywelluk/serverless-queue",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "description": "",
   "author": "GravitywellUK <technical@gravitywell.co.uk>",
   "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/backend/lambda-utils",
@@ -18,7 +18,7 @@
     "LICENSE"
   ],
   "dependencies": {
-    "@gravitywelluk/aws": "^1.0.21",
+    "@gravitywelluk/aws": "^1.0.22",
     "@gravitywelluk/debug": "^1.0.28",
     "@gravitywelluk/json-api-error": "^1.0.29",
     "@gravitywelluk/sequelize-utils": "^1.0.11",

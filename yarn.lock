@@ -2222,7 +2222,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gravitywelluk/aws@^1.0.21, @gravitywelluk/aws@workspace:packages/backend/aws":
+"@gravitywelluk/aws@^1.0.22, @gravitywelluk/aws@workspace:packages/backend/aws":
   version: 0.0.0-use.local
   resolution: "@gravitywelluk/aws@workspace:packages/backend/aws"
   dependencies:
@@ -2271,6 +2271,16 @@ __metadata:
 "@gravitywelluk/gtag@workspace:packages/frontend/gtag":
   version: 0.0.0-use.local
   resolution: "@gravitywelluk/gtag@workspace:packages/frontend/gtag"
+  dependencies:
+    "@types/gtag.js": ^0.0.7
+  peerDependencies:
+    "@types/gtag.js": ^0.0.7
+  languageName: unknown
+  linkType: soft
+
+"@gravitywelluk/gtm@workspace:packages/frontend/gtm":
+  version: 0.0.0-use.local
+  resolution: "@gravitywelluk/gtm@workspace:packages/frontend/gtm"
   dependencies:
     "@types/gtag.js": ^0.0.7
   peerDependencies:
@@ -2397,7 +2407,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@gravitywelluk/serverless-queue@workspace:packages/backend/serverless-queue"
   dependencies:
-    "@gravitywelluk/aws": ^1.0.21
+    "@gravitywelluk/aws": ^1.0.22
     "@gravitywelluk/debug": ^1.0.28
     "@gravitywelluk/json-api-error": ^1.0.29
     "@gravitywelluk/sequelize-utils": ^1.0.11
