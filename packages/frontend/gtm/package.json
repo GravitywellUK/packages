@@ -1,6 +1,6 @@
 {
   "name": "@gravitywelluk/gtm",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Typed Google Tag Manager helper functions that ensures your app won't crash if GTM is not instantiated.",
   "keywords": [
     "gravitywell",
