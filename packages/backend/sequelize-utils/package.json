@@ -18,8 +18,8 @@
     "LICENSE"
   ],
   "dependencies": {
-    "@gravitywelluk/debug": "^1.0.28",
-    "@gravitywelluk/json-api-error": "^1.0.29",
+    "@gravitywelluk/debug": "workspace:packages/shared/debug",
+    "@gravitywelluk/json-api-error": "workspace:packages/backend/json-api-error",
     "ramda": "^0.27.1"
   },
   "devDependencies": {

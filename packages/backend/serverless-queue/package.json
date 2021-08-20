@@ -18,11 +18,11 @@
     "LICENSE"
   ],
   "dependencies": {
-    "@gravitywelluk/aws": "^1.0.22",
-    "@gravitywelluk/debug": "^1.0.28",
-    "@gravitywelluk/json-api-error": "^1.0.29",
-    "@gravitywelluk/sequelize-utils": "^1.0.11",
-    "@gravitywelluk/validation-utils": "^1.0.2",
+    "@gravitywelluk/aws": "workspace:packages/backend/aws",
+    "@gravitywelluk/debug": "workspace:packages/shared/debug",
+    "@gravitywelluk/json-api-error": "workspace:packages/backend/json-api-error",
+    "@gravitywelluk/sequelize-utils": "workspace:packages/backend/sequelize-utils",
+    "@gravitywelluk/validation-utils": "workspace:packages/backend/validation-utils",
     "@sentry/node": "^6.11.0",
     "aws-lambda": "^1.0.6",
     "joi": "^17.4.2",
