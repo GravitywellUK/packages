@@ -1,21 +1,32 @@
 import { gtmEvent } from "../gtm-event";
 
-export enum GtmGa4EventAuthType {
-  LOGIN = "login",
-  SIGN_UP = "sign_up"
-}
-
-export enum GtmGa4EventAuthMethod {
-  AWS_COGNITO = "AWS Cognito"
+interface GtmGa4EventAuth {
+  (eventName: "login", method: GtmGa4EventAuthMethod): void;
+  (eventName: "sign_up", method: GtmGa4EventAuthMethod): void;
 }
 
 /**
- * Tracks an authentication GA4 event
+ * Tracks an GA4 authentication event
  *
  * @see https://developers.google.com/gtagjs/reference/ga4-events#login
  * @see https://developers.google.com/gtagjs/reference/ga4-events#sign_up
+ * @param event - The GA4 authentication event name
  * @param method - The authentication method used.
  */
-export const gtmGa4EventAuth = (eventType: GtmGa4EventAuthType, method: GtmGa4EventAuthMethod): void => {
-  gtmEvent(eventType, { method });
+export const gtmGa4EventAuth: GtmGa4EventAuth = (eventName, method): void => {
+  gtmEvent(eventName, { method });
 };
+
+export enum GtmGa4EventAuthMethod {
+  APPLE = "Apple",
+  AWS_COGNITO = "AWS Cognito",
+  FACEBOOK = "Facebook",
+  GITHUB = "GitHub",
+  GOOGLE = "Google",
+  LINKEDIN = "LinkedIn",
+  SLACK = "Slack",
+  TWITTER = "Twitter",
+  WINDOWS_LIVE = "Windows Live"
+}
+
+gtmGa4EventAuth("login", GtmGa4EventAuthMethod.GITHUB);

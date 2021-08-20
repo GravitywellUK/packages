@@ -10,32 +10,35 @@
 
 ## Table of Contents
 - [Table of Contents](#table-of-contents)
+- [Installation](#installation)
 - [Google GA4 Events](#google-ga4-events)
-  - [Usage](#usage)
-  - [Helpers](#helpers)
-    - [`add_payment_info`](#add_payment_info)
-    - [`add_shipping_info`](#add_shipping_info)
-    - [`add_to_cart`](#add_to_cart)
-    - [`login`](#login)
-    - [`sign_up`](#sign_up)
-    - [`begin_checkout`](#begin_checkout)
-    - [`purchase`](#purchase)
-    - [`select_item`](#select_item)
-    - [`share`](#share)
+  - [gtmGa4EventEcommerce()](#gtmga4eventecommerce)
+  - [gtmGa4EventAuth()](#gtmga4eventauth)
+  - [gtmGa4EventShare()](#gtmga4eventshare)
+
+## Installation
+
+```shell
+yarn add @gravitywelluk/gtm
+
+# or
+
+npm install --save @gravitywelluk/gtm
+```
 
 ## Google GA4 Events
 
 Helper functions to track Google GTM GA4 events.
 
-### Usage
+### gtmGa4EventEcommerce()
+
+Tracks a GA4 e-commerce event
 
 ```typescript
-import { gtmGa4EventAddToCart } from "@gravitywelluk/gtm";
-
-...
+import { gtmGa4EventEcommerce } from "@gravitywelluk/gtm";
 
 // Track an add_to_cart event
-gtmGa4EventAddToCart({
+gtmGa4EventEcommerce("add_to_cart", {
   currency: "GBP",
   value: 215.14,
   items: items: [
@@ -62,80 +65,25 @@ gtmGa4EventAddToCart({
     }
   ]
 });
-
-...
 ```
 
-### Helpers
+### gtmGa4EventAuth()
 
-#### `add_payment_info`
-
-Tracks an `add_payment_info` event.
+Tracks a GA4 authentication event.
 
 ```typescript
-import { gtmGa4EventAddPaymentInfo } from "@gravitywelluk/gtm";
+import { gtmGa4EventAuth, GtmGa4EventAuthMethod } from "@gravitywelluk/gtm";
+
+gtmGa4EventAuth("login", GtmGa4EventAuthMethod.GITHUB);
+gtmGa4EventAuth("sign_up", GtmGa4EventAuthMethod.GOOGLE);
 ```
 
-#### `add_shipping_info`
+### gtmGa4EventShare()
 
-Tracks an `add_shipping_info` event.
-
-```typescript
-import { gtmGa4EventAddShippingInfo } from "@gravitywelluk/gtm";
-```
-
-#### `add_to_cart`
-
-Tracks an `add_to_cart` event.
+Tracks a GA4 `share` event.
 
 ```typescript
-import { gtmGa4EventAddToCart } from "@gravitywelluk/gtm";
-```
+import { gtmGa4EventShare, GtmGa4EventShareMethod } from "@gravitywelluk/gtm";
 
-#### `login`
-
-Tracks a `login` event.
-
-```typescript
-import { gtmGa4EventAuth } from "@gravitywelluk/gtm";
-```
-
-#### `sign_up`
-
-Tracks a `sign_up` event.
-
-```typescript
-import { gtmGa4EventAuth } from "@gravitywelluk/gtm";
-```
-
-#### `begin_checkout`
-
-Tracks a `begin_checkout` event.
-
-```typescript
-import { gtmGa4EventBeginCheckout } from "@gravitywelluk/gtm";
-```
-
-#### `purchase`
-
-Tracks a `purchase` event.
-
-```typescript
-import { gtmGa4EventPurchase } from "@gravitywelluk/gtm";
-```
-
-#### `select_item`
-
-Tracks a `select_item` event.
-
-```typescript
-import { gtmGa4EventSelectItem } from "@gravitywelluk/gtm";
-```
-
-#### `share`
-
-Tracks a `share` event.
-
-```typescript
-import { gtmGa4EventShare } from "@gravitywelluk/gtm";
+gtmGa4EventShare('/example-page', GtmGa4EventShareMethod.TWITTER);
 ```
