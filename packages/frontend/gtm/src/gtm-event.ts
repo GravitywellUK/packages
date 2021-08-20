@@ -12,22 +12,27 @@ import { gtmReady } from "./gtm-ready";
 export const gtmEvent = (eventName: Gtag.EventNames | string, eventParams: Record<string, any>, clearParams?: string[]): void => {
   // Track an event if GTM exists and is ready
   if (gtmReady()) {
-    // If clearParams have been given, use them to clear the previous object
-    if (clearParams) {
-      const clearData: Record<string, null> = {};
+    // Trycatch as a failsafe
+    try {
+      // If clearParams have been given, use them to clear the previous object
+      if (clearParams) {
+        const clearData: Record<string, null> = {};
 
-      for (const i in clearParams) {
-        clearData[ clearParams[ i ] ] = null;
+        for (const i in clearParams) {
+          clearData[ clearParams[ i ] ] = null;
+        }
+
+        // Clear the previous object data
+        (window.dataLayer as NonNullable<Window["dataLayer"]>).push(clearData);
       }
 
-      // Clear the previous object data
-      (window.dataLayer as NonNullable<Window["dataLayer"]>).push(clearData);
+      // Trigger the event
+      (window.dataLayer as NonNullable<Window["dataLayer"]>).push({
+        event: eventName,
+        ...eventParams
+      });
+    } catch (error) {
+      console.error(error);
     }
-
-    // Trigger the event
-    (window.dataLayer as NonNullable<Window["dataLayer"]>).push({
-      event: eventName,
-      ...eventParams
-    });
   }
 };
