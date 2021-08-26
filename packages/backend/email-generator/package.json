@@ -1,0 +1,41 @@
+{
+  "name": "@gravitywelluk/email-generator",
+  "version": "1.0.29",
+  "description": "> Simple functions for transpiling html email templates",
+  "author": "GravitywellUK <technical@gravitywell.co.uk>",
+  "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/backend/json-api-error",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "directories": {
+    "lib": "./dist",
+    "test": "__tests__"
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "dependencies": {
+    "@gravitywelluk/aws": "workspace:packages/backend/aws",
+    "@gravitywelluk/debug": "workspace:packages/shared/debug",
+    "@gravitywelluk/json-api-error": "workspace:packages/backend/json-api-error"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GravitywellUK/packages.git"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "test": "jest -c ../../../jest.config.js --verbose --no-cache -i",
+    "test:ci": "yarn test"
+  },
+  "bugs": {
+    "url": "https://github.com/GravitywellUK/packages/issues"
+  },
+  "gitHead": "45ec8453b9d099267de3ce0fe0f4e04eaad666f5"
+}

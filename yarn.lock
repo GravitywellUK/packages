@@ -2250,6 +2250,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@gravitywelluk/email-generator@workspace:packages/backend/email-generator":
+  version: 0.0.0-use.local
+  resolution: "@gravitywelluk/email-generator@workspace:packages/backend/email-generator"
+  dependencies:
+    "@gravitywelluk/aws": "workspace:packages/backend/aws"
+    "@gravitywelluk/debug": "workspace:packages/shared/debug"
+    "@gravitywelluk/json-api-error": "workspace:packages/backend/json-api-error"
+  languageName: unknown
+  linkType: soft
+
 "@gravitywelluk/eslint-plugin@npm:^1.0.37":
   version: 1.0.37
   resolution: "@gravitywelluk/eslint-plugin@npm:1.0.37"
