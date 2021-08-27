@@ -1,5 +1,8 @@
 import { generateHTMLEmail } from "../src/generate-html-email";
-import { testHtmlTemplate } from "../__fixtures__/test-template";
+import {
+  testHtmlTemplate,
+  testHandlebarTemplate
+} from "../__fixtures__/test-templates";
 
 interface TestParams {
     name: string;
@@ -40,6 +43,17 @@ describe("generate-html-email", () => {
         message: "test",
         phone: "0123456789"
       });
-    }).toThrow("{email} is required");
+    }).toThrow("{%email%} is required");
+  });
+
+  test("Check it does not replace normal {handlebar} values", () => {
+    const result = generateHTMLEmail<TestParams>(testHandlebarTemplate, {
+      name: "Joe Blogs",
+      message: "test",
+      phone: "0123456789",
+      email: "test@gravitywell.co.uk"
+    });
+
+    expect(result).toContain("{email}");
   });
 });

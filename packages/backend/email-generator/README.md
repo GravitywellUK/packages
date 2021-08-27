@@ -1,5 +1,5 @@
-<h1 align="center">Gravitywell email generator library</h1>
-<p align="center">Library to take html email templates and interpolate values</p>
+<h1 align="center">Gravitywell email generator</h1>
+<p align="center">A library to help generate email templates</p>
 <p align="center">
   <img src="https://img.shields.io/github/workflow/status/GravitywellUK/packages/CI/master" alt="CI" />
   <img src="https://img.shields.io/github/license/gravitywelluk/packages" alt="License" />
@@ -11,11 +11,13 @@
 ## Usage
 
 ```typescript
-const template = require("./local/path/template.html");
-const generateHtmlEmail = require("email-generator");
+import template from "./local/path/template.html";
+import { generateHtmlEmail } from "email-generator";
+
 interface EmailParams {
   name: string;
 }
+
 generateHtmlEmail<EmailParams>(template, { name: "Joe bloggs" });
 ```
 

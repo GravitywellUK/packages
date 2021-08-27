@@ -1,9 +1,9 @@
 {
   "name": "@gravitywelluk/email-generator",
-  "version": "1.0.29",
-  "description": "> Simple functions for transpiling html email templates",
+  "version": "1.0.0",
+  "description": "A library to help generate email templates",
   "author": "GravitywellUK <technical@gravitywell.co.uk>",
-  "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/backend/json-api-error",
+  "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/backend/email-generator",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -18,7 +18,6 @@
     "LICENSE"
   ],
   "dependencies": {
-    "@gravitywelluk/aws": "workspace:packages/backend/aws",
     "@gravitywelluk/debug": "workspace:packages/shared/debug",
     "@gravitywelluk/json-api-error": "workspace:packages/backend/json-api-error"
   },
