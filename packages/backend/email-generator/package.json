@@ -1,6 +1,6 @@
 {
   "name": "@gravitywelluk/email-generator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A library to help generate email templates",
   "author": "GravitywellUK <technical@gravitywell.co.uk>",
   "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/backend/email-generator",
@@ -18,8 +18,8 @@
     "LICENSE"
   ],
   "dependencies": {
-    "@gravitywelluk/debug": "^1.0.28",
-    "@gravitywelluk/json-api-error": "^1.0.29"
+    "@gravitywelluk/debug": "^1.0.29",
+    "@gravitywelluk/json-api-error": "^1.0.30"
   },
   "publishConfig": {
     "access": "public"

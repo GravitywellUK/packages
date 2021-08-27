@@ -1,6 +1,6 @@
 {
   "name": "@gravitywelluk/sequelize-utils",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Sequelize utilities",
   "author": "GravitywellUK <technical@gravitywell.co.uk>",
   "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/backend/lambda-utils",
@@ -18,8 +18,8 @@
     "LICENSE"
   ],
   "dependencies": {
-    "@gravitywelluk/debug": "^1.0.28",
-    "@gravitywelluk/json-api-error": "^1.0.29",
+    "@gravitywelluk/debug": "^1.0.29",
+    "@gravitywelluk/json-api-error": "^1.0.30",
     "ramda": "^0.27.1"
   },
   "devDependencies": {

@@ -1,6 +1,6 @@
 {
   "name": "@gravitywelluk/lambda-utils",
-  "version": "1.0.35",
+  "version": "1.0.36",
   "description": "Lambda utilities",
   "author": "GravitywellUK <technical@gravitywell.co.uk>",
   "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/backend/lambda-utils",
@@ -18,8 +18,8 @@
     "LICENSE"
   ],
   "dependencies": {
-    "@gravitywelluk/debug": "^1.0.28",
-    "@gravitywelluk/json-api-error": "^1.0.29",
+    "@gravitywelluk/debug": "^1.0.29",
+    "@gravitywelluk/json-api-error": "^1.0.30",
     "@sentry/node": "^6.11.0",
     "aws-lambda": "^1.0.6",
     "joi": "^17.4.2",

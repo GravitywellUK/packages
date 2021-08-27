@@ -1,6 +1,6 @@
 {
   "name": "@gravitywelluk/aws",
-  "version": "1.0.22",
+  "version": "1.0.23",
   "description": "Library of commonly used AWS wrapper functions to communicate with the AWS SDK",
   "keywords": [
     "gravitywell",
@@ -38,7 +38,7 @@
     "url": "https://github.com/GravitywellUK/packages/issues"
   },
   "dependencies": {
-    "@gravitywelluk/json-api-error": "^1.0.29",
+    "@gravitywelluk/json-api-error": "^1.0.30",
     "aws-xray-sdk-core": "^3.3.3",
     "joi": "^17.4.2",
     "nodemailer": "^6.6.3",
