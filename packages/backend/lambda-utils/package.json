@@ -18,8 +18,8 @@
     "LICENSE"
   ],
   "dependencies": {
-    "@gravitywelluk/debug": "workspace:packages/shared/debug",
-    "@gravitywelluk/json-api-error": "workspace:packages/backend/json-api-error",
+    "@gravitywelluk/debug": "^1.0.28",
+    "@gravitywelluk/json-api-error": "^1.0.29",
     "@sentry/node": "^6.11.0",
     "aws-lambda": "^1.0.6",
     "joi": "^17.4.2",
