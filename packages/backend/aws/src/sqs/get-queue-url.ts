@@ -1,6 +1,6 @@
 import { jsonApiError } from "@gravitywelluk/json-api-error";
 
-import { awsError } from "../utils/aws-error";
+import { awsError } from "../utils";
 import { sqsConfigure } from "./sqs-configure";
 
 /**

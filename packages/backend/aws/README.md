@@ -22,7 +22,7 @@ yarn add @gravitywelluk/aws aws-sdk
 import { LIB_NAME_HERE } from "@gravitywelluk/aws"
 
 try {
-  const s3Object = await getObjectFromS3({
+  const s3Object = await getObjectFromS3(false, {
     bucket: "example-bucket",
     path: "path/to/file.jpg"
   });

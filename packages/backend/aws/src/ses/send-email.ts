@@ -1,6 +1,6 @@
 import * as AWS from "aws-sdk";
 
-import { awsError } from "../utils/aws-error";
+import { awsError } from "../utils";
 import { sesV2Configure } from "./sesv2-configure";
 
 /**

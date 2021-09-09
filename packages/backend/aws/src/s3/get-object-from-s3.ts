@@ -1,45 +1,47 @@
-import * as stream from "stream";
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+import type stream from "stream";
 
 import * as Joi from "joi";
 import { jsonApiError } from "@gravitywelluk/json-api-error";
-import * as AWS from "aws-sdk";
 import { PromiseResult } from "aws-sdk/lib/request";
+import type AWSModule from "aws-sdk";
 
-import { awsError } from "../utils/aws-error";
+import { awsError } from "../utils";
 import { s3Configure } from "./s3-configure";
+
+interface GetObjectFromS3 {
+  (asStream: true, getObjectParams: GetS3ObjectParams, awsS3ConfigOverrides?: AWSModule.S3.ClientConfiguration): Promise<stream.Readable>;
+  (asStream: false, getObjectParams: GetS3ObjectParams, awsS3ConfigOverrides?: AWSModule.S3.ClientConfiguration): Promise<PromiseResult<AWSModule.S3.GetObjectOutput, AWSModule.AWSError>>;
+}
 
 export interface GetS3ObjectParams {
   path: string;
   bucket: string;
-  stream?: boolean;
 }
 
-export interface GetS3ObjectParamsWithStream extends GetS3ObjectParams {
-  /** defaults to not be a stream */
-  stream: true;
-}
-// type dependant on stream parameter
-async function getObjectFromS3(getObjectParams: GetS3ObjectParamsWithStream, configOverrides?: AWS.S3.ClientConfiguration): Promise<stream.Readable>;
-async function getObjectFromS3(getObjectParams: GetS3ObjectParams, configOverrides?: AWS.S3.ClientConfiguration): Promise<PromiseResult<AWS.S3.GetObjectOutput, AWS.AWSError>>;
+/**
+ * Gets an object from AWS S3
+ *
+ * @param asStream - Whether to return a stream
+ * @param getObjectParams - The parameters required to get the object from S3
+ * @param awsS3ConfigOverrides - Configuration option overrides
+ */
+// @ts-ignore - TSC not clever enough to work out the return types, however, this is functionally correct
+export const getObjectFromS3: GetObjectFromS3 = async (asStream, getObjectParams, awsS3ConfigOverrides = {}) => {
+  const s3 = s3Configure(awsS3ConfigOverrides);
 
-async function getObjectFromS3(getObjectParams: any, configOverrides = {}) {
   const { error } = Joi.object({
     bucket: Joi.string().required(),
-    path: Joi.string().required(),
-    stream: Joi.boolean().optional()
+    path: Joi.string().required()
   }).unknown(true).validate(getObjectParams);
 
+  // Error if there any Joi validation errors
   if (error) {
     throw jsonApiError(error);
   }
 
-  const s3 = s3Configure({
-    ...configOverrides,
-    region: process.env.REGION
-  });
-
-  // return the s3 file as a stream
-  if (getObjectParams.stream === true) {
+  // Return the S3 file as a stream
+  if (asStream === true) {
     return s3.getObject({
       Bucket: getObjectParams.bucket,
       Key: getObjectParams.path
@@ -57,6 +59,4 @@ async function getObjectFromS3(getObjectParams: any, configOverrides = {}) {
       functionName: "getObjectFromS3"
     });
   }
-}
-
-export { getObjectFromS3 };
+};

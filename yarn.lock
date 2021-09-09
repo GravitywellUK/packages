@@ -2222,11 +2222,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gravitywelluk/aws@^1.0.22, @gravitywelluk/aws@workspace:packages/backend/aws":
+"@gravitywelluk/aws@^1.0.23, @gravitywelluk/aws@workspace:packages/backend/aws":
   version: 0.0.0-use.local
   resolution: "@gravitywelluk/aws@workspace:packages/backend/aws"
   dependencies:
-    "@gravitywelluk/json-api-error": ^1.0.29
+    "@gravitywelluk/json-api-error": ^1.0.30
     "@types/hapi__joi": ^17.1.7
     "@types/nodemailer": ^6.4.4
     "@types/ramda": ^0.27.44
@@ -2241,7 +2241,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gravitywelluk/debug@^1.0.28, @gravitywelluk/debug@workspace:packages/shared/debug":
+"@gravitywelluk/debug@^1.0.29, @gravitywelluk/debug@workspace:packages/shared/debug":
   version: 0.0.0-use.local
   resolution: "@gravitywelluk/debug@workspace:packages/shared/debug"
   dependencies:
@@ -2254,8 +2254,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@gravitywelluk/email-generator@workspace:packages/backend/email-generator"
   dependencies:
-    "@gravitywelluk/debug": ^1.0.28
-    "@gravitywelluk/json-api-error": ^1.0.29
+    "@gravitywelluk/debug": ^1.0.29
+    "@gravitywelluk/json-api-error": ^1.0.30
   languageName: unknown
   linkType: soft
 
@@ -2297,7 +2297,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gravitywelluk/json-api-error@^1.0.29, @gravitywelluk/json-api-error@workspace:packages/backend/json-api-error":
+"@gravitywelluk/json-api-error@^1.0.30, @gravitywelluk/json-api-error@workspace:packages/backend/json-api-error":
   version: 0.0.0-use.local
   resolution: "@gravitywelluk/json-api-error@workspace:packages/backend/json-api-error"
   dependencies:
@@ -2315,8 +2315,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@gravitywelluk/lambda-utils@workspace:packages/backend/lambda-utils"
   dependencies:
-    "@gravitywelluk/debug": ^1.0.28
-    "@gravitywelluk/json-api-error": ^1.0.29
+    "@gravitywelluk/debug": ^1.0.29
+    "@gravitywelluk/json-api-error": ^1.0.30
     "@sentry/node": ^6.11.0
     "@serverless/event-mocks": ^1.1.1
     "@types/aws-lambda": ^8.10.82
@@ -2369,7 +2369,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@gravitywelluk/react-hooks@workspace:packages/frontend/react-hooks"
   dependencies:
-    "@gravitywelluk/debug": ^1.0.28
+    "@gravitywelluk/debug": ^1.0.29
     "@types/react": ^17.0.18
   peerDependencies:
     react: ">=16.13.1"
@@ -2381,7 +2381,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@gravitywelluk/react-native-hooks@workspace:packages/frontend/react-native-hooks"
   dependencies:
-    "@gravitywelluk/debug": ^1.0.28
+    "@gravitywelluk/debug": ^1.0.29
     "@types/react": ^17.0.18
     expo-asset: ^8.3.3
     react: ^17.0.2
@@ -2396,12 +2396,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gravitywelluk/sequelize-utils@^1.0.11, @gravitywelluk/sequelize-utils@workspace:packages/backend/sequelize-utils":
+"@gravitywelluk/sequelize-utils@^1.0.12, @gravitywelluk/sequelize-utils@workspace:packages/backend/sequelize-utils":
   version: 0.0.0-use.local
   resolution: "@gravitywelluk/sequelize-utils@workspace:packages/backend/sequelize-utils"
   dependencies:
-    "@gravitywelluk/debug": ^1.0.28
-    "@gravitywelluk/json-api-error": ^1.0.29
+    "@gravitywelluk/debug": ^1.0.29
+    "@gravitywelluk/json-api-error": ^1.0.30
     "@types/ramda": ^0.27.44
     pg-hstore: ^2.3.4
     ramda: ^0.27.1
@@ -2416,11 +2416,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@gravitywelluk/serverless-queue@workspace:packages/backend/serverless-queue"
   dependencies:
-    "@gravitywelluk/aws": ^1.0.22
-    "@gravitywelluk/debug": ^1.0.28
-    "@gravitywelluk/json-api-error": ^1.0.29
-    "@gravitywelluk/sequelize-utils": ^1.0.11
-    "@gravitywelluk/validation-utils": ^1.0.2
+    "@gravitywelluk/aws": ^1.0.23
+    "@gravitywelluk/debug": ^1.0.29
+    "@gravitywelluk/json-api-error": ^1.0.30
+    "@gravitywelluk/sequelize-utils": ^1.0.12
+    "@gravitywelluk/validation-utils": ^1.0.3
     "@sentry/node": ^6.11.0
     "@types/aws-lambda": ^8.10.82
     "@types/ramda": ^0.27.44
@@ -2442,7 +2442,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gravitywelluk/validation-utils@^1.0.2, @gravitywelluk/validation-utils@workspace:packages/backend/validation-utils":
+"@gravitywelluk/validation-utils@^1.0.3, @gravitywelluk/validation-utils@workspace:packages/backend/validation-utils":
   version: 0.0.0-use.local
   resolution: "@gravitywelluk/validation-utils@workspace:packages/backend/validation-utils"
   dependencies:
