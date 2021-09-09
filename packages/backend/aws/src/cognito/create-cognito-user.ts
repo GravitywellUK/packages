@@ -30,7 +30,7 @@ export const createCognitoUser = async (
     userPoolId: Joi.string().required(),
     email: Joi.string().email(),
     emailVerified: Joi.boolean().optional(),
-    groups: Joi.array().items(Joi.string().required()).optional()
+    groups: Joi.array().items(Joi.string().optional()).optional()
   }).validate(createUserParams);
 
   let allCognitoGroups: string[] = [];
@@ -42,7 +42,7 @@ export const createCognitoUser = async (
 
   // If createUserParams.groups are provided, get the current Cognito groups
   // with the given user pool
-  if (createUserParams.groups) {
+  if (createUserParams.groups && createUserParams.groups.length > 0) {
     try {
       const cognitoGroupList = await cognito.listGroups({ UserPoolId: createUserParams.userPoolId }).promise();
 
@@ -84,7 +84,7 @@ export const createCognitoUser = async (
     }).promise();
 
     // If createUserParams.groups are provided, add the user to the given groups
-    if (createUserParams.groups) {
+    if (createUserParams.groups && createUserParams.groups.length > 0) {
       for (const group of createUserParams.groups) {
         // Only add the user to the group if the user has a username
         if (User?.Username) {
