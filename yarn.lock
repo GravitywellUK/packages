@@ -2275,9 +2275,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gravitywelluk/eslint-plugin@npm:^1.0.37":
-  version: 1.0.37
-  resolution: "@gravitywelluk/eslint-plugin@npm:1.0.37"
+"@gravitywelluk/eslint-plugin@npm:^1.0.38":
+  version: 1.0.38
+  resolution: "@gravitywelluk/eslint-plugin@npm:1.0.38"
   dependencies:
     "@typescript-eslint/eslint-plugin": ^4.29.2
     "@typescript-eslint/parser": ^4.29.2
@@ -2289,7 +2289,7 @@ __metadata:
     eslint-plugin-react-native: ^3.11.0
   peerDependencies:
     eslint: ^7.32.0
-  checksum: 95e67cd3d80fd21c678fe48bcc3362ca71a486208468b1a28d1276dfd46548157e9f1ead8203d8617aa3addf73b9dba308461738257dded69386d230f6e0906a
+  checksum: 20a32745f97bf720ae3cdd89d2b61e846b9e17a4a78054355125a816a3c069eef5949323de60d17f708b975e84138d2a21040744c6cf32b9604abda78abf587f
   languageName: node
   linkType: hard
 
@@ -21664,7 +21664,7 @@ resolve@^2.0.0-next.3:
   version: 0.0.0-use.local
   resolution: "root@workspace:."
   dependencies:
-    "@gravitywelluk/eslint-plugin": ^1.0.37
+    "@gravitywelluk/eslint-plugin": ^1.0.38
     "@types/jest": ^27.0.1
     "@types/node": ^16.6.1
     "@typescript-eslint/eslint-plugin": ^4.29.2
