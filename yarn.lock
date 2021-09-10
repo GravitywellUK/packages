@@ -2077,7 +2077,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gravitywelluk/eslint-plugin@npm:^1.0.37":
+"@gravitywelluk/eslint-plugin@npm:^1.0.38":
   version: 1.0.38
   resolution: "@gravitywelluk/eslint-plugin@npm:1.0.38"
   dependencies:
@@ -20914,7 +20914,7 @@ resolve@^2.0.0-next.3:
   version: 0.0.0-use.local
   resolution: "root@workspace:."
   dependencies:
-    "@gravitywelluk/eslint-plugin": ^1.0.37
+    "@gravitywelluk/eslint-plugin": ^1.0.38
     "@types/jest": ^27.0.1
     "@types/node": ^16.6.1
     "@typescript-eslint/eslint-plugin": ^4.29.2

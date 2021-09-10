@@ -7,6 +7,9 @@
   "references": [
     {
       "path": "../error"
+    },
+    {
+      "path": "../validation-utils"
     }
   ],
   "include": [ "./src" ],

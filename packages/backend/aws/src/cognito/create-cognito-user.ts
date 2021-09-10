@@ -4,6 +4,7 @@ import { JoiError } from "@gravitywelluk/validation-utils";
 
 import { cognitoConfigure } from "./cognito-configure";
 import { AwsError } from "../utils/aws-error";
+import { cognitoListGroups } from "./utils";
 
 export interface CreateCognitoUserParams {
   userPoolId: string;
@@ -33,8 +34,6 @@ export const createCognitoUser = async (
     groups: Joi.array().items(Joi.string().optional()).optional()
   }).validate(createUserParams);
 
-  let allCognitoGroups: string[] = [];
-
   // Error if there any Joi validation errors
   if (error) {
     throw new JoiError(error);
@@ -43,16 +42,8 @@ export const createCognitoUser = async (
   // If createUserParams.groups are provided, get the current Cognito groups
   // with the given user pool
   if (createUserParams.groups && createUserParams.groups.length > 0) {
-    try {
-      const cognitoGroupList = await cognito.listGroups({ UserPoolId: createUserParams.userPoolId }).promise();
-
-      // If groups are returned in the response, collate the group names and set
-      // allCognitoGroups
-      allCognitoGroups = cognitoGroupList.Groups ? cognitoGroupList.Groups.map(group => group.GroupName).filter(groupName => typeof groupName === "string") as string[] : [];
-    } catch (error) {
-      throw new AwsError(error as AWS.AWSError);
-    }
-
+    // Get all of the Cognito groups for the given user pool
+    const allCognitoGroups = await cognitoListGroups(cognito, { UserPoolId: createUserParams.userPoolId });
     // Validate that the given createUserParams.groups match the allCognitoGroups
     const { error: joiCognitoGroupsError } = Joi.array().items(Joi.string().valid(...allCognitoGroups).required()).validate(createUserParams.groups);
 
