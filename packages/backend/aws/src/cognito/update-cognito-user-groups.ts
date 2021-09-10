@@ -5,6 +5,7 @@ import type AWSModule from "aws-sdk";
 
 import { awsError } from "../utils";
 import { cognitoConfigure } from "./cognito-configure";
+import { cognitoListGroups } from "./utils";
 
 export interface UpdateCognitoGroupsParams {
   userPoolId: string;
@@ -31,27 +32,13 @@ export const updateCognitoUserGroup = async (
     groups: Joi.array().items(Joi.string().required()).required()
   }).validate(updateUserParams);
 
-  let allCognitoGroups: string[] = [];
-
   // Error if there any Joi validation errors
   if (error) {
     throw jsonApiError(error);
   }
 
-  // Get the current Cognito groups with the given user pool
-  try {
-    const cognitoGroupList = await cognito.listGroups({ UserPoolId: updateUserParams.userPoolId }).promise();
-
-    // If groups are returned in the response, collate the group names and set
-    // allCognitoGroups
-    allCognitoGroups = cognitoGroupList.Groups ? cognitoGroupList.Groups.map(group => group.GroupName).filter(groupName => typeof groupName === "string") as string[] : [];
-  } catch (error) {
-    throw awsError(error, {
-      environment: process.env.ENVIRONMENT,
-      functionName: "updateCognitoUserGroups"
-    });
-  }
-
+  // Get all of the Cognito groups for the given user pool
+  const allCognitoGroups = await cognitoListGroups(cognito, { UserPoolId: updateUserParams.userPoolId });
   // Validate that the given updateUserParams.groups match the allCognitoGroups
   const { error: joiCognitoGroupsError } = Joi.array().items(Joi.string().valid(...allCognitoGroups).required()).validate(updateUserParams.groups);
 
