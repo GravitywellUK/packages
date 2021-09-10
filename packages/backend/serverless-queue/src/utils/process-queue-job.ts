@@ -1,5 +1,4 @@
 import * as Sentry from "@sentry/node";
-import { jsonApiError } from "@gravitywelluk/json-api-error";
 import { createDebug } from "@gravitywelluk/debug";
 
 import { QueueErrorAttributesCreate } from "../models/queue-error";
@@ -28,24 +27,18 @@ export interface JobResult<ResultData = any, ErrorData extends unknown | null = 
  * @memberof QueueJobService
  */
 export const processJob = async <JobData extends { queueJobId: number }, ResultData = any, M extends QueueModels = QueueModels>(models: M, jobData: JobData, job: (queueJob: QueueJobAttributes) => Promise<JobResult<ResultData>>): Promise<QueueJobAttributes> => {
-  let queueJob;
   let jobResult: JobResult<ResultData> | undefined;
   const { queueJobId } = jobData;
 
-  try {
-    debug.info(`Queue job started (internal id ${queueJobId})`);
-    const { QueueJob } = models;
-
-    queueJob = await QueueJob.findById(queueJobId);
-  } catch (error) {
-    throw jsonApiError(error);
-  }
+  debug.info(`Queue job started (internal id ${queueJobId})`);
+  const { QueueJob } = models;
+  const queueJob = await QueueJob.findById(queueJobId);
 
   // Start the queue job job.
   try {
     await startedQueueJob(queueJob.get("id") as number, models);
   } catch (error) {
-    const message = `Could not start job: ${error.details || "Unkown error"}`;
+    const message = `Could not start job: ${(error as Error)?.message || "Unkown error"}`;
 
     return await finishedQueueJob(queueJob.get("id"), {
       status: QueueJobStatus.ERROR,
@@ -58,7 +51,9 @@ export const processJob = async <JobData extends { queueJobId: number }, ResultD
   } catch (error) {
     let message = "Could not complete job";
 
-    message += error.details ? `: ${error.details}` : "";
+    if (error instanceof Error) {
+      message += error.message ? `: ${error.message}` : "";
+    }
 
     return await finishedQueueJob(queueJob.get("id"), {
       status: QueueJobStatus.ERROR,
@@ -79,19 +74,15 @@ export const processJob = async <JobData extends { queueJobId: number }, ResultD
  * @return - The queue job object.
  */
 const startedQueueJob = async <M extends QueueModels = QueueModels>(queuejobId: number, models: M): Promise<QueueJobAttributes> => {
-  try {
-    const { QueueJob } = models;
-    const queueJob = await QueueJob.findById(queuejobId);
+  const { QueueJob } = models;
+  const queueJob = await QueueJob.findById(queuejobId);
 
-    queueJob.set("startedAt", new Date());
-    queueJob.set("status", QueueJobStatus.IN_PROGRESS);
-    await queueJob.save();
-    debug.info(`Started queue job job with internal id: ${queuejobId}`);
+  queueJob.set("startedAt", new Date());
+  queueJob.set("status", QueueJobStatus.IN_PROGRESS);
+  await queueJob.save();
+  debug.info(`Started queue job job with internal id: ${queuejobId}`);
 
-    return queueJob.get({ plain: true });
-  } catch (error) {
-    throw jsonApiError(error);
-  }
+  return queueJob.get({ plain: true });
 };
 
 /**
@@ -159,6 +150,6 @@ const finishedQueueJob = async <FinishedStatusType extends AvailableQueueJobStat
     if (transaction) {
       await transaction.rollback();
     }
-    throw jsonApiError(error);
+    throw error;
   }
 };

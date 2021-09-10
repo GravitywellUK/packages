@@ -1,9 +1,5 @@
 import Joi from "joi";
-import {
-  jsonApiError,
-  ERROR_CODE_ENUM
-} from "@gravitywelluk/json-api-error";
-import * as R from "ramda";
+import { JoiError } from "@gravitywelluk/validation-utils";
 
 type CheckEventParams = <
   T extends Record<string, any>,
@@ -43,13 +39,7 @@ export const checkEventParams: CheckEventParams = (params, validation) => {
 
   // Throw error if validation fails
   if (error) {
-    throw jsonApiError({
-      status: 400,
-      title: "Invalid request parameters",
-      details: error.message,
-      code: ERROR_CODE_ENUM.INVALID_DATA_ERROR,
-      source: { pointer: R.join("|", R.map(detail => detail.path, error.details)) }
-    });
+    throw new JoiError(error);
   }
 
   return value;

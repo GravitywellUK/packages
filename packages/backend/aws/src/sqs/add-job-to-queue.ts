@@ -1,8 +1,6 @@
-import { jsonApiError } from "@gravitywelluk/json-api-error";
-
-import { awsError } from "../utils/aws-error";
 import { sqsConfigure } from "./sqs-configure";
 import { getQueueUrl } from "./get-queue-url";
+import { AwsError } from "../utils/aws-error";
 
 export const addJobToQueue = (
   processJobId: number,
@@ -32,23 +30,17 @@ export const addJobToQueue = (
           },
           (error, data) => {
             if (error) {
-              return reject(awsError(error, {
-                environment: process.env.ENVIRONMENT,
-                functionName: "addJobToQueue"
-              }));
+              return reject(new AwsError(error));
             }
 
             return resolve(data);
           });
         })
         .catch(error => {
-          return reject(awsError(error, {
-            environment: process.env.ENVIRONMENT,
-            functionName: "addJobToQueue"
-          }));
+          return reject(new AwsError(error));
         });
     } catch (error) {
-      return reject(jsonApiError(error));
+      return reject(error);
     }
   });
 };

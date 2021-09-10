@@ -1,9 +1,10 @@
 import * as Joi from "joi";
-import * as R from "ramda";
-import { jsonApiError } from "@gravitywelluk/json-api-error";
+import type AWSModule from "aws-sdk";
+import { JoiError } from "@gravitywelluk/validation-utils";
 
-import { awsError } from "../utils/aws-error";
 import { cognitoConfigure } from "./cognito-configure";
+import { AwsError } from "../utils/aws-error";
+import { cognitoListGroups } from "./utils";
 
 export interface CreateCognitoUserParams {
   userPoolId: string;
@@ -11,42 +12,51 @@ export interface CreateCognitoUserParams {
   groups?: string[];
   emailVerified?: boolean;
 }
+
 /**
- * Create a user in cognito and trigger the invite email
+ * Creates a user in Cognito and triggers the invitation email
  *
- * @param createUserParams
- * @param configOverrides
+ * @see https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/CognitoIdentityServiceProvider.html#adminCreateUser-property
+ * @see https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/CognitoIdentityServiceProvider.html#adminAddUserToGroup-property
+ * @param createUserParams - The parameters required to create a Cognito user
+ * @param awsCognitoConfigOverrides - Configuration option overrides
  */
-export const createCognitoUser = async (createUserParams: CreateCognitoUserParams, availableGroups: string[], configOverrides = {}) => {
-  const cognito = cognitoConfigure(configOverrides);
+export const createCognitoUser = async (
+  createUserParams: CreateCognitoUserParams,
+  awsCognitoConfigOverrides: AWSModule.CognitoIdentityServiceProvider.ClientConfiguration = {}
+): Promise<AWSModule.CognitoIdentityServiceProvider.UserType> => {
+  const cognito = cognitoConfigure(awsCognitoConfigOverrides);
 
   const { error } = Joi.object({
     userPoolId: Joi.string().required(),
     email: Joi.string().email(),
     emailVerified: Joi.boolean().optional(),
-    groups: Joi.array().items(Joi.string().valid(...availableGroups)).min(1).required()
+    groups: Joi.array().items(Joi.string().optional()).optional()
   }).validate(createUserParams);
 
+  // Error if there any Joi validation errors
   if (error) {
-    throw jsonApiError(error);
+    throw new JoiError(error);
   }
 
-  // get the available groups to make sure the action is going to work
-  try {
-    const groups = await cognito.listGroups({ UserPoolId: createUserParams.userPoolId }).promise();
+  // If createUserParams.groups are provided, get the current Cognito groups
+  // with the given user pool
+  if (createUserParams.groups && createUserParams.groups.length > 0) {
+    // Get all of the Cognito groups for the given user pool
+    const allCognitoGroups = await cognitoListGroups(cognito, { UserPoolId: createUserParams.userPoolId });
+    // Validate that the given createUserParams.groups match the allCognitoGroups
+    const { error: joiCognitoGroupsError } = Joi.array().items(Joi.string().valid(...allCognitoGroups).required()).validate(createUserParams.groups);
 
-    if (groups.Groups) {
-      availableGroups = R.map(group => group.GroupName as string, groups.Groups);
+    // Error if there any Joi validation errors regarding the given groups now
+    // we have sight of the groups that can be chosen (allCognitoGroups)
+    if (joiCognitoGroupsError) {
+      throw new JoiError(joiCognitoGroupsError);
     }
-  } catch (error) {
-    throw awsError(error, {
-      environment: process.env.ENVIRONMENT,
-      functionName: "createCognitoUser"
-    });
   }
 
+  // Create the Cognito user and add them to the given groups
   try {
-    const user = await cognito.adminCreateUser({
+    const { User } = await cognito.adminCreateUser({
       UserPoolId: createUserParams.userPoolId,
       Username: createUserParams.email,
       UserAttributes: [
@@ -61,22 +71,22 @@ export const createCognitoUser = async (createUserParams: CreateCognitoUserParam
       ]
     }).promise();
 
-    // add to group
-    if (createUserParams.groups) {
+    // If createUserParams.groups are provided, add the user to the given groups
+    if (createUserParams.groups && createUserParams.groups.length > 0) {
       for (const group of createUserParams.groups) {
-        await cognito.adminAddUserToGroup({
-          GroupName: group,
-          Username: user.User?.Username as string,
-          UserPoolId: createUserParams.userPoolId
-        }).promise();
+        // Only add the user to the group if the user has a username
+        if (User?.Username) {
+          await cognito.adminAddUserToGroup({
+            GroupName: group,
+            Username: User.Username,
+            UserPoolId: createUserParams.userPoolId
+          }).promise();
+        }
       }
     }
 
-    return user;
+    return User as AWSModule.CognitoIdentityServiceProvider.UserType;
   } catch (error) {
-    throw awsError(error, {
-      environment: process.env.ENVIRONMENT,
-      functionName: "createCognitoUser"
-    });
+    throw new AwsError(error as AWS.AWSError);
   }
 };

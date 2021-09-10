@@ -1,7 +1,7 @@
 import * as AWS from "aws-sdk";
 
-import { awsError } from "../utils/aws-error";
 import { sesV2Configure } from "./sesv2-configure";
+import { AwsError } from "../utils/aws-error";
 
 /**
    * Updates a template
@@ -20,9 +20,6 @@ export const updateEmailTemplate = async (
   try {
     return await ses.updateEmailTemplate(updateEmailParams).promise();
   } catch (error) {
-    throw awsError(error, {
-      environment: process.env.ENVIRONMENT,
-      functionName: "updateEmailTemplate"
-    });
+    throw new AwsError(error as AWS.AWSError);
   }
 };

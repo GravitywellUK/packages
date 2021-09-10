@@ -19,6 +19,9 @@
       "path": "packages/backend/json-api-error"
     },
     {
+      "path": "packages/backend/error"
+    },
+    {
       "path": "packages/backend/lambda-utils"
     },
     {

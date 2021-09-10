@@ -1,4 +1,3 @@
-import { curry } from "ramda";
 import {
   APIGatewayProxyEvent,
   Context,
@@ -7,10 +6,7 @@ import {
 import * as Sentry from "@sentry/node";
 import { createDebug } from "@gravitywelluk/debug";
 
-import {
-  JSONApiResponseObject,
-  buildApiResponse
-} from "./build-api-response";
+import { buildApiResponse } from "./build-api-response";
 
 const debug = createDebug("GATEWAY-PROXY");
 
@@ -57,9 +53,6 @@ export const gatewayProxyHandler = <TResult = unknown>(handler: APIGatewayProxyH
       }
     }
 
-    // wrap event and contexts for all responses
-    const response = curry(buildApiResponse)(event, context);
-
     try {
       const result = await handler(event, context);
 
@@ -73,9 +66,9 @@ export const gatewayProxyHandler = <TResult = unknown>(handler: APIGatewayProxyH
         await options.cleanup();
       }
 
-      return response(result);
+      return buildApiResponse<TResult>(event, context, result);
     } catch (error) {
-      const responseError = response(error);
+      const responseError = buildApiResponse<TResult>(event, context, error as Error);
 
       // flush to send events to sentry
       if (process.env.SENTRY_DSN) {
@@ -93,9 +86,9 @@ export const gatewayProxyHandler = <TResult = unknown>(handler: APIGatewayProxyH
 };
 // custom types to remove callback
 type HandlerAsync = (event: CustomAPIGatewayProxyEvent, context: Context) => Promise<APIGatewayProxyResult | void>;
-export type APIGatewayProxyHandlerAsync<TResult = unknown> = (event: CustomAPIGatewayProxyEvent, context: Context) => Promise<JSONApiResponseObject<TResult>>;
+export type APIGatewayProxyHandlerAsync<TResult = unknown> = (event: CustomAPIGatewayProxyEvent, context: Context) => Promise<TResult>;
 
 export interface CustomAPIGatewayProxyEvent extends Omit<APIGatewayProxyEvent, "pathParameters" | "queryStringParameters"> {
-  pathParameters?: Record<string, any>;
-  queryStringParameters?: Record<string, any>;
+  pathParameters?: Record<string, unknown>;
+  queryStringParameters?: Record<string, unknown>;
 }

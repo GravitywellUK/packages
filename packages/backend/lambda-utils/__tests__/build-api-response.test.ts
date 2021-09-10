@@ -1,6 +1,9 @@
 import createEvent from "@serverless/event-mocks";
-import { ERROR_CODE_ENUM } from "@gravitywelluk/json-api-error";
 import { APIGatewayProxyEvent } from "aws-lambda";
+import {
+  APIError,
+  ErrorType
+} from "@gravitywelluk/error";
 
 import {
   buildApiResponse,
@@ -30,13 +33,7 @@ describe("@gravitywelluk/lambda-utils build-api-response", () => {
   });
 
   test("Handle an known error response", () => {
-    const errorResponse = {
-      title: "Not found",
-      status: 404,
-      details: "document could not be found",
-      code: ERROR_CODE_ENUM.NOT_FOUND_ERROR
-    };
-
+    const errorResponse = new APIError("Not found", ErrorType.NotFoundError);
     const gatewayEvent = createEvent("aws:apiGateway", {} as APIGatewayProxyEvent);
 
     const data = buildApiResponse(
@@ -48,15 +45,15 @@ describe("@gravitywelluk/lambda-utils build-api-response", () => {
   });
 
   test("Handle no error to unknown error", () => {
-    const errorResponse = { status: 404 };
+    const errorResponse = new Error("Unknown error");
     const gatewayEvent = createEvent("aws:apiGateway", {} as APIGatewayProxyEvent);
 
     const data = buildApiResponse(
       gatewayEvent, mockContext, errorResponse
     );
 
-    expect(data.body).toContain(ERROR_CODE_ENUM.UNKNOWN_ERROR);
+    expect(data.body).toContain(ErrorType.UnknownError);
     expect(typeof data.body).toBe("string");
-    expect(data.statusCode).toBe(404);
+    expect(data.statusCode).toBe(500);
   });
 });

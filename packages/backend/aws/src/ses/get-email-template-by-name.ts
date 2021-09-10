@@ -1,7 +1,7 @@
 import * as AWS from "aws-sdk";
 
-import { awsError } from "../utils/aws-error";
 import { sesV2Configure } from "./sesv2-configure";
+import { AwsError } from "../utils/aws-error";
 
 /**
    * gets a template by name
@@ -19,9 +19,6 @@ export const getEmailTemplateByName = async (
   try {
     return await ses.getEmailTemplate({ TemplateName: name }).promise();
   } catch (error) {
-    throw awsError(error, {
-      environment: process.env.ENVIRONMENT,
-      functionName: "getEmailTemplateByName"
-    });
+    throw new AwsError(error as AWS.AWSError);
   }
 };

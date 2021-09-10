@@ -9,7 +9,7 @@
       "path": "../../shared/debug"
     },
     {
-      "path": "../json-api-error"
+      "path": "../error"
     }
   ],
   "include": [ "./src" ],
