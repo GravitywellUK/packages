@@ -1,8 +1,7 @@
 import Joi from "joi";
 import { APIError } from "@gravitywelluk/error";
 import { JoiError } from "@gravitywelluk/validation-utils";
-
-import { ErrorType } from "../../error/src/ApiError";
+import { ErrorType } from "@gravitywelluk/error/src/api-error";
 
 /**
  * Takes an aws gateway proxy event and returns the valid response object

@@ -1,5 +1,5 @@
 import { APIError } from "../src";
-import { ErrorType } from "../src/ApiError";
+import { ErrorType } from "../src/api-error";
 
 describe("@gravitywelluk/error package tests", () => {
   test("Correctly creates an error class instance with custom  codes", () => {

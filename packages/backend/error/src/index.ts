@@ -1,4 +1,4 @@
-import APIError, { ErrorType } from "./ApiError";
+import APIError, { ErrorType } from "./api-error";
 
 export {
   APIError,

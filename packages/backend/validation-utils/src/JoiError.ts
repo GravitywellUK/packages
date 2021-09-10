@@ -9,7 +9,7 @@ import * as Joi from "joi";
  *
  * @param error
  */
-export default class AwsError extends APIError<null> {
+export default class JoiError extends APIError<null> {
 
   constructor(err: Joi.ValidationError) {
     const param = { details: err.details };

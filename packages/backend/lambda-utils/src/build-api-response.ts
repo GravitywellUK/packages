@@ -18,19 +18,13 @@ export const buildApiResponse = <D extends unknown>(
   event: CustomAPIGatewayProxyEvent, _context: Context, data: D | APIError<unknown> | Error
 ): APIGatewayProxyResult => {
   // handle a none api error exception
-  if (data instanceof APIError) {
-    const formattedError = APIError.formatApiError(data);
+  if (data instanceof Error) {
+    const errorData = data instanceof APIError ? data : new APIError(data.message);
+    const { statusCode, ...formattedError } = APIError.formatApiError(errorData);
 
     return {
-      statusCode: formattedError.statusCode,
-      body: JSON.stringify({ error: R.omit([ "statusCode" ], formattedError) })
-    };
-  } else if (data instanceof Error) {
-    const formattedError = APIError.formatApiError(new APIError(data.message));
-
-    return {
-      statusCode: formattedError.statusCode,
-      body: JSON.stringify({ error: R.omit([ "statusCode" ], formattedError) })
+      statusCode,
+      body: JSON.stringify({ error: formattedError })
     };
   } else {
     // Set the JSON response
