@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "description": "Sequelize utilities",
   "author": "GravitywellUK <technical@gravitywell.co.uk>",
-  "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/backend/lambda-utils",
+  "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/backend/sequelize-utils",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
