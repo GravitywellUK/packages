@@ -94,7 +94,13 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
 
   return (
     <Wrapper display={display}>
-      <StyledButton ref={ref} {...props} className={`${className} ${props.isSelected ? " selected" : ""}`} disabled={props.loading || props.disabled} reverse={iconAlign}>
+      <StyledButton
+        ref={ref}
+        {...props}
+        className={`${className} ${props.isSelected ? " selected" : ""}`}
+        disabled={props.loading || props.disabled}
+        reverse={iconAlign}
+      >
         <Text>
           {label}
         </Text>
