@@ -1,6 +1,6 @@
 {
   "name": "@gravitywelluk/error",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "> Base error class for better error handling",
   "author": "GravitywellUK <technical@gravitywell.co.uk>",
   "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/backend/error",

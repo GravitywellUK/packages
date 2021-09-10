@@ -1,6 +1,6 @@
 {
   "name": "@gravitywelluk/email-generator",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A library to help generate email templates",
   "author": "GravitywellUK <technical@gravitywell.co.uk>",
   "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/backend/email-generator",
