@@ -12,13 +12,16 @@
       "path": "../validation-utils"
     },
     {
+      "path": "../error"
+    },
+    {
       "path": "../aws"
     },
     {
       "path": "../../shared/debug"
     },
     {
-      "path": "../json-api-error"
+      "path": "../error"
     }
   ],
   "include": [ "./src" ],

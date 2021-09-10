@@ -1,9 +1,9 @@
 {
   "name": "@gravitywelluk/sequelize-utils",
-  "version": "1.0.12",
+  "version": "2.0.0",
   "description": "Sequelize utilities",
   "author": "GravitywellUK <technical@gravitywell.co.uk>",
-  "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/backend/lambda-utils",
+  "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/backend/sequelize-utils",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -19,7 +19,7 @@
   ],
   "dependencies": {
     "@gravitywelluk/debug": "^1.0.29",
-    "@gravitywelluk/json-api-error": "^1.0.30",
+    "@gravitywelluk/error": "^1.0.0",
     "ramda": "^0.27.1"
   },
   "devDependencies": {

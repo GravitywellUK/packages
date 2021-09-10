@@ -1,6 +1,6 @@
 import type AWSModule from "aws-sdk";
 
-import { awsError } from "../../utils";
+import { AwsError } from "../../utils";
 
 /**
  * List the Cognito groups
@@ -18,10 +18,7 @@ export const cognitoListGroups = async (cognitoServiceProvider: AWSModule.Cognit
     // If groups are returned in the response, collate the group names
     cognitoGroups = cognitoGroupList.Groups ? cognitoGroupList.Groups.map(group => group.GroupName).filter(groupName => typeof groupName === "string") as string[] : [];
   } catch (error) {
-    throw awsError(error, {
-      environment: process.env.ENVIRONMENT,
-      functionName: "updateCognitoUserGroups"
-    });
+    throw new AwsError(error as AWS.AWSError);
   }
 
   return cognitoGroups;

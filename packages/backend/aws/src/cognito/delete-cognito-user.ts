@@ -1,9 +1,9 @@
 import * as Joi from "joi";
-import { jsonApiError } from "@gravitywelluk/json-api-error";
 import type AWSModule from "aws-sdk";
+import { JoiError } from "@gravitywelluk/validation-utils";
 
-import { awsError } from "../utils";
 import { cognitoConfigure } from "./cognito-configure";
+import { AwsError } from "../utils/aws-error";
 
 export interface DeleteCognitoUserParams {
   userPoolId: string;
@@ -28,7 +28,7 @@ export const deleteCognitoUser = async (
 
   // Error if there any Joi validation errors
   if (error) {
-    throw jsonApiError(error);
+    throw new JoiError(error);
   }
   const cognito = cognitoConfigure(awsCognitoConfigOverrides);
 
@@ -41,9 +41,6 @@ export const deleteCognitoUser = async (
 
     return deleteResponse;
   } catch (error) {
-    throw awsError(error, {
-      environment: process.env.ENVIRONMENT,
-      functionName: "deleteCognitoUser"
-    });
+    throw new AwsError(error as AWS.AWSError);
   }
 };

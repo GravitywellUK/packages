@@ -1,9 +1,9 @@
 import * as Joi from "joi";
-import { jsonApiError } from "@gravitywelluk/json-api-error";
 import type AWSModule from "aws-sdk";
+import { JoiError } from "@gravitywelluk/validation-utils";
 
-import { awsError } from "../utils";
 import { s3Configure } from "./s3-configure";
+import { AwsError } from "../utils/aws-error";
 
 export interface PutS3ObjectParams {
   bucket: string;
@@ -34,7 +34,7 @@ export const putObjectToS3 = async (
 
   // Error if there any Joi validation errors
   if (error) {
-    throw jsonApiError(error);
+    throw new JoiError(error);
   }
 
   key = putObjectParams.path;
@@ -51,9 +51,6 @@ export const putObjectToS3 = async (
       Body: putObjectParams.body
     }).promise();
   } catch (error) {
-    throw awsError(error, {
-      environment: process.env.ENVIRONMENT,
-      functionName: "putObjectToS3"
-    });
+    throw new AwsError(error as AWS.AWSError);
   }
 };

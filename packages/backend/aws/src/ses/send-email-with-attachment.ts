@@ -4,13 +4,9 @@ import {
   SendMailOptions,
   SentMessageInfo
 } from "nodemailer";
-import {
-  jsonApiError,
-  ERROR_CODE_ENUM
-} from "@gravitywelluk/json-api-error";
 
-import { awsError } from "../utils";
 import { sesConfigure } from "./ses-configure";
+import { AwsError } from "../utils/aws-error";
 
 /**
    * sends a templated email
@@ -30,10 +26,7 @@ export const sendEmailWithAttachment = (
     try {
       ses = sesConfigure(configOverrides);
     } catch (error) {
-      return reject(awsError(error, {
-        environment: process.env.ENVIRONMENT,
-        functionName: "sendEmailWithAttachment"
-      }));
+      return reject(new AwsError(error as AWS.AWSError));
     }
 
     try {
@@ -43,23 +36,13 @@ export const sendEmailWithAttachment = (
       // Send email
       transporter.sendMail(mailOptions, (error: Error | null, info: SentMessageInfo) => {
         if (error) {
-          return reject(jsonApiError({
-            status: 500,
-            title: "ERROR transporter sending email",
-            details: JSON.stringify(error),
-            code: ERROR_CODE_ENUM.API_ERROR
-          }));
+          return reject(new Error("Error transporter sending email"));
         } else {
           return resolve(info);
         }
       });
     } catch (error) {
-      return reject(jsonApiError({
-        status: 500,
-        title: "ERROR sending email",
-        details: JSON.stringify(error),
-        code: ERROR_CODE_ENUM.API_ERROR
-      }));
+      return reject(error);
     }
   });
 };

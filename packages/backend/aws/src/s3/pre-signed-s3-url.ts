@@ -1,9 +1,9 @@
 import * as Joi from "joi";
-import { jsonApiError } from "@gravitywelluk/json-api-error";
 import { $enum } from "ts-enum-util";
 import type AWSModule from "aws-sdk";
+import { JoiError } from "@gravitywelluk/validation-utils";
 
-import { awsError } from "../utils";
+import { AwsError } from "../utils/aws-error";
 import {
   s3Configure,
   S3Level
@@ -43,7 +43,7 @@ export const preSignedS3Url = async (
 
   // Error if there any Joi validation errors
   if (error) {
-    throw jsonApiError(error);
+    throw new JoiError(error);
   }
 
   key = signedUrlParams.path;
@@ -71,9 +71,6 @@ export const preSignedS3Url = async (
       level: signedUrlParams.level
     };
   } catch (error) {
-    throw awsError(error, {
-      environment: process.env.ENVIRONMENT,
-      functionName: "getSignedS3Url"
-    });
+    throw new AwsError(error as AWS.AWSError);
   }
 };

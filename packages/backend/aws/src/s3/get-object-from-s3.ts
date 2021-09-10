@@ -2,12 +2,12 @@
 import type stream from "stream";
 
 import * as Joi from "joi";
-import { jsonApiError } from "@gravitywelluk/json-api-error";
 import { PromiseResult } from "aws-sdk/lib/request";
 import type AWSModule from "aws-sdk";
+import { JoiError } from "@gravitywelluk/validation-utils";
 
-import { awsError } from "../utils";
 import { s3Configure } from "./s3-configure";
+import { AwsError } from "../utils/aws-error";
 
 interface GetObjectFromS3 {
   (asStream: true, getObjectParams: GetS3ObjectParams, awsS3ConfigOverrides?: AWSModule.S3.ClientConfiguration): Promise<stream.Readable>;
@@ -37,7 +37,7 @@ export const getObjectFromS3: GetObjectFromS3 = async (asStream, getObjectParams
 
   // Error if there any Joi validation errors
   if (error) {
-    throw jsonApiError(error);
+    throw new JoiError(error);
   }
 
   // Return the S3 file as a stream
@@ -54,9 +54,6 @@ export const getObjectFromS3: GetObjectFromS3 = async (asStream, getObjectParams
       Key: getObjectParams.path
     }).promise();
   } catch (error) {
-    throw awsError(error, {
-      environment: process.env.ENVIRONMENT,
-      functionName: "getObjectFromS3"
-    });
+    throw new AwsError(error as AWS.AWSError);
   }
 };

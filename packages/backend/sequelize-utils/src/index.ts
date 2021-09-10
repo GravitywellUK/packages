@@ -2,5 +2,5 @@ export {
   BaseModel,
   Models
 } from "./base-model";
-export { sequelizeError } from "./sequelize-error";
+export { default as SequelizeError } from "./sequelize-error";
 export * from "./filter-aliases";

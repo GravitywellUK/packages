@@ -1,7 +1,7 @@
 import * as AWS from "aws-sdk";
 
-import { awsError } from "../utils";
 import { sesV2Configure } from "./sesv2-configure";
+import { AwsError } from "../utils/aws-error";
 
 /**
    * Send a templated email in batch to users
@@ -21,9 +21,6 @@ export const batchSendEmail = async (
   try {
     return await ses.sendBulkEmail(sendBulkParams).promise();
   } catch (error) {
-    throw awsError(error, {
-      environment: process.env.ENVIRONMENT,
-      functionName: "batchSendEmail"
-    });
+    throw new AwsError(error as AWS.AWSError);
   }
 };

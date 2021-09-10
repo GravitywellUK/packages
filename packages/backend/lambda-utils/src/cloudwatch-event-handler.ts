@@ -40,7 +40,7 @@ export const cloudwatchEventHandler = (handler: Handler, options?: Pick<LambdaOp
         await options.cleanup();
       }
 
-      callback(error);
+      callback(error as Error);
 
       return;
     }

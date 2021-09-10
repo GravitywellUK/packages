@@ -44,7 +44,7 @@ export const scheduledEventHandler = <TDetail extends unknown>(handler: Schedule
         await options.cleanup();
       }
 
-      return callback(error);
+      return callback(error as Error);
     }
   };
 };

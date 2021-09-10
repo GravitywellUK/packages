@@ -1,20 +1,25 @@
 import {
-  JSONApiErrorJSON,
-  ERROR_CODE_ENUM,
-  jsonApiError
-} from "@gravitywelluk/json-api-error";
+  APIError,
+  ErrorType
+} from "@gravitywelluk/error";
+import * as AWS from "aws-sdk";
 
 /**
+ * Aws error class extension
  *
  * @param error
  * @param meta
  */
-export default (error: AWS.AWSError, meta?: JSONApiErrorJSON["meta"]): ReturnType<typeof jsonApiError> => {
-  return jsonApiError({
-    status: error.statusCode as number,
-    code: ERROR_CODE_ENUM.THIRD_PARTY_ERROR,
-    title: `AWS error (${error.statusCode} - ${error.code})`,
-    details: error.message,
-    meta
-  });
-};
+export class AwsError extends APIError<string> {
+
+  constructor(err: AWS.AWSError) {
+    const param = {
+      region: err.region,
+      requestId: err.requestId
+
+    };
+
+    super(err.message, ErrorType.ThirdPartyError, err.code, param);
+  }
+
+}
