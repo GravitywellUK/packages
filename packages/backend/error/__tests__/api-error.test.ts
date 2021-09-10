@@ -25,7 +25,7 @@ describe("@gravitywelluk/error package tests", () => {
   });
 
   test("Correctly handles a params object", () => {
-    const testParams = undefined;
+    const testParams = { test: "hello" };
     const errorObject = APIError.formatApiError(new APIError<null>("Test unknown error", ErrorType.ApiError, null, testParams));
 
     expect(errorObject.param).toMatchObject(testParams);
