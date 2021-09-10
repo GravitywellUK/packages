@@ -31,7 +31,7 @@ export const buildApiResponse = <D extends unknown>(
     return {
       statusCode: 200,
       headers: {
-        "Content-Type": "application/vnd.api+json",
+        "Content-Type": "application/json",
         "Access-Control-Allow-Origin": event.headers && event.headers.origin ? event.headers.origin : "*",
         "Access-Control-Allow-Credentials": true
       },
