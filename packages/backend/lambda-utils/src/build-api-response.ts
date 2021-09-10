@@ -3,6 +3,7 @@ import {
   Context
 } from "aws-lambda";
 import { APIError } from "@gravitywelluk/error";
+import * as R from "ramda";
 
 import { CustomAPIGatewayProxyEvent } from "./gateway-proxy-handler";
 
@@ -22,14 +23,14 @@ export const buildApiResponse = <D extends unknown>(
 
     return {
       statusCode: formattedError.statusCode,
-      body: JSON.stringify(formattedError)
+      body: JSON.stringify({ error: R.omit([ "statusCode" ], formattedError) })
     };
   } else if (data instanceof Error) {
     const formattedError = APIError.formatApiError(new APIError(data.message));
 
     return {
       statusCode: formattedError.statusCode,
-      body: JSON.stringify(formattedError)
+      body: JSON.stringify({ error: R.omit([ "statusCode" ], formattedError) })
     };
   } else {
     // Set the JSON response

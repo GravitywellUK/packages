@@ -34,3 +34,17 @@ throw new DecarbError(
   ErrorCode.UserNotAllowed
 );
 ```
+
+## Example error api response format
+
+```json
+{
+  "statusCode": 404,
+  "body": {
+    "error": {
+      "message": "User not found",
+      "type": "NOT_FOUND_ERROR"
+    }
+  }
+}
+```
