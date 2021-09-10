@@ -2032,7 +2032,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gravitywelluk/aws@^1.0.23, @gravitywelluk/aws@workspace:packages/backend/aws":
+"@gravitywelluk/aws@npm:^1.0.23":
+  version: 1.0.23
+  resolution: "@gravitywelluk/aws@npm:1.0.23"
+  dependencies:
+    "@gravitywelluk/json-api-error": ^1.0.30
+    aws-xray-sdk-core: ^3.3.3
+    joi: ^17.4.2
+    nodemailer: ^6.6.3
+    ramda: ^0.27.1
+    ts-enum-util: ^4.0.2
+  peerDependencies:
+    aws-sdk: ^2.694.0
+  checksum: 3441bad4e784ca49b8b53f68cda08e31e36b49e7766cb456946a02768d36106f7787f378574516e4963a316d30541ec83b2df676b73ac6614179aa7271d41dc8
+  languageName: node
+  linkType: hard
+
+"@gravitywelluk/aws@workspace:packages/backend/aws":
   version: 0.0.0-use.local
   resolution: "@gravitywelluk/aws@workspace:packages/backend/aws"
   dependencies:

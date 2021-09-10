@@ -1,8 +1,8 @@
 import * as Joi from "joi";
 import { jsonApiError } from "@gravitywelluk/json-api-error";
-import * as AWS from "aws-sdk";
+import type AWSModule from "aws-sdk";
 
-import { awsError } from "../utils/aws-error";
+import { awsError } from "../utils";
 import { s3Configure } from "./s3-configure";
 
 export interface DeleteS3ObjectParams {
@@ -10,24 +10,33 @@ export interface DeleteS3ObjectParams {
   bucket: string;
 }
 
-export const deleteObjectFromS3 = async (deleteObjectParams: DeleteS3ObjectParams, configOverrides: AWS.S3.ClientConfiguration = {}) => {
+/**
+ * Deletes an object from AWS S3
+ *
+ * @param deleteObjectParams - The parameters required to delete the object from S3
+ * @param awsS3ConfigOverrides - Configuration option overrides
+ */
+export const deleteObjectFromS3 = async (
+  deleteObjectParams: DeleteS3ObjectParams,
+  awsS3ConfigOverrides: AWSModule.S3.ClientConfiguration = {}
+): Promise<AWSModule.S3.DeleteObjectOutput> => {
+  const s3 = s3Configure(awsS3ConfigOverrides);
+
   const { error } = Joi.object({
     bucket: Joi.string().required(),
     key: Joi.string().required()
   }).unknown(true).validate(deleteObjectParams);
 
+  // Error if there any Joi validation errors
   if (error) {
     throw jsonApiError(error);
   }
-  const s3 = s3Configure(configOverrides);
 
   try {
-    await s3.deleteObject({
+    return await s3.deleteObject({
       Bucket: deleteObjectParams.bucket,
       Key: deleteObjectParams.key
     }).promise();
-
-    return;
   } catch (error) {
     throw awsError(error, {
       environment: process.env.ENVIRONMENT,

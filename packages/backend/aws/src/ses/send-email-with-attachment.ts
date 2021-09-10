@@ -9,7 +9,7 @@ import {
   ERROR_CODE_ENUM
 } from "@gravitywelluk/json-api-error";
 
-import { awsError } from "../utils/aws-error";
+import { awsError } from "../utils";
 import { sesConfigure } from "./ses-configure";
 
 /**
