@@ -2032,12 +2032,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gravitywelluk/aws@^2.0.0, @gravitywelluk/aws@workspace:packages/backend/aws":
+"@gravitywelluk/aws@^2.0.1, @gravitywelluk/aws@workspace:packages/backend/aws":
   version: 0.0.0-use.local
   resolution: "@gravitywelluk/aws@workspace:packages/backend/aws"
   dependencies:
-    "@gravitywelluk/error": ^1.0.0
-    "@gravitywelluk/validation-utils": ^2.0.0
+    "@gravitywelluk/error": ^1.0.1
+    "@gravitywelluk/validation-utils": ^2.0.1
     "@types/hapi__joi": ^17.1.7
     "@types/nodemailer": ^6.4.4
     "@types/ramda": ^0.27.44
@@ -2069,7 +2069,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gravitywelluk/error@1.0.0, @gravitywelluk/error@^1.0.0, @gravitywelluk/error@workspace:packages/backend/error":
+"@gravitywelluk/error@^1.0.1, @gravitywelluk/error@workspace:packages/backend/error":
   version: 0.0.0-use.local
   resolution: "@gravitywelluk/error@workspace:packages/backend/error"
   dependencies:
@@ -2134,8 +2134,8 @@ __metadata:
   resolution: "@gravitywelluk/lambda-utils@workspace:packages/backend/lambda-utils"
   dependencies:
     "@gravitywelluk/debug": ^1.0.29
-    "@gravitywelluk/error": ^1.0.0
-    "@gravitywelluk/validation-utils": ^2.0.0
+    "@gravitywelluk/error": ^1.0.1
+    "@gravitywelluk/validation-utils": ^2.0.1
     "@sentry/node": ^6.11.0
     "@serverless/event-mocks": ^1.1.1
     "@types/aws-lambda": ^8.10.82
@@ -2215,12 +2215,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gravitywelluk/sequelize-utils@^2.0.0, @gravitywelluk/sequelize-utils@workspace:packages/backend/sequelize-utils":
+"@gravitywelluk/sequelize-utils@^2.0.1, @gravitywelluk/sequelize-utils@workspace:packages/backend/sequelize-utils":
   version: 0.0.0-use.local
   resolution: "@gravitywelluk/sequelize-utils@workspace:packages/backend/sequelize-utils"
   dependencies:
     "@gravitywelluk/debug": ^1.0.29
-    "@gravitywelluk/error": ^1.0.0
+    "@gravitywelluk/error": ^1.0.1
     "@types/ramda": ^0.27.44
     pg-hstore: ^2.3.4
     ramda: ^0.27.1
@@ -2235,11 +2235,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@gravitywelluk/serverless-queue@workspace:packages/backend/serverless-queue"
   dependencies:
-    "@gravitywelluk/aws": ^2.0.0
+    "@gravitywelluk/aws": ^2.0.1
     "@gravitywelluk/debug": ^1.0.29
-    "@gravitywelluk/error": ^1.0.0
-    "@gravitywelluk/sequelize-utils": ^2.0.0
-    "@gravitywelluk/validation-utils": ^2.0.0
+    "@gravitywelluk/error": ^1.0.1
+    "@gravitywelluk/sequelize-utils": ^2.0.1
+    "@gravitywelluk/validation-utils": ^2.0.1
     "@sentry/node": ^6.11.0
     "@types/aws-lambda": ^8.10.82
     "@types/ramda": ^0.27.44
@@ -2261,11 +2261,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gravitywelluk/validation-utils@^2.0.0, @gravitywelluk/validation-utils@workspace:packages/backend/validation-utils":
+"@gravitywelluk/validation-utils@^2.0.1, @gravitywelluk/validation-utils@workspace:packages/backend/validation-utils":
   version: 0.0.0-use.local
   resolution: "@gravitywelluk/validation-utils@workspace:packages/backend/validation-utils"
   dependencies:
-    "@gravitywelluk/error": 1.0.0
+    "@gravitywelluk/error": ^1.0.1
     joi: ^17.4.2
   languageName: unknown
   linkType: soft
