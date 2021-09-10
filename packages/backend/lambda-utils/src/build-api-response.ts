@@ -3,7 +3,6 @@ import {
   Context
 } from "aws-lambda";
 import { APIError } from "@gravitywelluk/error";
-import * as R from "ramda";
 
 import { CustomAPIGatewayProxyEvent } from "./gateway-proxy-handler";
 
