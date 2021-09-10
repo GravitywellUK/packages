@@ -1,3 +1,6 @@
-import APIError from "./ApiError";
+import APIError, { ErrorType } from "./ApiError";
 
-export { APIError };
+export {
+  APIError,
+  ErrorType
+};

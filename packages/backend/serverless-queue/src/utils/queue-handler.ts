@@ -1,5 +1,4 @@
 import { SQSHandler } from "aws-lambda";
-import { jsonApiError } from "@gravitywelluk/json-api-error";
 import * as R from "ramda";
 
 import {
@@ -35,7 +34,7 @@ export const queueHandler: <M extends QueueModels = QueueModels>(models: M, jobs
       try {
         records.push(JSON.parse(record.body));
       } catch (error) {
-        throw jsonApiError(error);
+        throw new Error("Failed to parse SQS queue record body");
       }
     }
   } else {
@@ -43,29 +42,25 @@ export const queueHandler: <M extends QueueModels = QueueModels>(models: M, jobs
   }
 
   for (const record of records) {
-    try {
-      // handles the full run of the process job ran
+    // handles the full run of the process job ran
 
-      await processJob(models, {
-        data: record.data,
-        queueJobId: record.processJobId
-      }, async processJobObject => {
-        const job = R.find(jobName => jobName === processJobObject.name, R.keys(jobs));
+    await processJob(models, {
+      data: record.data,
+      queueJobId: record.processJobId
+    }, async processJobObject => {
+      const job = R.find(jobName => jobName === processJobObject.name, R.keys(jobs));
 
-        if (!job) {
-          return {
-            status: QueueJobStatus.ERROR,
-            jobResultData: null,
-            statusMessage: "No job exists by that name"
-          };
-        }
+      if (!job) {
+        return {
+          status: QueueJobStatus.ERROR,
+          jobResultData: null,
+          statusMessage: "No job exists by that name"
+        };
+      }
 
-        const result = await jobs[ job ](processJobObject);
+      const result = await jobs[ job ](processJobObject);
 
-        return result;
-      });
-    } catch (error) {
-      throw jsonApiError(error);
-    }
+      return result;
+    });
   }
 };

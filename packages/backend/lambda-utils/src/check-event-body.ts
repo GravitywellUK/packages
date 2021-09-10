@@ -1,9 +1,8 @@
 import Joi from "joi";
-import {
-  jsonApiError,
-  ERROR_CODE_ENUM
-} from "@gravitywelluk/json-api-error";
-import * as R from "ramda";
+import { APIError } from "@gravitywelluk/error";
+import { JoiError } from "@gravitywelluk/validation-utils";
+
+import { ErrorType } from "../../error/src/ApiError";
 
 /**
  * Takes an aws gateway proxy event and returns the valid response object
@@ -22,24 +21,13 @@ export const checkEventBody = <T extends Record<string, any>, S extends {[K: str
   try {
     result = JSON.parse(body);
   } catch (error) {
-    throw jsonApiError({
-      status: 400,
-      title: "Invalid request body",
-      details: "Request body could not be formatted!",
-      code: ERROR_CODE_ENUM.INVALID_DATA_ERROR
-    });
+    throw new APIError("Request body could not be formatted!", ErrorType.InvalidData);
   }
 
   const { error, value } = Joi.object(validation).validate(result);
 
   if (error) {
-    throw jsonApiError({
-      status: 400,
-      title: "Invalid request body",
-      details: error.message,
-      code: ERROR_CODE_ENUM.INVALID_DATA_ERROR,
-      source: { pointer: R.join("|", R.map(detail => detail.path, error.details)) }
-    });
+    throw new JoiError(error);
   }
 
   return value;

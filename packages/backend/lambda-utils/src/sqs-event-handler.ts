@@ -44,7 +44,7 @@ export const sqsEventHandler = (handler: SQSHandler, options?: Pick<LambdaOption
         await options.cleanup();
       }
 
-      return callback(error);
+      return callback(error as Error);
     }
   };
 };

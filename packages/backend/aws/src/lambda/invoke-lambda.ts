@@ -1,7 +1,7 @@
 import type AWSModule from "aws-sdk";
 
-import { awsError } from "../utils";
 import { lambdaConfigure } from "./lambda-configure";
+import { AwsError } from "../utils";
 
 /**
  * Invokes a Lambda function.
@@ -22,9 +22,6 @@ export const invokeLambda = async (
   try {
     return await lambda.invoke(invokeParams).promise();
   } catch (error) {
-    throw awsError(error, {
-      environment: process.env.ENVIRONMENT,
-      functionName: "invokeLambda"
-    });
+    throw new AwsError(error as AWS.AWSError);
   }
 };

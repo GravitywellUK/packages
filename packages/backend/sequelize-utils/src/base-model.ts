@@ -1,10 +1,11 @@
 import {
   Model,
   FindOptions,
-  Sequelize
+  Sequelize,
+  BaseError
 } from "sequelize";
 
-import { sequelizeError } from "./sequelize-error";
+import SequelizeError from "./sequelize-error";
 
 export type Models = { sequelize: Sequelize };
 
@@ -24,7 +25,10 @@ export class BaseModel<T1 = any, T2 = any> extends Model<T1, T2> {
         rejectOnEmpty: true
       }) as M;
     } catch (error) {
-      throw sequelizeError(error, this.name);
+      if (error instanceof BaseError) {
+        throw new SequelizeError(error, this.name);
+      }
+      throw error;
     }
   }
 

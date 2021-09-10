@@ -40,7 +40,7 @@ export const s3TriggerHandler = (handler: S3Handler, options?: Pick<LambdaOption
         await options.cleanup();
       }
 
-      callback(error);
+      callback(error as Error);
 
       return;
     }

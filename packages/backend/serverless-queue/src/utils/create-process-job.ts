@@ -1,12 +1,10 @@
 import * as Sentry from "@sentry/node";
 import { Transaction } from "sequelize";
-import {
-  jsonApiError,
-  ERROR_CODE_ENUM
-} from "@gravitywelluk/json-api-error";
 import { addJobToQueue } from "@gravitywelluk/aws";
 import { createDebug } from "@gravitywelluk/debug";
 import Joi from "joi";
+import { JoiError } from "@gravitywelluk/validation-utils";
+import { APIError } from "@gravitywelluk/error";
 
 import {
   QueueJobAttributes,
@@ -50,7 +48,7 @@ export const createQueueJob = async <M extends QueueModels = QueueModels, T = un
       // At the moment, just one queue.
 
       if (error) {
-        throw jsonApiError(error);
+        throw new JoiError(error);
       }
     }
 
@@ -85,26 +83,14 @@ export const createQueueJob = async <M extends QueueModels = QueueModels, T = un
       createdQueueJob.set("status", QueueJobStatus.ERROR);
       createdQueueJob.set("statusMessage", "The job couldn't be added to the Queue.");
       await createdQueueJob.save({ transaction: config?.transaction });
-
-      throw jsonApiError({
-        title: "No job created",
-        details: error.toString(),
-        status: 500,
-        code: ERROR_CODE_ENUM.API_ERROR
-      });
+      throw error;
     }
 
     if (!job || !job.MessageId) {
       createdQueueJob.set("status", QueueJobStatus.ERROR);
       createdQueueJob.set("statusMessage", "The Queue job wasn't created correctly.");
       await createdQueueJob.save({ transaction: config?.transaction });
-
-      throw jsonApiError({
-        title: "No job created",
-        details: "Could not create job for unknown reason",
-        status: 500,
-        code: ERROR_CODE_ENUM.API_ERROR
-      });
+      throw new APIError("Could not create job for unknown reason");
     }
 
     try {
@@ -132,6 +118,6 @@ export const createQueueJob = async <M extends QueueModels = QueueModels, T = un
         }
       }
     });
-    throw jsonApiError(error);
+    throw error;
   }
 };

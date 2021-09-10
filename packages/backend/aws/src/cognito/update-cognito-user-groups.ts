@@ -1,10 +1,10 @@
 import * as Joi from "joi";
 import * as R from "ramda";
-import { jsonApiError } from "@gravitywelluk/json-api-error";
 import type AWSModule from "aws-sdk";
+import { JoiError } from "@gravitywelluk/validation-utils";
 
-import { awsError } from "../utils";
 import { cognitoConfigure } from "./cognito-configure";
+import { AwsError } from "../utils/aws-error";
 
 export interface UpdateCognitoGroupsParams {
   userPoolId: string;
@@ -35,7 +35,7 @@ export const updateCognitoUserGroup = async (
 
   // Error if there any Joi validation errors
   if (error) {
-    throw jsonApiError(error);
+    throw new JoiError(error);
   }
 
   // Get the current Cognito groups with the given user pool
@@ -46,10 +46,7 @@ export const updateCognitoUserGroup = async (
     // allCognitoGroups
     allCognitoGroups = cognitoGroupList.Groups ? cognitoGroupList.Groups.map(group => group.GroupName).filter(groupName => typeof groupName === "string") as string[] : [];
   } catch (error) {
-    throw awsError(error, {
-      environment: process.env.ENVIRONMENT,
-      functionName: "updateCognitoUserGroups"
-    });
+    throw new AwsError(error as AWS.AWSError);
   }
 
   // Validate that the given updateUserParams.groups match the allCognitoGroups
@@ -58,7 +55,7 @@ export const updateCognitoUserGroup = async (
   // Error if there any Joi validation errors regarding the given groups now
   // we have sight of the groups that can be chosen (allCognitoGroups)
   if (joiCognitoGroupsError) {
-    throw jsonApiError(joiCognitoGroupsError);
+    throw new JoiError(joiCognitoGroupsError);
   }
 
   try {
@@ -99,9 +96,6 @@ export const updateCognitoUserGroup = async (
 
     return finalCognitoUserGroupList as AWSModule.CognitoIdentityServiceProvider.GroupListType;
   } catch (error) {
-    throw awsError(error, {
-      environment: process.env.ENVIRONMENT,
-      functionName: "matchCognitoGroups"
-    });
+    throw new AwsError(error as AWS.AWSError);
   }
 };

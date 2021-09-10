@@ -1,7 +1,5 @@
-import { jsonApiError } from "@gravitywelluk/json-api-error";
-
-import { awsError } from "../utils";
 import { sqsConfigure } from "./sqs-configure";
+import { AwsError } from "../utils/aws-error";
 
 /**
    * Get a queue url
@@ -16,16 +14,13 @@ export const getQueueUrl = (queueName: string, configOverrides = {}): Promise<st
 
       awsSQS.getQueueUrl({ QueueName: queueName }, (error, data) => {
         if (error) {
-          return reject(awsError(error, {
-            environment: process.env.ENVIRONMENT,
-            functionName: "getQueueUrl"
-          }));
+          return reject(new AwsError(error));
         }
 
         return resolve(data.QueueUrl || "");
       });
     } catch (error) {
-      return reject(jsonApiError(error));
+      return reject(error);
     }
   });
 };

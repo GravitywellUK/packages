@@ -1,9 +1,9 @@
 import * as Joi from "joi";
-import { jsonApiError } from "@gravitywelluk/json-api-error";
 import type AWSModule from "aws-sdk";
+import { JoiError } from "@gravitywelluk/validation-utils";
 
-import { awsError } from "../utils";
 import { s3Configure } from "./s3-configure";
+import { AwsError } from "../utils/aws-error";
 
 export interface UploadS3ObjectParams {
   path: string;
@@ -34,7 +34,7 @@ export const uploadObjectToS3 = async (
 
   // Error if there any Joi validation errors
   if (error) {
-    throw jsonApiError(error);
+    throw new JoiError(error);
   }
 
   key = uploadObjectParams.path;
@@ -51,9 +51,6 @@ export const uploadObjectToS3 = async (
       Body: uploadObjectParams.body
     }).promise();
   } catch (error) {
-    throw awsError(error, {
-      environment: process.env.ENVIRONMENT,
-      functionName: "uploadObjectToS3"
-    });
+    throw new AwsError(error as AWS.AWSError);
   }
 };

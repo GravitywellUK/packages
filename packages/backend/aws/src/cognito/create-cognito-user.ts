@@ -1,9 +1,9 @@
 import * as Joi from "joi";
-import { jsonApiError } from "@gravitywelluk/json-api-error";
 import type AWSModule from "aws-sdk";
+import { JoiError } from "@gravitywelluk/validation-utils";
 
-import { awsError } from "../utils";
 import { cognitoConfigure } from "./cognito-configure";
+import { AwsError } from "../utils/aws-error";
 
 export interface CreateCognitoUserParams {
   userPoolId: string;
@@ -37,7 +37,7 @@ export const createCognitoUser = async (
 
   // Error if there any Joi validation errors
   if (error) {
-    throw jsonApiError(error);
+    throw new JoiError(error);
   }
 
   // If createUserParams.groups are provided, get the current Cognito groups
@@ -50,10 +50,7 @@ export const createCognitoUser = async (
       // allCognitoGroups
       allCognitoGroups = cognitoGroupList.Groups ? cognitoGroupList.Groups.map(group => group.GroupName).filter(groupName => typeof groupName === "string") as string[] : [];
     } catch (error) {
-      throw awsError(error, {
-        environment: process.env.ENVIRONMENT,
-        functionName: "createCognitoUser"
-      });
+      throw new AwsError(error as AWS.AWSError);
     }
 
     // Validate that the given createUserParams.groups match the allCognitoGroups
@@ -62,7 +59,7 @@ export const createCognitoUser = async (
     // Error if there any Joi validation errors regarding the given groups now
     // we have sight of the groups that can be chosen (allCognitoGroups)
     if (joiCognitoGroupsError) {
-      throw jsonApiError(joiCognitoGroupsError);
+      throw new JoiError(joiCognitoGroupsError);
     }
   }
 
@@ -99,9 +96,6 @@ export const createCognitoUser = async (
 
     return User as AWSModule.CognitoIdentityServiceProvider.UserType;
   } catch (error) {
-    throw awsError(error, {
-      environment: process.env.ENVIRONMENT,
-      functionName: "createCognitoUser"
-    });
+    throw new AwsError(error as AWS.AWSError);
   }
 };

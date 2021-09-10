@@ -1,66 +1,40 @@
 import * as Sequelize from "sequelize/types";
 import {
-  JSONApiErrorStatic,
-  jsonApiError,
-  ERROR_CODE_ENUM,
-  JSONApiErrorJSON
-} from "@gravitywelluk/json-api-error";
+  APIError,
+  ErrorType
+} from "@gravitywelluk/error";
 
-interface SequelizeBaseError extends Sequelize.BaseError { details?: string }
+export enum SequelizeErrorCode {
+  UniqueConstraintError = "unique_constraint"
+}
+
 /**
- * Custom error handler for sequelize
+ * Custom error class for sequelize
  *
- * Creates a JSON API error response from any sequelize error
+ * Creates an error response from any sequelize error in our error format
  *
- * @param err - An Error
+ * @param err - An Error of some type from sequelize
+ * @param entityName - the name of the model the error relates to if applicable
  */
-export const sequelizeError = (err: SequelizeBaseError | Sequelize.UniqueConstraintError | JSONApiErrorStatic, entityName?: string): JSONApiErrorStatic => {
-  let errMsg = "";
+export default class SequelizeError extends APIError<SequelizeErrorCode> {
 
-  // If already a JSONApi error, just return it.
-  if (JSONApiErrorStatic.isJSONApiError(err)) {
-    return err as JSONApiErrorStatic;
-  }
+  constructor(err: Sequelize.BaseError | Sequelize.UniqueConstraintError, entityName?: string) {
+    let code;
+    let param: Record<string, unknown> = {};
+    let type;
 
-  // Handle the error according to their type
-  switch (err.name) {
-    case "SequelizeUniqueConstraintError": {
-      const valErr = err as Sequelize.UniqueConstraintError;
-      const source: JSONApiErrorJSON["source"] = { stack: err.stack };
-
-      // For each validation item in the errors array, output accordantly
-      valErr.errors.map(err => {
-        errMsg += `A record with the value of "${err.value}" already exists for "${err.value}". \n`;
-        source.pointer += `${err.path} |`;
-      });
-
-      return jsonApiError({
-        code: ERROR_CODE_ENUM.DATABASE_ERROR,
-        status: 409,
-        title: `${entityName} conflicts`,
-        details: errMsg,
-        source
-      });
-    }
-    case "SequelizeEmptyResultError": {
-      const valErr: Sequelize.EmptyResultError = err;
-
-      return jsonApiError({
-        code: ERROR_CODE_ENUM.NOT_FOUND_ERROR,
-        status: 404,
-        title: `${entityName || "Entity"} not found`,
-        details: valErr.message,
-        source: { stack: err.stack }
-      });
+    if (entityName) {
+      param.entity = entityName;
     }
 
-    default:
-      return jsonApiError({
-        code: ERROR_CODE_ENUM.DATABASE_ERROR,
-        status: 500,
-        title: err.name,
-        details: (err as SequelizeBaseError).details ? (err as SequelizeBaseError).details as string : err.message,
-        source: { stack: err.stack }
-      });
+    if (err instanceof Sequelize.UniqueConstraintError) {
+      param = Object.assign(param, err.fields);
+      code = SequelizeErrorCode.UniqueConstraintError;
+    } else if (err instanceof Sequelize.EmptyResultError) {
+      type = ErrorType.NotFoundError;
+    }
+
+    super(err.message, type || ErrorType.DatabaseError, code);
   }
-};
+
+}

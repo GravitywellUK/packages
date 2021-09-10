@@ -1,8 +1,8 @@
 import * as Joi from "joi";
-import { jsonApiError } from "@gravitywelluk/json-api-error";
 import type AWSModule from "aws-sdk";
+import { JoiError } from "@gravitywelluk/validation-utils";
 
-import { awsError } from "../utils";
+import { AwsError } from "../utils";
 import { s3Configure } from "./s3-configure";
 
 export interface DeleteS3ObjectParams {
@@ -29,7 +29,7 @@ export const deleteObjectFromS3 = async (
 
   // Error if there any Joi validation errors
   if (error) {
-    throw jsonApiError(error);
+    throw new JoiError(error);
   }
 
   try {
@@ -38,9 +38,6 @@ export const deleteObjectFromS3 = async (
       Key: deleteObjectParams.key
     }).promise();
   } catch (error) {
-    throw awsError(error, {
-      environment: process.env.ENVIRONMENT,
-      functionName: "deleteObjectFromS3"
-    });
+    throw new AwsError(error as AWS.AWSError);
   }
 };
