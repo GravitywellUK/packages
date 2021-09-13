@@ -1,6 +1,6 @@
 {
   "name": "@gravitywelluk/lambda-utils",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Lambda utilities",
   "author": "GravitywellUK <technical@gravitywell.co.uk>",
   "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/backend/lambda-utils",
