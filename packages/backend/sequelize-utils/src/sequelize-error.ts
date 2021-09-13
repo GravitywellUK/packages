@@ -1,4 +1,4 @@
-import * as Sequelize from "sequelize/types";
+import * as Sequelize from "sequelize";
 import {
   APIError,
   ErrorType
