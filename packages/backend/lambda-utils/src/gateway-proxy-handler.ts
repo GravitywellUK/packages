@@ -89,6 +89,8 @@ type HandlerAsync = (event: CustomAPIGatewayProxyEvent, context: Context) => Pro
 export type APIGatewayProxyHandlerAsync<TResult = unknown> = (event: CustomAPIGatewayProxyEvent, context: Context) => Promise<TResult>;
 
 export interface CustomAPIGatewayProxyEvent extends Omit<APIGatewayProxyEvent, "pathParameters" | "queryStringParameters"> {
-  pathParameters?: Record<string, unknown>;
-  queryStringParameters?: Record<string, unknown>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  pathParameters?: Record<string, any>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  queryStringParameters?: Record<string, any>;
 }
