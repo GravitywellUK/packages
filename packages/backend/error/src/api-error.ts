@@ -12,6 +12,7 @@ export enum ErrorType {
   DatabaseError = "DATABASE_ERROR",
   NotFoundError = "NOT_FOUND_ERROR",
   ThirdPartyError = "THIRD_PARTY_ERROR",
+  TooManyRequests = "TOO_MANY_REQUESTS",
   UnknownError = "UNKNOWN_ERROR"
 }
 
@@ -44,6 +45,40 @@ export default class APIError<C> extends Error {
   }
 
   /**
+   * Sets the ErrorType according to the given HTTP response statusCode
+   *
+   * @param statusCode - The statusCode of the HTTP response
+   */
+  public static httpStatusCodeToErrorType(statusCode: number): ErrorType {
+    switch (statusCode) {
+      case 400:
+        return ErrorType.InvalidData;
+
+      case 401:
+        return ErrorType.AuthenticationError;
+
+      case 403:
+        return ErrorType.ForbiddenError;
+
+      case 404:
+        return ErrorType.NotFoundError;
+
+      case 422:
+        return ErrorType.ApiConectionError;
+
+      case 429:
+        return ErrorType.TooManyRequests;
+
+      case 502:
+        return ErrorType.ApiConectionError;
+
+      case 500:
+      default:
+        return ErrorType.UnknownError;
+    }
+  }
+
+  /**
    * Helper function to format an error into an API response
    *
    * @param error
@@ -54,28 +89,32 @@ export default class APIError<C> extends Error {
 
     // work out the status code from the error type
     switch (error.type) {
-      case ErrorType.NotFoundError:
-        statusCode = 404;
+      case ErrorType.ThirdPartyError:
+      case ErrorType.ApiError:
+      case ErrorType.DatabaseError:
+        statusCode = 400;
+        break;
+
+      case ErrorType.AuthenticationError:
+        statusCode = 401;
         break;
       case ErrorType.ForbiddenError:
         statusCode = 403;
         break;
-      case ErrorType.AuthenticationError:
-        statusCode = 401;
-        break;
-
-      case ErrorType.ApiConectionError:
-        statusCode = 502;
+      case ErrorType.NotFoundError:
+        statusCode = 404;
         break;
 
       case ErrorType.InvalidData:
         statusCode = 422;
         break;
 
-      case ErrorType.ThirdPartyError:
-      case ErrorType.ApiError:
-      case ErrorType.DatabaseError:
-        statusCode = 400;
+      case ErrorType.TooManyRequests:
+        statusCode = 429;
+        break;
+
+      case ErrorType.ApiConectionError:
+        statusCode = 502;
         break;
 
       // default to a 500
