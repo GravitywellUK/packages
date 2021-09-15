@@ -1,6 +1,6 @@
 {
   "name": "@gravitywelluk/sequelize-utils",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Sequelize utilities",
   "author": "GravitywellUK <technical@gravitywell.co.uk>",
   "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/backend/sequelize-utils",
@@ -19,7 +19,7 @@
   ],
   "dependencies": {
     "@gravitywelluk/debug": "^1.0.29",
-    "@gravitywelluk/error": "^1.0.1",
+    "@gravitywelluk/error": "^1.0.2",
     "ramda": "^0.27.1"
   },
   "devDependencies": {

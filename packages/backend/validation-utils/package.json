@@ -1,6 +1,6 @@
 {
   "name": "@gravitywelluk/validation-utils",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Validation utilities",
   "author": "GravitywellUK <technical@gravitywell.co.uk>",
   "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/backend/validation-utils",
@@ -18,7 +18,7 @@
     "LICENSE"
   ],
   "dependencies": {
-    "@gravitywelluk/error": "^1.0.1",
+    "@gravitywelluk/error": "^1.0.2",
     "joi": "^17.4.2"
   },
   "publishConfig": {
