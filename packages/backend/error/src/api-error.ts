@@ -89,7 +89,6 @@ export default class APIError<C> extends Error {
       case ErrorType.ApiError:
       case ErrorType.DatabaseError:
         return 400;
-        break;
 
       case ErrorType.AuthenticationError:
         return 401;
