@@ -45,37 +45,20 @@ export default class APIError<C> extends Error {
   }
 
   /**
-   * Returns an ErrorType according to the given HTTP response statusCode
+   * Formats the given ApiError into a structured response
    *
-   * @param statusCode - The statusCode of the HTTP response
+   * @param error - The ApiError to output
    */
-  public static httpStatusCodeToErrorType(statusCode: number): ErrorType {
-    switch (statusCode) {
-      case 400:
-        return ErrorType.InvalidData;
+  public static formatApiError(error: APIError<unknown>): ApiErrorResponse {
+    const statusCode = this.errorTypeToHttpStatusCode(error.type);
 
-      case 401:
-        return ErrorType.AuthenticationError;
-
-      case 403:
-        return ErrorType.ForbiddenError;
-
-      case 404:
-        return ErrorType.NotFoundError;
-
-      case 422:
-        return ErrorType.ApiConectionError;
-
-      case 429:
-        return ErrorType.TooManyRequests;
-
-      case 502:
-        return ErrorType.ApiConectionError;
-
-      case 500:
-      default:
-        return ErrorType.UnknownError;
-    }
+    return {
+      statusCode,
+      message: error.message,
+      type: error.type,
+      code: error.code,
+      param: error.param
+    };
   }
 
   /**
@@ -83,7 +66,7 @@ export default class APIError<C> extends Error {
    *
    * @param errorType - An ApiError ErrorType
    */
-  public static errorTypeToHttpStatusCode(errorType: ErrorType): number {
+  protected static errorTypeToHttpStatusCode(errorType: ErrorType): number {
     switch (errorType) {
       case ErrorType.ThirdPartyError:
       case ErrorType.ApiError:
@@ -108,28 +91,9 @@ export default class APIError<C> extends Error {
       case ErrorType.ApiConectionError:
         return 502;
 
-      // default to a 500
       case ErrorType.UnknownError:
       default:
         return 500;
     }
   }
-
-  /**
-   * Formats the given ApiError into a structured response
-   *
-   * @param error - The ApiError to output
-   */
-  public static formatApiError(error: APIError<unknown>): ApiErrorResponse {
-    const statusCode = this.errorTypeToHttpStatusCode(error.type);
-
-    return {
-      statusCode,
-      message: error.message,
-      type: error.type,
-      code: error.code,
-      param: error.param
-    };
-  }
-
 }
