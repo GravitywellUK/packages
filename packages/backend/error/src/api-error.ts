@@ -45,7 +45,7 @@ export default class APIError<C> extends Error {
   }
 
   /**
-   * Sets the ErrorType according to the given HTTP response statusCode
+   * Returns an ErrorType according to the given HTTP response statusCode
    *
    * @param statusCode - The statusCode of the HTTP response
    */
@@ -79,50 +79,50 @@ export default class APIError<C> extends Error {
   }
 
   /**
-   * Helper function to format an error into an API response
+   * Returns a HTTP statusCode according to the given ErrorType
    *
-   * @param error
-   * @returns
+   * @param errorType - An ApiError ErrorType
    */
-  public static formatApiError(error: APIError<unknown>): ApiErrorResponse {
-    let statusCode = 500;
-
-    // work out the status code from the error type
-    switch (error.type) {
+  public static errorTypeToHttpStatusCode(errorType: ErrorType): number {
+    switch (errorType) {
       case ErrorType.ThirdPartyError:
       case ErrorType.ApiError:
       case ErrorType.DatabaseError:
-        statusCode = 400;
+        return 400;
         break;
 
       case ErrorType.AuthenticationError:
-        statusCode = 401;
-        break;
+        return 401;
+
       case ErrorType.ForbiddenError:
-        statusCode = 403;
-        break;
+        return 403;
+
       case ErrorType.NotFoundError:
-        statusCode = 404;
-        break;
+        return 404;
 
       case ErrorType.InvalidData:
-        statusCode = 422;
-        break;
+        return 422;
 
       case ErrorType.TooManyRequests:
-        statusCode = 429;
-        break;
+        return 429;
 
       case ErrorType.ApiConectionError:
-        statusCode = 502;
-        break;
+        return 502;
 
       // default to a 500
       case ErrorType.UnknownError:
       default:
-        statusCode = 500;
-        break;
+        return 500;
     }
+  }
+
+  /**
+   * Formats the given ApiError into a structured response
+   *
+   * @param error - The ApiError to output
+   */
+  public static formatApiError(error: APIError<unknown>): ApiErrorResponse {
+    const statusCode = this.errorTypeToHttpStatusCode(error.type);
 
     return {
       statusCode,
