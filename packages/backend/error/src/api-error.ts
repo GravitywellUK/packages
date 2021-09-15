@@ -12,6 +12,7 @@ export enum ErrorType {
   DatabaseError = "DATABASE_ERROR",
   NotFoundError = "NOT_FOUND_ERROR",
   ThirdPartyError = "THIRD_PARTY_ERROR",
+  TooManyRequests = "TOO_MANY_REQUESTS",
   UnknownError = "UNKNOWN_ERROR"
 }
 
@@ -44,46 +45,12 @@ export default class APIError<C> extends Error {
   }
 
   /**
-   * Helper function to format an error into an API response
+   * Formats the given ApiError into a structured response
    *
-   * @param error
-   * @returns
+   * @param error - The ApiError to output
    */
   public static formatApiError(error: APIError<unknown>): ApiErrorResponse {
-    let statusCode = 500;
-
-    // work out the status code from the error type
-    switch (error.type) {
-      case ErrorType.NotFoundError:
-        statusCode = 404;
-        break;
-      case ErrorType.ForbiddenError:
-        statusCode = 403;
-        break;
-      case ErrorType.AuthenticationError:
-        statusCode = 401;
-        break;
-
-      case ErrorType.ApiConectionError:
-        statusCode = 502;
-        break;
-
-      case ErrorType.InvalidData:
-        statusCode = 422;
-        break;
-
-      case ErrorType.ThirdPartyError:
-      case ErrorType.ApiError:
-      case ErrorType.DatabaseError:
-        statusCode = 400;
-        break;
-
-      // default to a 500
-      case ErrorType.UnknownError:
-      default:
-        statusCode = 500;
-        break;
-    }
+    const statusCode = this.errorTypeToHttpStatusCode(error.type);
 
     return {
       statusCode,
@@ -94,4 +61,39 @@ export default class APIError<C> extends Error {
     };
   }
 
+  /**
+   * Returns a HTTP statusCode according to the given ErrorType
+   *
+   * @param errorType - An ApiError ErrorType
+   */
+  protected static errorTypeToHttpStatusCode(errorType: ErrorType): number {
+    switch (errorType) {
+      case ErrorType.ThirdPartyError:
+      case ErrorType.ApiError:
+      case ErrorType.DatabaseError:
+        return 400;
+
+      case ErrorType.AuthenticationError:
+        return 401;
+
+      case ErrorType.ForbiddenError:
+        return 403;
+
+      case ErrorType.NotFoundError:
+        return 404;
+
+      case ErrorType.InvalidData:
+        return 422;
+
+      case ErrorType.TooManyRequests:
+        return 429;
+
+      case ErrorType.ApiConectionError:
+        return 502;
+
+      case ErrorType.UnknownError:
+      default:
+        return 500;
+    }
+  }
 }
