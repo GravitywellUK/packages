@@ -9,8 +9,8 @@ export const titleCaseFixtures = {
   },
   valid: {
     hello: "Hello",
-    sentence: "Double-check You are Well and That There is a Single Dog With an Apple",
-    stopWords: "Be Careful, You are a be to be Person and You Can Jump High.",
-    irish: "Hello my Name is John O'Brian and I am 32 Years Old. Don't You Know."
+    sentence: "Double-Check You Are Well and that There Is a Single Dog with an Apple",
+    stopWords: "Be Careful, You Are a Be to Be Person and You Can Jump High.",
+    irish: "Hello My Name Is John O'Brian and I Am 32 Years Old. Don't You Know."
   }
 };
