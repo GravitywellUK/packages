@@ -22,6 +22,9 @@
       "path": "packages/backend/error"
     },
     {
+      "path": "packages/backend/email-generator"
+    },
+    {
       "path": "packages/backend/lambda-utils"
     },
     {

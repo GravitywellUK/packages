@@ -1,6 +1,11 @@
 {
   "name": "@gravitywelluk/email-generator",
-  "version": "1.0.2",
+  "version": "1.0.5",
+  "keywords": [
+    "gravitywell",
+    "gravitywelluk",
+    "emails"
+  ],
   "description": "A library to help generate email templates",
   "author": "GravitywellUK <technical@gravitywell.co.uk>",
   "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/backend/email-generator",
@@ -8,7 +13,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "directories": {
-    "lib": "./dist",
+    "lib": "dist",
     "test": "__tests__"
   },
   "files": [
@@ -34,6 +39,5 @@
   },
   "bugs": {
     "url": "https://github.com/GravitywellUK/packages/issues"
-  },
-  "gitHead": "45ec8453b9d099267de3ce0fe0f4e04eaad666f5"
+  }
 }
