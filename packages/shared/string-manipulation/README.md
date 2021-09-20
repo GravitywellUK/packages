@@ -1,53 +1,42 @@
-<h1 align="center">Gravitywell Regex</h1>
-<p align="center">Library of commonly used Regular Expressions</p>
+<h1 align="center">Gravitywell String-manipulation</h1>
+<p align="center">Library of utility functions to manipulate strings</p>
 <p align="center">
   <img src="https://img.shields.io/github/workflow/status/GravitywellUK/packages/CI/master" alt="CI" />
   <img src="https://img.shields.io/github/license/gravitywelluk/packages" alt="License" />
-  <img src="https://img.shields.io/npm/dm/@gravitywelluk/regex" alt="Downloads" />
-  <img src="https://img.shields.io/npm/v/@gravitywelluk/regex" alt="Version" />
+  <img src="https://img.shields.io/npm/dm/@gravitywelluk/string-manipulation" alt="Downloads" />
+  <img src="https://img.shields.io/npm/v/@gravitywelluk/string-manipulation" alt="Version" />
 </p>
 <br />
+
+## Table of Contents
+- [Table of Contents](#table-of-contents)
+- [Usage](#usage)
+  - [`sentenceCase`](#sentencecase)
+  - [`titleCase`](#titlecase)
 
 ## Usage
 
 ```typescript
-import { <REGEX_NAME_HERE> } from "@gravitywelluk/regex";
+import { <LIB_NAME_HERE> } from "@gravitywelluk/string-manipulation";
 ```
 
-## Table of Contents
-- [Usage](#usage)
-- [Table of Contents](#table-of-contents)
-- [Email regex](#email-regex)
-  - [`globalEmailRegex`](#globalemailregex)
-- [Phone number regex](#phone-number-regex)
-  - [`phoneInternationalE164Regex`](#phoneinternationale164regex)
-  - [`phoneUkBasedRegex`](#phoneukbasedregex)
+### `sentenceCase`
 
-## Email regex
-
-### `globalEmailRegex`
-
-Regex for a global email address `conner.o'brian@example.com`
+Converts a strings 1st letter to uppercase
 
 ```typescript
-import { globalEmailRegex } from "@gravitywelluk/regex";
+import { sentenceCase } from "@gravitywelluk/string-manipulation";
+
+sentenceCase("the fox JUMPED over Brian's lazy dog");
+// Output: "The fox JUMPED over Brian's lazy dog"
 ```
+### `titleCase`
 
-## Phone number regex
-
-### `phoneInternationalE164Regex`
-
-Regex for an international (E.164) phone number `+14155552671`
+Converts the given sentence string into title case
 
 ```typescript
-import { phoneInternationalE164Regex } from "@gravitywelluk/regex";
+import { titleCase } from "@gravitywelluk/string-manipulation";
+
+titleCase("the fox JUMPED over brian's lazy dog");
+// Output: "The Fox Jumped over Brian's Lazy Dog"
 ```
-
-### `phoneUkBasedRegex`
-
-Regex for a UK based phone number `+447847584310` or `07847584310`
-
-```typescript
-import { phoneUkBasedRegex } from "@gravitywelluk/regex";
-```
-
