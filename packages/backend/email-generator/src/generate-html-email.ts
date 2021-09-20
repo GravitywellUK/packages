@@ -5,7 +5,7 @@ const debug = createDebug("EMAILS:PREPARE-EMAIL");
 /**
  * Populate a html template replacing handlebar style values with your named values
  *
- * @param htmlTemplate The html string template
+ * @param htmlTemplate The html string template with params {%param%}
  * @param emailData The email data to load into the template
  *
  * @returns interpolated email string template
@@ -14,7 +14,7 @@ export const generateHTMLEmail = <D extends Record<string, any>>(htmlTemplate: s
   debug.info("Preparing email", emailData);
 
   let finalTemplate = htmlTemplate;
-  // Matches anything in curly braces {appUrl}, {username} etc.
+  // Matches anything in curly braces with percent symbols {%appUrl%}, {%firstName%} etc.
   const placeholders = htmlTemplate.match(/\{%(.*?)%\}/g);
 
   placeholders?.forEach(placeholder => {
