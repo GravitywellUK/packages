@@ -51,8 +51,8 @@
     }
   },
   "workspaces": [
-    "./packages/backend/*",
-    "./packages/frontend/*",
-    "./packages/shared/*"
+    "packages/backend/*",
+    "packages/frontend/*",
+    "packages/shared/*"
   ]
 }

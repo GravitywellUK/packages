@@ -1,0 +1,74 @@
+{
+  "name": "@gravitywelluk/gitci-cli",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "A Git CLI to help with your continuous integration (CI)",
+  "keywords": [
+    "gravitywell",
+    "gravitywelluk",
+    "git",
+    "cli",
+    "ci"
+  ],
+  "author": "GravitywellUK",
+  "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/shared/gitci-cli",
+  "license": "MIT",
+  "engines": {
+    "node": ">=12"
+  },
+  "main": "./dist/src/index.js",
+  "bin": {
+    "gitci": "./dist/src/index.js"
+  },
+  "types": "dist/index.d.ts",
+  "directories": {
+    "lib": "dist",
+    "test": "__tests__"
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GravitywellUK/packages.git"
+  },
+  "scripts": {
+    "start": "node --loader ts-node/esm ./src/index.ts",
+    "gitci": "yarn start",
+    "package": "pkg .",
+    "build": "tsc -b",
+    "test": "jest -c ../../../jest.config.js --verbose --no-cache -i",
+    "test:ci": "yarn test"
+  },
+  "pkg": {
+    "scripts": "dist/**/*.js",
+    "targets": [
+      "latest-linux-x64",
+      "latest-macos-x64",
+      "latest-win-x64"
+    ],
+    "outputPath": "bin"
+  },
+  "bugs": {
+    "url": "https://github.com/GravitywellUK/packages/issues"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "figlet": "^1.5.2",
+    "meow": "^10.1.1",
+    "update-notifier": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/figlet": "^1.5.4",
+    "@types/update-notifier": "^5.1.0",
+    "nodemon": "^2.0.13",
+    "pkg": "^5.3.2",
+    "ts-node": "^10.2.1"
+  }
+}
