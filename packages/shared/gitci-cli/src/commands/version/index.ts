@@ -3,7 +3,7 @@ import {
   Result
 } from "meow";
 
-import { Flag } from "../types";
+import { Flag } from "../../types";
 
 export type VersionFlag = Record<Flag.VERSION, MeowFlag<"boolean", boolean>>;
 

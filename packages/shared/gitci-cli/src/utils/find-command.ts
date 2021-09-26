@@ -26,7 +26,7 @@ const cmdOpts = {
  * @param cli - A Meow instance
  * @param options -
  */
-export const findCommand = (cli: Result<CommandFlags>): void => {
+export const findCommand = async (cli: Result<CommandFlags>): Promise<void> => {
   // eslint-disable-next-line no-console
   console.log(
     chalk.whiteBright(
