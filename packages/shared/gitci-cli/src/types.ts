@@ -1,3 +1,5 @@
-export enum Flags {
-  RELEASE = "release"
+export enum Flag {
+  HELP = "help",
+  RELEASE = "release",
+  VERSION = "verison"
 }

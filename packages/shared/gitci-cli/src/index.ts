@@ -3,33 +3,42 @@ import updateNotifier from "update-notifier";
 import meow from "meow";
 
 import { findCommand } from "./utils";
-import { Flags } from "./types";
-import { test } from "./commands";
+import { Flag } from "./types";
 import pkg from "../package.json";
 
 updateNotifier({ pkg }).notify({ isGlobal: true });
 
+// Create and configure a new meow CLI instance
 const cli = meow(
   `
   Usage
     $ gitci
   Options
-    --${Flags.RELEASE}, -rc    Interactively commit using the prompts
+    --${Flag.HELP}, -h       Shows the help menu.
+    --${Flag.VERSION}, -v    Shows the version of the CLI.
+    --${Flag.RELEASE}, -r   Interactively create or switch to a release branch.
   Examples
-    $ gitmoji -l
-    $ gitmoji bug linter -s
+    $ gitci -r
+    $ gitci --help
 `,
   {
     importMeta: import.meta,
     flags: {
-      [ Flags.RELEASE ]: {
+      [ Flag.HELP ]: {
         type: "boolean",
-        alias: "rc"
+        alias: "h"
+      },
+      [ Flag.VERSION ]: {
+        type: "boolean",
+        alias: "v"
+      },
+      [ Flag.RELEASE ]: {
+        type: "boolean",
+        alias: "r"
       }
     }
   }
 );
 
-export const options = { [ Flags.RELEASE ]: () => test() };
-
-findCommand(cli, options);
+// Finds the command that the user is trying to look for
+findCommand(cli);

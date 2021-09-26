@@ -39,10 +39,13 @@
     "url": "git+https://github.com/GravitywellUK/packages.git"
   },
   "scripts": {
-    "start": "node --loader ts-node/esm ./src/index.ts",
+    "start": "node --experimental-specifier-resolution=node ./dist/src/index.js",
     "gitci": "yarn start",
     "package": "pkg .",
-    "build": "tsc -b",
+    "tsc": "./node_modules/.bin/tsc",
+    "tsc:build": "yarn tsc -b",
+    "tsc:watch": "yarn tsc:build --watch",
+    "tsc:clean": "yarn tsc --clean && yarn tsc:build",
     "test": "jest -c ../../../jest.config.js --verbose --no-cache -i",
     "test:ci": "yarn test"
   },
@@ -69,6 +72,7 @@
     "@types/update-notifier": "^5.1.0",
     "nodemon": "^2.0.13",
     "pkg": "^5.3.2",
-    "ts-node": "^10.2.1"
+    "ts-node": "^10.2.1",
+    "typescript": "^4.4.3"
   }
 }

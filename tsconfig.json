@@ -10,9 +10,6 @@
       "path": "packages/shared/debug"
     },
     {
-      "path": "packages/shared/gitci-cli"
-    },
-    {
       "path": "packages/shared/regex"
     },
     {
