@@ -2149,6 +2149,26 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@gravitywelluk/media-optimiser@workspace:packages/backend/media-optimiser":
+  version: 0.0.0-use.local
+  resolution: "@gravitywelluk/media-optimiser@workspace:packages/backend/media-optimiser"
+  dependencies:
+    "@gravitywelluk/debug": ^1.0.29
+    "@gravitywelluk/error": ^1.0.2
+    "@gravitywelluk/validation-utils": ^2.0.2
+    "@sentry/node": ^6.11.0
+    "@serverless/event-mocks": ^1.1.1
+    "@types/aws-lambda": ^8.10.82
+    "@types/hapi__joi": ^17.1.7
+    "@types/ramda": ^0.27.44
+    "@types/uuid": ^8.3.1
+    aws-lambda: ^1.0.6
+    joi: ^17.4.2
+    ramda: ^0.27.1
+    uuid: ^8.3.2
+  languageName: unknown
+  linkType: soft
+
 "@gravitywelluk/react-components@workspace:packages/frontend/react-components":
   version: 0.0.0-use.local
   resolution: "@gravitywelluk/react-components@workspace:packages/frontend/react-components"
