@@ -1,21 +1,22 @@
-import util from "util";
-import { exec as execNonPromise } from "child_process";
-
-// Promisify the exec function
-const execPromise = util.promisify(execNonPromise);
+import execa from "execa";
 
 /**
  * Executes the given shell command using an async/await promise
  *
  * @param cmd - The shell command to execute
+ * @param args - The shell command arguments
+ * @param pipe - Whether to pipe the child process stdout to the parent
  * @returns The stdout of the execution
  */
-export const exec = async (cmd: string): Promise<string> => {
-  const { stdout, stderr } = await execPromise(cmd);
+export const exec = async (cmd: string, args?: string[], pipe = false): Promise<string> => {
+  const { stdout, stderr } = await execa(cmd, args, pipe ? {
+    buffer: false,
+    stdio: "inherit"
+  } : {});
 
   // If there is a stderr, throw it
   if (stderr) {
-    throw stderr;
+    throw stdout;
   }
 
   return stdout;

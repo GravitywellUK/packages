@@ -7,7 +7,7 @@ import { PromptAnswer } from "../../types";
 
 interface ReleasePromptAnswer {
   nonExistingBranchCreation?: boolean;
-  existingBranchCreationOrSwitch?: "create" | "switch";
+  existingBranchCreation?: boolean;
   switchBranch?: string;
 }
 
@@ -25,14 +25,14 @@ const nonExistingBranchCreationAnswers: Array<PromptAnswer<boolean>> = [
   }
 ];
 
-const existingBranchCreationOrSwitchAnswers: PromptAnswer[] = [
+const existingBranchCreationAnswers: Array<PromptAnswer<boolean>> = [
   {
     name: "Create new branch",
-    value: "create"
+    value: true
   },
   {
     name: "Switch to an existing branch",
-    value: "switch"
+    value: false
   }
 ];
 
@@ -64,10 +64,10 @@ export const releasePrompts = async (releaseBranches?: string[]): Promise<Releas
     // If an existing release-* branch exists
     {
       type: "autocomplete",
-      name: "existingBranchCreationOrSwitch",
+      name: "existingBranchCreation",
       message: `Do you want to create a new ${chalk.cyanBright("release-*")} branch or switch to an existing one?`,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      source: (_answersSoFar: any, input: string) => fuzzyFilter(input, existingBranchCreationOrSwitchAnswers),
+      source: (_answersSoFar: any, input: string) => fuzzyFilter(input, existingBranchCreationAnswers),
       when: () => releaseBranches && releaseBranches.length > 0
     },
     {
@@ -76,7 +76,7 @@ export const releasePrompts = async (releaseBranches?: string[]): Promise<Releas
       message: "Which branch would you like to switch to?",
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       source: (_answersSoFar: ReleasePromptAnswer, input: string) => fuzzyFilter(input, remoteBranchReleasePromptAnswers),
-      when: (answersSoFar: ReleasePromptAnswer) => releaseBranches && releaseBranches.length > 0 && answersSoFar.existingBranchCreationOrSwitch === "switch"
+      when: (answersSoFar: ReleasePromptAnswer) => releaseBranches && releaseBranches.length > 0 && !answersSoFar.existingBranchCreation
     }
   ]);
 };

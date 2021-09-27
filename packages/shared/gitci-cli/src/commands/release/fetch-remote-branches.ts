@@ -3,7 +3,7 @@ import logSymbols from "log-symbols";
 
 import { stdoutToArray } from "../../utils";
 import {
-  gitBranchListRemoteOrigin,
+  gitBranchList,
   gitFetch
 } from "../../lib/git-commands";
 
@@ -24,7 +24,7 @@ export const fetchRemoteOriginBranches = async (): Promise<string[]> => {
 
   // List the git branches from the remote origin
   try {
-    remoteBranches = await gitBranchListRemoteOrigin();
+    remoteBranches = await gitBranchList();
   } catch (error) {
     gitFetchSpinner.stopAndPersist({ symbol: logSymbols.error });
     throw error;

@@ -4,6 +4,7 @@ import { fetchRemoteOriginBranches } from "./fetch-remote-branches";
 import { releasePrompts } from "./release-prompts";
 import { gitBranchRefsToBranchNames } from "../../utils";
 import { Flag } from "../../types";
+import { gitCheckoutBranch } from "../../lib/git-commands";
 
 export type ReleaseFlag = Record<Flag.RELEASE, MeowFlag<"boolean", boolean>>;
 
@@ -19,9 +20,11 @@ export const release = async (): Promise<void> => {
   // Show the release prompts
   const feedback = await releasePrompts(remoteReleaseBranches);
 
-  console.log(feedback);
-
-  if (feedback.nonExistingBranchCreation) {
-    console.log(`release-${remoteReleaseBranches.length + 1}`);
+  // If the user selects to create a new release branch, automatically create one
+  // following on from the last. Otherwise switch the the one that they have selected.
+  if (feedback.nonExistingBranchCreation || feedback.existingBranchCreation) {
+    await gitCheckoutBranch(`release-${remoteReleaseBranches.length + 1}`, true);
+  } else if (feedback.switchBranch) {
+    await gitCheckoutBranch(feedback.switchBranch);
   }
 };
