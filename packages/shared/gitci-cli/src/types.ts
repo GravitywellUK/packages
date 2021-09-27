@@ -3,3 +3,8 @@ export enum Flag {
   RELEASE = "release",
   VERSION = "verison"
 }
+
+export interface PromptAnswer<T = string> {
+  name: string;
+  value: T;
+}

@@ -41,4 +41,7 @@ const cli = meow(
 );
 
 // Finds the command that the user is trying to look for
-findCommand(cli);
+findCommand(cli).catch(error => {
+  console.error(error);
+  process.exit(1);
+});

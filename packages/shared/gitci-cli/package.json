@@ -64,9 +64,12 @@
   "dependencies": {
     "chalk": "^4.1.2",
     "figlet": "^1.5.2",
+    "fuse.js": "^6.4.6",
     "inquirer": "^8.1.5",
     "inquirer-autocomplete-prompt": "^1.4.0",
+    "log-symbols": "^5.0.0",
     "meow": "^10.1.1",
+    "ora": "^6.0.1",
     "update-notifier": "^5.1.0"
   },
   "devDependencies": {

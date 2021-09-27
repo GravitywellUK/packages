@@ -38,8 +38,7 @@ export const findCommand = async (cli: Result<CommandFlags>): Promise<void> => {
   const flags = cli.flags;
   const cmdFlag = Object.keys(flags).find(flag => !!flag);
 
-  console.log(flags);
-
+  // Run one of the following commands based on the give flag (if any)
   switch (cmdFlag) {
     case Flag.VERSION:
       return cmdOpts[ Flag.VERSION ](cli);
