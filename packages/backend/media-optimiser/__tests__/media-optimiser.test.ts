@@ -35,7 +35,7 @@ describe("media-optimise", () => {
     const optimisedMedia = await optimiseMedia({
       fileName: "png_image",
       fileBuffer: file,
-      formats: [ "avif", "gif" ],
+      formats: [ "avif", "webp" ],
       sizes: [ 600 ]
     });
 
@@ -60,7 +60,7 @@ describe("media-optimise", () => {
     const optimisedMedia = await optimiseMedia({
       fileName: "heic_image",
       fileBuffer: file,
-      formats: [ "avif", "gif" ],
+      formats: [ "avif", "webp" ],
       sizes: [ 600 ]
     });
 
@@ -85,7 +85,7 @@ describe("media-optimise", () => {
     const optimisedMedia = await optimiseMedia({
       fileName: "jpg_image",
       fileBuffer: file,
-      formats: [ "avif", "gif" ],
+      formats: [ "avif", "webp" ],
       sizes: [ 600 ]
     });
 
@@ -110,7 +110,7 @@ describe("media-optimise", () => {
     const optimisedMedia = await optimiseMedia({
       fileName: "avif_image",
       fileBuffer: file,
-      formats: [ "png", "heif" ],
+      formats: [ "webp", "heif" ],
       sizes: [ 600 ]
     });
 
