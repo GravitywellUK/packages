@@ -11,7 +11,10 @@
 ## Usage
 
 ```typescript
-const lambdaUtils = require('media-optimiser');
+const mediaOptimiser = require('media-optimiser');
 
-// TODO: DEMONSTRATE API
+const transformedMedia = mediaOptimiser.optimiseMedia({
+  fileName,
+  fileBuffer
+})
 ```
