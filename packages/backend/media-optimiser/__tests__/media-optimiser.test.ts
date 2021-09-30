@@ -29,13 +29,48 @@ describe("media-optimise", () => {
     }
   }, 30000);
 
-  test("Can optimise media with formats and sizes (from png)", async () => {
+  test("Can optimise media for all default formats (from jpeg)", async () => {
+    const file = fs.readFileSync(path.resolve(__dirname, "../assets/jpeg_image.jpeg"));
+
+    const optimisedMedia = await optimiseMedia({
+      fileName: "svg_image",
+      fileBuffer: file,
+      formats: [
+        "png",
+        "webp",
+        "avif",
+        "tiff"
+      ],
+      sizes: [ 600 ]
+    });
+
+    for await (const media of optimisedMedia) {
+      const metadata = await sharp(media.optimisedImage).metadata();
+
+      // AVIF images have "heif" format
+      if (media.format === "avif") {
+        expect(metadata.format).toBe("heif");
+        expect(metadata.compression).toBe("av1");
+      } else {
+        expect(metadata.format).toBe(media.format);
+      }
+
+      expect(metadata.width).toBe(media.size);
+    }
+  }, 30000);
+
+  test("Can optimise media for all default formats (from png)", async () => {
     const file = fs.readFileSync(path.resolve(__dirname, "../assets/png_image.png"));
 
     const optimisedMedia = await optimiseMedia({
       fileName: "png_image",
       fileBuffer: file,
-      formats: [ "avif", "webp" ],
+      formats: [
+        "jpeg",
+        "webp",
+        "avif",
+        "tiff"
+      ],
       sizes: [ 600 ]
     });
 
@@ -54,13 +89,18 @@ describe("media-optimise", () => {
     }
   }, 30000);
 
-  test("Can optimise media with formats and sizes (from heic)", async () => {
-    const file = fs.readFileSync(path.resolve(__dirname, "../assets/heic_image.heic"));
+  test("Can optimise media for all default formats (from webp)", async () => {
+    const file = fs.readFileSync(path.resolve(__dirname, "../assets/webp_image.webp"));
 
     const optimisedMedia = await optimiseMedia({
-      fileName: "heic_image",
+      fileName: "webp_image",
       fileBuffer: file,
-      formats: [ "avif", "webp" ],
+      formats: [
+        "jpeg",
+        "png",
+        "avif",
+        "tiff"
+      ],
       sizes: [ 600 ]
     });
 
@@ -79,38 +119,110 @@ describe("media-optimise", () => {
     }
   }, 30000);
 
-  test("Can optimise media with formats and sizes (from jpg)", async () => {
-    const file = fs.readFileSync(path.resolve(__dirname, "../assets/jpg_image.jpg"));
-
-    const optimisedMedia = await optimiseMedia({
-      fileName: "jpg_image",
-      fileBuffer: file,
-      formats: [ "avif", "webp" ],
-      sizes: [ 600 ]
-    });
-
-    for await (const media of optimisedMedia) {
-      const metadata = await sharp(media.optimisedImage).metadata();
-
-      // AVIF images have "heif" format
-      if (media.format === "avif") {
-        expect(metadata.format).toBe("heif");
-        expect(metadata.compression).toBe("av1");
-      } else {
-        expect(metadata.format).toBe(media.format);
-      }
-
-      expect(metadata.width).toBe(media.size);
-    }
-  }, 30000);
-
-  test("Can optimise media with formats and sizes (from avif)", async () => {
+  test("Can optimise media for all default formats (from avif)", async () => {
     const file = fs.readFileSync(path.resolve(__dirname, "../assets/avif_image.avif"));
 
     const optimisedMedia = await optimiseMedia({
       fileName: "avif_image",
       fileBuffer: file,
-      formats: [ "webp", "heif" ],
+      formats: [
+        "jpeg",
+        "png",
+        "webp",
+        "tiff"
+      ],
+      sizes: [ 600 ]
+    });
+
+    for await (const media of optimisedMedia) {
+      const metadata = await sharp(media.optimisedImage).metadata();
+
+      // AVIF images have "heif" format
+      if (media.format === "avif") {
+        expect(metadata.format).toBe("heif");
+        expect(metadata.compression).toBe("av1");
+      } else {
+        expect(metadata.format).toBe(media.format);
+      }
+
+      expect(metadata.width).toBe(media.size);
+    }
+  }, 30000);
+
+  test("Can optimise media for all default formats (from gif)", async () => {
+    const file = fs.readFileSync(path.resolve(__dirname, "../assets/gif_image.gif"));
+
+    const optimisedMedia = await optimiseMedia({
+      fileName: "gif_image",
+      fileBuffer: file,
+      formats: [
+        "jpeg",
+        "png",
+        "avif",
+        "webp",
+        "tiff"
+      ],
+      sizes: [ 600 ]
+    });
+
+    for await (const media of optimisedMedia) {
+      const metadata = await sharp(media.optimisedImage).metadata();
+
+      // AVIF images have "heif" format
+      if (media.format === "avif") {
+        expect(metadata.format).toBe("heif");
+        expect(metadata.compression).toBe("av1");
+      } else {
+        expect(metadata.format).toBe(media.format);
+      }
+
+      expect(metadata.width).toBe(media.size);
+    }
+  }, 30000);
+
+  test("Can optimise media for all default formats (from tiff)", async () => {
+    const file = fs.readFileSync(path.resolve(__dirname, "../assets/tiff_image.tiff"));
+
+    const optimisedMedia = await optimiseMedia({
+      fileName: "gif_image",
+      fileBuffer: file,
+      formats: [
+        "jpeg",
+        "png",
+        "avif",
+        "webp"
+      ],
+      sizes: [ 600 ]
+    });
+
+    for await (const media of optimisedMedia) {
+      const metadata = await sharp(media.optimisedImage).metadata();
+
+      // AVIF images have "heif" format
+      if (media.format === "avif") {
+        expect(metadata.format).toBe("heif");
+        expect(metadata.compression).toBe("av1");
+      } else {
+        expect(metadata.format).toBe(media.format);
+      }
+
+      expect(metadata.width).toBe(media.size);
+    }
+  }, 30000);
+
+  test("Can optimise media for all default formats (from svg)", async () => {
+    const file = fs.readFileSync(path.resolve(__dirname, "../assets/svg_image.svg"));
+
+    const optimisedMedia = await optimiseMedia({
+      fileName: "svg_image",
+      fileBuffer: file,
+      formats: [
+        "jpeg",
+        "png",
+        "webp",
+        "avif",
+        "tiff"
+      ],
       sizes: [ 600 ]
     });
 

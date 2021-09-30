@@ -1,5 +1,5 @@
-<h1 align="center">Gravitywell Lambda Utils</h1>
-<p align="center">Library of Lambda utilities</p>
+<h1 align="center">Gravitywell Media Optimiser</h1>
+<p align="center">Library of tools to optimise and format media</p>
 <p align="center">
   <img src="https://img.shields.io/github/workflow/status/GravitywellUK/packages/CI/master" alt="CI" />
   <img src="https://img.shields.io/github/license/gravitywelluk/packages" alt="License" />
@@ -18,3 +18,10 @@ const transformedMedia = mediaOptimiser.optimiseMedia({
   fileBuffer
 })
 ```
+
+## Prerequisites
+Check prerequisites in https://sharp.pixelplumbing.com/install
+
+Supports reading: JPEG, PNG, WebP, AVIF, TIFF, GIF and SVG images.
+
+Default formats: JPEG, PNG, WebP, AVIF and TIFF.
