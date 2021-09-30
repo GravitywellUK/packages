@@ -40,6 +40,9 @@
       "path": "packages/backend/aws"
     },
     {
+      "path": "packages/backend/media-optimiser"
+    },
+    {
       "path": "packages/frontend/gtag"
     },
     {

@@ -1,0 +1,21 @@
+{
+  "extends": "../../../tsconfig-settings.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "src"
+  },
+  "references": [
+    {
+      "path": "../error"
+    },
+    {
+      "path": "../validation-utils"
+    }
+  ],
+  "include": [ "./src" ],
+  "exclude": [
+    "__tests__",
+    "dist",
+    "node_modules"
+  ]
+}
