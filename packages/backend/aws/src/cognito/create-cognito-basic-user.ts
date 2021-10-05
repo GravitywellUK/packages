@@ -17,7 +17,7 @@ export interface CreateCognitoBasicUserParams {
 
 /**
  * Creates a basic (non-admin) user in Cognito and triggers verification code
- * 
+ *
  * This kind of user will be sent a verification code to their email address or phone number
  * Entering this and then calling confirmSignUp will enable the user's account
  *
@@ -28,7 +28,7 @@ export interface CreateCognitoBasicUserParams {
 export const createCognitoBasicUser = async (
   createBasicUserParams: CreateCognitoBasicUserParams,
   awsCognitoConfigOverrides: AWSModule.CognitoIdentityServiceProvider.ClientConfiguration = {}
-): Promise<AWSModule.CognitoIdentityServiceProvider.UserType> => {
+): Promise<AWSModule.CognitoIdentityServiceProvider.SignUpResponse> => {
   const cognito = cognitoConfigure(awsCognitoConfigOverrides);
 
   const { error } = Joi.object({
@@ -61,7 +61,7 @@ export const createCognitoBasicUser = async (
 
   // Create the Cognito user and add them to the given groups
   try {
-    const { User } = await cognito.signUp({
+    const response = await cognito.signUp({
       ClientId: createBasicUserParams.clientId,
       Username: createBasicUserParams.email,
       Password: createBasicUserParams.password,
@@ -76,18 +76,15 @@ export const createCognitoBasicUser = async (
     // If createUserParams.groups are provided, add the user to the given groups
     if (createBasicUserParams.groups && createBasicUserParams.groups.length > 0) {
       for (const group of createBasicUserParams.groups) {
-        // Only add the user to the group if the user has a username
-        if (User?.Username) {
-          await cognito.adminAddUserToGroup({
-            GroupName: group,
-            Username: User.Username,
-            UserPoolId: createBasicUserParams.userPoolId
-          }).promise();
-        }
+        await cognito.adminAddUserToGroup({
+          GroupName: group,
+          Username: createBasicUserParams.email,
+          UserPoolId: createBasicUserParams.userPoolId
+        }).promise();
       }
     }
 
-    return User as AWSModule.CognitoIdentityServiceProvider.UserType;
+    return response as AWSModule.CognitoIdentityServiceProvider.SignUpResponse;
   } catch (error) {
     throw new AwsError(error as AWS.AWSError);
   }

@@ -13,7 +13,7 @@ export interface VerifyCognitoBasicUserAccountParams {
 
 /**
  * Verify a user's account by entering the confirmation code sent to them via text or email
- * 
+ *
  * @param verifyBasicUserParams The parameters required to verify a user's account
  */
 export const verifyBasicUserAccount = async (
@@ -24,7 +24,7 @@ export const verifyBasicUserAccount = async (
   const { error } = Joi.object({
     clientId: Joi.string().required(),
     confirmationCode: Joi.string().required(),
-    email: Joi.string().email().required(),
+    email: Joi.string().email().required()
   }).validate(verifyBasicUserParams);
 
   // Error if there any Joi validation errors
@@ -33,14 +33,14 @@ export const verifyBasicUserAccount = async (
   }
 
   try {
-    const { User } = await cognito.confirmSignUp({
+    const response = await cognito.confirmSignUp({
       ClientId: verifyBasicUserParams.clientId,
       ConfirmationCode: verifyBasicUserParams.confirmationCode,
       Username: verifyBasicUserParams.email
     }).promise();
 
-    return User as AWSModule.CognitoIdentityServiceProvider.UserType;
+    return response as AWSModule.CognitoIdentityServiceProvider.ConfirmSignUpResponse;
   } catch (error) {
     throw new AwsError(error as AWS.AWSError);
   }
-}
+};
