@@ -1,6 +1,6 @@
 import { CognitoIdentityServiceProvider } from "aws-sdk";
 
-import { createCognitoUser } from "../../src/cognito/create-cognito-user";
+import { createAdminCognitoUser } from "../../src/cognito/create-cognito-admin-user";
 import {
   adminAddUserToGroupPromise,
   adminCreateUserPromise,
@@ -22,7 +22,7 @@ describe("create-cognito-user", () => {
       listGroups: listGroupsPromise
     }));
 
-    await createCognitoUser({
+    await createAdminCognitoUser({
       userPoolId: "eu-west-2_test12345",
       email: "test@test.co.uk"
     });
@@ -39,7 +39,7 @@ describe("create-cognito-user", () => {
       listGroups: listGroupsPromise
     }));
 
-    await createCognitoUser({
+    await createAdminCognitoUser({
       userPoolId: "eu-west-2_test12345",
       email: "test@test.co.uk",
       groups: []
@@ -57,7 +57,7 @@ describe("create-cognito-user", () => {
       listGroups: listGroupsPromise
     }));
 
-    await createCognitoUser({
+    await createAdminCognitoUser({
       userPoolId: "eu-west-2_test12345",
       email: "test@test.co.uk",
       groups: [ "Admin" ]
@@ -75,7 +75,7 @@ describe("create-cognito-user", () => {
       listGroups: listGroupsPromise
     }));
 
-    await expect(createCognitoUser({
+    await expect(createAdminCognitoUser({
       userPoolId: "eu-west-2_test12345",
       email: "test@test.co.uk",
       groups: [ "Invalid" ]
@@ -93,7 +93,7 @@ describe("create-cognito-user", () => {
       listGroups: listGroupsPromise
     }));
 
-    await expect(createCognitoUser({
+    await expect(createAdminCognitoUser({
       groups: [ "Admin" ],
       // @ts-expect-error
       bad: "eu-west-2_test12345",
