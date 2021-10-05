@@ -6,36 +6,38 @@ import { cognitoConfigure } from "./cognito-configure";
 import { AwsError } from "../utils/aws-error";
 import { cognitoListGroups } from "./utils";
 
-export interface CreateCognitoUserParams {
+export interface CreateCognitoBasicUserParams {
   userPoolId: string;
+  clientId: string;
   email: string;
+  password: string;
+
   groups?: string[];
-  emailVerified?: boolean;
 }
 
 /**
- * @deprecated Do not use directly - use createCognitoAdminUser instead
+ * Creates a basic (non-admin) user in Cognito and triggers verification code
  * 
- * Creates a user in Cognito and triggers the invitation email
+ * This kind of user will be sent a verification code to their email address or phone number
+ * Entering this and then calling confirmSignUp will enable the user's account
  *
- * @see https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/CognitoIdentityServiceProvider.html#adminCreateUser-property
- * @see https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/CognitoIdentityServiceProvider.html#adminAddUserToGroup-property
- * @param createUserParams - The parameters required to create a Cognito user
+ * @see https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/CognitoIdentityServiceProvider.html#signUp-property
+ * @param createBasicUserParams - The parameters required to create a basic Cognito user
  * @param awsCognitoConfigOverrides - Configuration option overrides
- *
  */
-export const createCognitoUser = async (
-  createUserParams: CreateCognitoUserParams,
+export const createCognitoBasicUser = async (
+  createBasicUserParams: CreateCognitoBasicUserParams,
   awsCognitoConfigOverrides: AWSModule.CognitoIdentityServiceProvider.ClientConfiguration = {}
 ): Promise<AWSModule.CognitoIdentityServiceProvider.UserType> => {
   const cognito = cognitoConfigure(awsCognitoConfigOverrides);
 
   const { error } = Joi.object({
     userPoolId: Joi.string().required(),
-    email: Joi.string().email(),
-    emailVerified: Joi.boolean().optional(),
+    clientId: Joi.string().required(),
+    email: Joi.string().email().required(),
+    password: Joi.string().required(),
     groups: Joi.array().items(Joi.string().optional()).optional()
-  }).validate(createUserParams);
+  }).validate(createBasicUserParams);
 
   // Error if there any Joi validation errors
   if (error) {
@@ -44,11 +46,11 @@ export const createCognitoUser = async (
 
   // If createUserParams.groups are provided, get the current Cognito groups
   // with the given user pool
-  if (createUserParams.groups && createUserParams.groups.length > 0) {
+  if (createBasicUserParams.groups && createBasicUserParams.groups.length > 0) {
     // Get all of the Cognito groups for the given user pool
-    const allCognitoGroups = await cognitoListGroups(cognito, { UserPoolId: createUserParams.userPoolId });
+    const allCognitoGroups = await cognitoListGroups(cognito, { UserPoolId: createBasicUserParams.userPoolId });
     // Validate that the given createUserParams.groups match the allCognitoGroups
-    const { error: joiCognitoGroupsError } = Joi.array().items(Joi.string().valid(...allCognitoGroups).required()).validate(createUserParams.groups);
+    const { error: joiCognitoGroupsError } = Joi.array().items(Joi.string().valid(...allCognitoGroups).required()).validate(createBasicUserParams.groups);
 
     // Error if there any Joi validation errors regarding the given groups now
     // we have sight of the groups that can be chosen (allCognitoGroups)
@@ -59,30 +61,27 @@ export const createCognitoUser = async (
 
   // Create the Cognito user and add them to the given groups
   try {
-    const { User } = await cognito.adminCreateUser({
-      UserPoolId: createUserParams.userPoolId,
-      Username: createUserParams.email,
+    const { User } = await cognito.signUp({
+      ClientId: createBasicUserParams.clientId,
+      Username: createBasicUserParams.email,
+      Password: createBasicUserParams.password,
       UserAttributes: [
         {
           Name: "email",
-          Value: createUserParams.email
-        },
-        {
-          Name: "email_verified",
-          Value: createUserParams.emailVerified ? "True" : "False"
+          Value: createBasicUserParams.email
         }
       ]
     }).promise();
 
     // If createUserParams.groups are provided, add the user to the given groups
-    if (createUserParams.groups && createUserParams.groups.length > 0) {
-      for (const group of createUserParams.groups) {
+    if (createBasicUserParams.groups && createBasicUserParams.groups.length > 0) {
+      for (const group of createBasicUserParams.groups) {
         // Only add the user to the group if the user has a username
         if (User?.Username) {
           await cognito.adminAddUserToGroup({
             GroupName: group,
             Username: User.Username,
-            UserPoolId: createUserParams.userPoolId
+            UserPoolId: createBasicUserParams.userPoolId
           }).promise();
         }
       }
