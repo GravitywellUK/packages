@@ -11,6 +11,11 @@ export interface VerifyCognitoBasicUserAccountParams {
   email: string;
 }
 
+/**
+ * Verify a user's account by entering the confirmation code sent to them via text or email
+ * 
+ * @param verifyBasicUserParams The parameters required to verify a user's account
+ */
 export const verifyBasicUserAccount = async (
   verifyBasicUserParams: VerifyCognitoBasicUserAccountParams
 ) => {
