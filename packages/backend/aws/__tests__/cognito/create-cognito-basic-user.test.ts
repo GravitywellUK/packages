@@ -1,10 +1,10 @@
 import { CognitoIdentityServiceProvider } from "aws-sdk";
 
-import { createAdminCognitoUser } from "../../src/cognito/create-cognito-admin-user";
+import { createCognitoBasicUser } from "../../src/cognito/create-cognito-basic-user";
 import {
   adminAddUserToGroupPromise,
-  adminCreateUserPromise,
-  listGroupsPromise
+  listGroupsPromise,
+  signUpPromise
 } from "../../__mocks__/cognito.mock";
 
 jest.mock("aws-sdk");
@@ -13,56 +13,62 @@ beforeEach(() => {
   jest.clearAllMocks();
 });
 
-describe("create-cognito-user", () => {
-  test("Can create user without the group property", async () => {
+describe("create-basic-cognito-user", () => {
+  test("Can create basic user without the group property", async () => {
     // @ts-ignore
     CognitoIdentityServiceProvider.mockImplementation(() => ({
-      adminCreateUser: adminCreateUserPromise,
+      signUp: signUpPromise,
       adminAddUserToGroup: adminAddUserToGroupPromise,
       listGroups: listGroupsPromise
     }));
 
-    await createAdminCognitoUser({
-      userPoolId: "eu-west-2_test12345",
-      email: "test@test.co.uk"
+    await createCognitoBasicUser({
+      userPoolId: "eu-west-2_testUserPool12345",
+      clientId: "eu-west-2_testClientId12345",
+      email: "test@test.co.uk",
+      password: "password"
     });
-    expect(adminCreateUserPromise).toBeCalledTimes(1);
+    expect(signUpPromise).toBeCalledTimes(1);
     expect(adminAddUserToGroupPromise).toBeCalledTimes(0);
     expect(listGroupsPromise).toBeCalledTimes(0);
   });
 
-  test("Can create user with an empty group", async () => {
+  test("Can create basic user with an empty group", async () => {
     // @ts-ignore
     CognitoIdentityServiceProvider.mockImplementation(() => ({
-      adminCreateUser: adminCreateUserPromise,
+      signUp: signUpPromise,
       adminAddUserToGroup: adminAddUserToGroupPromise,
       listGroups: listGroupsPromise
     }));
 
-    await createAdminCognitoUser({
-      userPoolId: "eu-west-2_test12345",
+    await createCognitoBasicUser({
+      userPoolId: "eu-west-2_testUserPool12345",
+      clientId: "eu-west-2_testClientId12345",
       email: "test@test.co.uk",
+      password: "password",
       groups: []
     });
-    expect(adminCreateUserPromise).toBeCalledTimes(1);
+    expect(signUpPromise).toBeCalledTimes(1);
     expect(adminAddUserToGroupPromise).toBeCalledTimes(0);
     expect(listGroupsPromise).toBeCalledTimes(0);
   });
 
-  test("Can create user with group", async () => {
+  test("Can create basic user with group", async () => {
     // @ts-ignore
     CognitoIdentityServiceProvider.mockImplementation(() => ({
-      adminCreateUser: adminCreateUserPromise,
+      signUp: signUpPromise,
       adminAddUserToGroup: adminAddUserToGroupPromise,
       listGroups: listGroupsPromise
     }));
 
-    await createAdminCognitoUser({
-      userPoolId: "eu-west-2_test12345",
+    await createCognitoBasicUser({
+      userPoolId: "eu-west-2_testUserPool12345",
+      clientId: "eu-west-2_testClientId12345",
       email: "test@test.co.uk",
-      groups: [ "Admin" ]
+      password: "password",
+      groups: [ "Customer" ]
     });
-    expect(adminCreateUserPromise).toBeCalledTimes(1);
+    expect(signUpPromise).toBeCalledTimes(1);
     expect(adminAddUserToGroupPromise).toBeCalledTimes(1);
     expect(listGroupsPromise).toBeCalledTimes(1);
   });
@@ -70,17 +76,19 @@ describe("create-cognito-user", () => {
   test("Will not create if group invalid", async () => {
     // @ts-ignore
     CognitoIdentityServiceProvider.mockImplementation(() => ({
-      adminCreateUser: adminCreateUserPromise,
+      signUp: signUpPromise,
       adminAddUserToGroup: adminAddUserToGroupPromise,
       listGroups: listGroupsPromise
     }));
 
-    await expect(createAdminCognitoUser({
-      userPoolId: "eu-west-2_test12345",
+    await expect(createCognitoBasicUser({
+      userPoolId: "eu-west-2_testUserPool12345",
+      clientId: "eu-west-2_testClientId12345",
       email: "test@test.co.uk",
+      password: "password",
       groups: [ "Invalid" ]
     })).rejects.toThrow();
-    expect(adminCreateUserPromise).toBeCalledTimes(0);
+    expect(signUpPromise).toBeCalledTimes(0);
     expect(adminAddUserToGroupPromise).toBeCalledTimes(0);
     expect(listGroupsPromise).toBeCalledTimes(1);
   });
@@ -88,16 +96,16 @@ describe("create-cognito-user", () => {
   test("Fails if bad data supplied", async () => {
     // @ts-ignore
     CognitoIdentityServiceProvider.mockImplementation(() => ({
-      adminCreateUser: adminCreateUserPromise,
+      signUp: signUpPromise,
       adminAddUserToGroup: adminAddUserToGroupPromise,
       listGroups: listGroupsPromise
     }));
 
-    await expect(createAdminCognitoUser({
-      groups: [ "Admin" ],
+    await expect(createCognitoBasicUser({
+      groups: [ "Customer" ],
       // @ts-expect-error
       bad: "eu-west-2_test12345",
       data: "test@test.co.uk"
-    }, [ "Admin" ])).rejects.toThrow();
+    }, [ "Customer" ])).rejects.toThrow();
   });
 });
