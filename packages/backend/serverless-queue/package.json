@@ -1,6 +1,6 @@
 {
   "name": "@gravitywelluk/serverless-queue",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "",
   "author": "GravitywellUK <technical@gravitywell.co.uk>",
   "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/backend/serverless-queue",
@@ -18,7 +18,7 @@
     "LICENSE"
   ],
   "dependencies": {
-    "@gravitywelluk/aws": "^2.0.4",
+    "@gravitywelluk/aws": "^3.0.1",
     "@gravitywelluk/debug": "^1.0.29",
     "@gravitywelluk/error": "^1.0.2",
     "@gravitywelluk/sequelize-utils": "^2.0.4",
