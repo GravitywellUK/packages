@@ -13,6 +13,7 @@ export interface VerifyCognitoBasicUserAccountParams {
 
 /**
  * Verify a user's account by entering the confirmation code sent to them via text or email
+ * This code is checked and if it matches then the user's account is enabled and they can log in with the details they originally provided
  *
  * @param verifyBasicUserParams The parameters required to verify a user's account
  */
