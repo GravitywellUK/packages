@@ -1,6 +1,6 @@
 {
   "name": "@gravitywelluk/serverless-queue",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "",
   "author": "GravitywellUK <technical@gravitywell.co.uk>",
   "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/backend/serverless-queue",
