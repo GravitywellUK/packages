@@ -2032,24 +2032,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gravitywelluk/aws@npm:^2.0.3":
-  version: 2.0.3
-  resolution: "@gravitywelluk/aws@npm:2.0.3"
-  dependencies:
-    "@gravitywelluk/error": ^1.0.2
-    "@gravitywelluk/validation-utils": ^2.0.2
-    aws-xray-sdk-core: ^3.3.3
-    joi: ^17.4.2
-    nodemailer: ^6.6.3
-    ramda: ^0.27.1
-    ts-enum-util: ^4.0.2
-  peerDependencies:
-    aws-sdk: ^2.694.0
-  checksum: f6a004536f0863613f430d7d24fa22e83dbbd30a38cb84763df262abca57e861b63ecf028a880938295baa143e3ce811b8c454f9891babfe2799bff6581e1661
-  languageName: node
-  linkType: hard
-
-"@gravitywelluk/aws@workspace:packages/backend/aws":
+"@gravitywelluk/aws@^3.0.1, @gravitywelluk/aws@workspace:packages/backend/aws":
   version: 0.0.0-use.local
   resolution: "@gravitywelluk/aws@workspace:packages/backend/aws"
   dependencies:
@@ -2275,7 +2258,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@gravitywelluk/serverless-queue@workspace:packages/backend/serverless-queue"
   dependencies:
-    "@gravitywelluk/aws": ^2.0.3
+    "@gravitywelluk/aws": ^3.0.1
     "@gravitywelluk/debug": ^1.0.29
     "@gravitywelluk/error": ^1.0.2
     "@gravitywelluk/sequelize-utils": ^2.0.4
