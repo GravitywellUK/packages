@@ -12,6 +12,7 @@
 - [Table of Contents](#table-of-contents)
 - [Usage](#usage)
   - [`sentenceCase`](#sentencecase)
+  - [`slurlgify`](#slurlgify)
   - [`titleCase`](#titlecase)
 
 ## Usage
@@ -29,6 +30,16 @@ import { sentenceCase } from "@gravitywelluk/string-manipulation";
 
 sentenceCase("the fox JUMPED over Brian's lazy dog");
 // Output: "The fox JUMPED over Brian's lazy dog"
+```
+### `slurlgify`
+
+Converts the given slug into a slugified URL
+
+```typescript
+import { slurlgify } from "@gravitywelluk/string-manipulation";
+
+slurlgify("the fox JUMPED over Brian's lazy dog & cat + mouse");
+// Output: "the-fox-jumped-over-brians-lazy-dog-and-cat-plus-mouse"
 ```
 ### `titleCase`
 
