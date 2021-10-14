@@ -4,7 +4,7 @@ import {
   validateAppEnvironment
 } from "../src";
 
-describe("@gravitywelluk/evironment package tests", () => {
+describe("@gravitywelluk/environment package tests", () => {
   test("Correctly throws an error if environment variable is missing", async () => {
     const requiredEnv: RequiredEnvironment = { variables: [ "THIS_DEFINITELY_DOESNT_EXIST" ] };
 
