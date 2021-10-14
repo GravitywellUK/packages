@@ -29,8 +29,10 @@ export const validateAppEnvironment: ValidateAppEnvironment = async (
   if (variables.length > 0) {
     // check for environment variables
     for (const variable of variables) {
-      // if env var not present
-      if (!process.env[ variable ]) {
+      const value = process.env[ variable ];
+
+      // if env var not present or empty string
+      if (!value || value?.length === 0) {
         // add to missing list
         missingEnvironmentVariables.push(variable);
       }
