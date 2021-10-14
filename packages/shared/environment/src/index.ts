@@ -7,21 +7,21 @@ import * as dotenv from "dotenv";
 
 export enum EnvironmentErrorCode {
   MissingVariables = "missing_variables",
-  MissingSecrets = "missing_secrets"
+  MissingAWSSecrets = "missing_aws_secrets"
 }
 
 class EnvironmentError extends APIError<EnvironmentErrorCode> {}
 
 export interface RequiredEnvironment {
   variables?: string[];
-  secrets?: string[];
+  awsSecrets?: string[];
 }
 
 type ValidateAppEnvironment = (stage: string, params: RequiredEnvironment) => Promise<Record<string, string>>;
 
 export const validateAppEnvironment: ValidateAppEnvironment = async (
   stage,
-  { variables = [], secrets = [] }
+  { variables = [], awsSecrets = [] }
 ) => {
   const missingEnvironmentVariables: string[] = [];
   const missingSecrets: string[] = [];
@@ -47,11 +47,11 @@ export const validateAppEnvironment: ValidateAppEnvironment = async (
     }
   }
 
-  if (secrets.length > 0) {
+  if (awsSecrets.length > 0) {
     // check for secrets
     const secretsManager = new SecretsManager();
 
-    for (const secret of secrets) {
+    for (const secret of awsSecrets) {
       // secret ARN should be stored in environment
       const secretARN = process.env[ secret ];
 
@@ -74,7 +74,7 @@ export const validateAppEnvironment: ValidateAppEnvironment = async (
       throw new EnvironmentError(
         `Could not retrieve required secrets from AWS: ${missingSecrets.join(", ")}.`,
         ErrorType.InvalidData,
-        EnvironmentErrorCode.MissingSecrets
+        EnvironmentErrorCode.MissingAWSSecrets
       );
     }
   }
