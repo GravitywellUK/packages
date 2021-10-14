@@ -30,7 +30,7 @@ await validateAppEnvironment(process.env.ENVIRONMENT, {
     "SOME_API_KEY"
   ],
   // put AWS Secret ARNs here for backend projects
-  secrets: [
+  awsSecrets: [
     "DB_SECRET_ARN"
   ]
 });
