@@ -10,6 +10,9 @@
       "path": "packages/shared/debug"
     },
     {
+      "path": "packages/shared/environment"
+    },
+    {
       "path": "packages/shared/regex"
     },
     {
