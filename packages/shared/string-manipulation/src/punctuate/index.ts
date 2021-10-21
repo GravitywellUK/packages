@@ -7,7 +7,7 @@ export enum PunctuationMark {
 
 /**
  * Checks if the given string has the request punctuation mark and adds it to
- * the string if if does not.
+ * the string if it does not.
  *
  * @param str - The string to add punctuation to
  */
@@ -33,6 +33,8 @@ export const punctuate = (str: string, mark: PunctuationMark): string => {
       punctuationMark = "...";
       break;
   }
+
+  console.log(`${mark}`, punctuationMark, `${characters[ characters.length - 1 ]}`);
 
   // Return the string as it is, if the end of the string already has the punctuationMark
   if (characters[ characters.length - 1 ] === punctuationMark) {
