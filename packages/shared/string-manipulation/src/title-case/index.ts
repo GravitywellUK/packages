@@ -3,7 +3,7 @@ import { titleCase as titleCasePkg } from "title-case";
 /**
  * Converts the given sentence string into title case
  */
-const titleCase = (str: string): string => {
+export const titleCase = (str: string): string => {
   const parsedStr = titleCasePkg(str.toLowerCase());
   const words = parsedStr.match(/\w\S*/g);
 
@@ -24,5 +24,3 @@ const titleCase = (str: string): string => {
 
   return parsedWords.join(" ");
 };
-
-export default titleCase;

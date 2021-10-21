@@ -9,13 +9,15 @@ interface SlurlgifyOptionAttributes {
   trim?: boolean;
 }
 
+const characterReplacements: Record<string, string> = { "+": "plus" };
+
 /**
  * Converts the given slug into a slugified URL
  *
  * @param slug - The slug to URL slugify
  * @param opts - Slugify override options
  */
-const slurlgify = (slug: string, opts: SlurlgifyOptionAttributes = {}): string => {
+export const slurlgify = (slug: string, opts: SlurlgifyOptionAttributes = {}): string => {
   // Load our character replacement extensions
   slugify.extend(characterReplacements);
 
@@ -27,7 +29,3 @@ const slurlgify = (slug: string, opts: SlurlgifyOptionAttributes = {}): string =
     ...opts
   });
 };
-
-export default slurlgify;
-
-const characterReplacements: Record<string, string> = { "+": "plus" };

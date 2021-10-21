@@ -11,6 +11,7 @@
 ## Table of Contents
 - [Table of Contents](#table-of-contents)
 - [Usage](#usage)
+  - [`punctuate`](#punctuate)
   - [`sentenceCase`](#sentencecase)
   - [`slurlgify`](#slurlgify)
   - [`titleCase`](#titlecase)
@@ -19,6 +20,17 @@
 
 ```typescript
 import { <LIB_NAME_HERE> } from "@gravitywelluk/string-manipulation";
+```
+
+### `punctuate`
+
+Checks if the given string has the request punctuation mark and adds it to the string if it does not.
+
+```typescript
+import { punctuate, PunctuationMark } from "@gravitywelluk/string-manipulation";
+
+punctuate("The quick brown fox jumps over the lazy dog", PunctuationMark.FULL_STOP);
+// Output: "The quick brown fox jumps over the lazy dog."
 ```
 
 ### `sentenceCase`
