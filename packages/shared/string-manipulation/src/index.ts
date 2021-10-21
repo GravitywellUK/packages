@@ -1,3 +1,4 @@
-export { default as sentenceCase } from "./sentence-case";
-export { default as slurlgify } from "./slurlgify";
-export { default as titleCase } from "./title-case";
+export * from "./punctuate";
+export * from "./sentence-case";
+export * from "./slurlgify";
+export * from "./title-case";
