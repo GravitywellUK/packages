@@ -34,8 +34,6 @@ export const punctuate = (str: string, mark: PunctuationMark): string => {
       break;
   }
 
-  console.log(`${mark}`, punctuationMark, `${characters[ characters.length - 1 ]}`);
-
   // Return the string as it is, if the end of the string already has the punctuationMark
   if (characters[ characters.length - 1 ] === punctuationMark) {
     return str;
