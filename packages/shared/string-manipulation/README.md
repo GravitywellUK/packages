@@ -11,6 +11,7 @@
 ## Table of Contents
 - [Table of Contents](#table-of-contents)
 - [Usage](#usage)
+  - [`formatCurrency`](#formatcurrency)
   - [`punctuate`](#punctuate)
   - [`sentenceCase`](#sentencecase)
   - [`slurlgify`](#slurlgify)
@@ -20,6 +21,17 @@
 
 ```typescript
 import { <LIB_NAME_HERE> } from "@gravitywelluk/string-manipulation";
+```
+
+### `formatCurrency`
+
+Formats the given currency value into a prettified string of the value
+
+```typescript
+import { formatCurrency } from "@gravitywelluk/string-manipulation";
+
+formatCurrency(1234567.12);
+// Output: "£1,234,567.12"
 ```
 
 ### `punctuate`
