@@ -9,7 +9,7 @@
       "path": "../../backend/error"
     },
     {
-      "path": "../../backend/debug"
+      "path": "../debug"
     }
   ],
   "include": [ "./src" ],

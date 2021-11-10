@@ -23,7 +23,7 @@
     "dotenv": "^10.0.0"
   },
   "devDependencies": {
-    "aws-sdk": "^2.1006.0"
+    "aws-sdk": "^2.1025.0"
   },
   "peerDependencies": {
     "aws-sdk": "*"
