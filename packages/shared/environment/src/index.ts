@@ -100,9 +100,15 @@ export const validateAppEnvironment: ValidateAppEnvironment = async (
 
   const appEnvironment = stage === "local" || stage === "development" ?
     // return parsed dotenv file in local environment
-    Object.assign(dotenv.config({ path: `.env.${stage}` }).parsed as Record<string, string>, secretsEnvironment) :
+    {
+      ...dotenv.config({ path: `.env.${stage}` }).parsed as Record<string, string>,
+      ...secretsEnvironment
+    } :
     // otherwise return pre-loaded env for CI/CD
-    Object.assign(process.env as Record<string, string>, secretsEnvironment);
+    {
+      ...process.env as Record<string, string>,
+      ...secretsEnvironment
+    };
 
   return appEnvironment;
 };
