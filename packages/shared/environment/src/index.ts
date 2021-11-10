@@ -16,7 +16,7 @@ class EnvironmentError extends APIError<EnvironmentErrorCode> {}
 
 export interface RequiredEnvironment {
   variables?: string[];
-  awsSecrets?: string[];
+  awsSecrets?: Array<string | {secret: string; loadValuesToEnvironment: boolean}>;
 }
 
 type ValidateAppEnvironment = (stage: string, params: RequiredEnvironment) => Promise<Record<string, string>>;
@@ -48,28 +48,44 @@ export const validateAppEnvironment: ValidateAppEnvironment = async (
       );
     }
   }
+  let secretsEnvironment: Record<string, string> = {};
 
   if (awsSecrets.length > 0) {
     // check for secrets
     const secretsManager = new SecretsManager();
 
-    for (const secret of awsSecrets) {
+    for (const secretObject of awsSecrets) {
+      let secretName ;
+      let setToEnvironment = false;
+
+      if (typeof secretObject === "object") {
+        secretName = secretObject.secret;
+        setToEnvironment = secretObject.loadValuesToEnvironment;
+      } else {
+        secretName = secretObject;
+      }
       // secret ARN should be stored in environment
-      const secretARN = process.env[ secret ];
+      const secretARN = process.env[ secretName ];
 
       if (!secretARN) {
-        missingSecrets.push(secret);
-        debug.info(`${secret} secret ARN not set in environment`);
+        missingSecrets.push(secretName);
+        debug.info(`${secretName} secret ARN not set in environment`);
         break;
       }
 
       try {
         // attempt to fetch secret by ARN
-        await secretsManager.getSecretValue({ SecretId: secretARN }).promise();
+        const secretValue = await secretsManager.getSecretValue({ SecretId: secretARN }).promise();
+
+        if (setToEnvironment) {
+          const secretsJson = JSON.parse(secretValue.SecretString as string);
+
+          secretsEnvironment = Object.assign(secretsEnvironment, secretsJson);
+        }
       // catch 400 not found and add to missing list
       } catch (e) {
-        debug.error(`Failed to fetch secret ${secret}:`, e);
-        missingSecrets.push(secret);
+        debug.error(`Failed to fetch secret ${secretName}:`, e);
+        missingSecrets.push(secretName);
       }
     }
 
@@ -84,9 +100,9 @@ export const validateAppEnvironment: ValidateAppEnvironment = async (
 
   const appEnvironment = stage === "local" || stage === "development" ?
     // return parsed dotenv file in local environment
-    dotenv.config({ path: `.env.${stage}` }).parsed as Record<string, string> :
+    Object.assign(dotenv.config({ path: `.env.${stage}` }).parsed as Record<string, string>, secretsEnvironment) :
     // otherwise return pre-loaded env for CI/CD
-    process.env as Record<string, string>;
+    Object.assign(process.env as Record<string, string>, secretsEnvironment);
 
   return appEnvironment;
 };
