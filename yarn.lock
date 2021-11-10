@@ -2073,8 +2073,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@gravitywelluk/environment@workspace:packages/shared/environment"
   dependencies:
+    "@gravitywelluk/debug": ^1.0.29
     "@gravitywelluk/error": ^1.0.2
-    aws-sdk: ^2.1006.0
+    aws-sdk: ^2.1025.0
     dotenv: ^10.0.0
   peerDependencies:
     aws-sdk: "*"
@@ -7514,9 +7515,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"aws-sdk@npm:^2.1006.0":
-  version: 2.1006.0
-  resolution: "aws-sdk@npm:2.1006.0"
+"aws-sdk@npm:^2.1025.0":
+  version: 2.1025.0
+  resolution: "aws-sdk@npm:2.1025.0"
   dependencies:
     buffer: 4.9.2
     events: 1.1.1
@@ -7527,7 +7528,7 @@ __metadata:
     url: 0.10.3
     uuid: 3.3.2
     xml2js: 0.4.19
-  checksum: afe0b04bea7d7de5acd1f2d18648adcfc98ad708e62b3397e01265b0f4317d404e923ed7d660851f5e8a2ab15236c8ea9b95b3ac77a257e35ae09fdcc60d0f76
+  checksum: 72b4bfe209859ad58379c59e61f389533f89f995f7e2b8f3f21ec86dcd705c16368c82f65f8838900532c6afb4384bf1d1b0a62c765cbdc8a7363970706a2b5f
   languageName: node
   linkType: hard
 

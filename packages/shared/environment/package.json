@@ -18,11 +18,12 @@
     "LICENSE"
   ],
   "dependencies": {
+    "@gravitywelluk/debug": "^1.0.29",
     "@gravitywelluk/error": "^1.0.2",
     "dotenv": "^10.0.0"
   },
   "devDependencies": {
-    "aws-sdk": "^2.1006.0"
+    "aws-sdk": "^2.1025.0"
   },
   "peerDependencies": {
     "aws-sdk": "*"

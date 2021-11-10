@@ -4,12 +4,14 @@ import {
 } from "@gravitywelluk/error";
 import { SecretsManager } from "aws-sdk";
 import * as dotenv from "dotenv";
+import { createDebug } from "@gravitywelluk/debug";
 
 export enum EnvironmentErrorCode {
   MissingVariables = "missing_variables",
   MissingAWSSecrets = "missing_aws_secrets"
 }
 
+const debug = createDebug("VALIDATE_ENV");
 class EnvironmentError extends APIError<EnvironmentErrorCode> {}
 
 export interface RequiredEnvironment {
@@ -57,7 +59,7 @@ export const validateAppEnvironment: ValidateAppEnvironment = async (
 
       if (!secretARN) {
         missingSecrets.push(secret);
-
+        debug.info(`${secret} secret ARN not set in environment`);
         break;
       }
 
@@ -66,6 +68,7 @@ export const validateAppEnvironment: ValidateAppEnvironment = async (
         await secretsManager.getSecretValue({ SecretId: secretARN }).promise();
       // catch 400 not found and add to missing list
       } catch (e) {
+        debug.error(`Failed to fetch secret ${secret}:`, e);
         missingSecrets.push(secret);
       }
     }
