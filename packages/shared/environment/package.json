@@ -23,10 +23,10 @@
     "dotenv": "^10.0.0"
   },
   "devDependencies": {
-    "aws-sdk": "^2.1025.0"
+    "aws-sdk": "^2.970.0"
   },
   "peerDependencies": {
-    "aws-sdk": "*"
+    "aws-sdk": "^2.694.0"
   },
   "publishConfig": {
     "access": "public"
