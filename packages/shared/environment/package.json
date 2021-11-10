@@ -18,6 +18,7 @@
     "LICENSE"
   ],
   "dependencies": {
+    "@gravitywelluk/debug": "^1.0.29",
     "@gravitywelluk/error": "^1.0.2",
     "dotenv": "^10.0.0"
   },

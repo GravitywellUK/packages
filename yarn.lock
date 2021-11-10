@@ -2073,6 +2073,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@gravitywelluk/environment@workspace:packages/shared/environment"
   dependencies:
+    "@gravitywelluk/debug": ^1.0.29
     "@gravitywelluk/error": ^1.0.2
     aws-sdk: ^2.1006.0
     dotenv: ^10.0.0
