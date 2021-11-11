@@ -1,6 +1,6 @@
 {
   "name": "@gravitywelluk/environment",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Environment variable and secret validation utility",
   "author": "GravitywellUK <technical@gravitywell.co.uk>",
   "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/shared/environment",
