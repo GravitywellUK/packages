@@ -2075,8 +2075,10 @@ __metadata:
   dependencies:
     "@gravitywelluk/debug": ^1.0.29
     "@gravitywelluk/error": ^1.0.2
+    "@types/ramda": ^0.27.48
     aws-sdk: ^2.970.0
     dotenv: ^10.0.0
+    ramda: ^0.27.1
   peerDependencies:
     aws-sdk: ^2.694.0
   languageName: unknown
@@ -6223,6 +6225,15 @@ __metadata:
   dependencies:
     ts-toolbelt: ^6.15.1
   checksum: 3ad5a303268a9d406e17950fd13bf1005ffc1d2aaee728634e63f32ff3a74356a9eb50026670e8193fa8dc4bc9702d7f66d1bd64011b2952883962ea985be0dc
+  languageName: node
+  linkType: hard
+
+"@types/ramda@npm:^0.27.48":
+  version: 0.27.48
+  resolution: "@types/ramda@npm:0.27.48"
+  dependencies:
+    ts-toolbelt: ^6.15.1
+  checksum: dfc016d75a4629065de7c70940ebedb31e38ac3f7bbbf61788b810ee56e163f932e82087da6d2a80e92dea36a4a4d07108e1d783d1e98e902ebf37ede2d819fa
   languageName: node
   linkType: hard
 

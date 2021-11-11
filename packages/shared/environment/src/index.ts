@@ -5,6 +5,7 @@ import {
 import { SecretsManager } from "aws-sdk";
 import * as dotenv from "dotenv";
 import { createDebug } from "@gravitywelluk/debug";
+import * as R from "ramda";
 
 export enum EnvironmentErrorCode {
   MissingVariables = "missing_variables",
@@ -106,7 +107,7 @@ export const validateAppEnvironment: ValidateAppEnvironment = async (
     } :
     // otherwise return pre-loaded env for CI/CD
     {
-      ...process.env as Record<string, string>,
+      ...(R.pick(variables, process.env as Record<string, string>)),
       ...secretsEnvironment
     };
 

@@ -32,6 +32,17 @@ describe("@gravitywelluk/environment package tests", () => {
     expect(environment).toHaveProperty("NODE_ENV");
   });
 
+  test("Does not return unwanted process.env vars", async () => {
+    const requiredEnv: RequiredEnvironment = { variables: [ "NODE_ENV" ] };
+
+    process.env[ "UNWANTED_VAR" ] = "test";
+    // set stage to "production" so the validation returns process.env instead of trying to find a dotenv file
+    const environment = await validateAppEnvironment("production", requiredEnv);
+
+    expect(environment).toHaveProperty("NODE_ENV");
+    expect(environment[ "UNWANTED_VAR" ]).toBeUndefined();
+  });
+
   test("Does not set secret variables when loadValuesToEnvironment is not set", async () => {
     process.env[ "MOCK_ARN" ] = "mock-arn";
 
