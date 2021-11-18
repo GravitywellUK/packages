@@ -23,6 +23,7 @@ export const optimiseMedia = async ({
     "jpeg"
   ],
   sizes = [
+    375,
     600,
     960,
     1200
@@ -32,7 +33,7 @@ export const optimiseMedia = async ({
 
   for await (const format of formats) {
     for await (const size of sizes) {
-      const optimisedImage = await sharp(fileBuffer).resize({ width: size }).toFormat(format).toBuffer();
+      const optimisedImage = await sharp(fileBuffer).resize({ width: size }).withMetadata().toFormat(format).toBuffer();
 
       const mediaObj = {
         key: `${format}/${size}/${fileName}.${format}`,
