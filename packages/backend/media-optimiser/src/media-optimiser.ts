@@ -26,7 +26,7 @@ export const optimiseMedia = async ({
     375,
     600,
     960,
-    1200
+    1280
   ]
 }: MediaOptimiserAttributes): Promise<any> => {
   const optimisedMedia: OptimisedMedia[] = [];
