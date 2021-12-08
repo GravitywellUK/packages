@@ -28,6 +28,10 @@ export function customHandler<T = Record<string, unknown>>(handler: Handler<T>, 
         event, context, callback
       );
 
+      if (options?.cleanup) {
+        await options.cleanup();
+      }
+
       return;
     } catch (error) {
       // flush to send events to sentry
