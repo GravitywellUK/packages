@@ -28,6 +28,10 @@ export const s3TriggerHandler = (handler: S3Handler, options?: Pick<LambdaOption
         event, context, callback
       );
 
+      if (options?.cleanup) {
+        await options.cleanup();
+      }
+
       return;
     } catch (error) {
       // flush to send events to sentry
