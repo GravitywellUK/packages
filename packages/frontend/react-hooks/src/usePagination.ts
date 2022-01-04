@@ -82,7 +82,7 @@ const reducer = (state: PaginationState, action: ReducerAction): PaginationState
 
 type UsePagination = (initialState: PaginationState) => Pagination;
 
-/** Custom reducer to handle pagination of Gravitywell API endpoints in React */
+/** Custom reducer to handle offset-based pagination of API endpoints in React */
 export const usePagination: UsePagination = initialState => {
   const [ paginationState, dispatch ] = useReducer(reducer, initialState);
 
