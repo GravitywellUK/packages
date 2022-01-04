@@ -29,6 +29,7 @@ export interface PaginationActions {
   reset: () => void;
 }
 
+// Full pagination object, returned by the usePagination hook
 export interface Pagination extends PaginationState, PaginationActions {
   /** Human-readable page number */
   currentPage: number;

@@ -65,3 +65,51 @@ const windowDimension = useWindowDimensions();
 
 */
 ```
+
+## `usePagination`
+
+A custom reducer to handle offset-based pagination of API endpoints.
+
+### Usage
+```ts
+import { usePagination } from "@gravitywelluk/react-hooks";
+
+const pagination = usePagination({
+  offset: 0,
+  limit: 25,
+  order: "ASC"
+});
+```
+
+### API Reference
+```ts
+interface PaginationState {
+  /** Starting item index of the current page */
+  offset: number;
+  /** Page size */
+  limit: number;
+  /** Sort order */
+  order: SortOrder;
+}
+
+interface PaginationActions {
+  /** Load the next page */
+  next: () => void;
+  /** Load the previous page */
+  previous: () => void;
+  /** Set sort order */
+  sort: (order: SortOrder) => void;
+  /** Reverse sort order */
+  invert: () => void;
+  /** Set page size */
+  setPageSize: (pageSize: number) => void;
+  /** Reset to initial pagination state */
+  reset: () => void;
+}
+
+// Full pagination object, returned by the usePagination hook
+interface Pagination extends PaginationState, PaginationActions {
+  /** Human-readable page number */
+  currentPage: number;
+}
+```
