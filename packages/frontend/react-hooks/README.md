@@ -71,6 +71,9 @@ const windowDimension = useWindowDimensions();
 A custom reducer to handle offset-based pagination of API endpoints.
 
 ### Usage
+
+Full demo [here](https://codesandbox.io/s/usepagination-zo97e)
+
 ```ts
 import { usePagination } from "@gravitywelluk/react-hooks";
 
