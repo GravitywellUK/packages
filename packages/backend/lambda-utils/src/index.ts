@@ -8,3 +8,4 @@ export * from "./mock-lambda-context";
 export * from "./cloudfront-request-handler";
 export * from "./scheduled-event-handler";
 export * from "./sqs-event-handler";
+export * from "./custom-handler";

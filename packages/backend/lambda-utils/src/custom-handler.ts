@@ -1,8 +1,7 @@
 import {
   Context,
-  S3Handler,
-  S3Event,
-  Callback
+  Callback,
+  Handler
 } from "aws-lambda";
 import * as Sentry from "@sentry/node";
 
@@ -17,12 +16,13 @@ if (process.env.SENTRY_DSN) {
 }
 
 /**
- * Wraps an s3 trigger lambda function with sentry and any other useful stuff
+ * Wraps a lambda function with sentry and any other useful stuff.
+ * Useful when for lambdas that will only be invoked directly via another lambda (ie not via user request)
  *
  * @param handler
  */
-export const s3TriggerHandler = (handler: S3Handler, options?: Pick<LambdaOptions, "cleanup">) => {
-  return async (event: S3Event, context: Context, callback: Callback<void>): Promise<void> => {
+export function customHandler<T = Record<string, unknown>>(handler: Handler<T>, options?: Pick<LambdaOptions, "cleanup">) {
+  return async (event: T, context: Context, callback: Callback<void>): Promise<void> => {
     try {
       await handler(
         event, context, callback
@@ -49,4 +49,4 @@ export const s3TriggerHandler = (handler: S3Handler, options?: Pick<LambdaOption
       return;
     }
   };
-};
+}
