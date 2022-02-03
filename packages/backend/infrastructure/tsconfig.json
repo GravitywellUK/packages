@@ -4,14 +4,6 @@
     "outDir": "dist",
     "rootDir": "src"
   },
-  "references": [
-    {
-      "path": "../error"
-    },
-    {
-      "path": "../validation-utils"
-    }
-  ],
   "include": [ "./src" ],
   "exclude": [
     "__tests__",
