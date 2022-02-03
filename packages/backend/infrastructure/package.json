@@ -1,0 +1,61 @@
+{
+  "name": "@gravitywelluk/infrastructure",
+  "version": "1.0.0",
+  "description": "Library of helper functions for AWS CDK and Serverless Stack",
+  "keywords": [
+    "gravitywell",
+    "gravitywelluk",
+    "aws",
+    "cdk",
+    "serverless",
+    "stack",
+    "infrastructure"
+  ],
+  "author": "GravitywellUK <technical@gravitywell.co.uk>",
+  "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/backend/infrastructure",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "directories": {
+    "lib": "dist",
+    "test": "__tests__"
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GravitywellUK/packages.git"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "test": "jest -c ../../../jest.config.js --verbose --no-cache -i",
+    "test:ci": "yarn test"
+  },
+  "bugs": {
+    "url": "https://github.com/GravitywellUK/packages/issues"
+  },
+  "dependencies": {
+    "@gravitywelluk/error": "^1.0.2",
+    "@gravitywelluk/validation-utils": "^2.0.2",
+    "aws-xray-sdk-core": "^3.3.3",
+    "joi": "^17.4.2",
+    "nodemailer": "^6.6.3",
+    "ramda": "^0.27.1",
+    "ts-enum-util": "^4.0.2"
+  },
+  "devDependencies": {
+    "@aws-cdk/aws-apigateway": "^1.138.0",
+    "@serverless-stack/resources": "~0.58.0"
+  },
+  "peerDependencies": {
+    "@aws-cdk/aws-apigateway": "^1.138.0",
+    "@serverless-stack/resources": "~0.58.0"
+  }
+}
