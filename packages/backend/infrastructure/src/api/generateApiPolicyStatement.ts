@@ -9,11 +9,13 @@ import { AuthorizerScope } from "./types";
 export const generateApiPolicyStatement = (scope: AuthorizerScope): ApiPolicyStatement => {
   const policies: ApiPolicyStatement = [];
 
-  policies.push({
-    Action: "execute-api:Invoke",
-    Effect: "Allow",
-    Resource: scope.allow
-  });
+  if (scope.allow) {
+    policies.push({
+      Action: "execute-api:Invoke",
+      Effect: "Allow",
+      Resource: scope.allow
+    });
+  }
 
   if (scope.deny) {
     policies.push({

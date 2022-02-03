@@ -24,10 +24,12 @@ export const configureAuthorizerScope = (
   scope: AuthorizerScope = { allow: [ "/*" ] }
 ): void => {
   const buildArnPathGlob = (path: string) => api.arnForExecuteApi("*", path, app.stage);
-  const allowedResources = scope.allow.map(buildArnPathGlob);
+  const allowedResources = scope.allow?.map(buildArnPathGlob);
   const deniedResources = scope.deny?.map(buildArnPathGlob);
 
-  authorizer.addEnvironment("ALLOWED_API_RESOURCES", allowedResources.join());
+  if (allowedResources) {
+    authorizer.addEnvironment("ALLOWED_API_RESOURCES", allowedResources.join());
+  }
 
   if (deniedResources) {
     authorizer.addEnvironment("DENIED_API_RESOURCES", deniedResources.join());
