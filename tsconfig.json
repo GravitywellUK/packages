@@ -43,6 +43,9 @@
       "path": "packages/backend/aws"
     },
     {
+      "path": "packages/backend/infrastructure"
+    },
+    {
       "path": "packages/backend/media-optimiser"
     },
     {

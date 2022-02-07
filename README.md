@@ -13,3 +13,5 @@
 ## Contributing
 
 Run `yarn initialise`
+
+N.B. Make sure you add any new packages to the root `tsconfig.json`!
