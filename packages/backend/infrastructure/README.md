@@ -48,7 +48,7 @@ type ConfigureAuthorizerScope = (
 
 ### `generateApiPolicyStatement`
 
-Utility for generating a scoped IAM resource policy statement for an API Gateway authorizer
+Utility for generating a scoped IAM resource policy statement for an API Gateway authorizer.
 ```ts
 type GenerateApiPolicyStatement = (scope: AuthorizerScope) => ApiPolicyStatement;
 ```
