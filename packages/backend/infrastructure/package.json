@@ -1,6 +1,6 @@
 {
   "name": "@gravitywelluk/infrastructure",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Library of helper functions for AWS CDK and Serverless Stack",
   "keywords": [
     "gravitywell",
