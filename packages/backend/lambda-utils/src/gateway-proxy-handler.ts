@@ -57,7 +57,7 @@ export const gatewayProxyHandler = <TResult = unknown>(handler: APIGatewayProxyH
 
     try {
       // Execute preRequest before handler
-      if (options?.preRequest){
+      if (options?.preRequest) {
         await options.preRequest(event, context);
       }
       const result = await handler(event, context);
