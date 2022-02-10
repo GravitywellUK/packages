@@ -23,7 +23,9 @@ export interface LambdaOptions {
   /** Runs at start of lambda - returns and stops processing once complete */
   warmup?: () => Promise<void>,
   /** Runs at end of lambda - does not stop the lambda processing */
-  cleanup?: () => Promise<void>
+  cleanup?: () => Promise<void>,
+  //** Runs before calling the handler */
+  preRequest?: (event: CustomAPIGatewayProxyEvent, context: Context) => Promise<void>
 }
 /**
  * Wraps a lambda function so that we can return static JSONAPI response objects
@@ -54,6 +56,10 @@ export const gatewayProxyHandler = <TResult = unknown>(handler: APIGatewayProxyH
     }
 
     try {
+      // Execute preRequest before handler
+      if (options?.preRequest) {
+        await options.preRequest(event, context);
+      }
       const result = await handler(event, context);
 
       // flush to send events to sentry
