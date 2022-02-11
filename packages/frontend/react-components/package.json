@@ -1,6 +1,6 @@
 {
   "name": "@gravitywelluk/react-components",
-  "version": "1.0.31",
+  "version": "1.0.32",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
