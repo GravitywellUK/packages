@@ -79,11 +79,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           token: ${{ secrets.GH_AUTH_TOKEN }}
-
-      # Fetch all history for all tags and branches in this job because lerna needs it
-      - name: Fetch full Git history
-        run: |
-          git fetch --prune --unshallow
+          fetch-depth: 0
 
       - name: Use Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v1
@@ -129,8 +125,18 @@ jobs:
               exit 1;
           fi
 
+      - name: Check if release required and if release definition file is present
+        run: yarn version check
+
+      - name: Apply releases
+        run: yarn version apply --all
+
+      - name: Commit changes
+        run: |
+          git add . && git commit -m "Chore: published release :rocket:" && git push
+
       - name: Publish all packages to npm
         run: |
-          npx lerna publish patch --loglevel=verbose --yes --no-progress
+          yarn workspaces foreach npm publish --tolerate-republish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}

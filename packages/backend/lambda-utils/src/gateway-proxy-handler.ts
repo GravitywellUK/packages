@@ -27,11 +27,11 @@ const isWarmupEvent = (event: CustomAPIGatewayProxyEvent | WarmupEvent): event i
 
 export interface LambdaOptions {
   /** Runs at start of lambda - returns and stops processing once complete */
-  warmup?: () => Promise<void>,
-  /** Runs at end of lambda - does not stop the lambda processing */
-  cleanup?: () => Promise<void>,
+  warmup?: () => Promise<void>;
   //** Runs before calling the handler */
-  preRequest?: (event: CustomAPIGatewayProxyEvent, context: Context) => Promise<void>
+  preRequest?: (event: CustomAPIGatewayProxyEvent, context: Context) => Promise<void>;
+  /** Runs at end of lambda - does not stop the lambda processing */
+  cleanup?: () => Promise<void>;
 }
 /**
  * Wraps a lambda function so that we can return static JSONAPI response objects
