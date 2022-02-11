@@ -24,30 +24,27 @@ export default {
     isSelected: { type: "boolean" },
     disabled: { type: "boolean" },
     display: {
-      type: "enum",
-      control: {
-        type: "select",
-        options: ButtonDisplay
+      type: {
+        name: "enum",
+        value: $enum(ButtonDisplay).getKeys()
       }
     },
     iconAlignment: {
-      type: "enum",
-      control: {
-        type: "select",
-        options: ButtonIconAlignment
+      type: {
+        name: "enum",
+        value: $enum(ButtonIconAlignment).getKeys()
       }
     },
     textColor: {
-      control: {
-        type: "select",
-        options: $enum(Colors).getKeys()
+      type: {
+        name: "enum",
+        value: $enum(Colors).getKeys()
       }
     },
     backgroundColor: {
-      type: "enum",
-      control: {
-        type: "select",
-        options: $enum(Colors).getKeys()
+      type: {
+        name: "enum",
+        value: $enum(Colors).getKeys()
       }
     }
   },
