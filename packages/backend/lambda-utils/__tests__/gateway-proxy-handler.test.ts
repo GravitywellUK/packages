@@ -7,6 +7,10 @@ import {
   APIGatewayProxyHandlerAsync
 } from "../src";
 
+interface MockResponse {
+  data: { success: string; }
+}
+
 describe("@gravitywelluk/lambda-utils gateway-proxy-handler", () => {
   const mockContext = createContext();
 
@@ -16,7 +20,7 @@ describe("@gravitywelluk/lambda-utils gateway-proxy-handler", () => {
       requestContext: { authorizer: { sub: process.env.ADMIN_COGNITO_USER } }
     } as never);
 
-    const handler: APIGatewayProxyHandlerAsync<{success: string}> = async () => {
+    const handler: APIGatewayProxyHandlerAsync<MockResponse> = async () => {
       return {
         status: 200,
         data: { success: "ok" }
@@ -24,7 +28,7 @@ describe("@gravitywelluk/lambda-utils gateway-proxy-handler", () => {
     };
 
     const mockHandler = jest.fn(handler);
-    const result = await gatewayProxyHandler<{success: string}>(mockHandler)(mockValidEvent, mockContext);
+    const result = await gatewayProxyHandler<MockResponse>(mockHandler)(mockValidEvent, mockContext);
 
     expect(mockHandler).toBeCalledTimes(1);
     const data = JSON.parse((result as APIGatewayProxyResult).body);
@@ -39,10 +43,10 @@ describe("@gravitywelluk/lambda-utils gateway-proxy-handler", () => {
     const mockValidEvent = createEvent("aws:apiGateway", {
       pathParameters: { id: 1 },
       requestContext: { authorizer: { sub: process.env.ADMIN_COGNITO_USER } },
-      source: "serverless-plugin-warmup"
+      type: "warmup"
     } as never);
 
-    const handler: APIGatewayProxyHandlerAsync<{success: string}> = async () => {
+    const handler: APIGatewayProxyHandlerAsync<MockResponse> = async () => {
       return {
         status: 200,
         data: { success: "ok" }
@@ -56,7 +60,7 @@ describe("@gravitywelluk/lambda-utils gateway-proxy-handler", () => {
       console.log("Warm up ran");
     });
 
-    const result = await gatewayProxyHandler<{success: string}>(mockHandler, { warmup: mockWarmup })(mockValidEvent, mockContext);
+    const result = await gatewayProxyHandler<MockResponse>(mockHandler, { warmup: mockWarmup })(mockValidEvent, mockContext);
 
     expect(mockHandler).toBeCalledTimes(0);
     expect(mockWarmup).toBeCalledTimes(1);
@@ -69,7 +73,7 @@ describe("@gravitywelluk/lambda-utils gateway-proxy-handler", () => {
       requestContext: { authorizer: { sub: process.env.ADMIN_COGNITO_USER } }
     } as never);
 
-    const handler: APIGatewayProxyHandlerAsync<{success: string}> = async () => {
+    const handler: APIGatewayProxyHandlerAsync<MockResponse> = async () => {
       return {
         status: 200,
         data: { success: "ok" }
@@ -83,7 +87,7 @@ describe("@gravitywelluk/lambda-utils gateway-proxy-handler", () => {
       console.log("Warm up ran");
     });
 
-    const result = await gatewayProxyHandler<{success: string}>(mockHandler, { cleanup: mockCleanup })(mockValidEvent, mockContext);
+    const result = await gatewayProxyHandler<MockResponse>(mockHandler, { cleanup: mockCleanup })(mockValidEvent, mockContext);
 
     expect(mockHandler).toBeCalledTimes(1);
     expect(mockCleanup).toBeCalledTimes(1);
