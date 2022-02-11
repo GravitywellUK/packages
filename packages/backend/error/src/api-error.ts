@@ -7,9 +7,10 @@ export enum ErrorType {
   ApiError = "API_ERROR",
   ApiConectionError = "API_CONNECTION_ERROR",
   AuthenticationError = "AUTHENTICATION_ERROR",
+  ConflictError = "CONFLICT_ERROR",
+  DatabaseError = "DATABASE_ERROR",
   ForbiddenError = "FORBIDDEN_ERROR",
   InvalidData = "INVALID_DATA_ERROR",
-  DatabaseError = "DATABASE_ERROR",
   NotFoundError = "NOT_FOUND_ERROR",
   ThirdPartyError = "THIRD_PARTY_ERROR",
   TooManyRequests = "TOO_MANY_REQUESTS",
@@ -81,6 +82,9 @@ export default class APIError<C> extends Error {
 
       case ErrorType.NotFoundError:
         return 404;
+
+      case ErrorType.ConflictError:
+        return 409;
 
       case ErrorType.InvalidData:
         return 422;
