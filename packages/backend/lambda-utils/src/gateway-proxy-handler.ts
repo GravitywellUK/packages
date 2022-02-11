@@ -19,6 +19,12 @@ if (process.env.SENTRY_DSN) {
   }
 }
 
+interface WarmupEvent {
+  type: "warmup";
+}
+// type guard
+const isWarmupEvent = (event: CustomAPIGatewayProxyEvent | WarmupEvent): event is WarmupEvent => (event as WarmupEvent).type === "warmup";
+
 export interface LambdaOptions {
   /** Runs at start of lambda - returns and stops processing once complete */
   warmup?: () => Promise<void>,
@@ -33,13 +39,15 @@ export interface LambdaOptions {
  * @param handler
  */
 export const gatewayProxyHandler = <TResult = unknown>(handler: APIGatewayProxyHandlerAsync<TResult>, options?: LambdaOptions): HandlerAsync => {
-  return async (event: CustomAPIGatewayProxyEvent & {source?: string}, context: Context) => {
-    if (options?.warmup) {
-      if (event.source === "serverless-plugin-warmup") {
-        debug.info("Warming up function");
+  return async (event: CustomAPIGatewayProxyEvent | WarmupEvent, context: Context) => {
+    if (isWarmupEvent(event)) {
+      debug.info("Warming up function");
 
+      if (options?.warmup) {
         return await options.warmup();
       }
+
+      return;
     }
 
     // Transform queryStringParameters to content multiple arrays.
