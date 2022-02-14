@@ -131,12 +131,12 @@ jobs:
       - name: Apply releases
         run: yarn version apply --all
 
+      - name: Publish all updated packages to npm
+        run: |
+          yarn workspaces foreach --no-private npm publish --tolerate-republish
+        env:
+          YARN_NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+
       - name: Commit changes
         run: |
           git add . && git commit -m "Chore: published release :rocket:" && git push
-
-      - name: Publish all packages to npm
-        run: |
-          yarn workspaces foreach npm publish --tolerate-republish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
