@@ -38,6 +38,7 @@
   },
   "dependencies": {
     "@gravitywelluk/debug": "^1.0.29",
+    "@n370/npm-publish-slack-webhook": "^0.1.1",
     "expo-asset": "^8.3.3",
     "react": "^17.0.2"
   },

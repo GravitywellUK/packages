@@ -39,6 +39,7 @@
     "url": "https://github.com/GravitywellUK/packages/issues"
   },
   "dependencies": {
+    "@n370/npm-publish-slack-webhook": "^0.1.1",
     "debug": "^4.3.2"
   },
   "devDependencies": {

@@ -40,6 +40,7 @@
   "dependencies": {
     "@gravitywelluk/error": "^1.0.2",
     "@gravitywelluk/validation-utils": "^2.0.2",
+    "@n370/npm-publish-slack-webhook": "^0.1.1",
     "aws-xray-sdk-core": "^3.3.3",
     "joi": "^17.4.2",
     "nodemailer": "^6.6.3",

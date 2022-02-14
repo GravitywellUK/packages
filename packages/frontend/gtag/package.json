@@ -40,5 +40,8 @@
   },
   "peerDependencies": {
     "@types/gtag.js": "^0.0.7"
+  },
+  "dependencies": {
+    "@n370/npm-publish-slack-webhook": "^0.1.1"
   }
 }

@@ -18,6 +18,7 @@
     "LICENSE"
   ],
   "dependencies": {
+    "@n370/npm-publish-slack-webhook": "^0.1.1",
     "@sentry/node": "^6.11.0",
     "axios": "^0.21.1",
     "joi": "^17.4.2",
