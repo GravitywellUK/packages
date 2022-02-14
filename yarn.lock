@@ -4903,6 +4903,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@gravitywelluk/infrastructure@workspace:packages/backend/infrastructure"
   dependencies:
+    "@aws-cdk/aws-apigateway": 1.138.0
     "@aws-cdk/aws-events": 1.138.0
     "@aws-cdk/core": 1.138.0
     "@gravitywelluk/error": ^1.0.2

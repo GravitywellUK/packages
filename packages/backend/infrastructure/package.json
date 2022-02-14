@@ -52,6 +52,7 @@
     "ts-enum-util": "^4.0.2"
   },
   "devDependencies": {
+    "@aws-cdk/aws-apigateway": "1.138.0",
     "@aws-cdk/aws-events": "1.138.0",
     "@aws-cdk/core": "1.138.0",
     "@gravitywelluk/npm-slack": "workspace:packages/shared/npm-slack",
