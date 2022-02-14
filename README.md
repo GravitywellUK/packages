@@ -18,7 +18,7 @@ Make sure you add any new packages to the root `tsconfig.json`!
 
 ## Releases
 
-Do not make manual changes to package versions in `package.json`. Instead, run `yarn release`
+Do not make manual changes to package versions in `package.json`. Instead, run `yarn releases:define`
 
 This will identify your changest and allow you to define what type of release you want to make for all changed packages. You will also be given the choice to create new releases for all dependent workspace packages.
 

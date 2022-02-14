@@ -135,7 +135,7 @@ jobs:
 
       - name: Publish all updated packages to npm
         run: |
-          yarn workspaces foreach --no-private npm publish --tolerate-republish
+          yarn workspaces foreach --no-private run release || exit 0
         env:
           YARN_NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
