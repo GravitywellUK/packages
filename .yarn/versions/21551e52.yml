@@ -1,0 +1,5 @@
+releases:
+  "@gravitywelluk/lambda-utils": patch
+
+declined:
+  - "@gravitywelluk/gtm"
