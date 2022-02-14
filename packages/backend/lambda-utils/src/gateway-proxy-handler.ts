@@ -41,7 +41,7 @@ export interface LambdaOptions {
 export const gatewayProxyHandler = <TResult = unknown>(handler: APIGatewayProxyHandlerAsync<TResult>, options?: LambdaOptions): HandlerAsync => {
   return async (event: CustomAPIGatewayProxyEvent | WarmupEvent, context: Context) => {
     if (isWarmupEvent(event)) {
-      debug.info("Warming up function");
+      debug.info("Warming up function!");
 
       if (options?.warmup) {
         return await options.warmup();
