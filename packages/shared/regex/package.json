@@ -32,10 +32,14 @@
   "scripts": {
     "build": "tsc -b",
     "test": "jest -c ../../../jest.config.js --verbose --no-cache -i",
-    "test:ci": "yarn test"
+    "test:ci": "yarn test",
+    "postpublish": "npm-publish-slack-webhook $SLACK_WEBHOOK_URL"
   },
   "bugs": {
     "url": "https://github.com/GravitywellUK/packages/issues"
   },
-  "gitHead": "45ec8453b9d099267de3ce0fe0f4e04eaad666f5"
+  "gitHead": "45ec8453b9d099267de3ce0fe0f4e04eaad666f5",
+  "dependencies": {
+    "@n370/npm-publish-slack-webhook": "^0.1.1"
+  }
 }

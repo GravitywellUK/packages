@@ -20,6 +20,7 @@
   "dependencies": {
     "@gravitywelluk/debug": "^1.0.29",
     "@gravitywelluk/error": "^1.0.2",
+    "@n370/npm-publish-slack-webhook": "^0.1.1",
     "ramda": "^0.27.1"
   },
   "devDependencies": {
@@ -41,7 +42,8 @@
   "scripts": {
     "build": "tsc -b",
     "test": "echo no tests yet",
-    "test:ci": "yarn test"
+    "test:ci": "yarn test",
+    "postpublish": "npm-publish-slack-webhook $SLACK_WEBHOOK_URL"
   },
   "bugs": {
     "url": "https://github.com/GravitywellUK/packages/issues"
