@@ -23,7 +23,8 @@
   ],
   "scripts": {
     "start": "start-storybook -p 6006",
-    "build": "build-storybook"
+    "build": "build-storybook",
+    "postpublish": "npm-publish-slack-webhook $SLACK_WEBHOOK_URL"
   },
   "browserslist": {
     "production": [

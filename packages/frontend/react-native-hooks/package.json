@@ -31,7 +31,8 @@
     "url": "git+https://github.com/GravitywellUK/library.git"
   },
   "scripts": {
-    "build": "tsc -b"
+    "build": "tsc -b",
+    "postpublish": "npm-publish-slack-webhook $SLACK_WEBHOOK_URL"
   },
   "bugs": {
     "url": "https://github.com/GravitywellUK/library/issues"

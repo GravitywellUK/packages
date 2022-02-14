@@ -30,7 +30,8 @@
     "url": "git+https://github.com/GravitywellUK/packages.git"
   },
   "scripts": {
-    "build": "tsc -b"
+    "build": "tsc -b",
+    "postpublish": "npm-publish-slack-webhook $SLACK_WEBHOOK_URL"
   },
   "bugs": {
     "url": "https://github.com/GravitywellUK/packages/issues"
