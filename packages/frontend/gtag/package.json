@@ -31,18 +31,16 @@
   },
   "scripts": {
     "build": "tsc -b",
-    "release": "yarn npm publish && npm-publish-slack-webhook $SLACK_WEBHOOK_URL"
+    "release": "yarn npm publish && npm-slack $SLACK_WEBHOOK_URL"
   },
   "bugs": {
     "url": "https://github.com/GravitywellUK/packages/issues"
   },
   "devDependencies": {
+    "@gravitywelluk/npm-slack": "workspace:packages/shared/npm-slack",
     "@types/gtag.js": "^0.0.7"
   },
   "peerDependencies": {
     "@types/gtag.js": "^0.0.7"
-  },
-  "dependencies": {
-    "@n370/npm-publish-slack-webhook": "^0.1.1"
   }
 }
