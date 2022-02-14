@@ -32,7 +32,8 @@
   "scripts": {
     "build": "tsc -b",
     "test": "jest -c ../../../jest.config.js --verbose --no-cache -i",
-    "test:ci": "yarn test"
+    "test:ci": "yarn test",
+    "release": "yarn npm publish && npm-slack $SLACK_WEBHOOK_URL"
   },
   "bugs": {
     "url": "https://github.com/GravitywellUK/packages/issues"
@@ -47,6 +48,7 @@
     "ts-enum-util": "^4.0.2"
   },
   "devDependencies": {
+    "@gravitywelluk/npm-slack": "workspace:packages/shared/npm-slack",
     "@types/hapi__joi": "^17.1.7",
     "@types/nodemailer": "^6.4.4",
     "@types/ramda": "^0.27.44",

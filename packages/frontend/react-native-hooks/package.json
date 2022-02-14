@@ -31,7 +31,8 @@
     "url": "git+https://github.com/GravitywellUK/library.git"
   },
   "scripts": {
-    "build": "tsc -b"
+    "build": "tsc -b",
+    "release": "yarn npm publish && npm-slack $SLACK_WEBHOOK_URL"
   },
   "bugs": {
     "url": "https://github.com/GravitywellUK/library/issues"
@@ -42,6 +43,7 @@
     "react": "^17.0.2"
   },
   "devDependencies": {
+    "@gravitywelluk/npm-slack": "workspace:packages/shared/npm-slack",
     "@types/react": "^17.0.18"
   },
   "peerDependencies": {
