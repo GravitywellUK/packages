@@ -16,6 +16,9 @@
       "path": "packages/shared/regex"
     },
     {
+      "path": "packages/shared/npm-slack"
+    },
+    {
       "path": "packages/shared/string-manipulation"
     },
     {

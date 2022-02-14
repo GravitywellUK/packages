@@ -1,0 +1,41 @@
+{
+  "name": "@gravitywelluk/npm-slack",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Util function to post NPM release notifications to Slack",
+  "keywords": [
+    "gravitywell",
+    "gravitywelluk",
+    "npm",
+    "slack"
+  ],
+  "author": "GravitywellUK",
+  "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/shared/npm-slack",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "bin": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "directories": {
+    "lib": "dist",
+    "test": "__tests__"
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GravitywellUK/packages.git"
+  },
+  "scripts": {
+    "build": "tsc -b"
+  },
+  "bugs": {
+    "url": "https://github.com/GravitywellUK/packages/issues"
+  }
+}

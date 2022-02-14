@@ -20,11 +20,11 @@
   "dependencies": {
     "@gravitywelluk/debug": "^1.0.29",
     "@gravitywelluk/error": "^1.0.2",
-    "@n370/npm-publish-slack-webhook": "^0.1.1",
     "dotenv": "^10.0.0",
     "ramda": "^0.27.1"
   },
   "devDependencies": {
+    "@gravitywelluk/npm-slack": "workspace:packages/shared/npm-slack",
     "@types/ramda": "^0.27.48",
     "aws-sdk": "^2.970.0"
   },
@@ -42,7 +42,7 @@
     "build": "tsc -b",
     "test": "jest -c ../../../jest.config.js --verbose --no-cache -i",
     "test:ci": "yarn test",
-    "release": "yarn npm publish && npm-publish-slack-webhook $SLACK_WEBHOOK_URL"
+    "release": "yarn npm publish && npm-slack $SLACK_WEBHOOK_URL"
   },
   "bugs": {
     "url": "https://github.com/GravitywellUK/packages/issues"

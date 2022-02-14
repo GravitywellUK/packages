@@ -4799,8 +4799,8 @@ __metadata:
   resolution: "@gravitywelluk/aws@workspace:packages/backend/aws"
   dependencies:
     "@gravitywelluk/error": ^1.0.2
+    "@gravitywelluk/npm-slack": "workspace:packages/shared/npm-slack"
     "@gravitywelluk/validation-utils": ^2.0.2
-    "@n370/npm-publish-slack-webhook": ^0.1.1
     "@types/hapi__joi": ^17.1.7
     "@types/nodemailer": ^6.4.4
     "@types/ramda": ^0.27.44
@@ -4819,7 +4819,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@gravitywelluk/debug@workspace:packages/shared/debug"
   dependencies:
-    "@n370/npm-publish-slack-webhook": ^0.1.1
+    "@gravitywelluk/npm-slack": "workspace:packages/shared/npm-slack"
     "@types/debug": ^4.1.7
     debug: ^4.3.2
   languageName: unknown
@@ -4830,7 +4830,7 @@ __metadata:
   resolution: "@gravitywelluk/email-generator@workspace:packages/backend/email-generator"
   dependencies:
     "@gravitywelluk/debug": ^1.0.29
-    "@n370/npm-publish-slack-webhook": ^0.1.1
+    "@gravitywelluk/npm-slack": "workspace:packages/shared/npm-slack"
   languageName: unknown
   linkType: soft
 
@@ -4840,7 +4840,7 @@ __metadata:
   dependencies:
     "@gravitywelluk/debug": ^1.0.29
     "@gravitywelluk/error": ^1.0.2
-    "@n370/npm-publish-slack-webhook": ^0.1.1
+    "@gravitywelluk/npm-slack": "workspace:packages/shared/npm-slack"
     "@types/ramda": ^0.27.48
     aws-sdk: ^2.970.0
     dotenv: ^10.0.0
@@ -4855,7 +4855,7 @@ __metadata:
   resolution: "@gravitywelluk/error@workspace:packages/backend/error"
   dependencies:
     "@gravitywelluk/debug": ^1.0.29
-    "@n370/npm-publish-slack-webhook": ^0.1.1
+    "@gravitywelluk/npm-slack": "workspace:packages/shared/npm-slack"
   languageName: unknown
   linkType: soft
 
@@ -4881,7 +4881,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@gravitywelluk/gtag@workspace:packages/frontend/gtag"
   dependencies:
-    "@n370/npm-publish-slack-webhook": ^0.1.1
+    "@gravitywelluk/npm-slack": "workspace:packages/shared/npm-slack"
     "@types/gtag.js": ^0.0.7
   peerDependencies:
     "@types/gtag.js": ^0.0.7
@@ -4892,7 +4892,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@gravitywelluk/gtm@workspace:packages/frontend/gtm"
   dependencies:
-    "@n370/npm-publish-slack-webhook": ^0.1.1
+    "@gravitywelluk/npm-slack": "workspace:packages/shared/npm-slack"
     "@types/gtag.js": ^0.0.7
   peerDependencies:
     "@types/gtag.js": ^0.0.7
@@ -4906,6 +4906,7 @@ __metadata:
     "@aws-cdk/aws-events": 1.138.0
     "@aws-cdk/core": 1.138.0
     "@gravitywelluk/error": ^1.0.2
+    "@gravitywelluk/npm-slack": "workspace:packages/shared/npm-slack"
     "@gravitywelluk/validation-utils": ^2.0.2
     "@serverless-stack/resources": ~0.57.4
     aws-xray-sdk-core: ^3.3.3
@@ -4925,7 +4926,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@gravitywelluk/json-api-error@workspace:packages/backend/json-api-error"
   dependencies:
-    "@n370/npm-publish-slack-webhook": ^0.1.1
+    "@gravitywelluk/npm-slack": "workspace:packages/shared/npm-slack"
     "@sentry/node": ^6.11.0
     "@types/ramda": ^0.27.44
     "@types/uuid": ^8.3.1
@@ -4942,8 +4943,8 @@ __metadata:
   dependencies:
     "@gravitywelluk/debug": ^1.0.29
     "@gravitywelluk/error": ^1.0.2
+    "@gravitywelluk/npm-slack": "workspace:packages/shared/npm-slack"
     "@gravitywelluk/validation-utils": ^2.0.2
-    "@n370/npm-publish-slack-webhook": ^0.1.1
     "@sentry/node": ^6.11.0
     "@serverless/event-mocks": ^1.1.1
     "@types/aws-lambda": ^8.10.82
@@ -4963,8 +4964,8 @@ __metadata:
   dependencies:
     "@gravitywelluk/debug": ^1.0.29
     "@gravitywelluk/error": ^1.0.2
+    "@gravitywelluk/npm-slack": "workspace:packages/shared/npm-slack"
     "@gravitywelluk/validation-utils": ^2.0.2
-    "@n370/npm-publish-slack-webhook": ^0.1.1
     "@sentry/node": ^6.11.0
     "@serverless/event-mocks": ^1.1.1
     "@types/aws-lambda": ^8.10.82
@@ -4981,12 +4982,20 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@gravitywelluk/npm-slack@workspace:packages/shared/npm-slack":
+  version: 0.0.0-use.local
+  resolution: "@gravitywelluk/npm-slack@workspace:packages/shared/npm-slack"
+  bin:
+    npm-slack: dist/index.js
+  languageName: unknown
+  linkType: soft
+
 "@gravitywelluk/react-components@workspace:packages/frontend/react-components":
   version: 0.0.0-use.local
   resolution: "@gravitywelluk/react-components@workspace:packages/frontend/react-components"
   dependencies:
     "@babel/core": ^7.15.0
-    "@n370/npm-publish-slack-webhook": ^0.1.1
+    "@gravitywelluk/npm-slack": "workspace:packages/shared/npm-slack"
     "@storybook/addon-actions": ^6.4.18
     "@storybook/addon-essentials": ^6.4.18
     "@storybook/addon-knobs": ^6.4.0
@@ -5022,7 +5031,7 @@ __metadata:
   resolution: "@gravitywelluk/react-hooks@workspace:packages/frontend/react-hooks"
   dependencies:
     "@gravitywelluk/debug": ^1.0.29
-    "@n370/npm-publish-slack-webhook": ^0.1.1
+    "@gravitywelluk/npm-slack": "workspace:packages/shared/npm-slack"
     "@types/react": ^17.0.18
   peerDependencies:
     react: ">=16.13.1"
@@ -5035,7 +5044,7 @@ __metadata:
   resolution: "@gravitywelluk/react-native-hooks@workspace:packages/frontend/react-native-hooks"
   dependencies:
     "@gravitywelluk/debug": ^1.0.29
-    "@n370/npm-publish-slack-webhook": ^0.1.1
+    "@gravitywelluk/npm-slack": "workspace:packages/shared/npm-slack"
     "@types/react": ^17.0.18
     expo-asset: ^8.3.3
     react: ^17.0.2
@@ -5048,7 +5057,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@gravitywelluk/regex@workspace:packages/shared/regex"
   dependencies:
-    "@n370/npm-publish-slack-webhook": ^0.1.1
+    "@gravitywelluk/npm-slack": "workspace:packages/shared/npm-slack"
   languageName: unknown
   linkType: soft
 
@@ -5058,7 +5067,7 @@ __metadata:
   dependencies:
     "@gravitywelluk/debug": ^1.0.29
     "@gravitywelluk/error": ^1.0.2
-    "@n370/npm-publish-slack-webhook": ^0.1.1
+    "@gravitywelluk/npm-slack": "workspace:packages/shared/npm-slack"
     "@types/ramda": ^0.27.44
     pg-hstore: ^2.3.4
     ramda: ^0.27.1
@@ -5076,9 +5085,9 @@ __metadata:
     "@gravitywelluk/aws": ^3.0.2
     "@gravitywelluk/debug": ^1.0.29
     "@gravitywelluk/error": ^1.0.2
+    "@gravitywelluk/npm-slack": "workspace:packages/shared/npm-slack"
     "@gravitywelluk/sequelize-utils": ^2.0.4
     "@gravitywelluk/validation-utils": ^2.0.2
-    "@n370/npm-publish-slack-webhook": ^0.1.1
     "@sentry/node": ^6.11.0
     "@types/aws-lambda": ^8.10.82
     "@types/ramda": ^0.27.44
@@ -5098,7 +5107,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@gravitywelluk/string-manipulation@workspace:packages/shared/string-manipulation"
   dependencies:
-    "@n370/npm-publish-slack-webhook": ^0.1.1
+    "@gravitywelluk/npm-slack": "workspace:packages/shared/npm-slack"
     jest: ^27.2.0
     slugify: ^1.6.1
     title-case: ^3.0.3
@@ -5110,7 +5119,7 @@ __metadata:
   resolution: "@gravitywelluk/validation-utils@workspace:packages/backend/validation-utils"
   dependencies:
     "@gravitywelluk/error": ^1.0.2
-    "@n370/npm-publish-slack-webhook": ^0.1.1
+    "@gravitywelluk/npm-slack": "workspace:packages/shared/npm-slack"
     joi: ^17.4.2
   languageName: unknown
   linkType: soft
@@ -6090,15 +6099,6 @@ __metadata:
     call-me-maybe: ^1.0.1
     glob-to-regexp: ^0.3.0
   checksum: d3b82b29368821154ce8e10bef5ccdbfd070d3e9601643c99ea4607e56f3daeaa4e755dd6d2355da20762c695c1b0570543d9f84b48f70c211ec09c4aaada2e1
-  languageName: node
-  linkType: hard
-
-"@n370/npm-publish-slack-webhook@npm:^0.1.1":
-  version: 0.1.1
-  resolution: "@n370/npm-publish-slack-webhook@npm:0.1.1"
-  bin:
-    npm-publish-slack-webhook: index.js
-  checksum: 0f5219d9b68977daf10f9227268134d4d4395b6f5dbb3f5a421d69dcfa5ac4984d47cd8e379710e505544c8666df78589845e536cbc49e0f4554ea666dd0e1a4
   languageName: node
   linkType: hard
 

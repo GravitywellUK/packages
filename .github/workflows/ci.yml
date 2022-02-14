@@ -70,6 +70,9 @@ jobs:
       - name: Check for code changes
         run: yarn check:clean-workspace-after-install
 
+      - name: Check if release required and if release definition file is present
+        run: yarn version check
+
   publish-canary-version:
     name: Publish release
     runs-on: ubuntu-latest
