@@ -10,10 +10,10 @@
 
 ## Installation
 
-In conjunction with this package, you will need to install `@serverless-stack/resources` and `@aws-cdk/aws-apigateway`.
+In conjunction with this package, you will need to install `@serverless-stack/resources`, `@aws-cdk/aws-apigateway` and `@aws-cdk/aws-events`.
 
 ```shell
-yarn add @gravitywelluk/infrastructure @serverless-stack/resources @aws-cdk/aws-apigateway
+yarn add @gravitywelluk/infrastructure @serverless-stack/resources @aws-cdk/aws-apigateway @aws-cdk/aws-events
 ```
 
 ## Usage
@@ -51,4 +51,21 @@ type ConfigureAuthorizerScope = (
 Utility for generating a scoped IAM resource policy statement for an API Gateway authorizer.
 ```ts
 type GenerateApiPolicyStatement = (scope: AuthorizerScope) => ApiPolicyStatement;
+```
+
+### `keepLambdaWarm`
+
+Configures EventBridge to send a keep warm event to the specified lambda every 15 minutes. This should prevent cold starts and minimise average request latency.
+
+```ts
+type KeepLambdaWarm = (stack: cdk.Construct, name: string, lambda: sst.Function) => void;
+
+keepLambdaWarm(stack, formatRouteKey(route), routeLambda);
+```
+### `keepEndpointsWarm`
+
+Loops through all routes in an API and configures EventBridge to ping each handler lambda every 15 minutes. This should prevent cold starts and minimise average request latency.
+
+```ts
+type KeepEndpointsWarm = (stack: cdk.Construct, api: sst.ApiGatewayV1Api) => void;
 ```
