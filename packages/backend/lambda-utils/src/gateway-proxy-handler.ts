@@ -19,11 +19,19 @@ if (process.env.SENTRY_DSN) {
   }
 }
 
+interface WarmupEvent {
+  type: "warmup";
+}
+// type guard
+const isWarmupEvent = (event: CustomAPIGatewayProxyEvent | WarmupEvent): event is WarmupEvent => (event as WarmupEvent).type === "warmup";
+
 export interface LambdaOptions {
   /** Runs at start of lambda - returns and stops processing once complete */
-  warmup?: () => Promise<void>,
+  warmup?: () => Promise<void>;
+  //** Runs before calling the handler */
+  preRequest?: (event: CustomAPIGatewayProxyEvent, context: Context) => Promise<void>;
   /** Runs at end of lambda - does not stop the lambda processing */
-  cleanup?: () => Promise<void>
+  cleanup?: () => Promise<void>;
 }
 /**
  * Wraps a lambda function so that we can return static JSONAPI response objects
@@ -31,13 +39,15 @@ export interface LambdaOptions {
  * @param handler
  */
 export const gatewayProxyHandler = <TResult = unknown>(handler: APIGatewayProxyHandlerAsync<TResult>, options?: LambdaOptions): HandlerAsync => {
-  return async (event: CustomAPIGatewayProxyEvent & {source?: string}, context: Context) => {
-    if (options?.warmup) {
-      if (event.source === "serverless-plugin-warmup") {
-        debug.info("Warming up function");
+  return async (event: CustomAPIGatewayProxyEvent | WarmupEvent, context: Context) => {
+    if (isWarmupEvent(event)) {
+      debug.info("Warming up function!");
 
+      if (options?.warmup) {
         return await options.warmup();
       }
+
+      return;
     }
 
     // Transform queryStringParameters to content multiple arrays.
@@ -54,6 +64,10 @@ export const gatewayProxyHandler = <TResult = unknown>(handler: APIGatewayProxyH
     }
 
     try {
+      // Execute preRequest before handler
+      if (options?.preRequest) {
+        await options.preRequest(event, context);
+      }
       const result = await handler(event, context);
 
       // flush to send events to sentry

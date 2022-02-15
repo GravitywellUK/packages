@@ -1,8 +1,8 @@
 import { SecretsManager } from "aws-sdk";
 import * as AWS from "aws-sdk";
 
+import { EnvironmentErrorCode } from "../src/EnvironmentError";
 import {
-  EnvironmentErrorCode,
   RequiredEnvironment,
   validateAppEnvironment
 } from "../src";

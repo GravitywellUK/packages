@@ -30,10 +30,13 @@
   "scripts": {
     "build": "tsc -b",
     "test": "jest -c ../../../jest.config.js --verbose --no-cache -i",
-    "test:ci": "yarn test"
+    "test:ci": "yarn test",
+    "release": "yarn npm publish && npm-slack $SLACK_WEBHOOK_URL"
   },
   "bugs": {
     "url": "https://github.com/GravitywellUK/packages/issues"
   },
-  "gitHead": "45ec8453b9d099267de3ce0fe0f4e04eaad666f5"
+  "devDependencies": {
+    "@gravitywelluk/npm-slack": "workspace:packages/shared/npm-slack"
+  }
 }
