@@ -21,12 +21,14 @@ export const keepLambdaWarm = (stack: cdk.Construct, name: string, lambda: sst.F
 const formatRouteKey = (route: string) => route.replace(/\W+/g, "-").replace(/\W+$/, "");
 
 /**
- * Loops through all routes in the API and configures EventBridge
+ * Loops through all routes in an API and configures EventBridge
  * to ping each lambda every 15 minutes. This should prevent cold starts
  * and minimise average request latency
  */
-export const keepEndpointsWarm = (stack: cdk.Construct, api: sst.ApiGatewayV1Api): void => {
-  for (const route of api.routes) {
+export const keepEndpointsWarm = (stack: cdk.Construct, api: sst.ApiGatewayV1Api, routes?: string[]): void => {
+  const routesToKeepWarm = routes || api.routes;
+
+  for (const route of routesToKeepWarm) {
     const routeLambda = api.getFunction(route);
 
     if (routeLambda) {

@@ -66,6 +66,8 @@ keepLambdaWarm(stack, formatRouteKey(route), routeLambda);
 
 Loops through all routes in an API and configures EventBridge to ping each handler lambda every 15 minutes. This should prevent cold starts and minimise average request latency.
 
+Applies to all API routes by default. To restrict to a specific set, use `routes`.
+
 ```ts
-type KeepEndpointsWarm = (stack: cdk.Construct, api: sst.ApiGatewayV1Api) => void;
+type KeepEndpointsWarm = (stack: cdk.Construct, api: sst.ApiGatewayV1Api, routes?: string[]) => void;
 ```
