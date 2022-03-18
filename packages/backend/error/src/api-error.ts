@@ -13,6 +13,7 @@ export enum ErrorType {
   NotFoundError = "NOT_FOUND_ERROR",
   ThirdPartyError = "THIRD_PARTY_ERROR",
   TooManyRequests = "TOO_MANY_REQUESTS",
+  PaymentRequired = "PAYMENT_REQUIRED",
   UnknownError = "UNKNOWN_ERROR"
 }
 
@@ -75,6 +76,9 @@ export default class APIError<C> extends Error {
 
       case ErrorType.AuthenticationError:
         return 401;
+
+      case ErrorType.PaymentRequired:
+        return 402;
 
       case ErrorType.ForbiddenError:
         return 403;
