@@ -56,7 +56,11 @@ const initialiseRelease = cliHandler(async () => {
   // update package.json version
   const { stdout: versionOutput } = await exec(`npm version ${version || type} --git-tag-version false`);
   // remove trailing newline
-  const newVersion = versionOutput.trim();
+  const newVersion = versionOutput.trim().match(/v[\d.]+$/)?.[ 0 ];
+
+  if (!newVersion) {
+    throw new Error("Release version could not be determined! Please check you have specified a valid version");
+  }
 
   if (releaseTags.includes(newVersion)) {
     throw new Error("A release has already been published for this version. Please try again with a new version!");
@@ -66,7 +70,7 @@ const initialiseRelease = cliHandler(async () => {
     // create and checkout new release branch
     `git checkout -b release/${newVersion}`,
     // stage version update
-    "git add package.json",
+    "git add .",
     // commit version update and push new release branch
     `git commit -m "Initialise release ${newVersion}" && git push -u origin HEAD`
   ].join(" && ");
