@@ -19,10 +19,10 @@
 
 Bump package.json and create/update release branch to match
 ```bash
-gw-releases version [patch/minor/major/x.x.x]
+gw-releases init
 ```
 
 Create a tagged GitHub release with automatically generated changelog
 ```bash
-gw-releases generate
+gw-releases publish
 ```

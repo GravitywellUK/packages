@@ -18,17 +18,19 @@ export const checkMinimumNodeVersion = (requiredMajor: number): void => {
 
 const checkGithubCliInstalled = async () => {
   try {
-    await exec("gh  --version");
+    await exec("gh --version");
   } catch (e) {
     throw new Error("You must have the GitHub CLI installed. Try running `brew install gh`");
   }
 };
 
 const checkWorkingTreeClean = async () => {
-  const { stdout: diff } = await exec("git diff --quiet || echo dirty");
+  if (!process.env.CI) {
+    const { stdout: diff } = await exec("git diff --quiet || echo dirty");
 
-  if (diff.trim() === "dirty") {
-    throw new Error("Working tree is dirty. Commit your changes to continue!");
+    if (diff.trim() === "dirty") {
+      throw new Error("Working tree is dirty. Commit your changes to continue!");
+    }
   }
 };
 
