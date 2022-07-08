@@ -29,7 +29,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-          token: ${{ secrets.GH_AUTH_TOKEN }}
           fetch-depth: 0
 
       - name: echo github.ref
@@ -84,7 +83,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-          token: ${{ secrets.GH_AUTH_TOKEN }}
           fetch-depth: 0
 
       - name: Use Node.js ${{ env.NODE_VERSION }}
