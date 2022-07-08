@@ -28,6 +28,9 @@
       "path": "packages/backend/error"
     },
     {
+      "path": "packages/backend/square-utils"
+    },
+    {
       "path": "packages/backend/email-generator"
     },
     {
