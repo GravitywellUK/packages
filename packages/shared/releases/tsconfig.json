@@ -1,0 +1,20 @@
+{
+  "extends": "../../../tsconfig-settings.json",
+  "compilerOptions": {
+    "composite": false,
+    "rootDir": "src",
+    "outDir": "dist",
+    "target": "ESNext",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "declaration": false,
+    "useUnknownInCatchVariables": false
+  },
+  "references": [],
+  "include": [ "./src" ],
+  "exclude": [
+    "__tests__",
+    "dist",
+    "node_modules"
+  ]
+}
