@@ -29,6 +29,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
+          repository: actions/checkout
           token: ${{ secrets.GH_AUTH_TOKEN }}
           fetch-depth: 0
 
