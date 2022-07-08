@@ -3,8 +3,8 @@
 <p align="center">
   <img src="https://img.shields.io/github/workflow/status/GravitywellUK/packages/CI/master" alt="CI" />
   <img src="https://img.shields.io/github/license/gravitywelluk/packages" alt="License" />
-  <img src="https://img.shields.io/npm/dm/@gravitywelluk/email-generator" alt="Downloads" />
-  <img src="https://img.shields.io/npm/v/@gravitywelluk/email-generator" alt="Version" />
+  <img src="https://img.shields.io/npm/dm/@gravitywelluk/square-utils" alt="Downloads" />
+  <img src="https://img.shields.io/npm/v/@gravitywelluk/square-utils" alt="Version" />
 </p>
 <br />
 
