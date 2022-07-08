@@ -27,9 +27,8 @@ jobs:
     if: ${{ !contains(toJSON(github.event.head_commit.message), 'published release :rocket:') }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
-          lfs: true
           repository: GravitywellUK/packages
           token: ${{ secrets.GH_AUTH_TOKEN }}
           fetch-depth: 0
@@ -84,7 +83,7 @@ jobs:
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           token: ${{ secrets.GH_AUTH_TOKEN }}
           fetch-depth: 0
