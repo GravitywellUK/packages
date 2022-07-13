@@ -5140,6 +5140,19 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@gravitywelluk/use-square-hook@workspace:packages/frontend/use-square-hook":
+  version: 0.0.0-use.local
+  resolution: "@gravitywelluk/use-square-hook@workspace:packages/frontend/use-square-hook"
+  dependencies:
+    "@gravitywelluk/debug": ^1.0.29
+    "@gravitywelluk/npm-slack": "workspace:packages/shared/npm-slack"
+    "@types/react": ^17.0.18
+  peerDependencies:
+    react: ">=16.13.1"
+    react-dom: ">=16.13.1"
+  languageName: unknown
+  linkType: soft
+
 "@gravitywelluk/validation-utils@^2.0.2, @gravitywelluk/validation-utils@workspace:packages/backend/validation-utils":
   version: 0.0.0-use.local
   resolution: "@gravitywelluk/validation-utils@workspace:packages/backend/validation-utils"

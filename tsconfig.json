@@ -68,6 +68,9 @@
     },
     {
       "path": "packages/frontend/react-native-hooks"
+    },
+    {
+      "path": "packages/frontend/use-square-hook"
     }
   ],
   "files": []
