@@ -70,7 +70,7 @@
       "path": "packages/frontend/react-native-hooks"
     },
     {
-      "path": "packages/frontend/use-square-hook"
+      "path": "packages/frontend/react-square"
     }
   ],
   "files": []

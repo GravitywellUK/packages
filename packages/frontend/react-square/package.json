@@ -1,5 +1,5 @@
 {
-  "name": "@gravitywelluk/use-square-hook",
+  "name": "@gravitywelluk/react-square",
   "version": "0.0.1",
   "description": "React hook for using Square JS",
   "keywords": [
@@ -10,7 +10,7 @@
     "hooks"
   ],
   "author": "Sam Lihou <sam@gravitywell.co.uk>",
-  "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/frontend/use-square-hook",
+  "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/frontend/react-square",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

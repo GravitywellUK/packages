@@ -3,8 +3,8 @@
 <p align="center">
   <img src="https://img.shields.io/github/workflow/status/GravitywellUK/packages/CI/master" alt="CI" />
   <img src="https://img.shields.io/github/license/gravitywelluk/packages" alt="License" />
-  <img src="https://img.shields.io/npm/dm/@gravitywelluk/use-square-hook" alt="Downloads" />
-  <img src="https://img.shields.io/npm/v/@gravitywelluk/use-square-hook" alt="Version" />
+  <img src="https://img.shields.io/npm/dm/@gravitywelluk/react-square" alt="Downloads" />
+  <img src="https://img.shields.io/npm/v/@gravitywelluk/react-square" alt="Version" />
 </p>
 <br />
 
@@ -17,7 +17,7 @@ See below for an example implementation that:
 - Submits a request to the server, where the Payments API can request a payment.
 
 ```typescript
-import { useSquare } from "@gravitywelluk/use-square-hook";
+import { useSquare } from "@gravitywelluk/react-square";
 
 const CollectPaymentPage = () => {
 
