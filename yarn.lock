@@ -5054,6 +5054,19 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@gravitywelluk/react-square@workspace:packages/frontend/react-square":
+  version: 0.0.0-use.local
+  resolution: "@gravitywelluk/react-square@workspace:packages/frontend/react-square"
+  dependencies:
+    "@gravitywelluk/debug": ^1.0.29
+    "@gravitywelluk/npm-slack": "workspace:packages/shared/npm-slack"
+    "@types/react": ^17.0.18
+  peerDependencies:
+    react: ">=16.13.1"
+    react-dom: ">=16.13.1"
+  languageName: unknown
+  linkType: soft
+
 "@gravitywelluk/regex@workspace:packages/shared/regex":
   version: 0.0.0-use.local
   resolution: "@gravitywelluk/regex@workspace:packages/shared/regex"

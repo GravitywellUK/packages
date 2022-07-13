@@ -1,0 +1,52 @@
+{
+  "name": "@gravitywelluk/react-square",
+  "version": "0.0.1",
+  "description": "React hook for using Square JS",
+  "keywords": [
+    "gravitywell",
+    "gravitywelluk",
+    "react-hooks",
+    "react",
+    "hooks"
+  ],
+  "author": "Sam Lihou <sam@gravitywell.co.uk>",
+  "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/frontend/react-square",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "directories": {
+    "lib": "dist",
+    "test": "__tests__"
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GravitywellUK/packages.git"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "release": "yarn npm publish && npm-slack $SLACK_WEBHOOK_URL"
+  },
+  "bugs": {
+    "url": "https://github.com/GravitywellUK/packages/issues"
+  },
+  "dependencies": {
+    "@gravitywelluk/debug": "^1.0.29"
+  },
+  "devDependencies": {
+    "@gravitywelluk/npm-slack": "workspace:packages/shared/npm-slack",
+    "@types/react": "^17.0.18"
+  },
+  "peerDependencies": {
+    "react": ">=16.13.1",
+    "react-dom": ">=16.13.1"
+  }
+}
