@@ -1,5 +1,5 @@
-<h1 align="center">Gravitywell Square JS</h1>
-<p align="center">A React hook to help use Square JS in your project</p>
+<h1 align="center">Gravitywell React Square</h1>
+<p align="center">A set of helpers and hooks in React to help use Square in your project</p>
 <p align="center">
   <img src="https://img.shields.io/github/workflow/status/GravitywellUK/packages/CI/master" alt="CI" />
   <img src="https://img.shields.io/github/license/gravitywelluk/packages" alt="License" />
@@ -8,7 +8,7 @@
 </p>
 <br />
 
-## Usage
+## `useSquare` Hook
 
 See below for an example implementation that:
 - Loads the form from the Square SDK
