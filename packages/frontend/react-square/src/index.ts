@@ -65,7 +65,11 @@ export interface VerificationDetails {
   amount: string;
   /** Currency code e.g. `"GBP"` or `"USD"` */
   currencyCode: string;
-  /** What you intend to do with the payment, e.g. `"CHARGE"`, `"STORE"` */
+  /** The Web Payments SDK produces a payment token that can be used to
+   * make a payment with the presented card or to store the card on file.
+   * These operations are represented by two intents: CHARGE to make a
+   * payment and STORE to store the card.
+ */
   intent: VerificationIntent;
 }
 
