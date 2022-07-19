@@ -1,6 +1,6 @@
 {
   "name": "@gravitywelluk/react-square",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "React hook for using Square JS",
   "keywords": [
     "gravitywell",
