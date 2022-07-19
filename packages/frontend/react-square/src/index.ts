@@ -66,7 +66,12 @@ export interface VerificationDetails {
   /** Currency code e.g. `"GBP"` or `"USD"` */
   currencyCode: string;
   /** What you intend to do with the payment, e.g. `"CHARGE"`, `"STORE"` */
-  intent: "CHARGE"
+  intent: VerificationIntent;
+}
+
+export enum VerificationIntent {
+  Charge = "CHARGE",
+  Store = "STORE"
 }
 
 export interface TokenResult {
