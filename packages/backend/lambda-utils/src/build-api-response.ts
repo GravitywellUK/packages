@@ -40,7 +40,7 @@ export const buildApiResponse = <D extends unknown>(
         statusCode,
         headers: {
           "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": allowedOrigins[ 0 ],
+          "Access-Control-Allow-Origin": currentOrigin ?? allowedOrigins[ 0 ],
           "Access-Control-Allow-Credentials": true
         },
         body: JSON.stringify({ error: formattedError })
