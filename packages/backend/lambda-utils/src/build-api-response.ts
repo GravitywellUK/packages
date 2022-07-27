@@ -2,7 +2,10 @@ import {
   APIGatewayProxyResult,
   Context
 } from "aws-lambda";
-import { APIError, ErrorType } from "@gravitywelluk/error";
+import {
+  APIError,
+  ErrorType
+} from "@gravitywelluk/error";
 
 import { CustomAPIGatewayProxyEvent } from "./gateway-proxy-handler";
 
@@ -15,29 +18,29 @@ import { CustomAPIGatewayProxyEvent } from "./gateway-proxy-handler";
    * @param allowedOrigins A collection of origins to allow
    */
 export const buildApiResponse = <D extends unknown>(
-  event: CustomAPIGatewayProxyEvent, _context: Context, data: D | APIError<unknown> | Error, allowedOrigins?: String[]
+  event: CustomAPIGatewayProxyEvent, _context: Context, data: D | APIError<unknown> | Error, allowedOrigins?: string[]
 ): APIGatewayProxyResult => {
-
   if (allowedOrigins) {
     const currentOrigin = event.headers ? event.headers.origin : null;
-
     let isOriginAllowed = false;
+
     // Check if origin is in allowed origins
     allowedOrigins.map(allowedOrigin => {
-      if (!isOriginAllowed && currentOrigin.match(allowedOrigin)) {
+      if (!isOriginAllowed && currentOrigin && currentOrigin.match(allowedOrigin)) {
         isOriginAllowed = true;
       }
-    })
+    });
 
     // Return an error if origin is not allowed or if there's no origin
     if (!isOriginAllowed || !currentOrigin) {
       const error = new APIError("Forbidden - origin not allowed", ErrorType.ForbiddenError);
       const { statusCode, ...formattedError } = APIError.formatApiError(error);
+
       return {
         statusCode,
         headers: {
           "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": allowedOrigins[0],
+          "Access-Control-Allow-Origin": allowedOrigins[ 0 ],
           "Access-Control-Allow-Credentials": true
         },
         body: JSON.stringify({ error: formattedError })
@@ -45,10 +48,9 @@ export const buildApiResponse = <D extends unknown>(
     }
   }
 
-
   const headers = {
     "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": event.headers.origin,
+    "Access-Control-Allow-Origin": event.headers && event.headers.origin ? event.headers.origin : "*",
     "Access-Control-Allow-Credentials": true
   };
 

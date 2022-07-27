@@ -32,7 +32,7 @@ export interface LambdaOptions {
   preRequest?: (event: CustomAPIGatewayProxyEvent, context: Context) => Promise<void>;
   /** Runs at end of lambda - does not stop the lambda processing */
   cleanup?: () => Promise<void>;
-  allowedOrigins?: String[];
+  allowedOrigins?: string[];
 }
 /**
  * Wraps a lambda function so that we can return static JSONAPI response objects
