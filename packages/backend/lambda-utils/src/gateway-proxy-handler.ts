@@ -32,6 +32,7 @@ export interface LambdaOptions {
   preRequest?: (event: CustomAPIGatewayProxyEvent, context: Context) => Promise<void>;
   /** Runs at end of lambda - does not stop the lambda processing */
   cleanup?: () => Promise<void>;
+  allowedOrigins?: String[];
 }
 /**
  * Wraps a lambda function so that we can return static JSONAPI response objects
@@ -80,9 +81,9 @@ export const gatewayProxyHandler = <TResult = unknown>(handler: APIGatewayProxyH
         await options.cleanup();
       }
 
-      return buildApiResponse<TResult>(event, context, result);
+      return buildApiResponse<TResult>(event, context, result, options?.allowedOrigins);
     } catch (error) {
-      const responseError = buildApiResponse<TResult>(event, context, error as Error);
+      const responseError = buildApiResponse<TResult>(event, context, error as Error, options?.allowedOrigins);
 
       // flush to send events to sentry
       if (process.env.SENTRY_DSN) {
