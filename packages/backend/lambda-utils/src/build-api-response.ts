@@ -25,7 +25,7 @@ export const buildApiResponse = <D extends unknown>(
     let isOriginAllowed = false;
 
     // Check if origin is in allowed origins
-    allowedOrigins.map(allowedOrigin => {
+    allowedOrigins.forEach(allowedOrigin => {
       if (!isOriginAllowed && currentOrigin && currentOrigin.match(allowedOrigin)) {
         isOriginAllowed = true;
       }
@@ -40,7 +40,7 @@ export const buildApiResponse = <D extends unknown>(
         statusCode,
         headers: {
           "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": currentOrigin ?? allowedOrigins[ 0 ],
+          "Access-Control-Allow-Origin": allowedOrigins[ 0 ],
           "Access-Control-Allow-Credentials": true
         },
         body: JSON.stringify({ error: formattedError })
