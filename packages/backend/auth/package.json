@@ -41,7 +41,7 @@
   },
   "scripts": {
     "build": "tsc -b",
-    "test": "jest -c ../../../jest.config.js --verbose --no-cache -i",
+    "test": "echo no tests yet",
     "test:ci": "yarn test",
     "release": "yarn npm publish && npm-slack $SLACK_WEBHOOK_URL"
   },
