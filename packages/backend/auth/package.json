@@ -6,6 +6,7 @@
     "gravitywelluk",
     "emails"
   ],
+  "type": "module",
   "description": "A library to contain auth adapters",
   "author": "GravitywellUK <technical@gravitywell.co.uk>",
   "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/backend/auth",
