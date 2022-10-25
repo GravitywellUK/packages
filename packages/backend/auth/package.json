@@ -1,0 +1,54 @@
+{
+  "name": "@gravitywelluk/auth",
+  "version": "0.0.1",
+  "keywords": [
+    "gravitywell",
+    "gravitywelluk",
+    "emails"
+  ],
+  "description": "A library to contain auth adapters",
+  "author": "GravitywellUK <technical@gravitywell.co.uk>",
+  "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/backend/auth",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "directories": {
+    "lib": "dist",
+    "test": "__tests__"
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "dependencies": {
+    "@gravitywelluk/debug": "^1.0.29",
+    "@gravitywelluk/error": "^1.0.0",
+    "@serverless-stack/node": "1.13.0",
+    "jsonwebtoken": "^8.5.1",
+    "jwk-to-pem": "^2.0.5",
+    "jwt-decode": "3.1.2",
+    "node-fetch": "^3.2.10",
+    "openid-client": "5.2.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GravitywellUK/packages.git"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "test": "echo no tests yet",
+    "test:ci": "yarn test",
+    "release": "yarn npm publish && npm-slack $SLACK_WEBHOOK_URL"
+  },
+  "bugs": {
+    "url": "https://github.com/GravitywellUK/packages/issues"
+  },
+  "devDependencies": {
+    "@gravitywelluk/npm-slack": "workspace:packages/shared/npm-slack"
+  }
+}

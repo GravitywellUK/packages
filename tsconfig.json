@@ -22,6 +22,9 @@
       "path": "packages/shared/string-manipulation"
     },
     {
+      "path": "packages/backend/auth"
+    },
+    {
       "path": "packages/backend/json-api-error"
     },
     {
