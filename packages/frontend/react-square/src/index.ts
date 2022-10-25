@@ -41,8 +41,10 @@ export interface VerifyBuyerResponse {
   token: string;
 }
 
-/* Details collected from the buyer */
-export interface VerificationDetails {
+/**
+ * Billing contact details collected from the user
+ */
+export interface BillingContact {
   billingContact: {
     /** First / Given name e.g. `Jo` */
     givenName?: string;
@@ -60,18 +62,36 @@ export interface VerificationDetails {
     region?: string;
     /** City e.g. `London` */
     city?: string;
-  },
-  /** The amount to charge e.g. `"25.99"`  */
+  }
+}
+
+export interface ChargeIntentVerificationDetails {
+  /** The amount to charge e.g. `"25.99"`, only required if intent is `"CHARGE"`  */
   amount: string;
-  /** Currency code e.g. `"GBP"` or `"USD"` */
+  /** Currency code e.g. `"GBP"` or `"USD"`, only required if intent is `"CHARGE"` */
   currencyCode: string;
   /** The Web Payments SDK produces a payment token that can be used to
    * make a payment with the presented card or to store the card on file.
    * These operations are represented by two intents: CHARGE to make a
    * payment and STORE to store the card.
  */
-  intent: VerificationIntent;
+  intent: VerificationIntent.Charge;
 }
+
+export interface StoreIntentVerificationDetails {
+  /** The Web Payments SDK produces a payment token that can be used to
+   * make a payment with the presented card or to store the card on file.
+   * These operations are represented by two intents: CHARGE to make a
+   * payment and STORE to store the card.
+ */
+  intent: VerificationIntent.Store;
+}
+
+/**
+ * Details collected from the buyer
+ * Billing contact information and EITHER verification details for charge OR store intent
+ */
+export type VerificationDetails = BillingContact & (ChargeIntentVerificationDetails | StoreIntentVerificationDetails);
 
 export enum VerificationIntent {
   Charge = "CHARGE",
