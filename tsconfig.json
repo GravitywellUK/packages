@@ -71,6 +71,9 @@
     },
     {
       "path": "packages/frontend/react-square"
+    },
+    {
+      "path": "packages/frontend/gdpr"
     }
   ],
   "files": []

@@ -4877,6 +4877,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@gravitywelluk/gdpr@workspace:packages/frontend/gdpr":
+  version: 0.0.0-use.local
+  resolution: "@gravitywelluk/gdpr@workspace:packages/frontend/gdpr"
+  dependencies:
+    "@gravitywelluk/npm-slack": "workspace:packages/shared/npm-slack"
+    "@types/react": ^17.0.18
+    react-cookie-consent: ^8.0.1
+    react-facebook-pixel: ^1.0.4
+    react-ga4: ^1.4.1
+    react-gtm-module: ^2.0.11
+    react-hotjar: ^5.2.0
+    react-linkedin-insight: ^0.1.3
+  peerDependencies:
+    react: ^18.2.0
+  languageName: unknown
+  linkType: soft
+
 "@gravitywelluk/gtag@workspace:packages/frontend/gtag":
   version: 0.0.0-use.local
   resolution: "@gravitywelluk/gtag@workspace:packages/frontend/gtag"
@@ -10830,6 +10847,13 @@ __metadata:
   version: 1.1.0
   resolution: "brorand@npm:1.1.0"
   checksum: 8a05c9f3c4b46572dec6ef71012b1946db6cae8c7bb60ccd4b7dd5a84655db49fe043ecc6272e7ef1f69dc53d6730b9e2a3a03a8310509a3d797a618cbee52be
+  languageName: node
+  linkType: hard
+
+"browser-or-node@npm:^1.3.0":
+  version: 1.3.0
+  resolution: "browser-or-node@npm:1.3.0"
+  checksum: 14a7e3f7bd2dfeac0d1e8fed378a22c7e3c943c30e84ce09ba0636c82f79f78d321536fd2846dd505b6d7ee6fb0fdb8d7f084afe40f2378eee5533cb8e7cd456
   languageName: node
   linkType: hard
 
@@ -19774,6 +19798,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"js-cookie@npm:^2.2.1":
+  version: 2.2.1
+  resolution: "js-cookie@npm:2.2.1"
+  checksum: 9b1fb980a1c5e624fd4b28ea4867bb30c71e04c4484bb3a42766344c533faa684de9498e443425479ec68609e96e27b60614bfe354877c449c631529b6d932f2
+  languageName: node
+  linkType: hard
+
 "js-string-escape@npm:^1.0.1":
   version: 1.0.1
   resolution: "js-string-escape@npm:1.0.1"
@@ -24412,6 +24443,17 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"react-cookie-consent@npm:^8.0.1":
+  version: 8.0.1
+  resolution: "react-cookie-consent@npm:8.0.1"
+  dependencies:
+    js-cookie: ^2.2.1
+  peerDependencies:
+    react: ">=16"
+  checksum: c99f3e40e3091c439956498158b5b8906cce170763836d6fade98a06ce667eca25aaf3bc407e10a6fb72fc44e5178a2ebf14cbbe4e1b5684a74b7d7f484bd359
+  languageName: node
+  linkType: hard
+
 "react-dev-utils@npm:^11.0.3":
   version: 11.0.4
   resolution: "react-dev-utils@npm:11.0.4"
@@ -24516,10 +24558,31 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"react-facebook-pixel@npm:^1.0.4":
+  version: 1.0.4
+  resolution: "react-facebook-pixel@npm:1.0.4"
+  checksum: cfd6fa5d6f4191ea0508c0313b9e0206edf2117645ba38021030bfa22eb2d2d087c8159d974e037057def4e6c18bd6618a1308e19b0bfe2092ac4521e79669bd
+  languageName: node
+  linkType: hard
+
 "react-fast-compare@npm:^3.0.1, react-fast-compare@npm:^3.2.0":
   version: 3.2.0
   resolution: "react-fast-compare@npm:3.2.0"
   checksum: 8ef272c825ae329f61633ce4ce7f15aa5b84e5214d88bc0823880236e03e985a13195befa2c7a4eda7db3b017dc7985729152d88445823f652403cf36c2b86aa
+  languageName: node
+  linkType: hard
+
+"react-ga4@npm:^1.4.1":
+  version: 1.4.1
+  resolution: "react-ga4@npm:1.4.1"
+  checksum: 4c33ecb47dfc26c241a6af8e2b08b29b6c059f40e456e93d1c2b65c995edce18f32d9777295774ec992d968d7c5efdd105eb62398972d85ff2e2b6dad8646a26
+  languageName: node
+  linkType: hard
+
+"react-gtm-module@npm:^2.0.11":
+  version: 2.0.11
+  resolution: "react-gtm-module@npm:2.0.11"
+  checksum: 93b4659f0d10248f59113a3eb488ea8848712cab2e28b7c45d080b373d6736a96b9855d637c4447819493366bf25185c3f88e6b4107a8f06d8ab2a39f7a725b9
   languageName: node
   linkType: hard
 
@@ -24536,6 +24599,13 @@ fsevents@^1.2.7:
     react: ^16.6.0 || ^17.0.0
     react-dom: ^16.6.0 || ^17.0.0
   checksum: 8db5d875bb681dabc5f277ee3b0debe96d58f4b6d33cb2e9c72a026f4fd22e44722d2a7164a21b51a4002a6cd40d716195731ba37cc1d73167adf85e56441c1c
+  languageName: node
+  linkType: hard
+
+"react-hotjar@npm:^5.2.0":
+  version: 5.2.0
+  resolution: "react-hotjar@npm:5.2.0"
+  checksum: 6fe70ef67ae68241a559e77819fb45c460d0c3ed63b1b638d163ea93826fc760e36a1f6fbb9f4b489be1d920eaa7d4e91f29d0c4c97bed946a76f3889968bf84
   languageName: node
   linkType: hard
 
@@ -24581,6 +24651,15 @@ fsevents@^1.2.7:
   version: 3.0.4
   resolution: "react-lifecycles-compat@npm:3.0.4"
   checksum: a904b0fc0a8eeb15a148c9feb7bc17cec7ef96e71188280061fc340043fd6d8ee3ff233381f0e8f95c1cf926210b2c4a31f38182c8f35ac55057e453d6df204f
+  languageName: node
+  linkType: hard
+
+"react-linkedin-insight@npm:^0.1.3":
+  version: 0.1.3
+  resolution: "react-linkedin-insight@npm:0.1.3"
+  dependencies:
+    browser-or-node: ^1.3.0
+  checksum: ef4a55287016ca800b20ea0cee55e72f00cdb75a6b9dd5f297317a7f9381fc1d02b1b49407b086ef5e8ec928b9d4b4c57db4b3cf6456f95a3d9f404a463ed6c5
   languageName: node
   linkType: hard
 

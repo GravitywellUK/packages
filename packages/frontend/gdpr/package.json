@@ -1,0 +1,54 @@
+{
+  "name": "@gravitywelluk/gdpr",
+  "version": "0.0.0",
+  "description": "GDPR package to quickly enable multiple services after cookie consent.",
+  "keywords": [
+    "gravitywell",
+    "gravitywelluk",
+    "gdpr"
+  ],
+  "author": "Dulcie Jackson <dulcie@gravitywell.co.uk>",
+  "homepage": "https://github.com/GravitywellUK/packages/tree/master/packages/frontend/gdpr",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "directories": {
+    "lib": "dist",
+    "test": "__tests__"
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GravitywellUK/packages.git"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "release": "yarn npm publish && npm-slack $SLACK_WEBHOOK_URL"
+  },
+  "bugs": {
+    "url": "https://github.com/GravitywellUK/packages/issues"
+  },
+  "dependencies": {
+    "react-cookie-consent": "^8.0.1",
+    "react-facebook-pixel": "^1.0.4",
+    "react-ga4": "^1.4.1",
+    "react-gtm-module": "^2.0.11",
+    "react-hotjar": "^5.2.0",
+    "react-linkedin-insight": "^0.1.3"
+  },
+  "devDependencies": {
+    "@gravitywelluk/npm-slack": "workspace:packages/shared/npm-slack",
+    "@types/react": "^17.0.18"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0"
+  }
+}
