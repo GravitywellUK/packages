@@ -46,7 +46,8 @@
   },
   "devDependencies": {
     "@gravitywelluk/npm-slack": "workspace:packages/shared/npm-slack",
-    "@types/react": "^17.0.18"
+    "@types/react": "^17.0.18",
+    "@types/react-gtm-module": "^2"
   },
   "peerDependencies": {
     "react": "^18.2.0"
