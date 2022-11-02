@@ -6,3 +6,6 @@ releases:
   "@gravitywelluk/lambda-utils": major
   "@gravitywelluk/aws": major
   "@gravitywelluk/serverless-queue": major
+  "@gravitywelluk/auth": major
+  "@gravitywelluk/infrastructure": major
+  "@gravitywelluk/media-optimiser": major
