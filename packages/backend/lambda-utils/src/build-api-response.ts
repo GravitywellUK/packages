@@ -18,7 +18,7 @@ import { CustomAPIGatewayProxyEvent } from "./gateway-proxy-handler";
    * @param allowedOrigins A collection of origins to allow
    */
 export const buildApiResponse = <D extends unknown>(
-  event: CustomAPIGatewayProxyEvent, _context: Context, data: D | APIError<unknown> | Error, allowedOrigins?: string[]
+  event: CustomAPIGatewayProxyEvent, _context: Context, data: D | APIError | Error, allowedOrigins?: string[]
 ): APIGatewayProxyResult => {
   if (allowedOrigins) {
     const currentOrigin = event.headers ? event.headers.origin : null;
@@ -33,7 +33,7 @@ export const buildApiResponse = <D extends unknown>(
 
     // Return an error if origin is not allowed or if there's no origin
     if (!isOriginAllowed || !currentOrigin) {
-      const error = new APIError("Forbidden - origin not allowed", ErrorType.ForbiddenError);
+      const error = new APIError("Forbidden - origin not allowed", ErrorType.Forbidden);
       const { statusCode, ...formattedError } = APIError.formatApiError(error);
 
       return {
@@ -56,7 +56,7 @@ export const buildApiResponse = <D extends unknown>(
 
   // handle a none api error exception
   if (data instanceof Error) {
-    const errorData = data instanceof APIError ? data : new APIError(data.message);
+    const errorData = data instanceof APIError ? data : new APIError(data.message, ErrorType.InternalServerError);
     const { statusCode, ...formattedError } = APIError.formatApiError(errorData);
 
     return {

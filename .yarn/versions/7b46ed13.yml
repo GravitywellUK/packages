@@ -1,5 +1,7 @@
 releases:
   "@gravitywelluk/error": major
+  "@gravitywelluk/environment": major
   "@gravitywelluk/sequelize-utils": major
   "@gravitywelluk/validation-utils": major
-  "@gravitywelluk/environment": major
+  "@gravitywelluk/lambda-utils": major
+  "@gravitywelluk/aws": major
