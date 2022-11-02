@@ -2,8 +2,7 @@ import {
   Context,
   SQSHandler,
   Callback,
-  SQSEvent,
-  SQSBatchResponse
+  SQSEvent
 } from "aws-lambda";
 import * as Sentry from "@sentry/node";
 
@@ -23,7 +22,7 @@ if (process.env.SENTRY_DSN) {
  * @param handler
  */
 export const sqsEventHandler = (handler: SQSHandler, options?: Pick<LambdaOptions, "cleanup">) => {
-  return async (event: SQSEvent, context: Context, callback: Callback<void | SQSBatchResponse>): Promise<void> => {
+  return async (event: SQSEvent, context: Context, callback: Callback<void>): Promise<void> => {
     try {
       await handler(
         event, context, callback
