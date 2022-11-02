@@ -5,3 +5,4 @@ releases:
   "@gravitywelluk/validation-utils": major
   "@gravitywelluk/lambda-utils": major
   "@gravitywelluk/aws": major
+  "@gravitywelluk/serverless-queue": major

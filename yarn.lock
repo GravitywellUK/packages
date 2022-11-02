@@ -5552,6 +5552,7 @@ __metadata:
   dependencies:
     "@gravitywelluk/debug": ^1.0.29
     "@gravitywelluk/npm-slack": "workspace:packages/shared/npm-slack"
+    jest: ^27.2.3
   languageName: unknown
   linkType: soft
 
