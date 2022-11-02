@@ -4,10 +4,7 @@ import * as dotenv from "dotenv";
 import { createDebug } from "@gravitywelluk/debug";
 import * as R from "ramda";
 
-import {
-  EnvironmentError,
-  EnvironmentErrorCode
-} from "./EnvironmentError";
+import { EnvironmentError } from "./EnvironmentError";
 
 const debug = createDebug("VALIDATE_ENV");
 
@@ -58,9 +55,8 @@ export const validateAppEnvironment: ValidateAppEnvironment = async (
     // Throw an error if there are any missing environment variables
     if (missingEnvironmentVariables.length > 0) {
       throw new EnvironmentError(
-        `Could not find required environment variables: ${missingEnvironmentVariables.join(", ")}.`,
-        ErrorType.InvalidData,
-        EnvironmentErrorCode.MissingVariables
+        ErrorType.UnprocessableEntity,
+        `Could not find required environment variables: ${missingEnvironmentVariables.join(", ")}.`
       );
     }
   }
@@ -107,11 +103,7 @@ export const validateAppEnvironment: ValidateAppEnvironment = async (
 
     // Throw an error if there are any missing secret variables
     if (missingSecrets.length > 0) {
-      throw new EnvironmentError(
-        `Could not retrieve required secrets from AWS: ${missingSecrets.join(", ")}.`,
-        ErrorType.InvalidData,
-        EnvironmentErrorCode.MissingAWSSecrets
-      );
+      throw new EnvironmentError(ErrorType.UnprocessableEntity, `Could not retrieve required secrets from AWS: ${missingSecrets.join(", ")}.`);
     }
   }
 

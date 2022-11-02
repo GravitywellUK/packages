@@ -16,11 +16,41 @@ The package allows you to throw consistent errors within your project, without w
 
 Every HTTP status code (except "I'm a teapot") is available to use, mapped with the `ErrorType` enum. Each enum value is documented with the MDN annotation for the code, to provide an easy view on the code's intended purpose.
 
+If needed, you can define a custom `config` typing, to protect the structure of config you pass into errors. If you don't need this, a `Record<string, unknown>` is configured by default.
+
 #### Example usage
+
 ```typescript
-
 throw new APIError(ErrorType.Forbidden, "User is not permitted to access this resource");
+```
 
+A detailed example of configuring custom typing for config:
+
+```typescript
+// The shape of your error context
+interface CustomErrorContext {
+  foo: string;
+  bar: number;
+}
+
+type CustomErrorContextType<D extends keyof CustomErrorContext = keyof CustomErrorContext> = Record<D, CustomErrorContext[D]>;
+
+type CustomProjectError = ApiErrorResponse<CustomErrorContextType>;
+```
+
+With this config, the `context` property of your `CustomProjectError` will be fully typed to your specification!
+
+```typescript
+const example: CustomProjectError = {
+  statusCode: ErrorType.BadGateway,
+  title: "something",
+  message: "somethingelse",
+  // It will error if this doesn't match your CustomErrorContext definition
+  context: {
+    foo: "f",
+    bar: 6
+  }
+};
 ```
 
 #### Migrating from v1
