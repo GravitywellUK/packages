@@ -55,8 +55,8 @@ export const validateAppEnvironment: ValidateAppEnvironment = async (
     // Throw an error if there are any missing environment variables
     if (missingEnvironmentVariables.length > 0) {
       throw new EnvironmentError(
-        ErrorType.UnprocessableEntity,
-        `Could not find required environment variables: ${missingEnvironmentVariables.join(", ")}.`
+        `Could not find required environment variables: ${missingEnvironmentVariables.join(", ")}.`,
+        ErrorType.UnprocessableEntity
       );
     }
   }
@@ -103,7 +103,10 @@ export const validateAppEnvironment: ValidateAppEnvironment = async (
 
     // Throw an error if there are any missing secret variables
     if (missingSecrets.length > 0) {
-      throw new EnvironmentError(ErrorType.UnprocessableEntity, `Could not retrieve required secrets from AWS: ${missingSecrets.join(", ")}.`);
+      throw new EnvironmentError(
+        `Could not retrieve required secrets from AWS: ${missingSecrets.join(", ")}.`,
+        ErrorType.UnprocessableEntity
+      );
     }
   }
 

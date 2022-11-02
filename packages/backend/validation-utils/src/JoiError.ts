@@ -9,12 +9,12 @@ import * as Joi from "joi";
  *
  * @param error
  */
-export default class JoiError extends APIError<null> {
+export default class JoiError extends APIError {
 
   constructor(err: Joi.ValidationError) {
-    const param = { details: err.details };
+    const context = { details: err.details };
 
-    super(err.message, ErrorType.InvalidData, null, param);
+    super(err.message, ErrorType.UnprocessableEntity, context);
   }
 
 }

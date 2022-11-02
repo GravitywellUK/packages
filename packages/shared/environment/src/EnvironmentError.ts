@@ -9,7 +9,7 @@ import {
  * Custom APIError for an Environment error.
  */
 export class EnvironmentError extends APIError {
-  constructor(type: ErrorType, msg: string, detail?: Record<string, unknown>) {
-    super(type, msg, detail);
+  constructor(msg: string, type: ErrorType, detail?: Record<string, unknown>) {
+    super(msg, type, detail);
   }
 }
