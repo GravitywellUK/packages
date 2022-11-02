@@ -12,7 +12,7 @@ export interface ApiErrorResponse {
   /** User-facing error message */
   message: string;
   /** Additional relevant error details */
-  detail?: string;
+  detail?: Record<string, unknown>;
 }
 
 /**
@@ -20,14 +20,14 @@ export interface ApiErrorResponse {
  */
 export default class APIError extends Error {
   public readonly type: ErrorType;
-  public readonly detail?: string;
+  public readonly detail?: Record<string, unknown>;
 
   /**
    * @param type The type of error to throw - each of these maps to a distinct HTTP status code
    * @param msg The user-facing error message
    * @param detail Any additional details about the error
    */
-  constructor(type: ErrorType, msg: string, detail?: string) {
+  constructor(type: ErrorType, msg: string, detail?: Record<string, unknown>) {
     super(msg);
     debug.error(msg, type);
     this.type = type;
