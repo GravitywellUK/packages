@@ -52,7 +52,7 @@ describe("@gravitywelluk/lambda-utils build-api-response", () => {
       gatewayEvent, mockContext, errorResponse
     );
 
-    expect(data.body).toContain(ErrorType.InternalServerError);
+    expect(data.body).toContain("InternalServerError");
     expect(typeof data.body).toBe("string");
     expect(data.statusCode).toBe(500);
   });
