@@ -9,7 +9,7 @@ import * as Joi from "joi";
  *
  * @param error
  */
-export default class JoiError extends APIError {
+export default class JoiError extends APIError<Record<string, Joi.ValidationError["details"]>> {
 
   constructor(err: Joi.ValidationError) {
     const context = { details: err.details };

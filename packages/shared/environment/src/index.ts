@@ -1,10 +1,11 @@
-import { ErrorType } from "@gravitywelluk/error";
+import {
+  APIError,
+  ErrorType
+} from "@gravitywelluk/error";
 import { SecretsManager } from "aws-sdk";
 import * as dotenv from "dotenv";
 import { createDebug } from "@gravitywelluk/debug";
 import * as R from "ramda";
-
-import { EnvironmentError } from "./EnvironmentError";
 
 const debug = createDebug("VALIDATE_ENV");
 
@@ -54,7 +55,7 @@ export const validateAppEnvironment: ValidateAppEnvironment = async (
 
     // Throw an error if there are any missing environment variables
     if (missingEnvironmentVariables.length > 0) {
-      throw new EnvironmentError(
+      throw new APIError(
         `Could not find required environment variables: ${missingEnvironmentVariables.join(", ")}.`,
         ErrorType.UnprocessableEntity
       );
@@ -103,7 +104,7 @@ export const validateAppEnvironment: ValidateAppEnvironment = async (
 
     // Throw an error if there are any missing secret variables
     if (missingSecrets.length > 0) {
-      throw new EnvironmentError(
+      throw new APIError(
         `Could not retrieve required secrets from AWS: ${missingSecrets.join(", ")}.`,
         ErrorType.UnprocessableEntity
       );
