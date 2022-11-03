@@ -39,12 +39,12 @@ export default class APIError<C extends Record<string, unknown> = Record<string,
    *
    * @param error - The ApiError to output
    */
-  public static formatApiError(error: APIError): ApiErrorResponse {
+  public static formatApiError(error: APIError, includeContext?: boolean): ApiErrorResponse {
     return {
       statusCode: error.type,
       title: ErrorType[ error.type ],
       message: error.message,
-      context: error.context
+      context: includeContext ? error.context : undefined
     };
   }
 }
