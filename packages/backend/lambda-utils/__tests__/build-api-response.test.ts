@@ -33,7 +33,7 @@ describe("@gravitywelluk/lambda-utils build-api-response", () => {
   });
 
   test("Handle an known error response", () => {
-    const errorResponse = new APIError("Not found", ErrorType.NotFoundError);
+    const errorResponse = new APIError("Not found", ErrorType.NotFound);
     const gatewayEvent = createEvent("aws:apiGateway", {} as APIGatewayProxyEvent);
 
     const data = buildApiResponse(
@@ -52,7 +52,7 @@ describe("@gravitywelluk/lambda-utils build-api-response", () => {
       gatewayEvent, mockContext, errorResponse
     );
 
-    expect(data.body).toContain(ErrorType.UnknownError);
+    expect(data.body).toContain(ErrorType.InternalServerError);
     expect(typeof data.body).toBe("string");
     expect(data.statusCode).toBe(500);
   });

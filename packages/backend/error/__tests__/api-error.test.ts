@@ -15,7 +15,7 @@ describe("@gravitywelluk/error package tests", () => {
 
   test("Correctly handles a loosely-typed detail object", () => {
     const testParams = { test: "hello" };
-    const errorObject = APIError.formatApiError(new APIError("Test server error", ErrorType.InternalServerError, testParams));
+    const errorObject = APIError.formatApiError(new APIError("Test server error", ErrorType.InternalServerError, testParams), true);
 
     expect(errorObject.context).toMatchObject(testParams);
   });
