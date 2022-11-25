@@ -1,21 +1,16 @@
 import { URLSearchParams } from "url";
 
+import type { OauthBasicConfig } from "@serverless-stack/node/auth";
+import { createAdapter } from "@serverless-stack/node/auth";
 import {
-  createAdapter,
-  OauthBasicConfig
-} from "@serverless-stack/node/auth";
-import {
-  useCookie,
-  useDomainName,
   useEvent,
+  useDomainName,
   usePath
 } from "@serverless-stack/node/context";
-import decodeJwt from "jwt-decode";
 import fetch from "node-fetch";
-import {
-  generators,
-  Issuer
-} from "openid-client";
+import type { Issuer } from "openid-client";
+import { generators } from "openid-client";
+import jwt from "jsonwebtoken";
 
 export interface OauthConfig extends OauthBasicConfig {
   issuer: Issuer;
@@ -53,7 +48,7 @@ export const AppleAdapter = createAdapter((config: OauthConfig) => {
         prompt: config.prompt
       });
 
-      const expires = new Date(Date.now() + 1000 * 30).toUTCString();
+      const expires = new Date(Date.now() + 1000 * 600).toUTCString();
 
       return {
         statusCode: 302,
@@ -102,7 +97,7 @@ export const AppleAdapter = createAdapter((config: OauthConfig) => {
         refresh_token: string,
       };
 
-      const { email } = decodeJwt(tokenset.id_token) as {
+      const { email } = jwt.decode(tokenset.id_token) as {
         iss: string,
         aud: string,
         exp: number;
@@ -120,7 +115,8 @@ export const AppleAdapter = createAdapter((config: OauthConfig) => {
         expired: () => false,
         claims: () => ({
           ...user,
-          name: user?.name ? user?.name?.firstName + " " + user?.name?.lastName : undefined,
+          given_name: user?.name?.firstName || email.split("@")[ 0 ],
+          family_name: user?.name?.lastName,
           email
         })
       }, client);

@@ -50,6 +50,7 @@
     "url": "https://github.com/GravitywellUK/packages/issues"
   },
   "devDependencies": {
-    "@gravitywelluk/npm-slack": "workspace:packages/shared/npm-slack"
+    "@gravitywelluk/npm-slack": "workspace:packages/shared/npm-slack",
+    "@types/jsonwebtoken": "^8.5.9"
   }
 }
