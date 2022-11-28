@@ -17,6 +17,8 @@ export const generateAppleClientSecret = (params: AppleClientSecretGeneratorPara
 
   const claims = {
     iss: teamId,
+    // 300,000 milliseconds from now = 300 seconds = 5 minutes
+    // This is long enough to allow for users to handle 2FA etc, but short for security
     exp: Math.floor(Date.now() / 1000) + 300000,
     aud: "https://appleid.apple.com",
     sub: clientId
