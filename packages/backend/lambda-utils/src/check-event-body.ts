@@ -22,7 +22,7 @@ export const checkEventBody = <T extends Record<string, any>, S extends {[K: str
   try {
     result = JSON.parse(body);
   } catch (error) {
-    throw new APIError("Request body could not be formatted!", ErrorType.InvalidData);
+    throw new APIError("Request body could not be formatted!", ErrorType.UnprocessableEntity);
   }
 
   const { error, value } = Joi.object(validation).validate(result);

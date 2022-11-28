@@ -9,7 +9,7 @@ import SequelizeError from "./sequelize-error";
 
 export type Models = { sequelize: Sequelize };
 
-export class BaseModel<T1 = any, T2 = any> extends Model<T1, T2> {
+export class BaseModel<T1 extends {} = any, T2 extends {} = any> extends Model<T1, T2> {
   public id!: number;
 
   public static models: Models;

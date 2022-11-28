@@ -37,6 +37,7 @@
     "url": "https://github.com/GravitywellUK/packages/issues"
   },
   "devDependencies": {
-    "@gravitywelluk/npm-slack": "workspace:packages/shared/npm-slack"
+    "@gravitywelluk/npm-slack": "workspace:packages/shared/npm-slack",
+    "jest": "^27.2.3"
   }
 }

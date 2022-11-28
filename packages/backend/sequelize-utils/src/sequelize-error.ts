@@ -4,10 +4,6 @@ import {
   ErrorType
 } from "@gravitywelluk/error";
 
-export enum SequelizeErrorCode {
-  UniqueConstraintError = "unique_constraint"
-}
-
 /**
  * Custom error class for sequelize
  *
@@ -16,25 +12,23 @@ export enum SequelizeErrorCode {
  * @param err - An Error of some type from sequelize
  * @param entityName - the name of the model the error relates to if applicable
  */
-export default class SequelizeError extends APIError<SequelizeErrorCode> {
+export default class SequelizeError extends APIError {
 
   constructor(err: Sequelize.BaseError | Sequelize.UniqueConstraintError, entityName?: string) {
-    let code;
-    let param: Record<string, unknown> = {};
+    let context: Record<string, unknown> = {};
     let type;
 
     if (entityName) {
-      param.entity = entityName;
+      context.entity = entityName;
     }
 
     if (err instanceof Sequelize.UniqueConstraintError) {
-      param = Object.assign(param, err.fields);
-      code = SequelizeErrorCode.UniqueConstraintError;
+      context = Object.assign(context, err.fields);
     } else if (err instanceof Sequelize.EmptyResultError) {
-      type = ErrorType.NotFoundError;
+      type = ErrorType.NotFound;
     }
 
-    super(err.message, type || ErrorType.DatabaseError, code);
+    super(err.message, type || ErrorType.InternalServerError, context);
   }
 
 }

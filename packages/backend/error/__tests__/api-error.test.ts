@@ -1,33 +1,42 @@
-import { APIError } from "../src";
-import { ErrorType } from "../src/api-error";
+import {
+  APIError,
+  ErrorType
+} from "../src";
+import { ApiErrorResponse } from "../src/api-error";
 
 describe("@gravitywelluk/error package tests", () => {
-  test("Correctly creates an error class instance with custom  codes", () => {
-    enum ErrorCode {
-      UserNotAllowed = "user_not_allowed",
-    }
-
-    class TestError extends APIError<ErrorCode> {}
-    const errorObject = new TestError("Test error", ErrorType.ApiError, ErrorCode.UserNotAllowed);
-
-    expect(errorObject.type).toBe(ErrorType.ApiError);
-    // it should add the id if not there
-    expect(errorObject.code).toBe(ErrorCode.UserNotAllowed);
-    expect(errorObject.message).toBe("Test error");
-  });
-
-  test("Correctly converts to a api error json object", () => {
-    const errorObject = APIError.formatApiError(new APIError("Test unknown error"));
+  test("Correctly converts to an API error JSON object", () => {
+    const errorObject = APIError.formatApiError(new APIError("Test server error", ErrorType.InternalServerError));
 
     expect(errorObject.statusCode).toBe(500);
-    expect(errorObject.type).toBe(ErrorType.UnknownError);
-    expect(errorObject.message).toBe("Test unknown error");
+    expect(errorObject.title).toBe("InternalServerError");
+    expect(errorObject.message).toBe("Test server error");
   });
 
-  test("Correctly handles a params object", () => {
+  test("Correctly handles a loosely-typed detail object", () => {
     const testParams = { test: "hello" };
-    const errorObject = APIError.formatApiError(new APIError<null>("Test unknown error", ErrorType.ApiError, null, testParams));
+    const errorObject = APIError.formatApiError(new APIError("Test server error", ErrorType.InternalServerError, testParams), true);
 
-    expect(errorObject.param).toMatchObject(testParams);
+    expect(errorObject.context).toMatchObject(testParams);
+  });
+
+  test("Correctly handles a strictly-typed detail object", () => {
+    interface CustomErrorContext {
+      foo: string;
+      bar: number;
+    }
+
+    type CustomErrorContextType<D extends keyof CustomErrorContext = keyof CustomErrorContext> = Record<D, CustomErrorContext[D]>;
+
+    class CustomProjectError extends APIError<CustomErrorContextType> {}
+
+    const throwCustomProjectError = () => {
+      throw new CustomProjectError("Test error message", ErrorType.Forbidden, {
+        foo: "something",
+        bar: 5
+      });
+    };
+
+    expect(() => throwCustomProjectError()).toThrow("Test error message");
   });
 });

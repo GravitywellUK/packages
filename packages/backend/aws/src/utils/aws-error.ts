@@ -10,16 +10,16 @@ import * as AWS from "aws-sdk";
  * @param error
  * @param meta
  */
-export class AwsError extends APIError<string> {
+export class AwsError extends APIError {
 
   constructor(err: AWS.AWSError) {
-    const param = {
+    const context = {
       region: err.region,
       requestId: err.requestId
 
     };
 
-    super(err.message, ErrorType.ThirdPartyError, err.code, param);
+    super(err.message, ErrorType.BadRequest, context);
   }
 
 }
