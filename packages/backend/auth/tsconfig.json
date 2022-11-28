@@ -2,7 +2,9 @@
   "extends": "../../../tsconfig-settings.json",
   "compilerOptions": {
     "outDir": "dist",
-    "rootDir": "src"
+    "rootDir": "src",
+    "module": "ES2020",
+    "target": "ES2021"
   },
   "references": [
     {
