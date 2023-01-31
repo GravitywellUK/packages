@@ -5850,6 +5850,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@gravitywelluk/unique-ids-generator@workspace:packages/backend/unique-ids-generator":
+  version: 0.0.0-use.local
+  resolution: "@gravitywelluk/unique-ids-generator@workspace:packages/backend/unique-ids-generator"
+  dependencies:
+    "@gravitywelluk/debug": ^1.0.29
+    "@gravitywelluk/npm-slack": "workspace:packages/shared/npm-slack"
+  languageName: unknown
+  linkType: soft
+
 "@gravitywelluk/validation-utils@^2.0.2, @gravitywelluk/validation-utils@workspace:packages/backend/validation-utils":
   version: 0.0.0-use.local
   resolution: "@gravitywelluk/validation-utils@workspace:packages/backend/validation-utils"
