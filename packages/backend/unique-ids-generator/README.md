@@ -13,9 +13,26 @@
 ```typescript
 const uniqueIdsGenerator = require('unique-ids-generator');
 
-// Example:
 const uniqueId = uniqueIdsGenerator.generateUniqueId({
   length: 5,
   dictionary: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 })
 ```
+> A few examples with the default dictionary and length
+```
+UAvm
+N6lx
+```
+
+> Number of combinations for the default values
+`26 uppercase letters` + `26 lowercase letters` + `10 digits (0 - 9)` = `62 characters`
+
+Therefore `62*62*62*62` = `14,776,336` total possible ids.
+
+## Be aware of
+This generator is using `Math.random()` therefore we might end up with the same ids, make sure to ALWAYS check the id before using it somewhere that will require it to be unique.
+
+*For example:*
+
+Before setting it in a db, check that it doesn't exist already.
+

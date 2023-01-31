@@ -27,4 +27,12 @@ describe("generate-unique-id", () => {
 
     expect(/^[A-Za-z]*$/.test(uniqueId)).toBeTruthy();
   });
+
+  test("Can generate a unique id using a dictionary with duplicates", () => {
+    // Dictionary containing duplicates
+    const CONTAINS_DUPLICATES = "AAAAABCDDDDDDDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    const uniqueId = generateUniqueId({ dictionary: CONTAINS_DUPLICATES });
+
+    expect(/^[A-Za-z]*$/.test(uniqueId)).toBeTruthy();
+  });
 });
