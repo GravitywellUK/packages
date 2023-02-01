@@ -58,6 +58,9 @@
       "path": "packages/backend/media-optimiser"
     },
     {
+      "path": "packages/backend/unique-ids-generator"
+    },
+    {
       "path": "packages/frontend/gtag"
     },
     {
