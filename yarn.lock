@@ -1658,6 +1658,46 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@aws-sdk/client-lambda@npm:3.43.0":
+  version: 3.43.0
+  resolution: "@aws-sdk/client-lambda@npm:3.43.0"
+  dependencies:
+    "@aws-crypto/sha256-browser": 2.0.0
+    "@aws-crypto/sha256-js": 2.0.0
+    "@aws-sdk/client-sts": 3.43.0
+    "@aws-sdk/config-resolver": 3.40.0
+    "@aws-sdk/credential-provider-node": 3.41.0
+    "@aws-sdk/fetch-http-handler": 3.40.0
+    "@aws-sdk/hash-node": 3.40.0
+    "@aws-sdk/invalid-dependency": 3.40.0
+    "@aws-sdk/middleware-content-length": 3.40.0
+    "@aws-sdk/middleware-host-header": 3.40.0
+    "@aws-sdk/middleware-logger": 3.40.0
+    "@aws-sdk/middleware-retry": 3.40.0
+    "@aws-sdk/middleware-serde": 3.40.0
+    "@aws-sdk/middleware-signing": 3.40.0
+    "@aws-sdk/middleware-stack": 3.40.0
+    "@aws-sdk/middleware-user-agent": 3.40.0
+    "@aws-sdk/node-config-provider": 3.40.0
+    "@aws-sdk/node-http-handler": 3.40.0
+    "@aws-sdk/protocol-http": 3.40.0
+    "@aws-sdk/smithy-client": 3.41.0
+    "@aws-sdk/types": 3.40.0
+    "@aws-sdk/url-parser": 3.40.0
+    "@aws-sdk/util-base64-browser": 3.37.0
+    "@aws-sdk/util-base64-node": 3.37.0
+    "@aws-sdk/util-body-length-browser": 3.37.0
+    "@aws-sdk/util-body-length-node": 3.37.0
+    "@aws-sdk/util-user-agent-browser": 3.40.0
+    "@aws-sdk/util-user-agent-node": 3.40.0
+    "@aws-sdk/util-utf8-browser": 3.37.0
+    "@aws-sdk/util-utf8-node": 3.37.0
+    "@aws-sdk/util-waiter": 3.40.0
+    tslib: ^2.3.0
+  checksum: 7b66d33bd2a9ada24a37596a278d43eb4b4399894e6f223324c38668c185d4c22d0b7faa8e9446bb7e59d248d4094a21989557decd25cb1f22df5923153e0eac
+  languageName: node
+  linkType: hard
+
 "@aws-sdk/client-s3@npm:^3.30.0, @aws-sdk/client-s3@npm:^3.45.0":
   version: 3.51.0
   resolution: "@aws-sdk/client-s3@npm:3.51.0"
@@ -5481,7 +5521,7 @@ __metadata:
     "@gravitywelluk/debug": ^1.0.29
     "@gravitywelluk/error": ^1.0.0
     "@gravitywelluk/npm-slack": "workspace:packages/shared/npm-slack"
-    "@serverless-stack/node": 1.13.0
+    "@serverless-stack/node": 1.18.4
     "@types/jsonwebtoken": ^8.5.9
     jsonwebtoken: ^8.5.1
     jwk-to-pem: ^2.0.5
@@ -7277,10 +7317,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@serverless-stack/node@npm:1.13.0":
-  version: 1.13.0
-  resolution: "@serverless-stack/node@npm:1.13.0"
+"@serverless-stack/node@npm:1.18.4":
+  version: 1.18.4
+  resolution: "@serverless-stack/node@npm:1.18.4"
   dependencies:
+    "@aws-sdk/client-lambda": 3.43.0
     "@aws-sdk/client-ssm": 3.43.0
     "@graphql-tools/schema": ^8.3.11
     "@tsconfig/node14": ^1.0.1
@@ -7293,7 +7334,7 @@ __metadata:
   dependenciesMeta:
     graphql:
       optional: true
-  checksum: fe82e898b980652580d6264121a5d46d260976bf413dfd758303e40e862f17ac6be9fd1d7fcff0433cc505707826322c80902a5f8c01304666edf062824d17f6
+  checksum: 2f9c8bbf3f057d8e03b49a1d40d8ed1ecba8062848870c764e3600472dd69824fff2a38632c3129302ede7b626347dec6b7703978f21674a0ae3e8a7cccac907
   languageName: node
   linkType: hard
 
