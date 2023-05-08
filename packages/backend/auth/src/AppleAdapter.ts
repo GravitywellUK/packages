@@ -2,15 +2,15 @@ import { URLSearchParams } from "url";
 
 import type { OauthBasicConfig } from "@serverless-stack/node/auth";
 import { createAdapter } from "@serverless-stack/node/auth";
-import { useEvent } from "@serverless-stack/node/context";
+import {
+  useEvent,
+  useDomainName,
+  usePath
+} from "@serverless-stack/node/context";
 import fetch from "node-fetch";
 import type { Issuer } from "openid-client";
 import { generators } from "openid-client";
 import jwt from "jsonwebtoken";
-import {
-  useDomainName,
-  usePath
-} from "@serverless-stack/node/api";
 
 export interface OauthConfig extends OauthBasicConfig {
   issuer: Issuer;
