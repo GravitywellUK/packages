@@ -26,7 +26,7 @@
   "dependencies": {
     "@gravitywelluk/debug": "^1.0.29",
     "@gravitywelluk/error": "^1.0.0",
-    "@serverless-stack/node": "1.13.0",
+    "@serverless-stack/node": "1.18.4",
     "jsonwebtoken": "^8.5.1",
     "jwk-to-pem": "^2.0.5",
     "jwt-decode": "3.1.2",
