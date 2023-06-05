@@ -3,9 +3,9 @@ import * as AWSModule from "aws-sdk";
 
 import { awsConfigure } from "../utils";
 
-const AWS = AWSXRay.captureAWS(AWSModule);
-
 AWSXRay.setContextMissingStrategy("IGNORE_ERROR");
+
+const AWS = AWSXRay.captureAWS(AWSModule);
 
 /**
  * Creates a new AWS Lambda service object
