@@ -1,47 +1,37 @@
 import { createDebug } from "@gravitywelluk/debug";
 
+import { ErrorType } from "./error-type";
+
 const debug = createDebug("ERROR");
 
-/** Available error codes */
-export enum ErrorType {
-  ApiError = "API_ERROR",
-  ApiConectionError = "API_CONNECTION_ERROR",
-  AuthenticationError = "AUTHENTICATION_ERROR",
-  ForbiddenError = "FORBIDDEN_ERROR",
-  InvalidData = "INVALID_DATA_ERROR",
-  DatabaseError = "DATABASE_ERROR",
-  NotFoundError = "NOT_FOUND_ERROR",
-  ThirdPartyError = "THIRD_PARTY_ERROR",
-  TooManyRequests = "TOO_MANY_REQUESTS",
-  UnknownError = "UNKNOWN_ERROR"
-}
-
-export interface ApiErrorResponse<C = unknown> {
-  /** Api response code */
-  statusCode: number;
-  /** Generic error type */
-  type: ErrorType;
+export interface ApiErrorResponse<C extends Record<string, unknown> = Record<string, unknown>> {
+  /** HTTP status code */
+  statusCode: ErrorType;
+  /** Title of HTTP status code */
+  title: string;
+  /** User-facing error message */
   message: string;
-  /** More specific error code, types specified from parent */
-  code?: C;
-  /** Extra more specific relevant information */
-  param?: Record<string, unknown>;
+  /** Additional relevant error details */
+  context?: C;
 }
 
 /**
- * Standardised api error class
+ * API Error class, storing error type, message and additional details
  */
-export default class APIError<C> extends Error {
+export default class APIError<C extends Record<string, unknown> = Record<string, unknown>> extends Error {
   public readonly type: ErrorType;
-  public readonly code?: C;
-  public readonly param?: Record<string, unknown>;
+  public readonly context?: C;
 
-  constructor(msg: string, type?: ErrorType, code?: C, param?: Record<string, unknown>) {
+  /**
+   * @param msg The user-facing error message
+   * @param type The type of error to throw - each of these maps to a distinct HTTP status code
+   * @param context Any additional details about the error
+   */
+  constructor(msg: string, type: ErrorType, context?: C) {
     super(msg);
-    debug.error(msg, type, code, param);
-    this.type = type || ErrorType.UnknownError;
-    this.code = code;
-    this.param = param;
+    debug.error(msg, type);
+    this.type = type;
+    this.context = context;
   }
 
   /**
@@ -49,51 +39,12 @@ export default class APIError<C> extends Error {
    *
    * @param error - The ApiError to output
    */
-  public static formatApiError(error: APIError<unknown>): ApiErrorResponse {
-    const statusCode = this.errorTypeToHttpStatusCode(error.type);
-
+  public static formatApiError(error: APIError, includeContext?: boolean): ApiErrorResponse {
     return {
-      statusCode,
+      statusCode: error.type,
+      title: ErrorType[ error.type ],
       message: error.message,
-      type: error.type,
-      code: error.code,
-      param: error.param
+      context: includeContext ? error.context : undefined
     };
-  }
-
-  /**
-   * Returns a HTTP statusCode according to the given ErrorType
-   *
-   * @param errorType - An ApiError ErrorType
-   */
-  protected static errorTypeToHttpStatusCode(errorType: ErrorType): number {
-    switch (errorType) {
-      case ErrorType.ThirdPartyError:
-      case ErrorType.ApiError:
-      case ErrorType.DatabaseError:
-        return 400;
-
-      case ErrorType.AuthenticationError:
-        return 401;
-
-      case ErrorType.ForbiddenError:
-        return 403;
-
-      case ErrorType.NotFoundError:
-        return 404;
-
-      case ErrorType.InvalidData:
-        return 422;
-
-      case ErrorType.TooManyRequests:
-        return 429;
-
-      case ErrorType.ApiConectionError:
-        return 502;
-
-      case ErrorType.UnknownError:
-      default:
-        return 500;
-    }
   }
 }

@@ -1,0 +1,11 @@
+releases:
+  "@gravitywelluk/error": major
+  "@gravitywelluk/environment": major
+  "@gravitywelluk/sequelize-utils": major
+  "@gravitywelluk/validation-utils": major
+  "@gravitywelluk/lambda-utils": major
+  "@gravitywelluk/aws": major
+  "@gravitywelluk/serverless-queue": major
+  "@gravitywelluk/auth": major
+  "@gravitywelluk/infrastructure": major
+  "@gravitywelluk/media-optimiser": major

@@ -1,7 +1,6 @@
 import { SecretsManager } from "aws-sdk";
 import * as AWS from "aws-sdk";
 
-import { EnvironmentErrorCode } from "../src/EnvironmentError";
 import {
   RequiredEnvironment,
   validateAppEnvironment
@@ -17,11 +16,7 @@ describe("@gravitywelluk/environment package tests", () => {
   test("Correctly throws an error if environment variable is missing", async () => {
     const requiredEnv: RequiredEnvironment = { variables: [ "THIS_DEFINITELY_DOESNT_EXIST" ] };
 
-    try {
-      await validateAppEnvironment(process.env.ENVIRONMENT, requiredEnv);
-    } catch (e) {
-      expect(e.code).toEqual(EnvironmentErrorCode.MissingVariables);
-    }
+    await expect(() => validateAppEnvironment(process.env.ENVIRONMENT, requiredEnv)).rejects.toThrow("Could not find required environment variables: THIS_DEFINITELY_DOESNT_EXIST.");
   });
 
   test("Correctly returns the parsed environment if validation passes", async () => {

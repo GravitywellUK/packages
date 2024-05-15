@@ -4,7 +4,10 @@ import { addJobToQueue } from "@gravitywelluk/aws";
 import { createDebug } from "@gravitywelluk/debug";
 import Joi from "joi";
 import { JoiError } from "@gravitywelluk/validation-utils";
-import { APIError } from "@gravitywelluk/error";
+import {
+  APIError,
+  ErrorType
+} from "@gravitywelluk/error";
 
 import {
   QueueJobAttributes,
@@ -90,7 +93,7 @@ export const createQueueJob = async <M extends QueueModels = QueueModels, T = un
       createdQueueJob.set("status", QueueJobStatus.ERROR);
       createdQueueJob.set("statusMessage", "The Queue job wasn't created correctly.");
       await createdQueueJob.save({ transaction: config?.transaction });
-      throw new APIError("Could not create job for unknown reason");
+      throw new APIError("Could not create job for unknown reason", ErrorType.InternalServerError);
     }
 
     try {
